@@ -13,7 +13,7 @@ hooks:
       runas: ubuntu
       timeout: 300
   ApplicationStop:
-    - location: scripts/stop_server.sh
+    - location: scripts/stop-server.sh
       runas: ubuntu
       timeout: 300
       
