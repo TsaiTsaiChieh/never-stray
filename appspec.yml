@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /home/ubuntu/never-stray
 hooks:
+  ApplicationStop:
+    - location: scripts/stop-server.sh
+      runas: ubuntu
+      timeout: 300
   BeforeInstall:
     - location: scripts/before-install.sh
       runas: ubuntu
@@ -12,8 +16,5 @@ hooks:
     - location: scripts/start-sever.sh
       runas: ubuntu
       timeout: 300
-  ApplicationStop:
-    - location: scripts/stop-server.sh
-      runas: ubuntu
-      timeout: 300
+  
       
