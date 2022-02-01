@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/never-stray
+hooks:
+  BeforeInstall:
+    - location: scripts/before-install.sh
+      runas: ubuntu
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/after-install.sh
+      runas: ubuntu
+      timeout: 300
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      runas: ubuntu
+      timeout: 300
+      
