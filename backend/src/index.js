@@ -17,6 +17,7 @@ app.use(express.json());
 
 
 app.get('/', (req, res) => {
+  console.log(req.headers);
   res.json(`Hi There, ${req.headers.origin}`)
 });
 
