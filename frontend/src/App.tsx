@@ -7,7 +7,7 @@ import axios from 'axios';
 function App() {
 
   const getData = async () => {
-    const res = await axios.get('http://44.198.131.68');
+    const res = await axios.get('http://44.198.131.68:8080');
     const {data} = res;
     console.log(data);
   };
