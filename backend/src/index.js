@@ -3,10 +3,7 @@ const cors = require('cors');
 
 const corsOptions = {
   origin: [
-    'http://44.198.131.68:3600',
-    'http://44.198.131.68:3000',
-    'http://44.198.131.68',
-    'http://localhost:8080',
+    "*",
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
