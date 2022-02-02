@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const corsOptions = {
   origin: [
+    'http://44.198.131.68:3600',
+    'http://44.198.131.68:80',
     'http://44.198.131.68',
     'http://localhost:8080',
   ],
