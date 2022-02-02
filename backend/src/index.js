@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: "*",
+  origin: ["http://44.198.131.68", "http://localhost:3600"],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
-  // credentials: true
+  credentials: true
 };
 
 const app = express();
