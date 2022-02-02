@@ -2,9 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: [
-    "*",
-  ],
+  origin: "*",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
   // credentials: true
