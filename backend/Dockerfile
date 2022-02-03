@@ -7,4 +7,4 @@ WORKDIR /backend
 COPY package.json ./
 RUN yarn install && yarn cache clean
 # Bundle app source
-COPY . .
+COPY . ./
