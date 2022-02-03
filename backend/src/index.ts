@@ -2,7 +2,6 @@ import dotenv from 'dotenv'
 const App = require('./app').App
 
 const env: string = process.env.NODE_ENV
-console.log(env)
 
 dotenv.config({path: `.env.${env}`})
 const APP_PORT: number = parseInt(process.env.APP_PORT)
