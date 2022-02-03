@@ -2,7 +2,7 @@
   "extends": "../tsconfig.packages.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "build",
     "target": "es5",
     "lib": [
       "dom",
@@ -20,8 +20,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "composite": true
   },
   "include": [
     "**/*"
