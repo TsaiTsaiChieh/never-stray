@@ -26,3 +26,5 @@ yarn-error.log*
 .vscode
 frontend/node_modules
 backend/node_modules
+.env.development
+.env.production
