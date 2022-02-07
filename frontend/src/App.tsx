@@ -1,16 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Test from './components/Test';
-import axios from 'axios';
+/* eslint-disable require-jsdoc */
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Test from './components/Test'
+import axios from 'axios'
 
 function App() {
-
   const getData = async () => {
-    const res = await axios.get('http://44.198.131.68:8080');
-    const {data} = res;
-    console.log(data);
-  };
+    const res = await axios.get('http://44.198.131.68:8080')
+    const {data} = res
+    console.log(data)
+  }
   getData()
   return (
     <div className="App">
@@ -30,7 +30,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
