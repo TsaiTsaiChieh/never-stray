@@ -23,7 +23,6 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
-      target: build
     ports:
       - "80:80"
     env_file:
