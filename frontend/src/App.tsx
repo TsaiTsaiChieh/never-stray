@@ -6,8 +6,9 @@ import Test from './components/Test'
 import axios from 'axios'
 
 function App() {
+  const {REACT_APP_API_URL} = process.env
   const getData = async () => {
-    const res = await axios.get('http://44.198.131.68:8080')
+    const res = await axios.get(`${REACT_APP_API_URL}/ping/api`)
     const {data} = res
     console.log(data)
   }
