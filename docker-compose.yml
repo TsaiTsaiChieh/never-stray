@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   backend:
+    container_name: backend
     build: 
       context: ./backend
       dockerfile: Dockerfile
@@ -17,15 +18,20 @@ services:
     networks:
       - app_net
 
-  # frontend: 
-  #   build: ./frontend # path to dockerfile
-  #   ports: # Port binding to host from docker container
-  #     - "80:80"
-  #   container_name: frontend-docker
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - app_net
+  frontend: 
+    container_name: frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: build
+    ports:
+      - "80:80"
+    env_file:
+      - ./frontend/.env.production
+    depends_on:
+      - backend
+    networks:
+      - app_net
   
 networks:
   app_net:
