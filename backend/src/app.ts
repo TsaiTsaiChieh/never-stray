@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 
+import cors from 'cors'
 import express, {Application} from 'express'
 
 import {Router} from './router'
@@ -22,7 +23,17 @@ export class App {
   /** @memberof App */
   constructor() {
     this.app = express()
+    this.cors()
     this.router()
+  }
+  /** Add CORS */
+  private cors(): void {
+    this.app.use(cors({
+      origin: JSON.parse(process.env.ORIGINS),
+      methods: ['GET', 'OPTIONS', 'PUT', 'PATCH', 'POST', 'DELETE'],
+      allowedHeaders: ['Content-Type'],
+      credentials: true,
+    }))
   }
   /** Add router */
   private router(): void {
