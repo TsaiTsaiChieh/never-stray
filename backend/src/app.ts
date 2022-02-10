@@ -4,6 +4,7 @@ import cors from 'cors'
 import express, {Application} from 'express'
 
 import {Router} from './router'
+import {createConnection} from 'typeorm'
 
 /** @class App */
 export class App {
@@ -24,6 +25,7 @@ export class App {
   constructor() {
     this.app = express()
     this.cors()
+    this.db()
     this.router()
   }
   /** Add CORS */
@@ -34,6 +36,17 @@ export class App {
       allowedHeaders: ['Content-Type'],
       credentials: true,
     }))
+  }
+  /** Add DB */
+  private async db(): Promise<void> {
+    await createConnection({
+      type: 'mysql',
+      host: process.env.TYPEORM_HOST,
+      port: 3306,
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_ROOT_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+    })
   }
   /** Add router */
   private router(): void {
