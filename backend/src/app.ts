@@ -39,6 +39,7 @@ export class App {
   }
   /** Add DB */
   private async db(): Promise<void> {
+    console.log('----', process.env.TYPEORM_HOST, '----')
     await createConnection({
       type: 'mysql',
       host: process.env.TYPEORM_HOST,
