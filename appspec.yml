@@ -13,6 +13,10 @@ hooks:
     - location: scripts/before-install.sh
       runas: ubuntu
       timeout: 300
+  AfterInstall:
+    - location: scripts/after-install.sh
+      runas: ubuntu
+      timeout: 300
   ApplicationStart:
     - location: scripts/start-server.sh
       runas: ubuntu
