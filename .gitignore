@@ -30,3 +30,4 @@ backend/node_modules
 backend/build
 .env.development
 .env.production
+tsconfig.tsbuildinfo
