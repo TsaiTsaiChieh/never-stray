@@ -30,8 +30,6 @@ services:
       - "80:80"
     env_file:
       - ./frontend/.env.production
-    depends_on:
-      - backend
     networks:
       - app_net
   
