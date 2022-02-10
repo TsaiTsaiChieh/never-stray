@@ -28,11 +28,8 @@ export class App {
   }
   /** Add CORS */
   private cors(): void {
-    const origins = JSON.parse(process.env.ORIGINS)
-    console.log(origins)
-
     this.app.use(cors({
-      origin: origins,
+      origin: JSON.parse(process.env.ORIGINS),
       methods: ['GET', 'OPTIONS', 'PUT', 'PATCH', 'POST', 'DELETE'],
       allowedHeaders: ['Content-Type'],
       credentials: true,

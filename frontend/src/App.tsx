@@ -8,7 +8,6 @@ import axios from 'axios'
 function App() {
   const {REACT_APP_API_URL} = process.env
   const getData = async () => {
-    console.log(REACT_APP_API_URL)
     const res = await axios.get(`${REACT_APP_API_URL}/ping/api`)
     const {data} = res
     console.log(data)
