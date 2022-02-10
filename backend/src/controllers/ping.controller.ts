@@ -7,6 +7,6 @@ import {Controller, Get, Req, Res} from 'routing-controllers'
 export class PingController {
   @Get('/api')
   pingAPI(@Req() req: Request, @Res() res: Response) {
-    return res.send('pong')
+    return res.send('pong!')
   }
 }
