@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.packages.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "build",
@@ -8,10 +7,5 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true
-  },
-  "references": [
-    {
-      "path": "../frontend"
-    }
-  ]
+  }
 }
