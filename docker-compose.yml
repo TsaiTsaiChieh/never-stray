@@ -3,13 +3,13 @@ services:
   backend:
     container_name: backend
     restart: always
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile
       target: base
     command: yarn start
     volumes:
-      - ./backend:/app   
+      - ./backend:/app
     environment:
       - APP_PORT=8080
       - TYPEORM_HOST=db
@@ -22,9 +22,9 @@ services:
     networks:
       - app_net
 
-  frontend: 
+  frontend:
     container_name: frontend
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
@@ -33,7 +33,7 @@ services:
       - ./frontend/.env.production
     networks:
       - app_net
-  
+
   db:
     image: mysql:8.0
     restart: always
