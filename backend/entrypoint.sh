@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "Wait for services to start"
-sleep 15;
+sleep 10;
 echo "===== END ====="
