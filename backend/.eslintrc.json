@@ -4,16 +4,28 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["google"],
+  "extends": [
+    "google"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "max-len": ["error", {"code": 80}],
-    "semi": [2, "never"],
+    "max-len": [
+      "error",
+      {
+        "code": 80
+      }
+    ],
+    "semi": [
+      2,
+      "never"
+    ],
     "new-cap": [
       "error",
       {
@@ -44,8 +56,14 @@
         "varsIgnorePattern": "_"
       }
     ],
-    "indent": ["off", 2],
-    "eol-last": ["error", "always"],
+    "indent": [
+      "off",
+      2
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
     "no-unused-vars": [
       "error",
       {
