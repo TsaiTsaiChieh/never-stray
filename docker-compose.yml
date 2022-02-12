@@ -11,6 +11,7 @@ services:
       - /bin/sh
       - -c
       - |
+        ./wait-for-it.sh 127.0.0.1:3306 -- echo "DB is up"
         sh /backend/entrypoint.sh
         yarn start
     volumes:
@@ -23,7 +24,7 @@ services:
     env_file:
       - ./backend/.env.production
     depends_on:
-      - db
+      - db 
     networks:
       - app_net
 
