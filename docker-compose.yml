@@ -11,8 +11,8 @@ services:
       - /bin/sh
       - -c
       - |
-        ./wait-for-it.sh 127.0.0.1:3306 -- echo "DB is up"
-        sh /backend/entrypoint.sh
+        /backend/src/scripts/wait-for-it.sh 127.0.0.1:3306 -- echo "DB is up"
+        sh /backend/src/scripts/entrypoint.sh
         yarn start
     volumes:
       - ./backend:/app
