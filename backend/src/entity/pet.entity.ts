@@ -65,7 +65,7 @@ export enum Kind {
   'created_at',
   'updated_at',
 ])
-/** @Class Pet */
+/** @class Pet */
 export class Pet {
   @PrimaryGeneratedColumn()
   id?: number
