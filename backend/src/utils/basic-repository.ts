@@ -2,14 +2,11 @@ import {
   FindConditions,
   FindOneOptions,
   getRepository,
-  InsertResult,
   ObjectType,
   Repository,
   UpdateResult,
 } from 'typeorm'
 import {QueryDeepPartialEntity} from 'typeorm/query-builder/QueryPartialEntity'
-import {UpsertOptions} from 'typeorm/repository/UpsertOptions'
-
 
 /** @class BasicRepository */
 export class BasicRepository<T> {
