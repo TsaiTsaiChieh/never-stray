@@ -5,6 +5,9 @@ import express, {Application} from 'express'
 
 import {Router} from './router'
 import {createConnection} from 'typeorm'
+import {Area} from './entity/area.entity'
+import {Pet} from './entity/pet.entity'
+import {Shelter} from './entity/shelter.entity'
 
 /** @class App */
 export class App {
@@ -46,6 +49,7 @@ export class App {
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_ROOT_PASSWORD,
       database: process.env.MYSQL_DATABASE,
+      entities: [Area, Pet, Shelter],
     })
   }
   /** Add router */
