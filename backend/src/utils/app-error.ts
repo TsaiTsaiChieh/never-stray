@@ -1,34 +1,37 @@
+/* eslint-disable require-jsdoc */
 import httpStatus from 'http-status'
 
 /** @class AppError */
 export class AppError extends Error {
-  protected details?: string
-  protected code: number
-  protected isOperational: boolean
-  protected status: string
+  public name: string
+  public message: string
+  public code: number
+  public status: string
 
   /**
    * @constructor
    *
    * @param  {string} message Custom message
-   * @param  {string} [details] Custom details
-   * @param  {boolean} [isOperational=true] Default is true,
-   *         show error in detail
    * @param  {number} [code=500] Http status code
    */
   constructor(
-    message: string,
-    details?: string,
-    isOperational: boolean=true,
+    message?: string,
     code: number = httpStatus.INTERNAL_SERVER_ERROR,
   ) {
     super()
+    this.name = this.constructor.name
     this.message = message
-    this.details = details
     this.code = code
-    this.isOperational = isOperational
     this.status = `${code}`.startsWith('4') ? 'fail' : 'error'
     Error.captureStackTrace(this, this.constructor)
-    console.error(message)
+    console.error(this)
+  }
+}
+
+export class DBError extends AppError {
+  constructor(
+    message: string = 'MySQL 錯誤',
+  ) {
+    super(message)
   }
 }
