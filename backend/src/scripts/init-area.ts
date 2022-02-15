@@ -23,31 +23,61 @@ class AreaInitData {
     this.connection.close()
   }
 
-  /** upsert */
-  async upsertData() {
+  /** Find exist data */
+  /**
+   * @return {Promise<number[]>}
+   */
+  async findData(): Promise<number[]> {
+    try {
+      const insertIdx: number[] = []
+      await Promise.all(
+        areas.map(async (ele, i) => {
+          const result = await this.repository.findOne({id: ele.id})
+          if (!result) insertIdx.push(i)
+          else console.log(`=== ${result.name} already in area table ===`)
+        }),
+      )
+      return Promise.resolve(insertIdx)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  /** Upsert data */
+  /**
+   * @param  {number[]} insertIdx
+   * @return {Promise<Area[]>}
+   */
+  async upsertData(insertIdx: number[]): Promise<Area[]> {
     try {
       const data: Area[] = []
-      areas.map(async (ele) => {
+      insertIdx.map((i) => {
         data.push({
-          id: ele.id,
-          region: <Region> ele.region,
-          name: ele.name,
+          id: areas[i].id,
+          region: <Region>areas[i].region,
+          name: areas[i].name,
         })
       })
       const result = await this.repository.saveMany(data)
-      console.info(`=== Saved ${JSON.stringify(result)} ===`)
+      if (result) console.info(`=== Saved ${JSON.stringify(result)} ===`)
+      return Promise.resolve(result)
     } catch (error) {
-      throw new AppError(error)
+      return Promise.reject(error)
     }
   }
 }
+
 /** Initial area data */
-async function initAreaData() {
-  const areaInitData = new AreaInitData()
-  await areaInitData.builder()
-  await areaInitData.upsertData()
-  await areaInitData.destroy()
-  return
+async function initAreaData(): Promise<void> {
+  try {
+    const areaInitData = new AreaInitData()
+    await areaInitData.builder()
+    const insertIdx = await areaInitData.findData()
+    await areaInitData.upsertData(insertIdx)
+    await areaInitData.destroy()
+  } catch (error) {
+    throw new AppError(error)
+  }
 }
 
 initAreaData()
