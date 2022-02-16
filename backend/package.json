@@ -10,8 +10,10 @@
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "typeorm:generate": "typeorm migration:generate -n MigrationName -p",
     "typeorm:run": "typeorm migration:run",
-    "init:area": "NODE_ENV=production node build/scripts/init-area.js",
-    "init:area:dev": "NODE_ENV=development ts-node src/scripts/init-area.ts"
+    "init:area": "node build/scripts/init-area.js",
+    "init:area:dev": "NODE_ENV=development ts-node src/scripts/init-area.ts",
+    "init:shelter": "node build/scripts/init-shelter.js",
+    "init:shelter:dev": "NODE_ENV=development ts-node src/scripts/init-shelter.ts" 
   },
   "license": "MIT",
   "private": true,
