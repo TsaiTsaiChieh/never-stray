@@ -14,7 +14,7 @@ class AreaInitData {
 
   /** Builder */
   async builder() {
-    this.connection = await connection(process.env.NODE_ENV)
+    this.connection = await connection()
     this.repository = new AreaRepository()
   }
 
