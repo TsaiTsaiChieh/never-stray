@@ -1,5 +1,3 @@
-type AreaData = {
-  id: number
+type AreaDataType = IDNameType & {
   region: string
-  name: string
 }
