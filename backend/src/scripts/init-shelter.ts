@@ -46,7 +46,7 @@ class ShelterInitData {
   /** Upsert data */
   /**
    * @param  {number[]} insertIdx
-   * @return {Shelter<Area[]>}
+   * @return {Promise<Shelter[]>}
    */
   async upsertData(insertIdx: number[]): Promise<Shelter[]> {
     try {
