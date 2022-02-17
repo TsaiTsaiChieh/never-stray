@@ -8,7 +8,7 @@ import {AppError} from '../utils/app-error'
 
 /** @class ShelterInitData */
 class ShelterInitData {
-  public shelters: ShelterData[] = shelters
+  public shelters: IDNameType[] = shelters
   private connection: Connection
   private repository: ShelterRepository
 
@@ -19,7 +19,7 @@ class ShelterInitData {
   }
 
   /** Destructor */
-  async destroy() {
+  destroy() {
     this.connection.close()
   }
 
@@ -58,7 +58,7 @@ class ShelterInitData {
         })
       })
       const result = await this.repository.saveMany(data)
-      if (result) console.info(`=== Saved ${JSON.stringify(result)} ===`)
+      if (result.length) console.info(`=== Saved ${JSON.stringify(result)} ===`)
       return Promise.resolve(result)
     } catch (error) {
       return Promise.reject(error)
@@ -66,18 +66,30 @@ class ShelterInitData {
   }
 }
 
-/** Initial shelter data */
+/**
+ * Init shelter enum table
+ *
+ * @return {Promise<void>}
+ */
 async function initShelterData(): Promise<void> {
   try {
     const shelterInitData = new ShelterInitData()
     await shelterInitData.builder()
     const insertIdx = await shelterInitData.findData()
     await shelterInitData.upsertData(insertIdx)
-    await shelterInitData.destroy()
-    return
+    shelterInitData.destroy()
+    return Promise.resolve()
   } catch (error) {
-    throw new AppError(error)
+    return Promise.reject(error)
   }
 }
 
-initShelterData()
+/** main */
+(async (): Promise<void> => {
+  try {
+    await initShelterData()
+  } catch (error) {
+    throw new AppError(error)
+  }
+})
+

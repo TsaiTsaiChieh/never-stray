@@ -8,18 +8,18 @@ import {AppError} from '../utils/app-error'
 
 /** @class AreaInitData*/
 class AreaInitData {
-  public areas: AreaData[] = areas
+  public areas: AreaDataType[] = areas
   private connection: Connection
   private repository: AreaRepository
 
   /** Builder */
-  async builder() {
+  async builder(): Promise<void> {
     this.connection = await connection()
     this.repository = new AreaRepository()
   }
 
   /** Destructor */
-  async destroy() {
+  destroy(): void {
     this.connection.close()
   }
 
@@ -59,7 +59,7 @@ class AreaInitData {
         })
       })
       const result = await this.repository.saveMany(data)
-      if (result) console.info(`=== Saved ${JSON.stringify(result)} ===`)
+      if (result.length) console.info(`=== Saved ${JSON.stringify(result)} ===`)
       return Promise.resolve(result)
     } catch (error) {
       return Promise.reject(error)
@@ -67,17 +67,30 @@ class AreaInitData {
   }
 }
 
-/** Initial area data */
+/**
+ * Init area enum table
+ *
+ * @return {Promise<void>}
+ */
 async function initAreaData(): Promise<void> {
   try {
     const areaInitData = new AreaInitData()
     await areaInitData.builder()
     const insertIdx = await areaInitData.findData()
     await areaInitData.upsertData(insertIdx)
-    await areaInitData.destroy()
+    areaInitData.destroy()
+    return Promise.resolve()
   } catch (error) {
-    throw new AppError(error)
+    return Promise.reject(error)
   }
 }
 
-initAreaData()
+/** main */
+(async (): Promise<void> => {
+  try {
+    await initAreaData()
+  } catch (error) {
+    throw new AppError(error)
+  }
+})()
+
