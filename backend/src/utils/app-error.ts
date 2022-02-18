@@ -11,11 +11,11 @@ export class AppError extends Error {
   /**
    * @constructor
    *
-   * @param  {string} message Custom message
+   * @param  {any} message Custom message
    * @param  {number} [code=500] Http status code
    */
   constructor(
-    message?: string,
+    message?: any,
     code: number = httpStatus.INTERNAL_SERVER_ERROR,
   ) {
     super()
