@@ -31,7 +31,7 @@ export class App {
   /** Add CORS */
   private cors(): void {
     this.app.use(cors({
-      origin: JSON.parse(process.env.ORIGINS),
+      origin: JSON.parse(process.env.ORIGINS!),
       methods: ['GET', 'OPTIONS', 'PUT', 'PATCH', 'POST', 'DELETE'],
       allowedHeaders: ['Content-Type'],
       credentials: true,

@@ -7,7 +7,7 @@ import {Shelter} from '../entity/shelter.entity'
 import {DBError} from '../utils/app-error'
 
 export const connection = async (
-  env: string = process.env.NODE_ENV,
+  env: string = process.env.NODE_ENV!,
 ): Promise<Connection> => {
   dotenv.config({path: `.env.${env}`})
   try {
