@@ -10,6 +10,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "noImplicitAny": false
+    "strict": true,
+    "strictPropertyInitialization": false
   }
 }
