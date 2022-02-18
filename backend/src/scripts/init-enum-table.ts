@@ -54,7 +54,7 @@ class InitData<T extends ObjectType<T>> {
         this.rows.map(async (ele, i) => {
           const result = await this.repository.findOne(ele.id)
           if (!result) insertIdx.push(i)
-          else console.log(`=== ${result.name} already in area table ===`)
+          else console.info(`=== ${result.name} already in area table ===`)
         }),
       )
       return Promise.resolve(insertIdx)
