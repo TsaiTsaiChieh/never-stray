@@ -41,3 +41,9 @@ export class AxiosError extends AppError {
     super(message)
   }
 }
+
+export class InvalidValueError extends AppError {
+  constructor(message: any = '無效值') {
+    super(message)
+  }
+}
