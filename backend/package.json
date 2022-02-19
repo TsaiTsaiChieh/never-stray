@@ -12,7 +12,9 @@
     "typeorm:run": "typeorm migration:run",
     "init:shelter:dev": "NODE_ENV=development ts-node src/scripts/init-shelter.ts",
     "init:enum-table": "node build/scripts/init-enum-table.js",
-    "init:enum-table:dev": "NODE_ENV=development ts-node src/scripts/init-enum-table.ts"
+    "init:enum-table:dev": "NODE_ENV=development ts-node src/scripts/init-enum-table.ts",
+    "crawler": "node build/crawler.js",
+    "crawler:dev": "NODE_ENV=development ts-node src/crawler.ts"
   },
   "license": "MIT",
   "private": true,
