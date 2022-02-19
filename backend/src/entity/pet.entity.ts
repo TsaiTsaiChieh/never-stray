@@ -127,7 +127,7 @@ export class Pet {
   rabies: Ternary
 
   @Column({type: 'varchar', length: 255, nullable: true})
-  title: string
+  title?: string
 
   @Column({type: 'enum', enum: Status, default: Status.UNKNOWN})
   status: Status
