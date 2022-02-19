@@ -30,8 +30,14 @@ export class AppError extends Error {
 
 export class DBError extends AppError {
   constructor(
-    message: string = 'MySQL 錯誤',
+    message: any = 'MySQL 錯誤',
   ) {
+    super(message)
+  }
+}
+
+export class AxiosError extends AppError {
+  constructor(message: any = 'Axios 錯誤') {
     super(message)
   }
 }
