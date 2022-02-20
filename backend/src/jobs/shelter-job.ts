@@ -1,6 +1,7 @@
 
 import axios, {AxiosResponse} from 'axios'
-import {Connection, getConnectionManager} from 'typeorm'
+import {Connection} from 'typeorm'
+import {connection} from '../config/database'
 
 import {Pet, Ref, Status} from '../entity/pet.entity'
 import {PetRepository} from '../repository/pet.repository'
@@ -21,11 +22,11 @@ class ShelterJob {
   public url: string = process.env.NATIONAL_ANIMAL_SHELTER!
   protected connection: Connection
   protected repository: PetRepository
-  private batch: number = 3
+  private batch: number = 100
 
   /** Builder */
   async builder(): Promise<void> {
-    this.connection = await getConnectionManager().get().connect()
+    this.connection = await connection()
     this.repository = new PetRepository()
   }
 
