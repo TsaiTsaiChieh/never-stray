@@ -2,6 +2,7 @@ version: '3.4'
 services:
   backend:
     container_name: backend
+    image: node:16.13.2-slim
     restart: always
     build:
       context: ./backend
@@ -21,6 +22,28 @@ services:
       - TYPEORM_HOST=db
     ports:
       - "8080:8080"
+    env_file:
+      - ./backend/.env.production
+    depends_on:
+      - db
+    networks:
+      - app_net
+
+  cron:
+    container_name: cron
+    image: node:16.13.2-slim
+    restart: always
+    command:
+      - /bin/sh
+      - -c
+      - |
+        /backend/src/scripts/wait-for-it.sh 127.0.0.1:3306 -- echo "DB is up"
+        yarn crawler
+    environment:
+      - JOB_PORT=8081
+      - TYPEORM_HOST=db
+    ports:
+      - "8081:8081"
     env_file:
       - ./backend/.env.production
     depends_on:
