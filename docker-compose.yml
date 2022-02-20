@@ -2,7 +2,6 @@ version: '3.4'
 services:
   backend:
     container_name: backend
-    image: node:16.13.2-slim
     restart: always
     build:
       context: ./backend
@@ -31,7 +30,10 @@ services:
 
   cron:
     container_name: cron
-    image: node:16.13.2-slim
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: base
     restart: always
     command:
       - /bin/sh
@@ -53,7 +55,6 @@ services:
 
   frontend:
     container_name: frontend
-    image: node:16.13.2-slim
     build:
       context: ./frontend
       dockerfile: Dockerfile
