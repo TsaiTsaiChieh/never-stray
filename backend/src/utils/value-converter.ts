@@ -120,6 +120,8 @@ export function shelterConverter(key: number): ShelterID {
       return ShelterID.KHH02
     case ShelterID.IUH:
       return ShelterID.IUH
+    case ShelterID.ILH:
+      return ShelterID.ILH
     case ShelterID.HWA:
       return ShelterID.HWA
     case ShelterID.TTT:
@@ -135,7 +137,7 @@ export function shelterConverter(key: number): ShelterID {
     case ShelterID.MAL:
       return ShelterID.MAL
     default:
-      throw new InvalidValueError(`Invalid value: ${key}`)
+      throw new InvalidValueError(`Invalid shelter value: ${key}`)
   }
 }
 /**
