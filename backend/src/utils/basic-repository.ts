@@ -24,7 +24,8 @@ export class BasicRepository<T> {
 
   /**
    * Saves a given entity in the database.
-   * If entity does not exist in the database then inserts, otherwise updates.
+   * If entity does not exist in the database then inserts,
+   * otherwise would throw duplicate key error
    *
    * @param {T} data Single data
    * @return {Promise<T>}
@@ -35,7 +36,8 @@ export class BasicRepository<T> {
 
   /**
    * Saves all given entities in the database.
-   * If entity does not exist in the database then inserts, otherwise updates.
+   * If entity does not exist in the database then inserts,
+   * otherwise would throw duplicate key error
    *
    * @param {T[]} data Multiple data
    * @return {Promise<T>}
