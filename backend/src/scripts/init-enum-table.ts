@@ -94,8 +94,8 @@ class InitData<T extends ObjectType<T>> {
  * @return {Promise<void>}
  */
 async function initAreaData(): Promise<void> {
+  const areaInitData = new InitData(Area, Areas)
   try {
-    const areaInitData = new InitData(Area, Areas)
     await areaInitData.builder()
     const insertIdx: number[] = await areaInitData.findData()
     await areaInitData.upsertData(insertIdx)
@@ -103,6 +103,8 @@ async function initAreaData(): Promise<void> {
     return Promise.resolve()
   } catch (error) {
     return Promise.reject(error)
+  } finally {
+    areaInitData.destructor()
   }
 }
 
@@ -112,15 +114,16 @@ async function initAreaData(): Promise<void> {
  * @return {Promise<void>}
  */
 async function initShelterData(): Promise<void> {
+  const shelterInitData = new InitData(Shelter, Shelters)
   try {
-    const shelterInitData = new InitData(Shelter, Shelters)
     await shelterInitData.builder()
     const insertIdx: number[] = await shelterInitData.findData()
     await shelterInitData.upsertData(insertIdx)
-    shelterInitData.destructor()
     return Promise.resolve()
   } catch (error) {
     return Promise.reject(error)
+  } finally {
+    shelterInitData.destructor()
   }
 }
 
