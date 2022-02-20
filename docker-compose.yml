@@ -53,6 +53,7 @@ services:
 
   frontend:
     container_name: frontend
+    image: node:16.13.2-slim
     build:
       context: ./frontend
       dockerfile: Dockerfile
