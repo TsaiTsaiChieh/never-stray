@@ -2,6 +2,7 @@ version: '3.4'
 services:
   backend:
     container_name: backend
+    image: node:16.13.2-slim 
     restart: always
     build:
       context: ./backend
@@ -30,16 +31,14 @@ services:
 
   cron:
     container_name: cron
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-      target: base
+    image: node:16.13.2-slim 
     restart: always
     command:
       - /bin/sh
       - -c
       - |
-        /backend/src/scripts/wait-for-it.sh 127.0.0.1:3306 -- echo "DB is up"
+        echo "Wait for DB service to start"
+        sleep 10
         yarn crawler
     environment:
       - JOB_PORT=8081
