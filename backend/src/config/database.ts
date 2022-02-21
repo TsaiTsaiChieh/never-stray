@@ -23,6 +23,6 @@ export const connection = async (
     })
     return Promise.resolve(connection)
   } catch (error) {
-    return Promise.reject(new DBError())
+    return Promise.reject(new DBError(error))
   }
 }
