@@ -99,7 +99,6 @@ async function initAreaData(): Promise<void> {
     await areaInitData.builder()
     const insertIdx: number[] = await areaInitData.findData()
     await areaInitData.upsertData(insertIdx)
-    areaInitData.destructor()
     return Promise.resolve()
   } catch (error) {
     return Promise.reject(error)
