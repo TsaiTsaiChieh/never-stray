@@ -8,9 +8,9 @@ const env: string = process.env.NODE_ENV!
 dotenv.config({path: `.env.${env}`})
 const JOB_PORT: number = parseInt(process.env.JOB_PORT!);
 
-(async () => {
+(() => {
   const app = App.bootstrap().app
-  app.listen(JOB_PORT, async (): Promise<void> => {
+  app.listen(JOB_PORT, (): void => {
     console.info(`[${env}] Crawler listening on ${JOB_PORT}`)
     scheduleJob(
       'Get shelter data scheduler',
