@@ -1,7 +1,5 @@
 
 import axios, {AxiosResponse} from 'axios'
-import {Connection} from 'typeorm'
-import {connection} from '../config/database'
 
 import {Pet, Ref, Status} from '../entity/pet.entity'
 import {PetRepository} from '../repository/pet.repository'
@@ -20,19 +18,12 @@ import {
 /** @class ShelterJob */
 class ShelterJob {
   public url: string = process.env.NATIONAL_ANIMAL_SHELTER!
-  protected connection: Connection
   protected repository: PetRepository
   private batch: number = 100
 
-  /** Builder */
-  async builder(): Promise<void> {
-    this.connection = await connection()
+  /** @constructor */
+  constructor() {
     this.repository = new PetRepository()
-  }
-
-  /** Destructor */
-  destructor(): void {
-    this.connection.close()
   }
 
   /**
@@ -236,7 +227,6 @@ export async function getShelterData(): Promise<void> {
   const shelterJob = new ShelterJob()
 
   try {
-    await shelterJob.builder()
     await shelterJob.updateUnknownStatus()
     const data: ShelterAPIDataType[] = await shelterJob.getData()
     const dataShouldBeSaved: ShelterAPIDataType[] =
@@ -244,8 +234,6 @@ export async function getShelterData(): Promise<void> {
     await shelterJob.saveData(dataShouldBeSaved)
   } catch (error) {
     throw error
-  } finally {
-    shelterJob.destructor()
   }
 }
 
