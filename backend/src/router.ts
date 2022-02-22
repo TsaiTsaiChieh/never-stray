@@ -1,7 +1,6 @@
 
-import {useExpressServer} from 'routing-controllers'
 import {Application} from 'express'
-import {PingController} from './controllers/ping.controller'
+import {useExpressServer} from 'routing-controllers'
 
 /** @class Router */
 export class Router {
@@ -13,7 +12,7 @@ export class Router {
   static router(app: Application): void {
     useExpressServer(app, {
       routePrefix: 'api',
-      controllers: [PingController],
+      controllers: [`${__dirname}/controllers/*.ts`],
     })
   }
 }
