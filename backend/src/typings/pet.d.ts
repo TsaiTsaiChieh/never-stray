@@ -1,3 +1,24 @@
+type PetRefType = 'gov' | 'map' | 'own'
+
+type PetSexType = 'F' | 'M' | 'U'
+
+type PetAgeType = 'A' | 'C' | 'U'
+
+type PetKindType = 'dog' | 'cat' | 'other'
+
+type PetOrderKeyType =
+  | 'id'
+  | 'ref'
+  | 'city_id'
+  | 'shelter_id'
+  | 'kind'
+  | 'sex'
+  | 'color'
+  | 'age'
+  | 'created_at'
+  | 'updated_at';
+
+type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
 
 type ShelterAPIDataType = {
   animal_id: number
@@ -27,4 +48,20 @@ type ShelterAPIDataType = {
   cDate: string
   shelter_address: string
   shelter_tel: string
+}
+
+type PetSearchQueryType = {
+  status?: PetStatusType
+  ref?: PetRefType
+  city_id?: number
+  shelter_id?: number
+  kind?: PetKindType
+  sex?: PetSexType
+  color?: string
+  age?: PetAgeType
+  region?: AreaRegionType
+  order_key?: PetOrderKeyType
+  ascend?: boolean
+  limit?: number
+  page?: number
 }
