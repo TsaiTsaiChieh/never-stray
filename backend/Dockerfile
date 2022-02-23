@@ -9,6 +9,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 RUN chmod +x ./src/scripts/wait-for-it.sh
-RUN npm install typescript@4.5.5 -g
+RUN npm install typescript@4.5.5 -g --force
 RUN npm install typeorm@0.2.41 -g
 RUN npm run build
