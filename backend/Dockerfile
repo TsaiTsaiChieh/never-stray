@@ -4,6 +4,7 @@ FROM node:16.13.2-slim AS base
 WORKDIR /backend
 # Install app dependencies
 COPY package.json ./
+RUN npm install -g npm@8.5.1
 RUN npm install
 # Bundle app source
 COPY . .
