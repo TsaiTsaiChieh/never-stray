@@ -4,10 +4,10 @@ FROM node:16.13.2-slim AS base
 WORKDIR /backend
 # Install app dependencies
 COPY package.json ./
-RUN yarn install
+RUN npm install
 # Bundle app source
 COPY . .
 RUN chmod +x ./src/scripts/wait-for-it.sh
-RUN yarn global add typescript@4.5.5
-RUN yarn global add typeorm@0.2.41
-RUN yarn build
+RUN npm install typescript@4.5.5 -g
+RUN npm install typeorm@0.2.41 -g
+RUN npm run build

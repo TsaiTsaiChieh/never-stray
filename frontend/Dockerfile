@@ -4,11 +4,11 @@ FROM node:16.13.2-slim AS build
 WORKDIR /frontend
 # Install app dependencies
 COPY package.json ./
-RUN yarn install
-RUN yarn global add react-scripts@5.0.0
+RUN npm install --legacy-peer-deps
+RUN npm install react-scripts@5.0.0 -g
 # Bundle app source
 COPY . .
-RUN yarn build
+RUN npm run build
 
 # production environment
 # build the final image and copy the react build files
