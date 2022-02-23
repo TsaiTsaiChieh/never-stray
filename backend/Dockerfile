@@ -10,5 +10,5 @@ RUN npm install
 COPY . .
 RUN chmod +x ./src/scripts/wait-for-it.sh
 RUN npm install typescript@4.5.5 -g --force
-RUN npm install typeorm@0.2.41 -g
+RUN npm install typeorm@0.2.41 -g --force
 RUN npm run build
