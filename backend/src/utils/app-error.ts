@@ -4,16 +4,10 @@ import httpStatus from 'http-status'
 /** @class AppError */
 export class AppError extends Error {
   public name: string
-  public message: string
+  public message: any
   public code: number
   public status: string
 
-  /**
-   * @constructor
-   *
-   * @param  {any} message Custom message
-   * @param  {number} [code=500] Http status code
-   */
   constructor(
     message?: any,
     code: number = httpStatus.INTERNAL_SERVER_ERROR,
