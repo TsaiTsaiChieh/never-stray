@@ -10,6 +10,7 @@
     "outDir": "build",
     /* Strict Type-Checking Options */
     "strict": true,
+    "useUnknownInCatchVariables": false,
     // "noImplicitAny": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
