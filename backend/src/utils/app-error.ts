@@ -41,3 +41,9 @@ export class InvalidValueError extends AppError {
     super(message)
   }
 }
+
+export class RepackageError extends AppError {
+  constructor(message: any = '打包資料失敗') {
+    super(message)
+  }
+}
