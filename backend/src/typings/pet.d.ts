@@ -20,6 +20,29 @@ type PetOrderKeyType =
 
 type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
 
+type PetType = {
+  id: number
+  sub_id: number
+  accept_number: string
+  ref: PetRefType
+  region: AreaRegionType
+  city?: AreaType
+  shelter?: IDNameType
+  kind: PetKindType
+  sex: PetSexType
+  color: string
+  age: PetAgeType
+  ligation: TernaryType
+  rabies: TernaryType
+  title: string
+  status: PetStatusType
+  remark: string
+  phone: string
+  image: string[]
+  created_at: Date
+  updated_at: Date
+}
+
 type ShelterAPIDataType = {
   animal_id: number
   animal_subid: string
@@ -64,4 +87,10 @@ type PetSearchQueryType = {
   ascend?: boolean
   limit?: number
   page?: number
+}
+
+type PetSearchReturningType = PetType & {
+  region: AreaRegionType
+  city_name: string
+  shelter_name: string
 }
