@@ -22,8 +22,10 @@ export class PetModel {
     query: PetSearchQueryType,
   ): Promise<[PetSearchReturningType[], number]> {
     try {
-      const result = await this.repository.findByFiltersAndCount(query)
-      const cleanData = await repackagePetData(result)
+      const result: [Pet[], number] =
+        await this.repository.findByFiltersAndCount(query)
+      const cleanData: [PetSearchReturningType[], number] =
+        await repackagePetData(result)
       return Promise.resolve(cleanData)
     } catch (error) {
       return Promise.reject(error)

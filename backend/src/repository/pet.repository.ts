@@ -68,7 +68,7 @@ export class PetRepository extends BasicRepository<Pet> {
           .offset((query.page - 1) * query.limit!)
           .limit(query.limit)
       }
-      const result = await queryBuilder.getManyAndCount()
+      const result: [Pet[], number] = await queryBuilder.getManyAndCount()
       return Promise.resolve(result)
     } catch (error) {
       return Promise.reject(new DBError(error.stack))
