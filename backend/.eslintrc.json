@@ -84,6 +84,7 @@
           "created_at",
           "updated_at",
           "city_id",
+          "city_name",
           "shelter_id",
           "animal_id",
           "animal_subid",
