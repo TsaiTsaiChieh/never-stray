@@ -34,7 +34,8 @@
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.9.0",
     "safe-await": "^1.0.1",
-    "typeorm": "0.2.41"
+    "typeorm": "0.2.41",
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
