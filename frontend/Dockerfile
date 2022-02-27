@@ -1,7 +1,7 @@
 # Base image
 FROM node:16.13.2-slim AS build
 # Create app directory
-WORKDIR /frontend
+WORKDIR /app
 # Install app dependencies
 COPY package.json package-lock.json ./
 RUN npm install --legacy-peer-deps
@@ -12,6 +12,6 @@ RUN npm run build
 # production environment
 # build the final image and copy the react build files
 FROM nginx:stable-alpine
-COPY --from=build /frontend/build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
