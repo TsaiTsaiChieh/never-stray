@@ -12,6 +12,6 @@ RUN npm run build
 # production environment
 # build the final image and copy the react build files
 FROM nginx:stable-alpine
+EXPOSE 3600
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]

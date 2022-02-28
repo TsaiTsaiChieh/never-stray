@@ -1,5 +1,16 @@
 version: '3.4'
 services:
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      - app_net
+
   backend:
     container_name: backend
     image: node:16.13.2-slim 
@@ -57,8 +68,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
     env_file:
       - ./frontend/.env.production
     networks:
