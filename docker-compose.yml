@@ -8,6 +8,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/default.conf
+      - /opt/docker/nginx/cert:/etc/nginx/cert
     networks:
       - app_net
 
