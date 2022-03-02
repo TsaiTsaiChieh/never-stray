@@ -25,7 +25,10 @@
     "composite": true
   },
   "include": [
-    "**/*"
+    "**/*",
+    "**/*.json"
   ],
-  "exclude": ["build"]
+  "exclude": [
+    "build"
+  ]
 }
