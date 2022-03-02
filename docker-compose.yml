@@ -72,6 +72,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    ports:
+      - "3600:3600"
     env_file:
       - ./frontend/.env.production
     networks:
