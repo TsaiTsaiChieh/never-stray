@@ -1,9 +1,11 @@
 /* eslint-disable require-jsdoc */
-import React from 'react'
-import logo from './logo.svg'
 import './App.css'
-import Test from './components/Test'
+
 import axios from 'axios'
+
+import Test from './components/Test'
+import logo from './logo.svg'
+import DogWalking from './components/DogWalking'
 
 function App() {
   const {REACT_APP_API_URL} = process.env
@@ -16,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <DogWalking />
         <Test />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -30,7 +33,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div >
   )
 }
 
