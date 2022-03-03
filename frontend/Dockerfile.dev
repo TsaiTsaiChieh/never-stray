@@ -1,0 +1,10 @@
+# Base image
+FROM node:16.13.2-slim AS build
+# Create app directory
+WORKDIR /app
+# Install app dependencies
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
+# Bundle app source
+COPY . .
+CMD ["npm","run", "start:docker"]
