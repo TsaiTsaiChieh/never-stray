@@ -30,7 +30,7 @@ export class PetController {
     const valid: boolean = ajv.validate(petSearchSchema, query)
     if (!valid) return res.status(httpStatus.BAD_REQUEST).json(ajv.errors)
 
-    const [error, result]: [ErrorType, [PetSearchReturningType[], number]] =
+    const [error, result]: [ErrorType, PetSearchReturningType] =
       await safeAwait(this.model.searchPetAndCount(query))
     if (error) return res.status(error.code).json(error)
     return res.json(result)
