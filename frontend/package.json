@@ -15,6 +15,7 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
+    "start:docker": "PORT=3600 react-scripts start",
     "start": "PORT=3500 react-scripts start",
     "build": "DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false react-scripts build",
     "build:windows": "set DISABLE_ESLINT_PLUGIN=true && set GENERATE_SOURCEMAP=false && react-scripts build",
