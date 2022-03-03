@@ -1,0 +1,20 @@
+#DogWalkingWrapper {
+  background-color: $color-tiffany-300;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  display: flex;
+}
+
+#DogWalking {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+
+  @include desktop {
+    width: 400px;
+    height: 400px;
+  }
+}
