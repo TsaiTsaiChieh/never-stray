@@ -1,4 +1,5 @@
 import Lottie, {Options} from 'react-lottie'
+
 import loadingAnimation from '../assets/lotties/dog-walking.json'
 
 const defaultOptions: Options = {
@@ -12,7 +13,11 @@ const defaultOptions: Options = {
 
 const DogWalking = () => {
   return (
-    <Lottie options={defaultOptions} height={400} width={400} />
+    <div id="DogWalkingWrapper">
+      <div id="DogWalking">
+        <Lottie options={defaultOptions} />
+      </div>
+    </div>
   )
 }
 
