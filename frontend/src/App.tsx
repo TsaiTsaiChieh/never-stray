@@ -1,10 +1,7 @@
 /* eslint-disable require-jsdoc */
-import './App.css'
-
 import axios from 'axios'
 
 import Test from './components/Test'
-import logo from './logo.svg'
 import DogWalking from './components/DogWalking'
 
 function App() {
@@ -17,21 +14,9 @@ function App() {
   getData()
   return (
     <div className="App">
+      <DogWalking />
       <header className="App-header">
-        <DogWalking />
         <Test />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div >
   )
