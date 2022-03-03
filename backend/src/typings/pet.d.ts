@@ -89,8 +89,18 @@ type PetSearchQueryType = {
   page?: number
 }
 
-type PetSearchReturningType = PetType & {
+type PetInfoType = PetType & {
   region: AreaRegionType
   city_name: string
   shelter_name: string
+}
+
+type PetSearchReturningType = PetType & {
+  page: {
+    current: number
+    size: number
+    total: number
+    count: number
+  }
+  pet: PetInfoType[]
 }
