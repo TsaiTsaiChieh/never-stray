@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Taipei Sans Bold";
+  src: url("/assets/fonts/TaipeiSansTCBeta-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Taipei Sans Light";
+  src: url("/assets/fonts/TaipeiSansTCBeta-Light.ttf");
+}
+
+@font-face {
+  font-family: "Taipei Sans Regular";
+  src: url("/assets/fonts/TaipeiSansTCBeta-Regular.ttf");
+}
+
+body {
+  font-family: "Taipei Sans Regular", -apple-system, sans-serif;
+}
