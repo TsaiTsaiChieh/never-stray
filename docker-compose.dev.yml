@@ -9,7 +9,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./nginx/default.conf:/etc/nginx/default.dev.conf
+      - ./nginx/default.dev.conf:/etc/nginx/default.conf
     networks:
       - app_net
 
