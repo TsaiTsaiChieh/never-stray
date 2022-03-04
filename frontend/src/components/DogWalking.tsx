@@ -1,8 +1,8 @@
-import Lottie, {Options} from 'react-lottie'
+import Lottie, {LottieOptions} from 'lottie-react-web'
 
 import loadingAnimation from '../assets/lotties/dog-walking.json'
 
-const defaultOptions: Options = {
+const defaultOptions: LottieOptions = {
   loop: true,
   autoplay: true,
   animationData: loadingAnimation,
