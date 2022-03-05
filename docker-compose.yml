@@ -2,11 +2,9 @@ version: '3.4'
 services:
   nginx:
     container_name: nginx
-    image: nginx
+    build: nginx
+    image: nginx:latest
     restart: always
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
     ports:
       - '80:80'
       - '443:443'
@@ -18,12 +16,9 @@ services:
 
   backend:
     container_name: backend
-    image: backend
     restart: always
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-      target: base
+    build: backend
+    image: backend:latest
     command:
       - /bin/sh
       - -c
@@ -47,7 +42,8 @@ services:
 
   cron:
     container_name: cron
-    image: cron 
+    build: backend
+    image: cron:latest
     restart: always
     command:
       - /bin/sh
@@ -70,7 +66,8 @@ services:
 
   frontend:
     container_name: frontend
-    image: frontend
+    build: frontend
+    image: frontend:latest
     ports:
       - "3600:3600"
     env_file:
