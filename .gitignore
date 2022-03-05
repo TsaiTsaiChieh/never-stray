@@ -32,3 +32,5 @@ backend/tsconfig.tsbuildinfo
 .env.development
 .env.production
 ormconfig.env
+
+cert
