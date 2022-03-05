@@ -2,12 +2,9 @@ version: '3.4'
 services:
   backend:
     container_name: backend
-    image: node:16.13.2-slim 
     restart: always
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-      target: base
+    build: backend
+    image: backend:latest
     command:
       - /bin/sh
       - -c
@@ -31,7 +28,8 @@ services:
 
   cron:
     container_name: cron
-    image: node:16.13.2-slim 
+    build: backend
+    image: cron:latest
     restart: always
     command:
       - /bin/sh
@@ -54,15 +52,19 @@ services:
 
   frontend:
     container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.dev
+    build: frontend
+    image: frontend:latest
     ports:
       - "3600:3600"
     env_file:
       - ./frontend/.env.development
     networks:
       - app_net
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 350M
 
   db:
     image: mysql:8.0
