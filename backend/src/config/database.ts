@@ -19,6 +19,7 @@ export const connection = async (
       password: process.env.MYSQL_ROOT_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       entities: [Area, Pet, Shelter],
+      synchronize: false,
       logging: false,
     })
     return Promise.resolve(connection)
