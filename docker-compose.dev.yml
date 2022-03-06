@@ -51,7 +51,6 @@ services:
   frontend:
     container_name: frontend
     restart: always
-    build: frontend
     image: frontend:latest
     ports:
       - "3600:3600"
