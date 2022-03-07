@@ -1,7 +1,8 @@
-import Test from './components/Test'
-import DogWalking from './components/DogWalking'
-import {useState, useEffect, ReactElement} from 'react'
+import {ReactElement, useEffect, useState} from 'react'
+
 import {pingDB} from './api/PingAPI'
+import DogWalking from './components/DogWalking'
+import Header from './components/Header'
 
 /**
  * App
@@ -28,7 +29,7 @@ function App(): ReactElement {
         <DogWalking />
       ) : (
         <header className="App-header">
-          <Test />
+          <Header />
         </header>
       )}
     </div>
