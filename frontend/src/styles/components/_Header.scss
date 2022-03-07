@@ -1,0 +1,59 @@
+#Header {
+  width: 100%;
+  height: 30%;
+  border-bottom: 4px solid $color-tiffany-300;
+  display: flex;
+  justify-content: center;
+
+  @include desktop {
+    border-bottom: 5px solid $color-tiffany-300;
+  }
+
+  .logo-group {
+    display: flex;
+    margin: 2% 0 1% 0;
+    justify-content: space-around;
+    @include desktop {
+      margin: 1% 0 1% 0;
+    }
+    .logo {
+      filter: $color-tiffany-300-filter;
+      @include desktop {
+        width: 75px;
+      }
+    }
+
+    .slogan {
+      margin-left: 3%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 120px;
+
+      @include desktop {
+        width: 150px;
+      }
+
+      .slogan-ch {
+        font-family: "Taipei Sans Bold";
+        font-size: 18px;
+        letter-spacing: 4px;
+        color: $color-tiffany-300;
+        @include desktop {
+          font-size: 22px;
+        }
+      }
+
+      .slogan-en {
+        letter-spacing: 0.09em;
+        color: $color-gray-200;
+
+        @include desktop {
+          letter-spacing: 0.12em;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
