@@ -1,0 +1,96 @@
+#Menu {
+  width: 100%;
+  background-color: $color-tiffany-100;
+  display: flex;
+  justify-content: center;
+  padding: 8.5px 0 8.5px 0;
+  @include tablet {
+    padding: 14.5px 0 14.5px 0;
+  }
+}
+
+.menu-group {
+  display: flex;
+  justify-content: space-between;
+
+  .pet-selection {
+    .all-pets-wrap,
+    .cat-pet-wrap {
+      margin-right: 10px;
+      @include tablet {
+        margin-right: 1.2rem;
+      }
+      @include desktop {
+        margin-right: 3rem;
+      }
+    }
+
+    .selection-wrap {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .pet-selection-svg {
+        display: none;
+        filter: $color-tiffany-400-filter;
+        @include tablet {
+          display: block;
+          width: 35%;
+          padding: 4px 0px 4px 4px;
+        }
+      }
+
+      span.pet-select-text {
+        font-size: 15px;
+        margin: 0 10px 0 10px;
+        padding: 10px 0 10px 0;
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+
+      span.pet-select-text::after {
+        letter-spacing: 3px;
+        text-align: center;
+        color: $color-gray-500;
+      }
+
+      span.all-pets-text::after {
+        content: "全部";
+      }
+
+      span.cat-pet-text::after {
+        content: "貓";
+        @include tablet {
+          content: "喵喵";
+        }
+      }
+
+      span.dog-pet-text::after {
+        content: "狗";
+        @include tablet {
+          content: "汪汪";
+        }
+      }
+    }
+  }
+
+  // Selected
+  .selected-pets {
+    .selection-wrap {
+      background-color: $color-tiffany-300;
+      border-radius: 50%;
+      @include tablet {
+        border-radius: 12px;
+      }
+      span.all-pets-text::after,
+      span.cat-pet-text::after,
+      span.dog-pet-text::after {
+        color: white;
+      }
+      .pet-selection-svg {
+        filter: $color-white-filter;
+      }
+    }
+  }
+}
