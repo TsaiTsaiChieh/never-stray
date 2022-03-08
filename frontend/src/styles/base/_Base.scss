@@ -1,18 +1,17 @@
 @font-face {
-  font-family: "Taipei Sans Bold";
-  src: url("/assets/fonts/TaipeiSansTCBeta-Bold.ttf");
+  font-family: "Taipei Sans";
+  font-weight: normal;
+  font-display: swap;
+  src: url("/assets/fonts/TaipeiSansTCBeta-Regular.woff2");
 }
 
 @font-face {
-  font-family: "Taipei Sans Light";
-  src: url("/assets/fonts/TaipeiSansTCBeta-Light.ttf");
-}
-
-@font-face {
-  font-family: "Taipei Sans Regular";
-  src: url("/assets/fonts/TaipeiSansTCBeta-Regular.ttf");
+  font-family: "Taipei Sans";
+  font-weight: bold;
+  font-display: swap;
+  src: url("/assets/fonts/TaipeiSansTCBeta-Bold.woff2");
 }
 
 body {
-  font-family: "Taipei Sans Regular", -apple-system, sans-serif;
+  font-family: "Taipei Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
