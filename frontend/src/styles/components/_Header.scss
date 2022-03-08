@@ -14,12 +14,13 @@
     margin: 2% 0 1% 0;
     justify-content: space-around;
     @include desktop {
-      margin: 1% 0 1% 0;
+      margin: 0.5% 0 0.5% 0;
     }
-    .logo {
+    .logo-svg {
+      width: 25%;
       filter: $color-tiffany-300-filter;
       @include desktop {
-        width: 75px;
+        width: 40%;
       }
     }
 
@@ -29,11 +30,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      width: 120px;
-
-      @include desktop {
-        width: 150px;
-      }
+      width: 170px;
+      height: auto;
 
       .slogan-ch {
         font-weight: bold;
