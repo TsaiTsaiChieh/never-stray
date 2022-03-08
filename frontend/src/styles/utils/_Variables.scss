@@ -12,4 +12,6 @@ $color-gray-500: #333333;
 $color-gray-600: #000000;
 
 // filter
+$color-white-filter: invert(100%) sepia(11%) saturate(7500%) hue-rotate(194deg) brightness(115%) contrast(109%);
 $color-tiffany-300-filter: invert(93%) sepia(82%) saturate(3562%) hue-rotate(150deg) brightness(91%) contrast(92%);
+$color-tiffany-400-filter: invert(38%) sepia(18%) saturate(4834%) hue-rotate(145deg) brightness(99%) contrast(101%);
