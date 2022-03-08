@@ -4,23 +4,23 @@
   border-bottom: 4px solid $color-tiffany-300;
   display: flex;
   justify-content: center;
-
-  @include desktop {
+  @include tablet {
     border-bottom: 5px solid $color-tiffany-300;
   }
 
   .logo-group {
     display: flex;
-    margin: 2% 0 1% 0;
+    margin: 2px 0 2px 0;
     justify-content: space-around;
-    @include desktop {
-      margin: 0.5% 0 0.5% 0;
+    @include tablet {
+      margin: 3px 0 3px 0;
     }
+
     .logo-svg {
       width: 25%;
       filter: $color-tiffany-300-filter;
-      @include desktop {
-        width: 40%;
+      @include tablet {
+        width: 25%;
       }
     }
 
@@ -30,26 +30,28 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      width: 170px;
+      width: 110px;
       height: auto;
-
+      @include tablet {
+        width: 160px;
+      }
       .slogan-ch {
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 4px;
         color: $color-tiffany-300;
-        @include desktop {
-          font-size: 22px;
+        @include tablet {
+          font-size: 20px;
         }
       }
 
       .slogan-en {
         letter-spacing: 0.09em;
         color: $color-gray-200;
-
-        @include desktop {
+        font-size: 12px;
+        @include tablet {
           letter-spacing: 0.12em;
-          font-size: 18px;
+          font-size: 14px;
         }
       }
     }
