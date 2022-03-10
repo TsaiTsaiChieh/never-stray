@@ -20,6 +20,7 @@ export class EnumController {
 
   @Get('/city')
   async getCities(@Req() req: Request, @Res() res: Response) {
+    console.log(process.env.TYPEORM_HOST)
     const [error, result]: [ErrorType, Area[]] = await safeAwait(
       this.areaModel.getAll(),
     )
