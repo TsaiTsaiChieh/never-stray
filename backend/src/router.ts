@@ -13,6 +13,10 @@ export class Router {
    * @param  {Application} app
    */
   static router(app: Application): void {
+    app.use((_: Request, res: Response, next: NextFunction) => {
+      res.setHeader('Cache-Control', 'no-store')
+      next()
+    })
     useExpressServer(app, {
       routePrefix: 'api',
       controllers: [EnumController, PetController, PingController],
