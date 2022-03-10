@@ -16,12 +16,6 @@ export const connection = async (
 ): Promise<Connection> => {
   dotenv.config({path: `.env.${env}`})
   try {
-    const connectionManager = getConnectionManager()
-    if (!connectionManager.has('default')) {
-      // ? load connection options from ormconfig or environment
-      const connectionOptions = await getConnectionOptions()
-      connectionManager.create(connectionOptions)
-    }
     const connection = await createConnection({
       type: 'mysql',
       host: process.env.TYPEORM_HOST,

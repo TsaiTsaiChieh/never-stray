@@ -22,8 +22,6 @@ export class PingController {
       else return res.send('Database connection successfully')
     } catch (error) {
       return res.send(`Database error happened: ${error}`)
-    } finally {
-      await con.close()
     }
   }
 }
