@@ -14,7 +14,10 @@ export class Router {
    */
   static router(app: Application): void {
     app.use((_: Request, res: Response, next: NextFunction) => {
-      res.setHeader('Cache-Control', 'no-store')
+      res.setHeader(
+        'Cache-Control',
+        `public, max-age=${process.env.HALF_HOUR_SECS}`,
+      )
       next()
     })
     useExpressServer(app, {
