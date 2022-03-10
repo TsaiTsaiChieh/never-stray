@@ -37,6 +37,8 @@ export class PetModel {
  * Repackage pet data
  *
  * @param  {[Pet[], number]} result Pet information and count
+ * @param  {number} page Current page
+ * @param  {number} limit Number of row
  * @return {Promise<[PetSearchReturningType[], number]>}
  */
 function repackagePetData(
@@ -52,7 +54,7 @@ function repackagePetData(
         size: limit,
         total: copyResult[1],
         count: Math.ceil(copyResult[1] / limit),
-      }
+      },
     } as PetSearchReturningType
 
 
