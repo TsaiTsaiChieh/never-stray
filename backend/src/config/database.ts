@@ -1,5 +1,10 @@
 import dotenv from 'dotenv'
-import {Connection, createConnection} from 'typeorm'
+import {
+  Connection,
+  createConnection,
+  getConnectionManager,
+  getConnectionOptions,
+} from 'typeorm'
 
 import {Area} from '../entity/area.entity'
 import {Pet} from '../entity/pet.entity'
@@ -11,6 +16,12 @@ export const connection = async (
 ): Promise<Connection> => {
   dotenv.config({path: `.env.${env}`})
   try {
+    const connectionManager = getConnectionManager()
+    if (!connectionManager.has('default')) {
+      // ? load connection options from ormconfig or environment
+      const connectionOptions = await getConnectionOptions()
+      connectionManager.create(connectionOptions)
+    }
     const connection = await createConnection({
       type: 'mysql',
       host: process.env.TYPEORM_HOST,
