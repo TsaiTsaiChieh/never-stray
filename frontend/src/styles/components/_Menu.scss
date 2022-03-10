@@ -5,7 +5,7 @@
   justify-content: center;
   padding: 8.5px 0 8.5px 0;
   @include tablet {
-    padding: 14.5px 0 14.5px 0;
+    padding: 14px 0 14px 0;
   }
 }
 
@@ -50,9 +50,12 @@
       }
 
       span.pet-select-text::after {
-        letter-spacing: 3px;
         text-align: center;
         color: $color-gray-500;
+      }
+
+      span.all-pets-text::first-letter {
+        letter-spacing: 2px;
       }
 
       span.all-pets-text::after {
@@ -79,10 +82,7 @@
   .selected-pets {
     .selection-wrap {
       background-color: $color-tiffany-300;
-      border-radius: 50%;
-      @include tablet {
-        border-radius: 12px;
-      }
+      border-radius: 12px;
       span.all-pets-text::after,
       span.cat-pet-text::after,
       span.dog-pet-text::after {
