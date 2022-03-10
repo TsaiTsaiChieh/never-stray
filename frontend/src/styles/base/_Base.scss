@@ -1,17 +1,10 @@
 @font-face {
-  font-family: "Taipei Sans";
+  font-family: "Huninn";
   font-weight: normal;
   font-display: swap;
-  src: url("/assets/fonts/TaipeiSansTCBeta-Regular.woff2");
-}
-
-@font-face {
-  font-family: "Taipei Sans";
-  font-weight: bold;
-  font-display: swap;
-  src: url("/assets/fonts/TaipeiSansTCBeta-Bold.woff2");
+  src: url("/assets/fonts/jf-openhuninn.woff2");
 }
 
 body {
-  font-family: "Taipei Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Huninn", -apple-system, BlinkMacSystemFont, sans-serif;
 }
