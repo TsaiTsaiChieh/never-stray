@@ -30,6 +30,7 @@
       2
     ],
     "linebreak-style": 0,
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0
   }
 }
