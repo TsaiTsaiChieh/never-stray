@@ -11,6 +11,7 @@ export const colors = {
     i200: '#ebfaf6',
     i300: '#61ded7',
     i400: '#00948b',
+    i500: '#95EED9',
   },
   blue: {
     i100: '#2D9CDB',
