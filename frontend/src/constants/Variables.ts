@@ -1,4 +1,10 @@
 /* eslint-disable max-len */
+export const sizes = {
+  s: '16px',
+  m: '18px',
+  l: '20px',
+  xl: '22px',
+}
 export const colors = {
   tiffany: {
     i100: '#ebf8f7',
@@ -12,6 +18,7 @@ export const colors = {
     i300: '#828282',
     i400: '#4f4f4f',
     i500: '#333333',
+    i600: '#e2f5f0',
     t100: 'rgba(151, 151, 151, 0.3)',
   },
 }
