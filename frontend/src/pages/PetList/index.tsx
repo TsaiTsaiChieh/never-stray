@@ -1,7 +1,7 @@
 import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
-import Menu from './Menu'
+import StyledMenu from './Menu'
 import StyledPetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
@@ -13,7 +13,7 @@ export default function PetList(): ReactElement {
 
   return (
     <>
-      <Menu />
+      <StyledMenu />
       <div id="PetList">
         <>
           {pets.map((ele) => (
