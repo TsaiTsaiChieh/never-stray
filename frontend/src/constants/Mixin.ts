@@ -1,6 +1,7 @@
-const mobile = '568px'
-const table = '569px'
-const desktop = '961px'
-export const MEDIA_MOBILE = `@media all and {max-width: ${mobile}}`
-export const MEDIA_TABLET = `@media all and {min-width: ${table}}`
-export const MEDIA_DESKTOP = `@media all and {min-width: ${desktop}}`
+/* eslint-disable max-len */
+const mobile: number = 568
+const table: number = 768
+
+export const MEDIA_DESKTOP = `@media only screen and (min-width: ${table + 1}px)`
+export const MEDIA_TABLET = `@media only screen and (min-width: ${mobile + 1}px)`
+export const MEDIA_MOBILE = `@media only screen and (max-width: ${mobile}px)`
