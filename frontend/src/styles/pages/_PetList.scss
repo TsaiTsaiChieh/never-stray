@@ -1,0 +1,14 @@
+#PetList {
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row-gap: 7em;
+  grid-column-gap: 3%;
+  justify-content: space-around;
+  justify-items: center;
+  margin: auto;
+  margin-top: 150px;
+  @include tablet {
+    grid-template-columns: auto auto auto;
+  }
+}
