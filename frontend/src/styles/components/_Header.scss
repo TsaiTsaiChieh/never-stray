@@ -1,6 +1,6 @@
 #Header {
   width: 100%;
-  height: 30%;
+  height: 32%;
   border-bottom: 4px solid $color-tiffany-300;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
 
   .logo-group {
     display: flex;
-    margin: 2px 0 2px 0;
+    margin: 6px 0 6px 0;
     justify-content: space-around;
     @include tablet {
       margin: 3px 0 3px 0;
