@@ -26,7 +26,7 @@ const PetProfile = ({className = 'PetProfile', pet}: Props) => {
           </h3>
           <div className="pet-sex-age-wrapper">
             <p className="pet-sex">{petSexConverter(pet.sex)}</p>
-            <div className="pet-vl" />
+            <span className="pet-vl" />
             <p className="pet-age">{petAgeConverter(pet.age)}</p>
           </div>
         </div>
@@ -70,12 +70,19 @@ const StyledPetProfile = styled(PetProfile)`
         }
       }
       .pet-image {
+        cursor: pointer;
         position: relative;
         object-fit: cover;
         width: 9rem;
         height: 8.5rem;
         border-radius: 10px;
-        background: url(${(props) => props.pet.image[0]});
+        background: url(
+          ${(props) =>
+    props.pet.image[0] ?
+      props.pet.image[0] :
+      '/images/PetList/pet-mask.svg'
+  });
+        filter: ${(props) => props.pet.image[0] ? '' : filters.blue.i100};
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -88,6 +95,10 @@ const StyledPetProfile = styled(PetProfile)`
           width: 10rem;
           height: 9.5rem;
         }
+      }
+      .pet-image:hover {
+        -webkit-filter: brightness(65%);
+        transition: all .8s ease;
       }
     }
 
@@ -105,15 +116,18 @@ const StyledPetProfile = styled(PetProfile)`
       content: "";
       position: absolute;
       top: 1.6rem;
+      right: 3.4rem;
       width: 33%;
       border-bottom: 3px solid ${colors.tiffany.i300};
     }
 
     .pet-sex-age-wrapper {
       position: relative;
+      letter-spacing: 1px;
       top: 2.5rem;
       display: flex;
       flex-direction: row;
+      cursor: pointer;
       color: ${colors.gray.i300};
       font-size: ${sizes.m};
       justify-content: space-around;
@@ -122,18 +136,15 @@ const StyledPetProfile = styled(PetProfile)`
       text-align: center;
       background: ${colors.tiffany.i200};
       align-items: center;
-      .pet-vl {
-        display: none;
-      }
       ${MEDIA_TABLET} {
         top: 4.6rem;
+        padding-top: 1.1rem;
+        padding-bottom: 1.1rem;
         margin-left: -0.95rem;
         margin-right: -0.95rem;
-        .pet-vl {
-          display: block;
-          padding-top: 1.1rem;
-          padding-bottom: 1.1rem;
-          border-left: 2px solid ${colors.gray.i600};
+        .pet-vl::before {
+          content: "｜";
+          color: ${colors.gray.i600};
         }
       }
       .pet-sex::before {
@@ -146,6 +157,20 @@ const StyledPetProfile = styled(PetProfile)`
         height: ${sizes.m};
         display: block;
         float: left;
+      }
+    }
+    .pet-sex-age-wrapper:hover {
+      background: ${colors.tiffany.i300};
+      color: ${colors.white.i100};
+      transition: all .8s ease;
+      .pet-sex, .pet-age {
+        display: none;
+      }
+      .pet-vl::before {
+        content: "瞭解我多一點";
+        color: ${colors.white.i100};
+        letter-spacing: 2px;
+        
       }
     }
   }
