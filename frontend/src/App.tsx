@@ -3,7 +3,6 @@ import {ReactElement, useEffect, useState} from 'react'
 import {pingDB} from './api/PingAPI'
 import DogWalking from './components/DogWalking'
 import Header from './components/Header'
-import Menu from './components/Menu'
 import PetList from './pages/PetList'
 
 function App(): ReactElement {
@@ -28,7 +27,6 @@ function App(): ReactElement {
       ) : (
         <header className="App-header">
           <Header />
-          <Menu />
           <PetList />
         </header>
       )}
