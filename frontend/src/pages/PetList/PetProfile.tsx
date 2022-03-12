@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import {MEDIA_TABLET} from '../../constants/Mixin'
 
-import {colors, filters} from '../../constants/Variables'
+import {colors, filters, sizes} from '../../constants/Variables'
 import {
   petAgeConverter,
   petKindConverter,
@@ -25,6 +26,7 @@ const PetProfile = ({className = 'PetProfile', pet}: Props) => {
           </h3>
           <div className="pet-sex-age-wrapper">
             <p className="pet-sex">{petSexConverter(pet.sex)}</p>
+            <div className="pet-vl" />
             <p className="pet-age">{petAgeConverter(pet.age)}</p>
           </div>
         </div>
@@ -46,15 +48,26 @@ const StyledPetProfile = styled(PetProfile)`
     flex-direction: column;
     padding-left: 1.2rem;
     padding-right: 1.2rem;
+    ${MEDIA_TABLET} {
+      height: 11.6rem;
+      padding: 1.9rem;
+    }
 
     .pet-image-wrapper {
       position: relative;
       bottom: 8rem;
+      ${MEDIA_TABLET} {
+        bottom: 10.2rem;
+      }
       .pet-paw {
         filter: ${filters.tiffany.i300};
         position: relative;
         top: 2.5rem;
         right: 0.6rem;
+        ${MEDIA_TABLET} {
+          top: 2.7rem;
+          width: 90%;
+        }
       }
       .pet-image {
         position: relative;
@@ -71,44 +84,66 @@ const StyledPetProfile = styled(PetProfile)`
         mask: url("/images/PetList/pet-mask.svg") no-repeat center center;
         -webkit-mask-size: contain;
         mask-size: contain;
+        ${MEDIA_TABLET} {
+          width: 10rem;
+          height: 9.5rem;
+        }
       }
     }
 
     .pet-title {
       position: relative;
       top: 0.8rem;
-      font-size: 20px;
+      font-size: ${sizes.s};
+      ${MEDIA_TABLET} {
+        font-size: ${sizes.m};
+        top: 1rem;
+      }
     }
 
     .pet-title:before {
       content: "";
       position: absolute;
-      left: 2.3rem;
       top: 1.6rem;
-      width: 50%;
+      width: 33%;
       border-bottom: 3px solid ${colors.tiffany.i300};
     }
 
     .pet-sex-age-wrapper {
-      color: ${colors.gray.i300};
-      font-size: 18px;
+      position: relative;
+      top: 2.5rem;
       display: flex;
       flex-direction: row;
+      color: ${colors.gray.i300};
+      font-size: ${sizes.m};
       justify-content: space-around;
-      position: relative;
       padding: 0.5rem;
       border-radius: 10px;
-      top: 2.5rem;
       text-align: center;
       background: ${colors.tiffany.i200};
+      align-items: center;
+      .pet-vl {
+        display: none;
+      }
+      ${MEDIA_TABLET} {
+        top: 4.6rem;
+        margin-left: -0.95rem;
+        margin-right: -0.95rem;
+        .pet-vl {
+          display: block;
+          padding-top: 1.1rem;
+          padding-bottom: 1.1rem;
+          border-left: 2px solid ${colors.gray.i600};
+        }
+      }
       .pet-sex::before {
         content: "";
         margin-right: 5px;
         background: ${(props) =>
     `url(/images/PetList/pet-sex-${props.pet.sex}.svg)`};
         background-repeat: no-repeat;
-        width: 18px;
-        height: 18px;
+        width: ${sizes.m};
+        height: ${sizes.m};
         display: block;
         float: left;
       }
