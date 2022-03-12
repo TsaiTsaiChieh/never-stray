@@ -8,7 +8,7 @@ import {PetModel} from '../models/pet.model'
 import {petSearchSchema} from '../schemas/pet-search.schema'
 import {ajv} from '../utils/ajv-util'
 
-@Controller('/pet')
+@Controller('/pets')
 export class PetController {
   private model: PetModel
 
