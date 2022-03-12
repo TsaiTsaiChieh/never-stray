@@ -98,7 +98,7 @@ const StyledPetProfile = styled(PetProfile)`
       }
       .pet-image:hover {
         -webkit-filter: brightness(65%);
-        transition: all .8s ease;
+        transition: all 0.8s ease;
       }
     }
 
@@ -137,6 +137,9 @@ const StyledPetProfile = styled(PetProfile)`
       background: ${colors.tiffany.i200};
       align-items: center;
       ${MEDIA_TABLET} {
+        .pet-age {
+          margin-left: -3rem;
+        }
         top: 4.6rem;
         padding-top: 1.1rem;
         padding-bottom: 1.1rem;
@@ -144,6 +147,7 @@ const StyledPetProfile = styled(PetProfile)`
         margin-right: -0.95rem;
         .pet-vl::before {
           content: "｜";
+          margin-left: -3rem;
           color: ${colors.gray.i600};
         }
       }
@@ -160,17 +164,18 @@ const StyledPetProfile = styled(PetProfile)`
       }
     }
     .pet-sex-age-wrapper:hover {
-      background: ${colors.tiffany.i300};
+      background: ${colors.tiffany.i500};
       color: ${colors.white.i100};
-      transition: all .8s ease;
-      .pet-sex, .pet-age {
+      transition: all 0.8s ease;
+      .pet-sex,
+      .pet-age {
         display: none;
       }
       .pet-vl::before {
+        margin-left: 0;
         content: "瞭解我多一點";
-        color: ${colors.white.i100};
+        color: ${colors.tiffany.i400};
         letter-spacing: 2px;
-        
       }
     }
   }
