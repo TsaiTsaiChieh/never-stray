@@ -130,9 +130,11 @@ const StyledMenu = styled(Menu)`
   }
 
   /* Hovered */
-  .option-selected:hover,.pet-option-wrap:not(.option-selected):hover  {
+  .option-selected:hover,
+  .pet-option-wrap:not(.option-selected):hover {
     background: ${colors.tiffany.i500};
     border-radius: 12px;
+    transition: all 0.8s ease;
     span.pet-option-text::after {
       color: ${colors.white.i100};
     }
