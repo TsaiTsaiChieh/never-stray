@@ -119,11 +119,21 @@ const StyledMenu = styled(Menu)`
 
   /* Selected */
   .option-selected {
-    background-color: ${colors.tiffany.i300};
+    background: ${colors.tiffany.i300};
     border-radius: 12px;
-    span.all-pet-text::after,
-    span.cat-pet-text::after,
-    span.dog-pet-text::after {
+    span.pet-option-text::after {
+      color: ${colors.white.i100};
+    }
+    .pet-option-svg {
+      filter: ${filters.white.i100};
+    }
+  }
+
+  /* Hovered */
+  .option-selected:hover,.pet-option-wrap:not(.option-selected):hover  {
+    background: ${colors.tiffany.i500};
+    border-radius: 12px;
+    span.pet-option-text::after {
       color: ${colors.white.i100};
     }
     .pet-option-svg {
