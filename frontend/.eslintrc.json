@@ -38,6 +38,12 @@
         "varsIgnorePattern": "_"
       }
     ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "_"
+      }
+    ],
     "require-jsdoc": [
       "error",
       {
