@@ -1,3 +1,27 @@
+type PetRefType = 'gov' | 'map' | 'own'
+
+type PetSexType = 'F' | 'M' | 'U'
+
+type PetAgeType = 'A' | 'C' | 'U'
+
+type PetKindType = 'dog' | 'cat' | 'other'
+
+type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
+
+type AreaRegionType = 'E' | 'W' | 'S' | 'N' | 'M'
+
+type PetOrderKeyType =
+  | 'id'
+  | 'ref'
+  | 'city_id'
+  | 'shelter_id'
+  | 'kind'
+  | 'sex'
+  | 'color'
+  | 'age'
+  | 'created_at'
+  | 'updated_at'
+
 type PageType = {
   current: number
   size: number
@@ -33,4 +57,20 @@ type PetDataType = {
 interface PetsAPIType {
   page: PageType
   pet: PetDataType[]
+}
+
+type SearchPetFilters = {
+  status?: PetStatusType
+  ref?: PetRefType
+  city_id?: number
+  shelter_id?: number
+  kind?: PetKindType
+  sex?: PetSexType
+  color?: string
+  age?: PetAgeType
+  region?: AreaRegionType
+  order_key?: PetOrderKeyType
+  ascend?: boolean
+  limit?: number
+  page?: number
 }
