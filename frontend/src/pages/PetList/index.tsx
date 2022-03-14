@@ -1,20 +1,27 @@
 import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
+import {PetStatus} from '../../components/enumType'
 import StyledMenu from './Menu'
 import StyledPetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
   const [pets, setPets] = useState<PetDataType[]>([])
+  const [searchFilters, _] = useState<SearchPetFilters>({
+    status: PetStatus.OPEN,
+    limit: 12,
+    page: 1,
+    ascend: true,
+  })
 
   useEffect(() => {
-    searchPet(setPets)
+    searchPet(setPets, searchFilters)
   }, [])
 
   return (
     <>
-      <StyledMenu />
-      <div id="PetList">
+      <StyledMenu setPets={setPets} searchFilters={searchFilters} />
+      <div id="PetList" >
         <>
           {pets.map((ele) => (
             <StyledPetProfile key={ele.id} pet={ele} />
