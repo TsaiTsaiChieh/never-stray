@@ -16,7 +16,7 @@ type PetOrderKeyType =
   | 'color'
   | 'age'
   | 'created_at'
-  | 'updated_at';
+  | 'updated_at'
 
 type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
 
