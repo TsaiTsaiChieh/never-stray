@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {Dispatch, SetStateAction} from 'react'
+import {PetKind} from '../components/enumType'
 
 const {REACT_APP_API_URL} = process.env
 
@@ -16,7 +17,9 @@ export async function searchPet(
     if (filters.ref) url += `&ref=${filters.ref}`
     if (filters.city_id) url += `&city_id=${filters.city_id}`
     if (filters.shelter_id) url += `&shelter_id=${filters.shelter_id}`
-    if (filters.kind) url += `&kind=${filters.kind}`
+    if (filters.kind && filters.kind !== PetKind.ALL) {
+      url += `&kind=${filters.kind}`
+    }
     if (filters.sex) url += `&sex=${filters.sex}`
     if (filters.color) url += `&color=${filters.color}`
     if (filters.age) url += `&age=${filters.age}`
