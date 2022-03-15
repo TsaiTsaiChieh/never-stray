@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction} from 'react'
+import {Dispatch, SetStateAction, useState} from 'react'
 import styled from 'styled-components'
 
 import {searchPet} from '../../api/PetsAPI'
@@ -12,44 +12,22 @@ interface Props {
   searchFilters: SearchPetFilters;
 }
 const Menu = ({className = 'Menu', setPets, searchFilters}: Props) => {
+  const [selected, setSelected] = useState<string>(PetKind.ALL)
   return (
     <div id={className} className={className}>
-      <div
-        className="pet-option-wrap all-option option-selected"
-        onClick={() => searchPet(setPets, searchFilters)}
-      >
-        <img
-          className="pet-option-svg all-pets-svg"
-          src="images/Menu/all-option.svg"
-        />
-        <span className="pet-option-text all-pet-text"></span>
-      </div>
-
-      <div
-        className="pet-option-wrap cat-option"
-        onClick={() =>
-          searchPet(setPets, {...searchFilters, kind: PetKind.CAT})
-        }
-      >
-        <img
-          className="pet-option-svg cat-pets-svg"
-          src="images/Menu/cat-option.svg"
-        />
-        <span className="pet-option-text cat-pet-text" />
-      </div>
-
-      <div
-        className="pet-option-wrap dog-option"
-        onClick={() =>
-          searchPet(setPets, {...searchFilters, kind: PetKind.DOG})
-        }
-      >
-        <img
-          className="pet-option-svg dog-pets-svg"
-          src="images/Menu/dog-option.svg"
-        />
-        <span className="pet-option-text dog-pet-text" />
-      </div>
+      {Object.values(PetKind).map((kind) => (
+        <div
+          key={kind}
+          className={`pet-option-wrap ${kind}-option 
+          ${selected === kind ? 'option-selected' : ''}`}
+          onClick={() => searchPet(setPets, {...searchFilters, kind})}>
+          <img
+            className={`pet-option-svg ${kind}-pets-svg`}
+            src={`images/Menu/${kind}-option.svg`}
+          />
+          <span className={`pet-option-text ${kind}-pet-text`} />
+        </div>
+      ))}
     </div>
   )
 }
