@@ -31,7 +31,7 @@ export enum PetStatus {
 }
 
 export enum PetKind {
-  DOG = 'dog',
+  ALL = 'all',
   CAT = 'cat',
-  OTHER = 'other',
+  DOG = 'dog'
 }

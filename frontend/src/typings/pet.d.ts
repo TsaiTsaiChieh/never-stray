@@ -4,7 +4,7 @@ type PetSexType = 'F' | 'M' | 'U'
 
 type PetAgeType = 'A' | 'C' | 'U'
 
-type PetKindType = 'dog' | 'cat' | 'other'
+type PetKindType = 'all' | 'cat' | 'dog'
 
 type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
 
