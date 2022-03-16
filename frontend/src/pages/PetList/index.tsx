@@ -2,6 +2,7 @@ import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
 import {PetStatus} from '../../components/enumType'
+import StyledBanner from './Banner'
 import StyledMenu from './Menu'
 import StyledPetProfile from './PetProfile'
 
@@ -21,6 +22,7 @@ export default function PetList(): ReactElement {
   return (
     <>
       <StyledMenu setPets={setPets} searchFilters={searchFilters} />
+      <StyledBanner />
       <div id="PetList" >
         <>
           {pets.map((ele) => (
