@@ -20,7 +20,11 @@ const Menu = ({className = 'Menu', setPets, searchFilters}: Props) => {
           key={kind}
           className={`pet-option-wrap ${kind}-option 
           ${selected === kind ? 'option-selected' : ''}`}
-          onClick={() => searchPet(setPets, {...searchFilters, kind})}>
+          onClick={() => {
+            setSelected(kind)
+            searchPet(setPets, {...searchFilters, kind})
+          }}
+        >
           <img
             className={`pet-option-svg ${kind}-pets-svg`}
             src={`images/Menu/${kind}-option.svg`}
@@ -35,7 +39,7 @@ const Menu = ({className = 'Menu', setPets, searchFilters}: Props) => {
 const StyledMenu = styled(Menu)`
   width: 100%;
   background-color: ${colors.tiffany.i100};
-  padding: ${sizes.m} 0 ${sizes.m} 0;
+  padding: 7px 0 7px 0;
   display: grid;
   grid-template-columns: 3.8rem 3.8rem 3.8rem;
   grid-column-gap: 0.3rem;
