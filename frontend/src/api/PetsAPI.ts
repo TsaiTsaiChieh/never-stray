@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {Dispatch, SetStateAction} from 'react'
-import {PetKind} from '../constants/enumType'
+import {PetKind} from '../constants/EnumType'
 
 const {REACT_APP_API_URL} = process.env
 

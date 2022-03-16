@@ -2,7 +2,7 @@ import {Dispatch, SetStateAction, useState} from 'react'
 import styled from 'styled-components'
 
 import {searchPet} from '../../api/PetsAPI'
-import {PetKind} from '../../constants/enumType'
+import {PetKind} from '../../constants/EnumType'
 import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, filters, sizes} from '../../constants/Variables'
 
