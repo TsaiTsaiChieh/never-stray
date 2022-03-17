@@ -1,6 +1,7 @@
 import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
+import StyledFooter from '../../components/Footer'
 import {PetStatus} from '../../constants/EnumType'
 import StyledBanner from './Banner'
 import StyledMenu from './Menu'
@@ -30,6 +31,7 @@ export default function PetList(): ReactElement {
           ))}
         </>
       </div>
+      <StyledFooter />
     </>
   )
 }
