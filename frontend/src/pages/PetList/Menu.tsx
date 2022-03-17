@@ -7,14 +7,22 @@ import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, filters, sizes} from '../../constants/Variables'
 
 interface Props {
-  className?: string;
-  setPets: Dispatch<SetStateAction<PetDataType[]>>;
-  searchFilters: SearchPetFilters;
+  className?: string
+  setPets: Dispatch<SetStateAction<PetDataType[]>>
+  setTotal: Dispatch<SetStateAction<number>>
+  setSearchFilters: Dispatch<SetStateAction<SearchPetFilters>>
+  searchFilters: SearchPetFilters
 }
-const Menu = ({className = 'Menu', setPets, searchFilters}: Props) => {
+const Menu = ({
+  className,
+  setPets,
+  setTotal,
+  setSearchFilters,
+  searchFilters,
+}: Props) => {
   const [selected, setSelected] = useState<string>(PetKind.ALL)
   return (
-    <div id={className} className={className}>
+    <div id="Menu" className={className}>
       {Object.values(PetKind).map((kind) => (
         <div
           key={kind}
@@ -22,7 +30,8 @@ const Menu = ({className = 'Menu', setPets, searchFilters}: Props) => {
           ${selected === kind ? 'option-selected' : ''}`}
           onClick={() => {
             setSelected(kind)
-            searchPet(setPets, {...searchFilters, kind})
+            setSearchFilters({...searchFilters, kind})
+            searchPet(setPets, setTotal, {...searchFilters, kind})
           }}
         >
           <img
