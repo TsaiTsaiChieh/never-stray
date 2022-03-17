@@ -22,13 +22,6 @@ type PetOrderKeyType =
   | 'created_at'
   | 'updated_at'
 
-type PageType = {
-  current: number
-  size: number
-  total: number
-  count: number
-}
-
 type PetDataType = {
   id: number
   sub_id: number
@@ -71,6 +64,6 @@ type SearchPetFilters = {
   region?: AreaRegionType
   order_key?: PetOrderKeyType
   ascend?: boolean
-  limit?: number
-  page?: number
+  limit: number
+  page: number
 }
