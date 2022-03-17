@@ -6,13 +6,12 @@ const {REACT_APP_API_URL} = process.env
 
 export async function searchPet(
   setPets: Dispatch<SetStateAction<PetDataType[]>>,
+  setTotal: Dispatch<SetStateAction<number>>,
   filters: SearchPetFilters,
 ) {
   try {
-    let url = filters.page ?
-      `${REACT_APP_API_URL}/pets?page=${filters.page}` :
-      `${REACT_APP_API_URL}/pets?page=1`
-    if (filters.limit) url += `&limit=${filters.limit}`
+    let url = `${REACT_APP_API_URL}/pets?page=${filters.page}` +
+      `&limit=${filters.limit}`
     if (filters.status) url += `&status=${filters.status}`
     if (filters.ref) url += `&ref=${filters.ref}`
     if (filters.city_id) url += `&city_id=${filters.city_id}`
@@ -32,9 +31,13 @@ export async function searchPet(
       method: 'GET',
       url: url,
     })
+    console.log(url)
+
     const data: PetsAPIType = await res.data
     setPets(data.pet)
+    setTotal(data.page.total)
   } catch (error) {
     setPets([])
+    setTotal(0)
   }
 }
