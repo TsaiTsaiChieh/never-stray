@@ -4,7 +4,7 @@ import {searchPet} from '../../api/PetsAPI'
 import Footer from '../../components/Footer'
 import StyledPagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
-import StyledBanner from './Banner'
+import Banner from './Banner'
 import Menu from './Menu'
 import PetProfile from './PetProfile'
 
@@ -29,7 +29,7 @@ export default function PetList(): ReactElement {
         setSearchFilters={setSearchFilters}
         searchFilters={searchFilters}
       />
-      <StyledBanner />
+      <Banner />
       <div id="PetList">
         <>
           {pets.map((ele) => (
