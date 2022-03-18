@@ -26,20 +26,20 @@ type PetDataType = {
   id: number
   sub_id: number
   accept_number: string
-  ref: string
-  region: string
+  ref: PetRefType
+  region: AreaRegionType
   city_id: number
   city_name: string
   shelter_id: number
   shelter_name: string
   kind: string
-  sex: string
+  sex: PetSexType
   color: string
-  age: string
+  age: PetAgeType
   ligation: string
   rabies: string
   title: string
-  status: string
+  status: PetStatusType
   remark: string
   phone: string
   image: string[]
