@@ -30,7 +30,7 @@ const Menu = ({
           ${selected === kind ? 'option-selected' : ''}`}
           onClick={() => {
             setSelected(kind)
-            setSearchFilters({...searchFilters, kind})
+            setSearchFilters({...searchFilters, kind, page: 1})
             searchPet(setPets, setTotal, {...searchFilters, kind})
           }}
         >
