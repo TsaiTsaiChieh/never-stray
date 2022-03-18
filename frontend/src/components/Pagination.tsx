@@ -20,23 +20,22 @@ const Pagination = ({
 }: Props) => {
   const [selected, setSelected] = useState<number>(searchFilters.page)
   const {page} = searchFilters
-  const offset = 4
 
   return (
     <ul id="Pagination" className={className}>
       <p className="minus-ten">-10</p>
       <img src="/images/prev-arrow.png" alt="prev" className="prev" />
-      {Array.from(Array(page + offset).keys()).map((ele) => (
+      {Array.from({length: 5}, (_, ele) => (
         <li
-          key={ele + 1}
-          className={`page-${ele} ${ele + 1 === selected ? 'current' : ''}`}
+          key={ele + page}
+          className={`page-${ele} ${ele + page === selected ? 'current' : ''}`}
           onClick={() => {
-            setSelected(ele + 1)
-            setSearchFilters({...searchFilters, page: ele + 1})
-            searchPet(setPets, setTotal, {...searchFilters, page: ele + 1})
+            setSelected(ele + page)
+            setSearchFilters({...searchFilters, page: ele + page})
+            searchPet(setPets, setTotal, {...searchFilters, page: ele + page})
           }}
         >
-          {ele + 1}
+          {ele + page}
         </li>
       ))}
       <img src="/images/next-arrow.png" alt="prev" className="next" />
