@@ -1,7 +1,7 @@
 import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
-import StyledFooter from '../../components/Footer'
+import Footer from '../../components/Footer'
 import StyledPagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import StyledBanner from './Banner'
@@ -43,7 +43,7 @@ export default function PetList(): ReactElement {
         setSearchFilters={setSearchFilters}
         searchFilters={searchFilters}
       />
-      <StyledFooter />
+      <Footer />
     </>
   )
 }
