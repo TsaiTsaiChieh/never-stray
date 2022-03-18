@@ -9,13 +9,12 @@ import {
 } from '../../utils/value-convert'
 
 interface Props {
-  className?: string;
-  pet: PetDataType;
+  className?: string
+  pet: PetDataType
 }
-
-const PetProfile = ({className = 'PetProfile', pet}: Props) => {
+const PetProfile = ({className, pet}: Props) => {
   return (
-    <div id={className} className={className}>
+    <div id='PetProfile' className={className}>
       <div className="pet-container">
         <div className="pet-image-wrapper">
           <img className="pet-paw" src="/images/PetList/paw.svg" />
@@ -34,7 +33,6 @@ const PetProfile = ({className = 'PetProfile', pet}: Props) => {
     </div>
   )
 }
-
 const StyledPetProfile = styled(PetProfile)`
   display: flex;
   text-align: center;
