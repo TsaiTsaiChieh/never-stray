@@ -70,13 +70,37 @@ export const Title = styled.h3`
     font-size: ${sizes.m};
     top: 1rem;
   }
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 1.6rem;
     right: 3.4rem;
     width: 33%;
     border-bottom: 3px solid ${colors.tiffany.i300};
+  }
+`
+export const Sex = styled.p<{sex: PetSexType}>`
+  &::before {
+    content: "";
+    margin-right: 5px;
+    background: ${(props) => `url(/images/PetList/pet-sex-${props.sex}.svg)`};
+    background-repeat: no-repeat;
+    width: ${sizes.m};
+    height: ${sizes.m};
+    display: block;
+    float: left;
+  }
+`
+export const VerticalLine = styled.span`
+  &::before {
+    content: "｜";
+    margin-left: -3rem;
+    color: ${colors.gray.i600};
+  }
+`
+export const Age = styled.p`
+  ${MEDIA_TABLET} {
+    margin-left: -3rem;
   }
 `
 export const SexAgeWrap = styled.div`
@@ -105,11 +129,10 @@ export const SexAgeWrap = styled.div`
     background: ${colors.tiffany.i500};
     color: ${colors.white.i100};
     transition: all 0.8s ease;
-    .pet-sex,
-    .pet-age {
+    ${Sex}, ${Age} {
       display: none;
     }
-    .pet-vl::before {
+    ${VerticalLine}::before {
       margin-left: 0;
       content: "瞭解我多一點";
       color: ${colors.tiffany.i400};
@@ -117,28 +140,5 @@ export const SexAgeWrap = styled.div`
     }
   }
 `
-export const Sex = styled.p<{sex: PetSexType}>`
-  &::before {
-    content: "";
-    margin-right: 5px;
-    background: ${(props) => `url(/images/PetList/pet-sex-${props.sex}.svg)`};
-    background-repeat: no-repeat;
-    width: ${sizes.m};
-    height: ${sizes.m};
-    display: block;
-    float: left;
-  }
-`
-export const VerticalLine = styled.span`
-  &::before {
-    content: "｜";
-    margin-left: -3rem;
-    color: ${colors.gray.i600};
-  }
-`
-export const Age = styled.p`
-  ${MEDIA_TABLET} {
-    margin-left: -3rem;
-  }
-`
+
 

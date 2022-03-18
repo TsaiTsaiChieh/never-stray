@@ -36,11 +36,11 @@ const PetProfile = ({pet}: Props) => {
             {petKindConverter(pet.kind)}
           </Title>
           <SexAgeWrap>
-            <Sex className="pet-sex" sex={pet.sex}>
+            <Sex sex={pet.sex}>
               {petSexConverter(pet.sex)}
             </Sex>
-            <VerticalLine className="pet-vl" />
-            <Age className="pet-age">{petAgeConverter(pet.age)}</Age>
+            <VerticalLine />
+            <Age>{petAgeConverter(pet.age)}</Age>
           </SexAgeWrap>
         </ImgWrap>
       </Container>
