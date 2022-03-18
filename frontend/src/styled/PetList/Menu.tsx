@@ -42,11 +42,11 @@ export const Wrap = styled.div`
     }
   }
   .dog-text::after {
-      content: "狗";
-      ${MEDIA_TABLET} {
-        content: "汪汪";
-      }
+    content: "狗";
+    ${MEDIA_TABLET} {
+      content: "汪汪";
     }
+  }
 `
 export const StyledMenu = styled.div`
   width: 100%;
@@ -86,5 +86,3 @@ export const StyledMenu = styled.div`
     }
   }
 `
-
-
