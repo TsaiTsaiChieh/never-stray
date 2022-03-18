@@ -1,14 +1,23 @@
+import {
+  Logo,
+  LogoGroup,
+  Slogan,
+  SloganCh,
+  SloganEn,
+  StyledHeader,
+} from '../styled/Header'
+
 const Header = () => {
   return (
-    <div id="Header">
-      <div className="logo-group">
-        <img className="logo-svg" src="images/logo-small.svg" alt="logo" />
-        <div className="slogan">
-          <h3 className="slogan-ch">讓愛不流浪</h3>
-          <h3 className="slogan-en">Never Stray</h3>
-        </div>
-      </div>
-    </div>
+    <StyledHeader>
+      <LogoGroup>
+        <Logo src="images/logo-small.svg" />
+        <Slogan>
+          <SloganCh>讓愛不流浪</SloganCh>
+          <SloganEn>Never Stray</SloganEn>
+        </Slogan>
+      </LogoGroup>
+    </StyledHeader>
   )
 }
 
