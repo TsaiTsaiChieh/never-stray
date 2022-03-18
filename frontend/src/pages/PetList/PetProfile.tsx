@@ -18,7 +18,11 @@ const PetProfile = ({className, pet}: Props) => {
       <div className="pet-container">
         <div className="pet-image-wrapper">
           <img className="pet-paw" src="/images/PetList/paw.svg" />
-          <div className="pet-image" />
+          <div className="pet-image"
+            style={{
+              backgroundImage: `url(${pet.image[0] ? pet.image[0] :
+                '/images/PetList/pet-mask.svg'})`,
+            }} />
           <h3 className="pet-title">
             {pet.color}
             {petKindConverter(pet.kind)}
@@ -74,12 +78,6 @@ const StyledPetProfile = styled(PetProfile)`
         width: 9rem;
         height: 8.5rem;
         border-radius: 10px;
-        background: url(
-          ${(props) =>
-    props.pet.image[0] ?
-      props.pet.image[0] :
-      '/images/PetList/pet-mask.svg'
-  });
         filter: ${(props) => props.pet.image[0] ? '' : filters.blue.i100};
         background-repeat: no-repeat;
         background-position: center;
