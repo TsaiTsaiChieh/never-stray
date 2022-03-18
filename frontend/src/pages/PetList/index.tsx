@@ -6,7 +6,7 @@ import StyledPagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import StyledBanner from './Banner'
 import StyledMenu from './Menu'
-import StyledPetProfile from './PetProfile'
+import PetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
   const [_, setTotal] = useState<number>(0)
@@ -33,7 +33,7 @@ export default function PetList(): ReactElement {
       <div id="PetList">
         <>
           {pets.map((ele) => (
-            <StyledPetProfile key={ele.id} pet={ele} />
+            <PetProfile key={ele.id} pet={ele} />
           ))}
         </>
       </div>
