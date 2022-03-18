@@ -5,7 +5,7 @@ import Footer from '../../components/Footer'
 import StyledPagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import StyledBanner from './Banner'
-import StyledMenu from './Menu'
+import Menu from './Menu'
 import PetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
@@ -23,7 +23,7 @@ export default function PetList(): ReactElement {
 
   return (
     <>
-      <StyledMenu
+      <Menu
         setPets={setPets}
         setTotal={setTotal}
         setSearchFilters={setSearchFilters}
