@@ -6,9 +6,9 @@ const {REACT_APP_API_URL} = process.env
 
 export async function searchPet(
   setPets: Dispatch<SetStateAction<PetDataType[]>>,
-  setTotal: Dispatch<SetStateAction<number>>,
+  setTotalPage: Dispatch<SetStateAction<number>>,
   filters: SearchPetFilters,
-) {
+): Promise<void> {
   try {
     let url = `${REACT_APP_API_URL}/pets?page=${filters.page}` +
       `&limit=${filters.limit}`
@@ -27,17 +27,12 @@ export async function searchPet(
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
 
-    const res: AxiosResponse = await axios({
-      method: 'GET',
-      url: url,
-    })
-    console.log(url)
-
-    const data: PetsAPIType = await res.data
+    const res: AxiosResponse = await axios({method: 'GET', url})
+    const data: PetsAPIType = res.data
     setPets(data.pet)
-    setTotal(data.page.total)
+    setTotalPage(data.page.total)
   } catch (error) {
     setPets([])
-    setTotal(0)
+    setTotalPage(0)
   }
 }
