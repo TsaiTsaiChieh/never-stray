@@ -27,7 +27,7 @@ const Menu = ({
           onClick={() => {
             setSelected(kind)
             setSearchFilters({...searchFilters, kind, page: 1})
-            searchPet(setPets, setTotal, {...searchFilters, kind})
+            searchPet(setPets, setTotal, {...searchFilters, kind, page: 1})
           }}>
           <Img
             className={`${kind}-svg`}
