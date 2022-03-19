@@ -1,15 +1,15 @@
 import {Dispatch, SetStateAction, useState} from 'react'
 import styled from 'styled-components'
 
-import {searchPet} from '../api/PetsAPI'
-import {colors, sizes} from '../constants/Variables'
+import {searchPet} from '../../api/PetsAPI'
+import {colors, sizes} from '../../constants/Variables'
 
 interface Props {
-  className?: string;
-  setPets: Dispatch<SetStateAction<PetDataType[]>>;
-  setTotal: Dispatch<SetStateAction<number>>;
-  setSearchFilters: Dispatch<SetStateAction<SearchPetFilters>>;
-  searchFilters: SearchPetFilters;
+  className?: string
+  setPets: Dispatch<SetStateAction<PetDataType[]>>
+  setTotal: Dispatch<SetStateAction<number>>
+  setSearchFilters: Dispatch<SetStateAction<SearchPetFilters>>
+  searchFilters: SearchPetFilters
 }
 const Pagination = ({
   className,

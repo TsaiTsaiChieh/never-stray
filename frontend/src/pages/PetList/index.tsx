@@ -2,10 +2,10 @@ import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
 import Footer from '../../components/Footer'
-import StyledPagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import Banner from './Banner'
 import Menu from './Menu'
+import StyledPagination from './Pagination'
 import PetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
