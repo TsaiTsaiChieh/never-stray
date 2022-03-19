@@ -5,30 +5,27 @@ import Footer from '../../components/Footer'
 import {PetStatus} from '../../constants/EnumType'
 import Banner from './Banner'
 import Menu from './Menu'
-import Pagination from './Pagination'
 import PetProfile from './PetProfile'
 
 export default function PetList(): ReactElement {
-  const [_, setTotal] = useState<number>(0)
+  const [totalPage, setTotalPage] = useState<number>(0)
   const [pets, setPets] = useState<PetDataType[]>([])
-  const [searchFilters, setSearchFilters] = useState<SearchPetFilters>({
+  const [filters, setFilters] = useState<SearchPetFilters>({
     status: PetStatus.OPEN,
     limit: 12,
     page: 1,
     ascend: true,
   })
   useEffect(() => {
-    searchPet(setPets, setTotal, searchFilters)
+    searchPet(setPets, setTotalPage, filters)
   }, [])
+  useEffect(() => {
+    searchPet(setPets, setTotalPage, filters)
+  }, [filters, totalPage])
 
   return (
     <>
-      <Menu
-        setPets={setPets}
-        setTotal={setTotal}
-        setSearchFilters={setSearchFilters}
-        searchFilters={searchFilters}
-      />
+      <Menu setFilters={setFilters} filters={filters} />
       <Banner />
       <div id="PetList">
         <>
@@ -37,12 +34,6 @@ export default function PetList(): ReactElement {
           ))}
         </>
       </div>
-      <Pagination
-        setPets={setPets}
-        setTotal={setTotal}
-        setSearchFilters={setSearchFilters}
-        searchFilters={searchFilters}
-      />
       <Footer />
     </>
   )
