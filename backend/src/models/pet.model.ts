@@ -52,8 +52,8 @@ function repackagePetData(
       page: {
         current: page,
         size: limit,
-        total: copyResult[1],
-        count: Math.ceil(copyResult[1] / limit),
+        count: copyResult[1],
+        total: Math.ceil(copyResult[1] / limit),
       },
     } as PetSearchReturningType
 
@@ -67,12 +67,6 @@ function repackagePetData(
       delete ele.shelter
     })
     cleanData.pet = petData
-    cleanData.page = {
-      current: page,
-      size: limit,
-      total: copyResult[1],
-      count: Math.ceil(copyResult[1] / limit),
-    }
     return Promise.resolve(cleanData)
   } catch (error) {
     return Promise.reject(new RepackageError(error.stack))
