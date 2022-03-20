@@ -25,10 +25,10 @@ function App(): ReactElement {
       {loading ? (
         <DogWalking />
       ) : (
-        <header className="App-header">
+        <>
           <Header />
           <PetList />
-        </header>
+        </>
       )}
     </div>
   )
