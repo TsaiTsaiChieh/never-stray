@@ -26,7 +26,6 @@ const PetProfile = ({pet}: Props) => {
         <ImgWrap>
           <PawImg src="/images/PetList/paw.svg" />
           <PetImg
-            image={pet.image[0]}
             style={{
               backgroundImage: `url(${pet.image[0] ?
                 pet.image[0] : '/images/PetList/pet-mask.svg'})`,

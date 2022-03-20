@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import {MEDIA_TABLET} from '../../constants/Mixin'
-import {colors, filters, sizes} from '../../constants/Variables'
+import {colors, sizes} from '../../constants/Variables'
 
 export const ProfileWrap = styled.div`
   display: flex;
@@ -29,7 +29,6 @@ export const ImgWrap = styled.div`
   }
 `
 export const PawImg = styled.img`
-  filter: ${filters.tiffany.i300};
   position: relative;
   top: 2.5rem;
   right: 0.6rem;
@@ -38,14 +37,13 @@ export const PawImg = styled.img`
     width: 90%;
   }
 `
-export const PetImg = styled.div<{image: string}>`
+export const PetImg = styled.div`
   cursor: pointer;
   position: relative;
   object-fit: cover;
   width: 9rem;
   height: 8.5rem;
   border-radius: 10px;
-  filter: ${(props) => (props.image ? '' : filters.tiffany.i300)};
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
