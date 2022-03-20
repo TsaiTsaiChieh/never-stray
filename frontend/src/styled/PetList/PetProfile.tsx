@@ -72,7 +72,10 @@ export const Title = styled.h3`
     content: "";
     position: absolute;
     top: 1.6rem;
-    right: 3.4rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     width: 33%;
     border-bottom: 3px solid ${colors.tiffany.i300};
   }
