@@ -2,6 +2,7 @@ import {ReactElement, useEffect, useState} from 'react'
 
 import {searchPet} from '../../api/PetsAPI'
 import Footer from '../../components/Footer'
+import Pagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import Banner from './Banner'
 import Menu from './Menu'
@@ -34,6 +35,15 @@ export default function PetList(): ReactElement {
           ))}
         </>
       </div>
+      <Pagination
+        pageCount={totalPage}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        className="pet-list-pagination"
+        setState={setFilters}
+        state={filters}
+        scrollTop={true}
+      />
       <Footer />
     </>
   )
