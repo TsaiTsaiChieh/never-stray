@@ -13,3 +13,31 @@
     grid-row-gap: 8.5em;
   }
 }
+
+.pet-list-pagination {
+  width: 90%;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  font-size: 16px;
+  margin: 40px auto 40px auto;
+  li {
+    width: 35px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  li.current {
+    border-radius: 12px;
+    background-color: $color-blue-100;
+    color: $color-white-100;
+  }
+  li.disabled {
+    cursor: not-allowed;
+  }
+}
