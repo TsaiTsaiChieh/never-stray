@@ -93,10 +93,12 @@ export const Sex = styled.p<{sex: PetSexType}>`
   }
 `
 export const VerticalLine = styled.span`
-  &::before {
-    content: "｜";
-    margin-left: -3rem;
-    color: ${colors.gray.i600};
+  ${MEDIA_TABLET} {
+    &::before {
+      content: "｜";
+      margin-left: -3rem;
+      color: ${colors.gray.i600};
+    }
   }
 `
 export const Age = styled.p`
