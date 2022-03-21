@@ -1,3 +1,5 @@
+import {useEffect, useState} from 'react'
+
 import {
   Age,
   Container,
@@ -20,6 +22,7 @@ interface Props {
   pet: PetDataType;
 }
 const PetProfile = ({pet}: Props) => {
+  const loaded = useProgressiveImage(pet.image[0])
   return (
     <ProfileWrap>
       <Container>
@@ -27,17 +30,16 @@ const PetProfile = ({pet}: Props) => {
           <PawImg src="/images/PetList/paw.svg" />
           <PetImg
             style={{
-              backgroundImage: `url(${pet.image[0] ?
-                pet.image[0] : '/images/PetList/pet-mask.svg'})`,
-            }} />
+              backgroundImage: `url(${loaded || '/images/PetList/pet-mask.svg'
+                })`,
+            }}
+          />
           <Title>
             {pet.color}
             {petKindConverter(pet.kind)}
           </Title>
           <SexAgeWrap>
-            <Sex sex={pet.sex}>
-              {petSexConverter(pet.sex)}
-            </Sex>
+            <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
             <VerticalLine />
             <Age>{petAgeConverter(pet.age)}</Age>
           </SexAgeWrap>
@@ -45,6 +47,18 @@ const PetProfile = ({pet}: Props) => {
       </Container>
     </ProfileWrap>
   )
+}
+
+const useProgressiveImage = (src: string) => {
+  const [sourceLoaded, setSourceLoaded] = useState('')
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = src
+    img.onload = () => setSourceLoaded(src)
+  }, [src])
+
+  return sourceLoaded
 }
 
 export default PetProfile
