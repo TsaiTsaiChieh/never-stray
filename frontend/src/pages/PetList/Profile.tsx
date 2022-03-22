@@ -3,36 +3,29 @@ import {
   Container,
   ImgWrap,
   PawImg,
-  PetImg,
   ProfileWrap,
   Sex,
   SexAgeWrap,
   Title,
   VerticalLine,
 } from '../../styled/PetList/Profile'
-import useProgressiveImage from '../../utils/useProgressiveImage'
 import {
   petAgeConverter,
   petKindConverter,
   petSexConverter,
 } from '../../utils/value-convert'
+import Avatar from './Avatar'
 
 interface Props {
   pet: PetDataType;
 }
 const Profile = ({pet}: Props) => {
-  const loaded = useProgressiveImage(pet.image[0])
   return (
     <ProfileWrap>
       <Container>
         <ImgWrap>
           <PawImg src="/images/PetList/paw.svg" />
-          <PetImg
-            style={{
-              backgroundImage: `url(${loaded || '/images/PetList/pet-mask.svg'
-                })`,
-            }}
-          />
+          <Avatar image={pet.image[0]} />
           <Title>
             {pet.color}
             {petKindConverter(pet.kind)}
