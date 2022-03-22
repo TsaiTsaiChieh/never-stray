@@ -9,7 +9,7 @@ import {
   SexAgeWrap,
   Title,
   VerticalLine,
-} from '../../styled/PetList/PetProfile'
+} from '../../styled/PetList/Profile'
 import useProgressiveImage from '../../utils/useProgressiveImage'
 import {
   petAgeConverter,
