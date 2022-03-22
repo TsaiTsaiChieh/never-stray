@@ -102,6 +102,8 @@ export const Container = styled.div`
 `
 export const ImgWrap = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
   bottom: 8rem;
   ${MEDIA_TABLET} {
     bottom: 10.2rem;
@@ -118,7 +120,7 @@ export const PawImg = styled.img`
 `
 export const Title = styled.h3`
   position: relative;
-  top: 0.8rem;
+  top: 0.6rem;
   font-size: ${sizes.s};
   ${MEDIA_TABLET} {
     font-size: ${sizes.m};
@@ -127,12 +129,17 @@ export const Title = styled.h3`
   &::before {
     content: "";
     position: absolute;
-    top: 1.6rem;
     margin-left: auto;
     margin-right: auto;
+    top: 1.5rem;
     left: 0;
     right: 0;
     width: 33%;
     border-bottom: 3px solid ${colors.tiffany.i300};
+  }
+  ${MEDIA_TABLET} {
+    &::before {
+      top: 1.7rem;
+    }
   }
 `
