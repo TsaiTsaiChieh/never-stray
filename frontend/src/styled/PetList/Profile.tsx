@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
+import {StyledAvatar} from './Avatar'
 
 export const Sex = styled.p<{sex: PetSexType}>`
   &::before {
@@ -63,6 +64,7 @@ export const ProfileWrap = styled.div`
 export const OuterHoverWrap = styled.div`
   padding: 9px;
   border: 1px solid white;
+
   &:hover {
     background: ${colors.tiffany.i200};
     border-radius: 5px;
@@ -80,6 +82,10 @@ export const OuterHoverWrap = styled.div`
       content: "瞭解我多一點";
       color: ${colors.tiffany.i400};
       letter-spacing: 2px;
+    }
+    ${StyledAvatar} {
+      -webkit-filter: brightness(75%);
+      transition: all 0.8s ease;
     }
   }
 `

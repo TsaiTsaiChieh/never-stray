@@ -20,8 +20,4 @@ export const StyledAvatar = styled.div`
     width: 10rem;
     height: 9.5rem;
   }
-  &:hover {
-    -webkit-filter: brightness(65%);
-    transition: all 0.8s ease;
-  }
 `
