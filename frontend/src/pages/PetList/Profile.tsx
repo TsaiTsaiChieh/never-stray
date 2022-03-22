@@ -2,6 +2,7 @@ import {
   Age,
   Container,
   ImgWrap,
+  OuterHoverWrap,
   PawImg,
   ProfileWrap,
   Sex,
@@ -21,23 +22,25 @@ interface Props {
 }
 const Profile = ({pet}: Props) => {
   return (
-    <ProfileWrap>
-      <Container>
-        <ImgWrap>
-          <PawImg src="/images/PetList/paw.svg" />
-          <Avatar image={pet.image[0]} />
-          <Title>
-            {pet.color}
-            {petKindConverter(pet.kind)}
-          </Title>
-          <SexAgeWrap>
-            <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
-            <VerticalLine />
-            <Age>{petAgeConverter(pet.age)}</Age>
-          </SexAgeWrap>
-        </ImgWrap>
-      </Container>
-    </ProfileWrap>
+    <OuterHoverWrap>
+      <ProfileWrap>
+        <Container>
+          <ImgWrap>
+            <PawImg src="/images/PetList/paw.svg" />
+            <Avatar image={pet.image[0]} />
+            <Title>
+              {pet.color}
+              {petKindConverter(pet.kind)}
+            </Title>
+            <SexAgeWrap>
+              <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
+              <VerticalLine />
+              <Age>{petAgeConverter(pet.age)}</Age>
+            </SexAgeWrap>
+          </ImgWrap>
+        </Container>
+      </ProfileWrap>
+    </OuterHoverWrap>
   )
 }
 

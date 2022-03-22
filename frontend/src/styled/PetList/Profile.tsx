@@ -3,60 +3,6 @@ import styled from 'styled-components'
 import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 
-export const ProfileWrap = styled.div`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 0px 0px 8px ${colors.gray.t100};
-  border-radius: 5px;
-`
-export const Container = styled.div`
-  display: flex;
-  height: 11rem;
-  flex-direction: column;
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  ${MEDIA_TABLET} {
-    height: 11.6rem;
-    padding: 1.9rem;
-  }
-`
-export const ImgWrap = styled.div`
-  position: relative;
-  bottom: 8rem;
-  ${MEDIA_TABLET} {
-    bottom: 10.2rem;
-  }
-`
-export const PawImg = styled.img`
-  position: relative;
-  top: 2.5rem;
-  right: 0.6rem;
-  ${MEDIA_TABLET} {
-    top: 2.7rem;
-    width: 90%;
-  }
-`
-export const Title = styled.h3`
-  position: relative;
-  top: 0.8rem;
-  font-size: ${sizes.s};
-  ${MEDIA_TABLET} {
-    font-size: ${sizes.m};
-    top: 1rem;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    top: 1.6rem;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    width: 33%;
-    border-bottom: 3px solid ${colors.tiffany.i300};
-  }
-`
 export const Sex = styled.p<{sex: PetSexType}>`
   &::before {
     content: "";
@@ -105,10 +51,27 @@ export const SexAgeWrap = styled.div`
     margin-left: -0.95rem;
     margin-right: -0.95rem;
   }
+`
+export const ProfileWrap = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 0px 0px 8px ${colors.gray.t100};
+  background: ${colors.white.i100};
+  border-radius: 5px;
+`
+export const OuterHoverWrap = styled.div`
+  padding: 9px;
+  border: 1px solid white;
   &:hover {
-    background: ${colors.tiffany.i500};
-    color: ${colors.white.i100};
-    transition: all 0.8s ease;
+    background: ${colors.tiffany.i200};
+    border-radius: 5px;
+    border: 1px solid ${colors.tiffany.i300};
+    ${SexAgeWrap} {
+      background: ${colors.tiffany.i500};
+      color: ${colors.white.i100};
+      transition: all 0.8s ease;
+    }
     ${Sex}, ${Age} {
       display: none;
     }
@@ -120,5 +83,50 @@ export const SexAgeWrap = styled.div`
     }
   }
 `
-
-
+export const Container = styled.div`
+  display: flex;
+  height: 11rem;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  ${MEDIA_TABLET} {
+    height: 11.6rem;
+    padding: 1.9rem;
+  }
+`
+export const ImgWrap = styled.div`
+  position: relative;
+  bottom: 8rem;
+  ${MEDIA_TABLET} {
+    bottom: 10.2rem;
+  }
+`
+export const PawImg = styled.img`
+  position: relative;
+  top: 2.5rem;
+  right: 0.6rem;
+  ${MEDIA_TABLET} {
+    top: 2.7rem;
+    width: 90%;
+  }
+`
+export const Title = styled.h3`
+  position: relative;
+  top: 0.8rem;
+  font-size: ${sizes.s};
+  ${MEDIA_TABLET} {
+    font-size: ${sizes.m};
+    top: 1rem;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1.6rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 33%;
+    border-bottom: 3px solid ${colors.tiffany.i300};
+  }
+`
