@@ -21,7 +21,7 @@ import {
 interface Props {
   pet: PetDataType;
 }
-const PetProfile = ({pet}: Props) => {
+const Profile = ({pet}: Props) => {
   const loaded = useProgressiveImage(pet.image[0])
   return (
     <ProfileWrap>
@@ -61,4 +61,4 @@ const useProgressiveImage = (src: string) => {
   return sourceLoaded
 }
 
-export default PetProfile
+export default Profile

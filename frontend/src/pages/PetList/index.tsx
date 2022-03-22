@@ -6,7 +6,7 @@ import Pagination from '../../components/Pagination'
 import {PetStatus} from '../../constants/EnumType'
 import Banner from './Banner'
 import Menu from './Menu'
-import PetProfile from './PetProfile'
+import Profile from './Profile'
 
 export default function PetList(): ReactElement {
   const [totalPage, setTotalPage] = useState<number>(0)
@@ -31,7 +31,7 @@ export default function PetList(): ReactElement {
       <div id="PetList">
         <>
           {pets.map((ele) => (
-            <PetProfile key={ele.id} pet={ele} />
+            <Profile key={ele.id} pet={ele} />
           ))}
         </>
       </div>
