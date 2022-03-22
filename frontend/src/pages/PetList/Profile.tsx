@@ -1,5 +1,3 @@
-import {useEffect, useState} from 'react'
-
 import {
   Age,
   Container,
@@ -12,6 +10,7 @@ import {
   Title,
   VerticalLine,
 } from '../../styled/PetList/PetProfile'
+import useProgressiveImage from '../../utils/useProgressiveImage'
 import {
   petAgeConverter,
   petKindConverter,
@@ -47,18 +46,6 @@ const Profile = ({pet}: Props) => {
       </Container>
     </ProfileWrap>
   )
-}
-
-const useProgressiveImage = (src: string) => {
-  const [sourceLoaded, setSourceLoaded] = useState('')
-
-  useEffect(() => {
-    const img = new Image()
-    img.src = src
-    img.onload = () => setSourceLoaded(src)
-  }, [src])
-
-  return sourceLoaded
 }
 
 export default Profile
