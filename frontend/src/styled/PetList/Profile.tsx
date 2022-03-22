@@ -37,29 +37,6 @@ export const PawImg = styled.img`
     width: 90%;
   }
 `
-export const PetImg = styled.div`
-  cursor: pointer;
-  position: relative;
-  object-fit: cover;
-  width: 9rem;
-  height: 8.5rem;
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  -webkit-mask: url("/images/PetList/pet-mask.svg") no-repeat center center;
-  mask: url("/images/PetList/pet-mask.svg") no-repeat center center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  ${MEDIA_TABLET} {
-    width: 10rem;
-    height: 9.5rem;
-  }
-  &:hover {
-    -webkit-filter: brightness(65%);
-    transition: all 0.8s ease;
-  }
-`
 export const Title = styled.h3`
   position: relative;
   top: 0.8rem;
