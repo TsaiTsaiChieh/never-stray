@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 export const sizes = {
+  xs: '14px',
   s: '16px',
   m: '18px',
   l: '20px',
