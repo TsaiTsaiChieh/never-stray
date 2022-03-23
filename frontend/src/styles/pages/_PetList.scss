@@ -23,8 +23,11 @@
   text-align: center;
   align-items: center;
   font-size: 16px;
-  margin: 40px auto 40px auto;
-  li {
+  margin: 20px auto 20px auto;
+  @include tablet {
+    margin: 30px auto 30px auto;
+  }
+  li > a {
     width: 35px;
     height: 30px;
     display: flex;
