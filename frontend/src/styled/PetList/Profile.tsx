@@ -88,6 +88,7 @@ export const OuterHoverWrap = styled.div`
       display: none;
     }
     ${VerticalLine}::before {
+      position: static;
       margin-left: 0;
       content: "瞭解我多一點";
       color: ${colors.tiffany.i400};
