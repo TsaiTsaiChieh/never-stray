@@ -6,8 +6,8 @@ export const StyledAvatar = styled.div`
   cursor: pointer;
   position: relative;
   object-fit: cover;
-  width: 9rem;
-  height: 8.5rem;
+  width: 7rem;
+  height: 6.5rem;
   border-radius: 10px;
   background-repeat: no-repeat;
   background-position: center;

@@ -5,40 +5,49 @@ import {colors, sizes} from '../../constants/Variables'
 import {StyledAvatar} from './Avatar'
 
 export const Sex = styled.p<{sex: PetSexType}>`
+  display: flex;
+  align-items: center;
   &::before {
     content: "";
     margin-right: 5px;
     background: ${(props) => `url(/images/PetList/pet-sex-${props.sex}.svg)`};
     background-repeat: no-repeat;
-    width: ${sizes.m};
-    height: ${sizes.m};
+    width: ${sizes.xs};
+    height: ${sizes.xs};
+    background-size: auto 100%;
+    background-position: center center;
     display: block;
     float: left;
+    ${MEDIA_TABLET} {
+      width: ${sizes.l};
+      height: ${sizes.l};
+    }
   }
 `
 export const VerticalLine = styled.span`
   ${MEDIA_TABLET} {
     &::before {
       content: "｜";
-      margin-left: -3rem;
+      position: relative;
+      right: 1.8rem;
       color: ${colors.gray.i600};
     }
   }
 `
 export const Age = styled.p`
   ${MEDIA_TABLET} {
-    margin-left: -3rem;
+    margin-left: -3.5rem;
   }
 `
 export const SexAgeWrap = styled.div`
   position: relative;
   letter-spacing: 1px;
-  top: 2.5rem;
+  top: 2rem;
   display: flex;
   flex-direction: row;
   cursor: pointer;
   color: ${colors.gray.i300};
-  font-size: ${sizes.m};
+  font-size: ${sizes.xs};
   justify-content: space-around;
   padding: 0.5rem;
   border-radius: 10px;
@@ -46,11 +55,12 @@ export const SexAgeWrap = styled.div`
   background: ${colors.tiffany.i200};
   align-items: center;
   ${MEDIA_TABLET} {
-    top: 4.6rem;
-    padding-top: 1.1rem;
-    padding-bottom: 1.1rem;
+    top: 4.5rem;
+    padding-top: 0.95rem;
+    padding-bottom: 0.95rem;
     margin-left: -0.95rem;
     margin-right: -0.95rem;
+    font-size: ${sizes.s};
   }
 `
 export const ProfileWrap = styled.div`
@@ -91,7 +101,7 @@ export const OuterHoverWrap = styled.div`
 `
 export const Container = styled.div`
   display: flex;
-  height: 11rem;
+  height: 9.2rem;
   flex-direction: column;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
@@ -102,26 +112,26 @@ export const Container = styled.div`
 `
 export const ImgWrap = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  bottom: 8rem;
+  bottom: 5.8rem;
   ${MEDIA_TABLET} {
-    bottom: 10.2rem;
+    bottom: 10.8rem;
   }
 `
 export const PawImg = styled.img`
+  width: 80%;
   position: relative;
-  top: 2.5rem;
-  right: 0.6rem;
+  top: 1.8rem;
+  right: 0.75rem;
   ${MEDIA_TABLET} {
-    top: 2.7rem;
+    top: 3.2rem;
+    right: 1rem;
     width: 90%;
   }
 `
 export const Title = styled.h3`
   position: relative;
-  top: 0.6rem;
-  font-size: ${sizes.s};
+  top: 0.4rem;
+  font-size: ${sizes.xs};
   ${MEDIA_TABLET} {
     font-size: ${sizes.m};
     top: 1rem;
@@ -131,15 +141,16 @@ export const Title = styled.h3`
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 1.5rem;
+    top: 1.2rem;
     left: 0;
     right: 0;
-    width: 33%;
+    width: 40%;
+    border-radius: 10px;
     border-bottom: 3px solid ${colors.tiffany.i300};
   }
   ${MEDIA_TABLET} {
     &::before {
-      top: 1.7rem;
+      top: 1.6rem;
     }
   }
 `

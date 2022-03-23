@@ -3,7 +3,7 @@ import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, filters, sizes} from '../../constants/Variables'
 
 export const Text = styled.span`
-  font-size: ${sizes.m};
+  font-size: ${sizes.s};
   margin: 0 10px 0 10px;
   padding: 10px 0 10px 0;
   ${MEDIA_TABLET} {
