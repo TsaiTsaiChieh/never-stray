@@ -42,7 +42,7 @@ export const Age = styled.p`
 export const SexAgeWrap = styled.div`
   position: relative;
   letter-spacing: 1px;
-  top: 2rem;
+  top: 2.2rem;
   display: flex;
   flex-direction: row;
   cursor: pointer;
@@ -55,7 +55,7 @@ export const SexAgeWrap = styled.div`
   background: ${colors.tiffany.i200};
   align-items: center;
   ${MEDIA_TABLET} {
-    top: 4.5rem;
+    top: 4.8rem;
     padding-top: 0.95rem;
     padding-bottom: 0.95rem;
     margin-left: -0.95rem;
@@ -124,14 +124,14 @@ export const PawImg = styled.img`
   top: 1.8rem;
   right: 0.75rem;
   ${MEDIA_TABLET} {
-    top: 3.2rem;
-    right: 1rem;
+    top: 3rem;
+    right: 1.1rem;
     width: 90%;
   }
 `
 export const Title = styled.h3`
   position: relative;
-  top: 0.4rem;
+  top: 0.5rem;
   font-size: ${sizes.xs};
   ${MEDIA_TABLET} {
     font-size: ${sizes.m};
