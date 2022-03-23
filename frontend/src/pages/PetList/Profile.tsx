@@ -23,19 +23,19 @@ interface Props {
 const Profile = ({pet}: Props) => {
   return (
     <OuterHoverWrap>
-      <ProfileWrap id="ProfileWrap">
-        <Container id="Container">
-          <ImgWrap id="ImgWrap">
-            <PawImg id="PawImg" src="/images/PetList/paw.svg" />
+      <ProfileWrap>
+        <Container>
+          <ImgWrap>
+            <PawImg src="/images/PetList/paw.svg" />
             <Avatar image={pet.image[0]} />
             <Title>
               {pet.color}
               {petKindConverter(pet.kind)}
             </Title>
-            <SexAgeWrap id="SexAgeWrap">
-              <Sex id="Sex" sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
-              <VerticalLine id="VerticalLine" />
-              <Age id="Age">{petAgeConverter(pet.age)}</Age>
+            <SexAgeWrap>
+              <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
+              <VerticalLine />
+              <Age>{petAgeConverter(pet.age)}</Age>
             </SexAgeWrap>
           </ImgWrap>
         </Container>
