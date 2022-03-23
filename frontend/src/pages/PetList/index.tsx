@@ -13,7 +13,7 @@ export default function PetList(): ReactElement {
   const [pets, setPets] = useState<PetDataType[]>([])
   const [filters, setFilters] = useState<SearchPetFilters>({
     status: PetStatus.OPEN,
-    limit: 12,
+    limit: 18,
     page: 1,
     ascend: true,
   })
