@@ -53,12 +53,12 @@ export const StyledMenu = styled.div`
   background-color: ${colors.tiffany.i100};
   padding: 7px 0 7px 0;
   display: grid;
-  grid-template-columns: 3.8rem 3.8rem 3.8rem;
+  grid-template-columns: repeat(3, 3.8rem);
   grid-column-gap: 0.3rem;
   justify-content: center;
   ${MEDIA_TABLET} {
     padding: ${sizes.s} 0 ${sizes.s} 0;
-    grid-template-columns: 6rem 6rem 6rem;
+    grid-template-columns: repeat(3, 6rem);
     grid-column-gap: 1rem;
   }
   /* Selected */
