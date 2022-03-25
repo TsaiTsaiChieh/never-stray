@@ -28,6 +28,7 @@ export const colors = {
   },
   white: {
     i100: '#ffffff',
+    i200: '#f9f9f9',
   },
 }
 
