@@ -10,6 +10,6 @@ export const StyledBanner = styled.img`
     content: url("/images/PetList/banner-tablet.png");
     width: 720px;
     height: 145.24px;
-    margin-top: 15px;
+    padding-top: 15px;
   }
 `
