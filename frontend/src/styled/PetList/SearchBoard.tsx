@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {MEDIA_TABLET} from '../../constants/Mixin'
 
 import {colors, sizes} from '../../constants/Variables'
 
@@ -16,6 +17,9 @@ const Items = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 80px);
   grid-column-gap: 0.5rem;
+  ${MEDIA_TABLET} {
+    grid-column-gap: 0.6rem;
+  }
 `
 const Wrap = styled.div`
   display: flex;
@@ -28,6 +32,9 @@ const Name = styled.h3`
   letter-spacing: 1px;
   padding-bottom: 7px;
   color: ${colors.gray.i400};
+  ${MEDIA_TABLET} {
+    padding-bottom: 12px;
+  }
 `
 const DropDownContent = styled.div`
   display: none;
@@ -97,6 +104,16 @@ export const SearchBoardWrap = styled.div`
   border-radius: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
+  ${MEDIA_TABLET} {
+    position: absolute;
+    height: auto;
+    right: auto;
+    border-radius: 0;
+    width: 45%;
+    padding-left: ${sizes.xl};
+    grid-template-rows: repeat(auto-fill, 90px);
+    box-shadow: 8px 0px 12px ${colors.gray.t100};
+  }
 `
 
 export const AgeWrap = styled(Wrap)``
