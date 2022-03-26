@@ -22,7 +22,7 @@ type PetOrderKeyType =
   | 'created_at'
   | 'updated_at'
 
-type PetDataType = {
+interface IPet {
   id: number
   sub_id: number
   accept_number: string
@@ -49,7 +49,7 @@ type PetDataType = {
 
 interface PetsAPIType {
   page: PageType
-  pet: PetDataType[]
+  pet: IPet[]
 }
 
 type SearchPetFilters = {

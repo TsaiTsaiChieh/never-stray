@@ -5,7 +5,7 @@ import {PetKind} from '../constants/EnumType'
 const {REACT_APP_API_URL} = process.env
 
 export async function searchPet(
-  setPets: Dispatch<SetStateAction<PetDataType[]>>,
+  setPets: Dispatch<SetStateAction<IPet[]>>,
   setTotalPage: Dispatch<SetStateAction<number>>,
   filters: SearchPetFilters,
 ): Promise<void> {

@@ -18,7 +18,7 @@ import {
 import Avatar from './Avatar'
 
 interface Props {
-  pet: PetDataType;
+  pet: IPet;
 }
 const Profile = ({pet}: Props) => {
   return (
