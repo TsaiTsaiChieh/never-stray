@@ -1,31 +1,33 @@
 import {useEffect, useState} from 'react'
 import ReactPaginate from 'react-paginate'
 
+import {fetchPets} from '../store/pet/actions'
+
 interface Props {
-  pageCount: number;
-  pageRangeDisplayed: number;
-  marginPagesDisplayed: number;
+  pageCount: number
+  pageRangeDisplayed: number
+  marginPagesDisplayed: number
   className: string
-  setState: (value: any) => void;
-  state: any;
-  scrollTop: boolean;
+  dispatch: (value: any) => void
+  state: any
+  scrollTop: boolean
 }
 const Pagination = ({
   pageCount,
   pageRangeDisplayed,
   marginPagesDisplayed,
   className,
-  setState,
+  dispatch,
   state,
   scrollTop,
 }: Props) => {
-  const [currentPage, setCurrentPage] = useState<number>(state.page)
+  const [currentPage, setCurrentPage] = useState<number>(state.filters.page)
   useEffect(() => {
-    setCurrentPage(state.page)
+    setCurrentPage(state.filters.page)
   }, [state])
 
   const handlePageClick = (event: {selected: number}) => {
-    setState({...state, page: event.selected + 1})
+    dispatch(fetchPets({...state.filters, page: event.selected + 1}))
     setCurrentPage(event.selected + 1)
     if (scrollTop) window.scrollTo({top: 0, behavior: 'smooth'})
   }

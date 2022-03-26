@@ -1,13 +1,17 @@
-import {Dispatch, SetStateAction, useState} from 'react'
+
+import {useState} from 'react'
+
 
 import {PetKind} from '../../constants/EnumType'
+import {fetchPets} from '../../store/pet/actions'
+import {PetState} from '../../store/pet/reducer'
 import {Img, StyledMenu, Text, Wrap} from '../../styled/PetList/Menu'
 
 interface Props {
-  setFilters: Dispatch<SetStateAction<SearchPetFilters>>
-  filters: SearchPetFilters
+  state: PetState
+  dispatch: (value: any) => void
 }
-const Menu = ({setFilters, filters}: Props) => {
+const Menu = ({dispatch, state}: Props) => {
   const [selected, setSelected] = useState<string>(PetKind.ALL)
   return (
     <StyledMenu>
@@ -18,7 +22,7 @@ const Menu = ({setFilters, filters}: Props) => {
           ${selected === kind ? 'option-selected' : ''}`}
           onClick={() => {
             setSelected(kind)
-            setFilters({...filters, kind, page: 1})
+            dispatch(fetchPets({...state.filters, kind, page: 1}))
           }}>
           <Img
             className={`${kind}-svg`}
