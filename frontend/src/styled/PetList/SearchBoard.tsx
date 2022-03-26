@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {MEDIA_TABLET} from '../../constants/Mixin'
+import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 
 import {colors, sizes} from '../../constants/Variables'
 
@@ -86,7 +86,7 @@ const Content = styled.p`
   letter-spacing: 1px;
   font-size: ${sizes.xs};
 `
-export const SearchBoardWrap = styled.div`
+export const SearchBoardContainer = styled.div`
   display: grid;
   width: 80%;
   height: 65vh;
@@ -107,12 +107,30 @@ export const SearchBoardWrap = styled.div`
   ${MEDIA_TABLET} {
     position: absolute;
     height: auto;
+    min-height: 900px;
+    bottom: auto;
     right: auto;
     border-radius: 0;
-    width: 45%;
+    width: 100%;
+    min-width: 367px;
     padding-left: ${sizes.xl};
     grid-template-rows: repeat(auto-fill, 90px);
-    box-shadow: 8px 0px 12px ${colors.gray.t100};
+    box-shadow: 8px 0 12px ${colors.gray.t100};
+  }
+  ${MEDIA_DESKTOP} {
+    position: relative;
+    height: 100%;
+    min-height: 700px;
+    max-height: 700px;
+    width: 100%;
+    min-width: 310px;
+    max-width: 310px;
+    box-shadow: 0 0 8px ${colors.gray.t100};
+    border-radius: 5px;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 `
 
