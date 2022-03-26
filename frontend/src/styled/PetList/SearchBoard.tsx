@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 
+import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
+import {CloseButton} from '../Base/CloseButton'
 
 const Button = styled.button`
   width: 80px;
@@ -12,6 +13,9 @@ const Button = styled.button`
   letter-spacing: 1px;
   background: ${colors.white.i100};
   color: ${colors.gray.i400};
+  &:hover {
+    border: 1px solid ${colors.tiffany.i300};
+  }
 `
 const Items = styled.div`
   display: grid;
@@ -86,8 +90,13 @@ const Content = styled.p`
   letter-spacing: 1px;
   font-size: ${sizes.xs};
 `
+export const Closed = styled(CloseButton)`
+  ${MEDIA_DESKTOP} {
+    display: none;
+  }
+`
 export const SearchBoardContainer = styled.div`
-  display: grid;
+  display: none;
   width: 80%;
   height: 65vh;
   position: fixed;
@@ -105,6 +114,7 @@ export const SearchBoardContainer = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   ${MEDIA_TABLET} {
+    display: none;
     position: absolute;
     height: auto;
     min-height: 900px;
@@ -118,6 +128,7 @@ export const SearchBoardContainer = styled.div`
     box-shadow: 8px 0 12px ${colors.gray.t100};
   }
   ${MEDIA_DESKTOP} {
+    display: grid;
     position: relative;
     height: 100%;
     min-height: 700px;
