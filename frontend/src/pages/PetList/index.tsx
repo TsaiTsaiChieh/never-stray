@@ -7,6 +7,7 @@ import {PetStatus} from '../../constants/EnumType'
 import Banner from './Banner'
 import Menu from './Menu'
 import Profile from './Profile'
+import SearchBoard from './SearchBoard'
 
 export default function PetList(): ReactElement {
   const [totalPage, setTotalPage] = useState<number>(0)
@@ -27,23 +28,30 @@ export default function PetList(): ReactElement {
   return (
     <>
       <Menu setFilters={setFilters} filters={filters} />
-      <Banner />
-      <div id="PetList">
-        <>
-          {pets.map((ele) => (
-            <Profile key={ele.id} pet={ele} />
-          ))}
-        </>
+      <div className="pet-wrapper">
+        <div className="search-board-wrap">
+          <SearchBoard />
+        </div>
+        <div className="pet-list-wrap">
+          <Banner />
+          <div id="PetList">
+            <>
+              {pets.map((ele) => (
+                <Profile key={ele.id} pet={ele} />
+              ))}
+            </>
+          </div>
+          <Pagination
+            pageCount={totalPage}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            className="pet-list-pagination"
+            setState={setFilters}
+            state={filters}
+            scrollTop={true}
+          />
+        </div>
       </div>
-      <Pagination
-        pageCount={totalPage}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        className="pet-list-pagination"
-        setState={setFilters}
-        state={filters}
-        scrollTop={true}
-      />
       <Footer />
     </>
   )
