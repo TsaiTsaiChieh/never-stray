@@ -1,51 +1,80 @@
 .pet-wrapper {
-  position: relative;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
 
-  #PetList {
-    width: 80%;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-row-gap: 4em;
-    grid-column-gap: 2.5%;
-    justify-content: space-around;
-    justify-items: center;
-    margin: auto;
-    margin-top: 90px;
-    @include tablet {
-      margin-top: 110px;
-      grid-template-columns: auto auto auto;
-      grid-row-gap: 6.5em;
+  .search-board-wrap {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 30%;
+
+    @include desktop {
+      margin-right: 20px;
     }
   }
 
-  .pet-list-pagination {
-    width: 90%;
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: space-evenly;
-    text-align: center;
-    align-items: center;
-    font-size: 16px;
-    margin: 20px auto 20px auto;
+  .pet-list-wrap {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     @include tablet {
-      margin: 30px auto 30px auto;
+      margin-left: 30px;
     }
-    li > a {
-      width: 35px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
+    @include desktop {
+      min-width: 720px;
+      max-width: 720px;
+    }
+
+    #PetList {
+      width: 80%;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-row-gap: 4em;
+      grid-column-gap: 2.5%;
+      justify-content: space-around;
+      justify-items: center;
+      margin: auto;
+      margin-top: 90px;
+      @include tablet {
+        margin-top: 110px;
+        grid-template-columns: auto auto auto;
+        grid-row-gap: 6.5rem;
+      }
+    }
+
+    .pet-list-pagination {
+      width: 90%;
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-evenly;
+      text-align: center;
       align-items: center;
-      align-items: center;
-      cursor: pointer;
-    }
-    li.current {
-      border-radius: 12px;
-      background-color: $color-blue-100;
-      color: $color-white-100;
-    }
-    li.disabled {
-      cursor: not-allowed;
+      font-size: 16px;
+      margin: 20px auto 20px auto;
+      @include tablet {
+        margin: 30px auto 30px auto;
+      }
+      li > a {
+        width: 35px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      li.current {
+        border-radius: 12px;
+        background-color: $color-blue-100;
+        color: $color-white-100;
+      }
+      li.disabled {
+        cursor: not-allowed;
+      }
     }
   }
 }
