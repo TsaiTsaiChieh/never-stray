@@ -95,12 +95,12 @@ type PetInfoType = PetType & {
   shelter_name: string
 }
 
-type PetSearchReturningType = PetType & {
+type PetSearchReturningType = {
   page: {
     current: number
     size: number
     total: number
     count: number
   }
-  pet: PetInfoType[]
+  pets: PetInfoType[]
 }

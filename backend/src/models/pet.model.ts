@@ -66,7 +66,7 @@ function repackagePetData(
       delete ele.city
       delete ele.shelter
     })
-    cleanData.pet = petData
+    cleanData.pets = petData
     return Promise.resolve(cleanData)
   } catch (error) {
     return Promise.reject(new RepackageError(error.stack))
