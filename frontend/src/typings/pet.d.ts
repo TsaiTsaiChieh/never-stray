@@ -47,9 +47,9 @@ type PetDataType = {
   update_at: date
 }
 
-interface PetsAPIType {
+type PetsAPIType = {
   page: PageType
-  pet: PetDataType[]
+  pets: PetDataType[]
 }
 
 type SearchPetFilters = {
