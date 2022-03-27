@@ -47,9 +47,9 @@ interface IPet {
   update_at: date
 }
 
-interface PetsAPIType {
+type PetsAPIType = {
   page: PageType
-  pet: IPet[]
+  pets: IPet[]
 }
 
 type SearchPetFilters = {
