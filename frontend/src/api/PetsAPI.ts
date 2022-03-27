@@ -29,7 +29,7 @@ export async function searchPet(
 
     const res: AxiosResponse = await axios({method: 'GET', url})
     const data: PetsAPIType = res.data
-    setPets(data.pet)
+    setPets(data.pets)
     setTotalPage(data.page.total)
   } catch (error) {
     setPets([])
