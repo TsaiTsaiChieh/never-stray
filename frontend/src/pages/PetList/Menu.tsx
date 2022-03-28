@@ -2,7 +2,7 @@
 import {useState} from 'react'
 
 import {PetKind} from '../../constants/EnumType'
-import {getPets, PetListState} from '../../store/reducers/petListSlice'
+import {getPets} from '../../store/reducers/petListSlice'
 import {Img, StyledMenu, Text, Wrap} from '../../styled/PetList/Menu'
 
 interface Props {

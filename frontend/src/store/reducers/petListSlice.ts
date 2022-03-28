@@ -5,13 +5,6 @@ import {PetKind, PetStatus} from '../../constants/EnumType'
 
 const {REACT_APP_API_URL} = process.env
 
-export interface PetListState {
-  loading: boolean
-  filters: SearchPetFilters
-  pets?: IPet[]
-  totalPage: number
-}
-
 const initialState: PetListState = {
   loading: true,
   filters: {
