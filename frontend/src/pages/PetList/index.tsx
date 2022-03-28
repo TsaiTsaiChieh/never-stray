@@ -1,21 +1,20 @@
-
 import {ReactElement, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
 
 import Footer from '../../components/Footer'
 import Pagination from '../../components/Pagination'
-import {RootState} from '../../store'
-import {fetchPets} from '../../store/pet/actions'
+import {useAppDispatch, useAppSelector} from '../../store/hooks'
+import {getPets} from '../../store/reducers/petListSlice'
 import Banner from './Banner'
 import Menu from './Menu'
 import Profile from './Profile'
 import SearchBoard from './SearchBoard'
 
 export default function PetList(): ReactElement {
-  const petState = useSelector((state: RootState) => state.pet)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const petState = useAppSelector((state) => state.petList)
+
   useEffect(() => {
-    dispatch(fetchPets())
+    dispatch(getPets())
   }, [])
 
   return (
@@ -29,9 +28,10 @@ export default function PetList(): ReactElement {
           <Banner />
           <div id="PetList">
             <>
-              {petState.pets && petState.pets.map((ele) => (
-                <Profile key={ele.id} pet={ele} />
-              ))}
+              {petState.pets &&
+                petState.pets.map((ele: IPet) => (
+                  <Profile key={ele.id} pet={ele} />
+                ))}
             </>
           </div>
           <Pagination

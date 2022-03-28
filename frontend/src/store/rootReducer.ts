@@ -1,9 +1,8 @@
 import {combineReducers} from 'redux'
-
-import petReducer from './pet/reducer'
+import petListReducer from './reducers/petListSlice'
 
 const rootReducer = combineReducers({
-  pet: petReducer,
+  petList: petListReducer,
 })
 
 export default rootReducer

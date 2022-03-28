@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import ReactPaginate from 'react-paginate'
 
-import {fetchPets} from '../store/pet/actions'
+import {getPets} from '../store/reducers/petListSlice'
 
 interface Props {
   pageCount: number
@@ -27,7 +27,7 @@ const Pagination = ({
   }, [state])
 
   const handlePageClick = (event: {selected: number}) => {
-    dispatch(fetchPets({...state.filters, page: event.selected + 1}))
+    dispatch(getPets({...state.filters, page: event.selected + 1}))
     setCurrentPage(event.selected + 1)
     if (scrollTop) window.scrollTo({top: 0, behavior: 'smooth'})
   }
