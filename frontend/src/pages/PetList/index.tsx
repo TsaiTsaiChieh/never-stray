@@ -7,7 +7,7 @@ import {getPets} from '../../store/reducers/petListSlice'
 import Banner from './Banner'
 import Menu from './Menu'
 import Profile from './Profile'
-import SearchBoard from './SearchBoard'
+import SearchBoard from './Search'
 
 export default function PetList(): ReactElement {
   const dispatch = useAppDispatch()

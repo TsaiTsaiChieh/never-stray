@@ -32,7 +32,7 @@ import {
   RefItems,
   RefItem,
   Closed,
-} from '../../styled/PetList/SearchBoard'
+} from '../../../styled/PetList/SearchBoard'
 
 const SearchBoard = () => {
   return (
