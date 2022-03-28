@@ -57,7 +57,7 @@ export const fetchPets =
         }
         const res: AxiosResponse = await axios({method: 'GET', url})
         const data: PetsAPIType = res.data
-        dispatch({type: FETCH_PETS_SUCCESS, payload: data.pet})
+        dispatch({type: FETCH_PETS_SUCCESS, payload: data.pets})
         dispatch({type: FETCH_PETS_TOTAL_PAGE, payload: data.page.total})
       } catch (error) {
         dispatch({type: FETCH_PETS_FAILURE})
