@@ -2,12 +2,11 @@
 import {useState} from 'react'
 
 import {PetKind} from '../../constants/EnumType'
-import {PetState} from '../../store/pet/reducer'
-import {getPets} from '../../store/reducers/petListSlice'
+import {getPets, PetListState} from '../../store/reducers/petListSlice'
 import {Img, StyledMenu, Text, Wrap} from '../../styled/PetList/Menu'
 
 interface Props {
-  state: PetState
+  state: PetListState
   dispatch: (value: any) => void
 }
 const Menu = ({dispatch, state}: Props) => {
