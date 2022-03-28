@@ -1,33 +1,25 @@
-import {ReactElement, useEffect, useState} from 'react'
+import {ReactElement, useEffect} from 'react'
 
-import {searchPet} from '../../api/PetsAPI'
 import Footer from '../../components/Footer'
 import Pagination from '../../components/Pagination'
-import {PetStatus} from '../../constants/EnumType'
+import {useAppDispatch, useAppSelector} from '../../store/hooks'
+import {getPets} from '../../store/reducers/petListSlice'
 import Banner from './Banner'
 import Menu from './Menu'
 import Profile from './Profile'
 import SearchBoard from './SearchBoard'
 
 export default function PetList(): ReactElement {
-  const [totalPage, setTotalPage] = useState<number>(0)
-  const [pets, setPets] = useState<PetDataType[]>([])
-  const [filters, setFilters] = useState<SearchPetFilters>({
-    status: PetStatus.OPEN,
-    limit: 18,
-    page: 1,
-    ascend: true,
-  })
+  const dispatch = useAppDispatch()
+  const petState = useAppSelector((state) => state.petList)
+
   useEffect(() => {
-    searchPet(setPets, setTotalPage, filters)
+    dispatch(getPets())
   }, [])
-  useEffect(() => {
-    searchPet(setPets, setTotalPage, filters)
-  }, [filters, totalPage])
 
   return (
     <>
-      <Menu setFilters={setFilters} filters={filters} />
+      <Menu dispatch={dispatch} state={petState} />
       <div className="pet-wrapper">
         <div className="search-board-wrap">
           <SearchBoard />
@@ -36,18 +28,19 @@ export default function PetList(): ReactElement {
           <Banner />
           <div id="PetList">
             <>
-              {pets.map((ele) => (
-                <Profile key={ele.id} pet={ele} />
-              ))}
+              {petState.pets &&
+                petState.pets.map((ele: IPet) => (
+                  <Profile key={ele.id} pet={ele} />
+                ))}
             </>
           </div>
           <Pagination
-            pageCount={totalPage}
+            pageCount={petState.totalPage}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
             className="pet-list-pagination"
-            setState={setFilters}
-            state={filters}
+            dispatch={dispatch}
+            state={petState}
             scrollTop={true}
           />
         </div>
