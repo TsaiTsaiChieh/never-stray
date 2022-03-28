@@ -17,9 +17,9 @@ export enum PetSex {
 }
 
 export enum PetAge {
+  ALL = 'All',
   ADULT = 'A',
   CHILD = 'C',
-  UNKNOWN = 'U',
 }
 
 export enum PetStatus {
@@ -33,5 +33,5 @@ export enum PetStatus {
 export enum PetKind {
   ALL = 'all',
   CAT = 'cat',
-  DOG = 'dog'
+  DOG = 'dog',
 }
