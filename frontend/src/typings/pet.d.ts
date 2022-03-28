@@ -2,9 +2,15 @@ type PetRefType = 'gov' | 'map' | 'own'
 
 type PetSexType = 'F' | 'M' | 'U'
 
+type PetSexExType = 'All' | PetSexType
+
 type PetAgeType = 'A' | 'C' | 'U'
 
-type PetKindType = 'all' | 'cat' | 'dog'
+type PetAgeExType = 'All' | PetAgeType
+
+type PetKindType = 'cat' | 'dog' | 'others'
+
+type PetKindExType = 'all' | PetKindType
 
 type PetStatusType = 'unknown' | 'open' | 'adopted' | 'other' | 'dead'
 
@@ -57,10 +63,10 @@ type SearchPetFilters = {
   ref?: PetRefType
   city_id?: number
   shelter_id?: number
-  kind?: PetKindType
-  sex?: PetSexType
+  kind?: PetKindExType
+  sex?: PetSexExType
   color?: string
-  age?: PetAgeType
+  age?: PetAgeExType
   region?: AreaRegionType
   order_key?: PetOrderKeyType
   ascend?: boolean
