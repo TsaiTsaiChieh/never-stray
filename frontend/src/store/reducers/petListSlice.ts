@@ -24,17 +24,19 @@ export const getPets = createAsyncThunk(
   async (filters: SearchPetFilters = initialState.filters) => {
     let url = `${REACT_APP_API_URL}/pets?page=${filters.page}` +
       `&limit=${filters.limit}`
-    if (filters.status) url += `&status=${filters.status}`
-    if (filters.ref) url += `&ref=${filters.ref}`
-    if (filters.city_id) url += `&city_id=${filters.city_id}`
-    if (filters.shelter_id) url += `&shelter_id=${filters.shelter_id}`
+    if (filters.status) url += `&status[]=${filters.status}`
+    if (filters.ref) url += `&ref[]=${filters.ref}`
+    if (filters.city_id) url += `&city_id[]=${filters.city_id}`
+    if (filters.shelter_id) url += `&shelter_id[]=${filters.shelter_id}`
     if (filters.kind && filters.kind !== PetKind.ALL) {
-      url += `&kind=${filters.kind}`
+      url += `&kind[]=${filters.kind}`
     }
-    if (filters.sex) url += `&sex=${filters.sex}`
-    if (filters.color) url += `&color=${filters.color}`
-    if (filters.age && filters.age !== PetAge.ALL) url += `&age=${filters.age}`
-    if (filters.region) url += `&region=${filters.region}`
+    if (filters.sex) url += `&sex[]=${filters.sex}`
+    if (filters.color) url += `&color[]=${filters.color}`
+    if (filters.age && filters.age !== PetAge.ALL) {
+      url += `&age[]=${filters.age}`
+    }
+    if (filters.region) url += `&region[]=${filters.region}`
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
