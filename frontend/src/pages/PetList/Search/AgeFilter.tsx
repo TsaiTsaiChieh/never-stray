@@ -9,9 +9,9 @@ import {
 } from '../../../styled/PetList/SearchBoard'
 
 const PetAgeName = {
-  'All': '全部',
-  'A': '成年',
-  'C': '幼年',
+  All: '全部',
+  A: '成年',
+  C: '幼年',
 }
 const AgeFilter = () => {
   const dispatch = useAppDispatch()
