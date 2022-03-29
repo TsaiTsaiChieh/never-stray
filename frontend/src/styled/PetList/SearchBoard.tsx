@@ -16,6 +16,11 @@ const Button = styled.button`
   &:hover {
     border: 1px solid ${colors.tiffany.i300};
   }
+  &.selected {
+    border: 1px solid ${colors.tiffany.i300};
+    color: ${colors.white.i100};
+    background: ${colors.tiffany.i300};
+  }
 `
 const Items = styled.div`
   display: grid;
