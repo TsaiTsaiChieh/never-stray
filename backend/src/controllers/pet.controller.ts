@@ -17,12 +17,13 @@ export class PetController {
   }
   @Get('/')
   async searchPet(@Req() req: Request, @Res() res: Response) {
+    const city_id = req.query.city_id as string[]
+    const shelter_id = req.query.shelter_id as string[]
     const query: PetSearchQueryType = {
       ...req.query,
-      city_id: req.query.city_id ? Number(req.query.city_id) : undefined,
+      city_id: req.query.city_id ? city_id.map((x) => parseInt(x)) : undefined,
       shelter_id: req.query.shelter_id ?
-        Number(req.query.shelter_id) :
-        undefined,
+        shelter_id.map((x) => parseInt(x)) : undefined,
       limit: req.query.limit ? Number(req.query.limit) : undefined,
       page: req.query.page ? Number(req.query.page) : undefined,
       ascend: req.query.ascend ? Boolean(Number(req.query.limit)) : undefined,

@@ -74,15 +74,15 @@ type ShelterAPIDataType = {
 }
 
 type PetSearchQueryType = {
-  status?: PetStatusType
-  ref?: PetRefType
-  city_id?: number
-  shelter_id?: number
-  kind?: PetKindType
-  sex?: PetSexType
-  color?: string
-  age?: PetAgeType
-  region?: AreaRegionType
+  status?: PetStatusType[]
+  ref?: PetRefType[]
+  city_id?: number[]
+  shelter_id?: number[]
+  kind?: PetKindType[]
+  sex?: PetSexType[]
+  color?: string[]
+  age?: PetAgeType[]
+  region?: AreaRegionType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
   limit?: number

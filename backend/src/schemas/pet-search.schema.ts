@@ -1,19 +1,64 @@
 import {JSONSchemaType} from 'ajv'
 import {Region} from '../entity/area.entity'
 import {Age, Kind, Ref, Sex, Status} from '../entity/pet.entity'
+import {ShelterID} from '../entity/shelter.entity'
+import {CityID} from '../entity/area.entity'
 
 export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
   type: 'object',
   properties: {
-    status: {type: 'string', enum: Object.values(Status), nullable: true},
-    ref: {type: 'string', enum: Object.values(Ref), nullable: true},
-    city_id: {type: 'integer', nullable: true},
-    shelter_id: {type: 'integer', nullable: true},
-    kind: {type: 'string', enum: Object.values(Kind), nullable: true},
-    sex: {type: 'string', enum: Object.values(Sex), nullable: true},
-    color: {type: 'string', nullable: true},
-    age: {type: 'string', enum: Object.values(Age), nullable: true},
-    region: {type: 'string', enum: Object.values(Region), nullable: true},
+    status: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Status)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    ref: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Ref)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    city_id: {
+      type: 'array',
+      items: {type: 'integer', enum: Object.values(CityID)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    shelter_id: {
+      type: 'array',
+      items: {type: 'integer', enum: Object.values(ShelterID)},
+      nullable: true,
+    },
+    kind: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Kind)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    sex: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Sex)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    color: {
+      type: 'array', items: {type: 'string'},
+      uniqueItems: true,
+      nullable: true,
+    },
+    age: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Age)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    region: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Region)},
+      uniqueItems: true,
+      nullable: true,
+    },
     // eslint-disable-next-line camelcase
     order_key: {
       type: 'string',
