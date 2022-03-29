@@ -1,7 +1,9 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios, {AxiosResponse} from 'axios'
-import {RootState} from '..'
-import {PetKind, PetStatus} from '../../constants/EnumType'
+
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+
+import {RootState} from '../'
+import {PetAge, PetKind, PetStatus} from '../../constants/EnumType'
 
 const {REACT_APP_API_URL} = process.env
 
@@ -9,6 +11,7 @@ const initialState: PetListState = {
   loading: true,
   filters: {
     status: PetStatus.OPEN,
+    age: PetAge.ALL,
     limit: 18,
     page: 1,
     ascend: true,
@@ -30,7 +33,7 @@ export const getPets = createAsyncThunk(
     }
     if (filters.sex) url += `&sex=${filters.sex}`
     if (filters.color) url += `&color=${filters.color}`
-    if (filters.age) url += `&age=${filters.age}`
+    if (filters.age && filters.age !== PetAge.ALL) url += `&age=${filters.age}`
     if (filters.region) url += `&region=${filters.region}`
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
