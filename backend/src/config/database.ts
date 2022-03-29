@@ -1,10 +1,5 @@
 import dotenv from 'dotenv'
-import {
-  Connection,
-  createConnection,
-  getConnectionManager,
-  getConnectionOptions,
-} from 'typeorm'
+import {Connection, createConnection} from 'typeorm'
 
 import {Area} from '../entity/area.entity'
 import {Pet} from '../entity/pet.entity'
