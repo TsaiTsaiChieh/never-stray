@@ -2,7 +2,7 @@ type PetRefType = 'gov' | 'map' | 'own'
 
 type PetSexType = 'F' | 'M' | 'U'
 
-type PetSexExType = 'All' | PetSexType
+type PetSexExType = 'ALL' | PetSexType
 
 type PetAgeType = 'A' | 'C' | 'U'
 

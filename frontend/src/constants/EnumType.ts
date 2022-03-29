@@ -11,6 +11,7 @@ export enum PetRef {
 }
 
 export enum PetSex {
+  ALL = 'ALL',
   FEMALE = 'F',
   MALE = 'M',
   UNKNOWN = 'U',
