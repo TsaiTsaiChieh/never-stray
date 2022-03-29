@@ -1,8 +1,4 @@
 import {
-  AgeItem,
-  AgeItems,
-  AgeName,
-  AgeWrap,
   SearchBoardContainer,
   SexWrap,
   SexName,
@@ -33,18 +29,14 @@ import {
   RefItem,
   Closed,
 } from '../../../styled/PetList/SearchBoard'
+import AgeFilter from './AgeFilter'
+
 
 const SearchBoard = () => {
   return (
     <SearchBoardContainer id="SearchBoard" >
       <Closed />
-      <AgeWrap>
-        <AgeName>年齡</AgeName>
-        <AgeItems>
-          <AgeItem>成年</AgeItem>
-          <AgeItem>幼年</AgeItem>
-        </AgeItems>
-      </AgeWrap>
+      <AgeFilter />
       <SexWrap>
         <SexName>性別</SexName>
         <SexItems>
