@@ -2,13 +2,11 @@ type PetRefType = 'gov' | 'map' | 'own'
 
 type PetSexType = 'F' | 'M' | 'U'
 
-type PetSexExType = 'ALL' | PetSexType
-
 type PetAgeType = 'A' | 'C' | 'U'
 
 type PetAgeExType = 'All' | PetAgeType
 
-type PetKindType = 'cat' | 'dog' | 'others'
+type PetKindType = 'cat' | 'dog' | 'other'
 
 type PetKindExType = 'all' | PetKindType
 
@@ -59,15 +57,15 @@ type PetsAPIType = {
 }
 
 type SearchPetFilters = {
-  status?: PetStatusType
-  ref?: PetRefType
-  city_id?: number
-  shelter_id?: number
+  status?: PetStatusType[]
+  ref?: PetRefType[]
+  city_id?: number[]
+  shelter_id?: number[]
   kind?: PetKindExType
-  sex?: PetSexExType
-  color?: string
-  age?: PetAgeExType
-  region?: AreaRegionType
+  sex: PetSexType[]
+  color?: string[]
+  age: PetAgeExType[]
+  region?: AreaRegionType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
   limit: number
