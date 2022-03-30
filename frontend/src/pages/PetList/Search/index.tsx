@@ -1,50 +1,39 @@
 import {
-  SearchBoardContainer,
-  SexWrap,
-  SexName,
-  SexItem,
-  SexItems,
-  LigationWrap,
-  LigationName,
-  LigationItems,
-  LigationItem,
-  ColorDropDown,
-  ColorName,
-  ColorDropDownContent,
+  Closed,
   Color,
+  ColorDropDown,
+  ColorDropDownContent,
+  ColorName,
   ColorWrap,
-  RegionWrap,
-  RegionName,
+  LigationItem,
+  LigationItems,
+  LigationName,
+  LigationWrap,
+  RefItem,
+  RefItems,
+  RefName,
+  RefWrap,
+  Region,
   RegionDropDown,
   RegionDropDownContent,
-  Region,
-  ShelterWrap,
-  ShelterName,
-  ShelterDropDown,
-  ShelterDownContent,
+  RegionName,
+  RegionWrap,
+  SearchBoardContainer,
   Shelter,
-  RefWrap,
-  RefName,
-  RefItems,
-  RefItem,
-  Closed,
+  ShelterDownContent,
+  ShelterDropDown,
+  ShelterName,
+  ShelterWrap,
 } from '../../../styled/PetList/SearchBoard'
 import AgeFilter from './AgeFilter'
-
+import SexFilter from './SexFilter'
 
 const SearchBoard = () => {
   return (
-    <SearchBoardContainer id="SearchBoard" >
+    <SearchBoardContainer id="SearchBoard">
       <Closed />
       <AgeFilter />
-      <SexWrap>
-        <SexName>性別</SexName>
-        <SexItems>
-          <SexItem>妹妹</SexItem>
-          <SexItem>弟弟</SexItem>
-          <SexItem>未知</SexItem>
-        </SexItems>
-      </SexWrap>
+      <SexFilter />
       <LigationWrap>
         <LigationName>結紮</LigationName>
         <LigationItems>
