@@ -19,7 +19,7 @@ export default function PetList(): ReactElement {
 
   return (
     <>
-      <Menu dispatch={dispatch} state={petState} />
+      <Menu />
       <div className="pet-wrapper">
         <div className="search-board-wrap">
           <SearchBoard />

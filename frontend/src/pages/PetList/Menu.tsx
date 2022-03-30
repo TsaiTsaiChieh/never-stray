@@ -1,25 +1,20 @@
-
-import {useState} from 'react'
-
 import {PetKind} from '../../constants/EnumType'
+import {useAppDispatch, useAppSelector} from '../../store/hooks'
 import {getPets} from '../../store/reducers/petListSlice'
 import {Img, StyledMenu, Text, Wrap} from '../../styled/PetList/Menu'
 
-interface Props {
-  state: PetListState
-  dispatch: (value: any) => void
-}
-const Menu = ({dispatch, state}: Props) => {
-  const [selected, setSelected] = useState<string>(PetKind.ALL)
+const Menu = () => {
+  const state = useAppSelector((state) => state.petList)
+  const dispatch = useAppDispatch()
+
   return (
     <StyledMenu>
       {Object.values(PetKind).map((kind) => (
         <Wrap
           key={kind}
           className={`${kind}-option
-          ${selected === kind ? 'option-selected' : ''}`}
+          ${state.filters.kind === kind ? 'option-selected' : ''}`}
           onClick={() => {
-            setSelected(kind)
             dispatch(getPets({...state.filters, kind, page: 1}))
           }}>
           <Img
