@@ -9,13 +9,18 @@ import {
 } from '../../../styled/PetList/SearchBoard'
 
 const PetAgeName = {
-  All: '全部',
   A: '成年',
   C: '幼年',
+  U: '未知',
 }
 const AgeFilter = () => {
   const dispatch = useAppDispatch()
-  const state = useAppSelector((state) => state.petList)
+  const {filters} = useAppSelector((state) => state.petList)
+
+  const toggleAgeOpt = (age: PetAge) =>
+    filters.age.includes(age) ?
+      filters.age.filter((ele) => ele !== age) :
+      [...filters.age, age]
   return (
     <AgeWrap>
       <AgeName>年齡</AgeName>
@@ -23,8 +28,11 @@ const AgeFilter = () => {
         {Object.values(PetAge).map((age) => (
           <AgeItem
             key={age}
-            className={state.filters.age === age ? 'selected' : ''}
-            onClick={() => dispatch(getPets({...state.filters, age, page: 1}))}>
+            className={filters.age.includes(age) ? 'selected' : ''}
+            onClick={() =>
+              dispatch(getPets({...filters, age: toggleAgeOpt(age), page: 1}))
+            }
+          >
             {PetAgeName[age]}
           </AgeItem>
         ))}
