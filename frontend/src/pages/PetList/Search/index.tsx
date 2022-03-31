@@ -5,10 +5,6 @@ import {
   ColorDropDownContent,
   ColorName,
   ColorWrap,
-  LigationItem,
-  LigationItems,
-  LigationName,
-  LigationWrap,
   RefItem,
   RefItems,
   RefName,
@@ -26,6 +22,7 @@ import {
   ShelterWrap,
 } from '../../../styled/PetList/SearchBoard'
 import AgeFilter from './AgeFilter'
+import LigationFilter from './LigationFilter'
 import SexFilter from './SexFilter'
 
 const SearchBoard = () => {
@@ -34,14 +31,7 @@ const SearchBoard = () => {
       <Closed />
       <AgeFilter />
       <SexFilter />
-      <LigationWrap>
-        <LigationName>結紮</LigationName>
-        <LigationItems>
-          <LigationItem>已結紮</LigationItem>
-          <LigationItem>未結紮</LigationItem>
-          <LigationItem>未知</LigationItem>
-        </LigationItems>
-      </LigationWrap>
+      <LigationFilter />
       <ColorWrap>
         <ColorName>顏色</ColorName>
         <ColorDropDown>
