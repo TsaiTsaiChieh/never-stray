@@ -133,4 +133,23 @@ export class PetRepository extends BasicRepository<Pet> {
       return Promise.reject(new DBError(error.stack))
     }
   }
+
+  /**
+   * Select distinct on color
+   *
+   * @return {Promise<PetColor[]>}
+   */
+  async getColors(): Promise<PetColor[]> {
+    try {
+      const result: PetColor[] = await this.repository
+        .createQueryBuilder('pet')
+        .select('pet.color')
+        .distinct(true)
+        .orderBy({'pet.color': 'ASC'})
+        .getRawMany()
+      return Promise.resolve(result)
+    } catch (error) {
+      return Promise.reject(new DBError(error.stack))
+    }
+  }
 }
