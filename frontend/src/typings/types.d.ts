@@ -1,3 +1,5 @@
+type TernaryType = 'T' | 'F' | 'U'
+
 type PageType = {
   current: number
   size: number
