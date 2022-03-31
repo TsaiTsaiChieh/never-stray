@@ -114,6 +114,10 @@
           "shelter_tel"
         ]
       }
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
     ]
   }
 }
