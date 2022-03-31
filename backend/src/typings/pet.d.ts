@@ -105,3 +105,7 @@ type PetSearchReturningType = {
   }
   pets: PetInfoType[]
 }
+
+type PetColor = {
+  pet_color: string
+}
