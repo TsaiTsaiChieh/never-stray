@@ -66,6 +66,7 @@ type SearchPetFilters = {
   color?: string[]
   age: PetAgeExType[]
   region?: AreaRegionType[]
+  ligation: TernaryType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
   limit: number

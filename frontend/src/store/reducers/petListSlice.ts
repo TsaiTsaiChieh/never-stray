@@ -13,6 +13,7 @@ const initialState: PetListState = {
     kind: PetKind.ALL,
     age: [],
     sex: [],
+    ligation: [],
     limit: 18,
     page: 1,
     ascend: true,
@@ -53,6 +54,9 @@ export const getPets = createAsyncThunk(
     }
     if (filters.region) {
       url += `${filters.region.map((ele) => `&region[]=${ele}`).join('')}`
+    }
+    if (filters.ligation) {
+      url += `${filters.ligation.map((ele) => `&ligation[]=${ele}`).join('')}`
     }
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
