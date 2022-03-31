@@ -62,6 +62,7 @@ export enum Kind {
   'age',
   'sex',
   'ref',
+  'ligation',
   'created_at',
   'updated_at',
 ])
