@@ -58,14 +58,14 @@ type PetsAPIType = {
 
 type SearchPetFilters = {
   status?: PetStatusType[]
-  ref?: PetRefType[]
-  city_id?: number[]
-  shelter_id?: number[]
-  kind?: PetKindExType
+  ref: PetRefType[]
+  city_id: number[]
+  shelter_id: number[]
+  kind: PetKindExType
   sex: PetSexType[]
-  color?: string[]
+  color: string[]
   age: PetAgeExType[]
-  region?: AreaRegionType[]
+  region: AreaRegionType[]
   ligation: TernaryType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
