@@ -4,3 +4,7 @@ interface PetListState {
   pets?: IPet[]
   totalPage: number
 }
+
+interface EnumState {
+  colors: string[]
+}
