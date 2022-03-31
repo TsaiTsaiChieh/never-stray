@@ -83,6 +83,7 @@ type PetSearchQueryType = {
   color?: string[]
   age?: PetAgeType[]
   region?: AreaRegionType[]
+  ligation?: TernaryType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
   limit?: number

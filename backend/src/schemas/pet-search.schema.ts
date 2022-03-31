@@ -1,8 +1,8 @@
 import {JSONSchemaType} from 'ajv'
-import {Region} from '../entity/area.entity'
-import {Age, Kind, Ref, Sex, Status} from '../entity/pet.entity'
+
+import {CityID, Region} from '../entity/area.entity'
+import {Age, Kind, Ref, Sex, Status, Ternary} from '../entity/pet.entity'
 import {ShelterID} from '../entity/shelter.entity'
-import {CityID} from '../entity/area.entity'
 
 export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
   type: 'object',
@@ -28,6 +28,7 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
     shelter_id: {
       type: 'array',
       items: {type: 'integer', enum: Object.values(ShelterID)},
+      uniqueItems: true,
       nullable: true,
     },
     kind: {
@@ -43,7 +44,8 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
       nullable: true,
     },
     color: {
-      type: 'array', items: {type: 'string'},
+      type: 'array',
+      items: {type: 'string'},
       uniqueItems: true,
       nullable: true,
     },
@@ -56,6 +58,12 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
     region: {
       type: 'array',
       items: {type: 'string', enum: Object.values(Region)},
+      uniqueItems: true,
+      nullable: true,
+    },
+    ligation: {
+      type: 'array',
+      items: {type: 'string', enum: Object.values(Ternary)},
       uniqueItems: true,
       nullable: true,
     },
