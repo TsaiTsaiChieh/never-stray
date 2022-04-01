@@ -11,6 +11,7 @@ export const colors = {
     i100: '#ebf8f7',
     i200: '#ebfaf6',
     i300: '#61ded7',
+    i301: '#2edfdf',
     i400: '#00948b',
     i500: '#95EED9',
   },
