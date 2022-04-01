@@ -6,3 +6,8 @@ type PageType = {
   total: number
   count: number
 }
+
+type OptionsType = {
+  value: string
+  label: string
+}
