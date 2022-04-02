@@ -193,29 +193,16 @@ export const LigationWrap = styled(Wrap)``
 export const LigationName = styled(Name)``
 export const LigationItems = styled(Items)``
 export const LigationItem = styled(Button)``
-
-export const ColorSelector = styled(Selector)``
 export const ColorWrap = styled(Wrap)``
-export const ColorDropDownContent = styled(DropDownContent)``
-export const ColorDropDown = styled(DropDown)`
-  &::before {
-    content: "請選擇顏色";
-  }
-`
 export const ColorName = styled(Name)``
-export const Color = styled(Content)``
+export const ColorSelector = styled(Selector)``
+
 export const CityWrap = styled(Wrap)``
 export const CityName = styled(Name)``
 export const CitySelector = styled(Selector)``
+
 export const RegionWrap = styled(Wrap)``
-export const RegionDropDownContent = styled(DropDownContent)``
-export const RegionDropDown = styled(DropDown)`
-  &::before {
-    content: "請選擇地區";
-  }
-`
 export const RegionName = styled(Name)``
-export const Region = styled(Content)``
 
 export const ShelterWrap = styled(Wrap)``
 export const ShelterDownContent = styled(DropDownContent)``
