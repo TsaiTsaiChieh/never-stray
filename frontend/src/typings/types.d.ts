@@ -1,5 +1,7 @@
 type TernaryType = 'T' | 'F' | 'U'
 
+type RegionType = 'E' | 'W' | 'S' | 'N' | 'M'
+
 type PageType = {
   current: number
   size: number
