@@ -1,10 +1,7 @@
+import {useEffect} from 'react'
+import {useAppDispatch} from '../../../store/hooks'
 import {
   Closed,
-  Color,
-  ColorDropDown,
-  ColorDropDownContent,
-  ColorName,
-  ColorWrap,
   RefItem,
   RefItems,
   RefName,
@@ -24,23 +21,24 @@ import {
 import AgeFilter from './AgeFilter'
 import LigationFilter from './LigationFilter'
 import SexFilter from './SexFilter'
+import {getPetColors} from '../../../store/reducers/enumSlice'
+import ColorFilter from './ColorFilter'
 
 const SearchBoard = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getPetColors())
+  }, [])
+
+
   return (
-    <SearchBoardContainer id="SearchBoard">
+    <SearchBoardContainer>
       <Closed />
       <AgeFilter />
       <SexFilter />
       <LigationFilter />
-      <ColorWrap>
-        <ColorName>顏色</ColorName>
-        <ColorDropDown>
-          <ColorDropDownContent>
-            <Color>黑</Color>
-            <Color>白</Color>
-          </ColorDropDownContent>
-        </ColorDropDown>
-      </ColorWrap>
+      <ColorFilter />
       <RegionWrap>
         <RegionName>地區</RegionName>
         <RegionDropDown>
