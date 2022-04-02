@@ -121,10 +121,6 @@ const Selector = styled(Select)`
   .Select__multi-value {
     background: ${colors.tiffany.i100};
   }
-  /* .Select__dropdown-indicator {
-    background: url("/images/down-arrow.png");
-    background-repeat: no-repeat;
-  } */
 `
 export const Closed = styled(CloseButton)`
   ${MEDIA_DESKTOP} {
@@ -208,7 +204,9 @@ export const ColorDropDown = styled(DropDown)`
 `
 export const ColorName = styled(Name)``
 export const Color = styled(Content)``
-
+export const CityWrap = styled(Wrap)``
+export const CityName = styled(Name)``
+export const CitySelector = styled(Selector)``
 export const RegionWrap = styled(Wrap)``
 export const RegionDropDownContent = styled(DropDownContent)``
 export const RegionDropDown = styled(DropDown)`
