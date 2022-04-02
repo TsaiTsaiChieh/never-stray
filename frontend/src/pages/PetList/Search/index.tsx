@@ -1,16 +1,13 @@
 import {useEffect} from 'react'
+
 import {useAppDispatch} from '../../../store/hooks'
+import {getCities, getPetColors} from '../../../store/reducers/enumSlice'
 import {
   Closed,
   RefItem,
   RefItems,
   RefName,
   RefWrap,
-  Region,
-  RegionDropDown,
-  RegionDropDownContent,
-  RegionName,
-  RegionWrap,
   SearchBoardContainer,
   Shelter,
   ShelterDownContent,
@@ -19,16 +16,17 @@ import {
   ShelterWrap,
 } from '../../../styled/PetList/SearchBoard'
 import AgeFilter from './AgeFilter'
+import CityFilter from './CityFilter'
+import ColorFilter from './ColorFilter'
 import LigationFilter from './LigationFilter'
 import SexFilter from './SexFilter'
-import {getPetColors} from '../../../store/reducers/enumSlice'
-import ColorFilter from './ColorFilter'
 
 const SearchBoard = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(getPetColors())
+    dispatch(getCities())
   }, [])
 
 
@@ -39,15 +37,7 @@ const SearchBoard = () => {
       <SexFilter />
       <LigationFilter />
       <ColorFilter />
-      <RegionWrap>
-        <RegionName>地區</RegionName>
-        <RegionDropDown>
-          <RegionDropDownContent>
-            <Region>北部</Region>
-            <Region>中部</Region>
-          </RegionDropDownContent>
-        </RegionDropDown>
-      </RegionWrap>
+      <CityFilter />
       <ShelterWrap>
         <ShelterName>收容所</ShelterName>
         <ShelterDropDown>
