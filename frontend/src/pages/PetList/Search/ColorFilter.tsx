@@ -13,7 +13,7 @@ const ColorFilter = () => {
   const {colors} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
   const animatedComponents = makeAnimated()
-  const options: OptionsType[] = colors.map((ele) =>
+  const options: OptionType[] = colors.map((ele) =>
     ele ?
       {
         value: ele,
@@ -26,13 +26,13 @@ const ColorFilter = () => {
     dispatch(
       getPets({
         ...filters,
-        color: newValue.map((ele: OptionsType) => ele.value),
+        color: newValue.map((ele: OptionType) => ele.value),
       }),
     )
   }
 
   return (
-    <ColorWrap className="ColorWrap">
+    <ColorWrap>
       <ColorName>顏色</ColorName>
       <ColorSelector
         isMulti
