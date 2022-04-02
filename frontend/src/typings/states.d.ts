@@ -1,7 +1,7 @@
 interface PetListState {
   loading: boolean
   filters: SearchPetFilters
-  pets?: IPet[]
+  pets: IPet[]
   totalPage: number
 }
 
