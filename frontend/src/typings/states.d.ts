@@ -6,5 +6,9 @@ interface PetListState {
 }
 
 interface EnumState {
-  colors: string[]
+  colors: string[];
+  cities: {
+    id: number
+    name: string
+  }[]
 }
