@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks'
 import {getPets} from '../../store/reducers/petListSlice'
 import Banner from './Banner'
 import Menu from './Menu'
+import NotFound from './NotFound'
 import Profile from './Profile'
 import SearchBoard from './Search'
 
@@ -27,12 +28,14 @@ export default function PetList(): ReactElement {
         <div className="pet-list-wrap">
           <Banner />
           <div id="PetList">
-            <>
-              {petState.pets &&
-                petState.pets.map((ele: IPet) => (
-                  <Profile key={ele.id} pet={ele} />
-                ))}
-            </>
+            {petState.pets.length ? (
+              petState.pets &&
+              petState.pets.map((ele: IPet) => (
+                <Profile key={ele.id} pet={ele} />
+              ))
+            ) : (
+              <NotFound />
+            )}
           </div>
           <Pagination
             pageCount={petState.totalPage}
