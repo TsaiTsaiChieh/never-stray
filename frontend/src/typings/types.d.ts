@@ -7,7 +7,7 @@ type PageType = {
   count: number
 }
 
-type OptionsType = {
+type OptionType = {
   value: string
   label: string
 }
