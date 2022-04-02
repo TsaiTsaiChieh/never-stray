@@ -51,11 +51,6 @@ interface IPet {
   update_at: date
 }
 
-type PetsAPIType = {
-  page: PageType
-  pets: IPet[]
-}
-
 type SearchPetFilters = {
   status?: PetStatusType[]
   ref: PetRefType[]
