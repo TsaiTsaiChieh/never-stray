@@ -7,7 +7,6 @@ export enum Ternary {
 export enum PetRef {
   GOV = 'gov',
   MAP = 'map',
-  OWN = 'own',
 }
 
 export enum PetSex {
