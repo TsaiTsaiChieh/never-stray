@@ -3,8 +3,11 @@ type PetsAPIType = {
   pets: IPet[]
 }
 
-type CityAPIType = {
+type IDAndNameType = {
   id: number
-  region: RegionType
   name: string
+}
+
+type CityAPIType = IDAndNameType & {
+  region: RegionType
 }
