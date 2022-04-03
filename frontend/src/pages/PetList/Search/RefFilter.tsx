@@ -24,7 +24,7 @@ const RefFilter = () => {
   return (
     <RefWrap>
       <RefName>資料來源</RefName>
-      <RefItems id="RefItems">
+      <RefItems>
         {Object.values(PetRef).map((ref) => (
           <RefItem
             key={ref}
