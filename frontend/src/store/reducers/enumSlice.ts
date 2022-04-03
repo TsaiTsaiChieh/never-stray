@@ -9,10 +9,11 @@ const {REACT_APP_API_URL} = process.env
 const initialState: EnumState = {
   colors: [],
   cities: [],
+  shelters: [],
 }
 
 export const getPetColors = createAsyncThunk(
-  'petList/fetchColors',
+  'petColorEnum',
   async () => {
     const url = `${REACT_APP_API_URL}/enum/color`
     const res: AxiosResponse = await axios({method: 'GET', url})
@@ -21,11 +22,21 @@ export const getPetColors = createAsyncThunk(
 )
 
 export const getCities = createAsyncThunk(
-  'petList/fetchCities',
+  'cityEnum',
   async () => {
     const url = `${REACT_APP_API_URL}/enum/city`
     const res: AxiosResponse = await axios({method: 'GET', url})
     const data: CityAPIType[] = res.data
+    return data
+  },
+)
+
+export const getShelters = createAsyncThunk(
+  'shelterEnum',
+  async () => {
+    const url = `${REACT_APP_API_URL}/enum/shelter`
+    const res: AxiosResponse = await axios({method: 'GET', url})
+    const data: IDAndNameType[] = res.data
     return data
   },
 )
@@ -47,6 +58,12 @@ export const enumSlice = createSlice({
         }))
       },
     )
+    builder.addCase(getShelters.fulfilled, (state, action) => {
+      state.shelters = action.payload.map((ele: IDAndNameType) => ({
+        id: ele.id,
+        name: ele.name,
+      }))
+    })
   },
 })
 
