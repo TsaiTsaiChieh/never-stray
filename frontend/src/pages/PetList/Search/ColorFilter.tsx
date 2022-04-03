@@ -36,12 +36,12 @@ const ColorFilter = () => {
       <ColorName>顏色</ColorName>
       <ColorSelector
         isMulti
-        classNamePrefix="Select"
+        classNamePrefix='Select'
         closeMenuOnSelect={false}
         components={animatedComponents}
         options={options}
         onChange={onChange}
-        placeholder="請選擇顏色"
+        placeholder='請選擇顏色'
         noOptionsMessage={() => '無'}
       />
     </ColorWrap>
