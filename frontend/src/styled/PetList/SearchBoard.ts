@@ -5,7 +5,7 @@ import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 import {CloseButton} from '../Base/CloseButton'
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 80px;
   height: 40px;
   border-radius: 5px;
@@ -23,7 +23,7 @@ const Button = styled.button`
     background: ${colors.tiffany.i300};
   }
 `
-const Items = styled.div`
+export const Items = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 80px);
   grid-column-gap: 0.5rem;
@@ -32,14 +32,14 @@ const Items = styled.div`
     grid-column-gap: 0.6rem;
   }
 `
-const Wrap = styled.div`
+export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
   width: 90%;
   padding-bottom: 22px;
 `
-const Name = styled.h3`
+export const Name = styled.h3`
   font-size: ${sizes.xs};
   letter-spacing: 1px;
   padding-bottom: 7px;
@@ -48,7 +48,7 @@ const Name = styled.h3`
     padding-bottom: 12px;
   }
 `
-const Selector = styled(Select)`
+export const Selector = styled(Select)`
   font-size: ${sizes.xs};
   letter-spacing: 1px;
   .Select__control:hover {
@@ -78,9 +78,9 @@ export const Closed = styled(CloseButton)`
   }
 `
 export const SearchBoardContainer = styled.div`
-  display: none;
+  /* display: none; */
   width: 80%;
-  height: 70vh;
+  height: 73vh;
   position: fixed;
   align-content: center;
   grid-template-rows: repeat(auto-fill, 80px);
@@ -114,8 +114,8 @@ export const SearchBoardContainer = styled.div`
     display: grid;
     position: relative;
     height: 100%;
-    min-height: 700px;
-    max-height: 700px;
+    min-height: 800px;
+    max-height: 800px;
     align-content: space-between;
     width: 100%;
     min-width: 290px;
