@@ -29,11 +29,11 @@ const CityFilter = () => {
       <CityName>縣市</CityName>
       <CitySelector
         isMulti
-        classNamePrefix="Select"
+        classNamePrefix='Select'
         closeMenuOnSelect={false}
         options={options}
         onChange={onChange}
-        placeholder="請選擇顏色"
+        placeholder='請選擇顏色'
         noOptionsMessage={() => '無'}
         menuPosition='fixed'
       />
