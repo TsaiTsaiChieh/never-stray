@@ -52,7 +52,7 @@ interface IPet {
 }
 
 type SearchPetFilters = {
-  status?: PetStatusType[]
+  status: PetStatusType[]
   ref: PetRefType[]
   city_id: number[]
   shelter_id: number[]
