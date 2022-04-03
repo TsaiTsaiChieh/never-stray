@@ -4,10 +4,6 @@ import {useAppDispatch} from '../../../store/hooks'
 import {getCities, getPetColors} from '../../../store/reducers/enumSlice'
 import {
   Closed,
-  RefItem,
-  RefItems,
-  RefName,
-  RefWrap,
   SearchBoardContainer,
   Shelter,
   ShelterDownContent,
@@ -19,6 +15,7 @@ import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
 import ColorFilter from './ColorFilter'
 import LigationFilter from './LigationFilter'
+import RefFilter from './RefFilter'
 import SexFilter from './SexFilter'
 
 const SearchBoard = () => {
@@ -46,13 +43,7 @@ const SearchBoard = () => {
           </ShelterDownContent>
         </ShelterDropDown>
       </ShelterWrap>
-      <RefWrap>
-        <RefName>資料來源</RefName>
-        <RefItems>
-          <RefItem>政府收容所</RefItem>
-          <RefItem>認養地圖</RefItem>
-        </RefItems>
-      </RefWrap>
+      <RefFilter />
     </SearchBoardContainer>
   )
 }
