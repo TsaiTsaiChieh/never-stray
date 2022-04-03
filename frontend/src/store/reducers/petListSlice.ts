@@ -2,7 +2,6 @@ import axios, {AxiosResponse} from 'axios'
 
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
-import {RootState} from '../'
 import {PetKind, PetRef, PetStatus} from '../../constants/EnumType'
 
 const {REACT_APP_API_URL} = process.env
@@ -98,5 +97,4 @@ export const petListSlice = createSlice({
   },
 })
 
-export const selectPetList = (state: RootState) => state.petList
 export default petListSlice.reducer

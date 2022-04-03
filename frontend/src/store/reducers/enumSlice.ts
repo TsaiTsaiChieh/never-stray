@@ -2,8 +2,6 @@ import axios, {AxiosResponse} from 'axios'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 
-import {RootState} from '../'
-
 const {REACT_APP_API_URL} = process.env
 
 const initialState: EnumState = {
@@ -67,5 +65,4 @@ export const enumSlice = createSlice({
   },
 })
 
-export const selectEnum = (state: RootState) => state.enum
 export default enumSlice.reducer
