@@ -29,7 +29,7 @@ const initialState: PetListState = {
 }
 
 export const getPets = createAsyncThunk(
-  'petList/fetchByFilters',
+  'petList',
   async (filters: SearchPetFilters = initialState.filters) => {
     let url = `${REACT_APP_API_URL}/pets?page=${filters.page}` +
       `&limit=${filters.limit}`
