@@ -220,6 +220,7 @@ export const Shelter = styled(Content)``
 export const RefWrap = styled(Wrap)``
 export const RefName = styled(Name)``
 export const RefItems = styled(Items)`
+  justify-content: start;
   grid-column-gap: 1.8rem;
 `
 export const RefItem = styled(Button)`
