@@ -48,56 +48,6 @@ const Name = styled.h3`
     padding-bottom: 12px;
   }
 `
-const DropDownContent = styled.div`
-  display: none;
-  position: absolute;
-  background: ${colors.white.i200};
-  min-width: 261px;
-  top: 0px;
-  left: 1px;
-  box-shadow: 0 0 8px ${colors.gray.t100};
-  border-radius: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  opacity: 0.95;
-  z-index: 30;
-`
-const DropDown = styled.div`
-  display: flex;
-  width: 260px;
-  height: 40px;
-  position: relative;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid ${colors.gray.i100};
-  &:hover {
-    ${DropDownContent} {
-      display: block;
-    }
-  }
-  &::before {
-    padding-left: 15px;
-    color: ${colors.gray.i100};
-    font-size: ${sizes.xs};
-  }
-  &::after {
-    content: "";
-    background: url("/images/down-arrow.png");
-    background-repeat: no-repeat;
-    width: ${sizes.xs};
-    height: ${sizes.xs};
-    background-size: auto auto;
-    background-position: center center;
-    position: relative;
-    left: 150px;
-  }
-`
-const Content = styled.p`
-  color: ${colors.gray.i400};
-  margin: 10px 20px;
-  letter-spacing: 1px;
-  font-size: ${sizes.xs};
-`
 const Selector = styled(Select)`
   font-size: ${sizes.xs};
   letter-spacing: 1px;
@@ -205,17 +155,8 @@ export const RegionWrap = styled(Wrap)``
 export const RegionName = styled(Name)``
 
 export const ShelterWrap = styled(Wrap)``
-export const ShelterDownContent = styled(DropDownContent)``
-export const ShelterDropDown = styled(DropDown)`
-  &::before {
-    content: "請選擇收容所";
-  }
-  &::after {
-    left: 135px;
-  }
-`
 export const ShelterName = styled(Name)``
-export const Shelter = styled(Content)``
+export const ShelterSelector = styled(Selector)``
 
 export const RefWrap = styled(Wrap)``
 export const RefName = styled(Name)``
