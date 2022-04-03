@@ -86,7 +86,6 @@ export const SearchBoardContainer = styled.div`
   grid-template-rows: repeat(auto-fill, 80px);
   background: white;
   z-index: 10;
-  overflow-y: auto;
   grid-auto-flow: column;
   margin: auto;
   top: 0;

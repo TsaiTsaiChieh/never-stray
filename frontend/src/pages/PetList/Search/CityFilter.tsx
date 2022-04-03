@@ -35,7 +35,6 @@ const CityFilter = () => {
         onChange={onChange}
         placeholder='請選擇顏色'
         noOptionsMessage={() => '無'}
-        menuPosition='fixed'
       />
     </CityWrap>
   )
