@@ -61,6 +61,10 @@
     "eqeqeq": [
       "error",
       "always"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
     ]
   }
 }
