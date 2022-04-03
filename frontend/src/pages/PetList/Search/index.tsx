@@ -14,6 +14,7 @@ import LigationFilter from './LigationFilter'
 import RefFilter from './RefFilter'
 import SexFilter from './SexFilter'
 import ShelterFilter from './ShelterFilter'
+import StatusFilter from './StatusFilter'
 
 const SearchBoard = () => {
   const dispatch = useAppDispatch()
@@ -34,6 +35,7 @@ const SearchBoard = () => {
       <ColorFilter />
       <CityFilter />
       <ShelterFilter />
+      <StatusFilter />
       <RefFilter />
     </SearchBoardContainer>
   )
