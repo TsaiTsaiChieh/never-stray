@@ -22,11 +22,9 @@ export enum PetAge {
 }
 
 export enum PetStatus {
-  UNKNOWN = 'unknown',
   OPEN = 'open',
+  UNKNOWN = 'unknown',
   ADOPTED = 'adopted',
-  OTHER = 'other',
-  DEAD = 'dead',
 }
 
 export enum PetKind {
