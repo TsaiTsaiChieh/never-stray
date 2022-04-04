@@ -1,6 +1,7 @@
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm'
 
 export enum ShelterID {
+  NONE = 1, // 無
   KLU = 48, // 基隆市寵物銀行
   TPE = 49, // 臺北市動物之家
   TPH01 = 50, // 新北市板橋區公立動物之家
