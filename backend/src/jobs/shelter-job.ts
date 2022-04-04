@@ -45,7 +45,7 @@ class ShelterJob {
         )
         const data: ShelterAPIDataType = res.data[0]
         if (data) {
-          await this.repository.update(
+          const updateResult = await this.repository.update(
             {sub_id: ele.sub_id, accept_num: ele.accept_num},
             {
               city_id: cityConverter(data.animal_area_pkid),
@@ -65,7 +65,7 @@ class ShelterJob {
                 new Date(),
             },
           )
-          unknownCount -= 1
+          if (updateResult.affected) unknownCount -= 1
           console.info(
             `=== Update unknown status: [${ele.sub_id}, ${ele.accept_num}] ===`,
           )
@@ -110,10 +110,10 @@ class ShelterJob {
   }
 
   /**
-   * 更新動物的資料
+   * 更新寵物的資料
    *
-   * 搜尋屬於政府收容所的寵物資料，若未在狀態為待認領的 API 裡，則狀態改為未知，
-   * 反之，更新資料，並回傳需要新增的資料
+   * 在資料庫搜尋屬於政府收容所且開放領養的寵物資料，若未在狀態為待認領的 API 裡，
+   * 則狀態改為未知，反之，更新資料，並回傳需要新增的資料
    *
    * @param  {ShelterAPIDataType[]} data
    * @return {Promise<ShelterAPIDataType[]>}
@@ -168,7 +168,7 @@ class ShelterJob {
         }
         updatedIds.push(ele.sub_id)
       }
-      console.info(`=== Update ${updatedIds.length} data`)
+      console.info(`=== Update ${updatedIds.length} data ===`)
       // Filter out the ID which already been updated
       data = data.filter((ele) => !updatedIds.includes(ele.animal_id))
       console.info(`=== ${data.length} data should be stored ===`)
@@ -226,6 +226,7 @@ class ShelterJob {
 export async function getShelterData(): Promise<void> {
   const shelterJob = new ShelterJob()
 
+  console.info(`=== Shelter-Job start ===`)
   try {
     await shelterJob.updateUnknownStatus()
     const data: ShelterAPIDataType[] = await shelterJob.getData()
