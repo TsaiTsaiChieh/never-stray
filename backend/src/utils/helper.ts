@@ -65,3 +65,19 @@ export async function getLinks(
     els.map((el) => el.getAttribute('href')),
   )
 }
+
+/**
+ * Get all image src values
+ *
+ * @param  {Page} page the page from puppeteer
+ * @param  {string} eleName element name
+ * @return {Promise<(string | null)[]> }
+ */
+export async function getSources(
+  page: Page,
+  eleName: string,
+): Promise<(string | null)[]> {
+  return await page.$$eval(eleName, (els) =>
+    els.map((el) => el.getAttribute('src')),
+  )
+}
