@@ -83,6 +83,9 @@ export class Pet {
   })
   accept_num: string
 
+  @Column({type: 'varchar', length: 32, nullable: false})
+  name?: string
+
   @Column({type: 'enum', enum: Ref, nullable: false})
   ref: Ref
 

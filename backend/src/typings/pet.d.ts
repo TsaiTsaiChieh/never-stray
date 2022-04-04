@@ -24,6 +24,7 @@ type PetType = {
   id: number
   sub_id: number
   accept_number: string
+  name: string
   ref: PetRefType
   region: AreaRegionType
   city?: AreaType
