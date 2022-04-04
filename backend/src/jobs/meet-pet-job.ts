@@ -336,7 +336,6 @@ class MeetPetJob {
       title.includes('已有人認養') ||
       title.includes('結束') ||
       title.includes('已找到') ||
-      title.includes('已經') ||
       title.includes('已有緣') ||
       title.includes('到認養')
     ) {
