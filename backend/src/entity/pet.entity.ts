@@ -66,6 +66,7 @@ export enum Kind {
   'created_at',
   'updated_at',
 ])
+@Index(['ref'])
 /** @class Pet */
 export class Pet {
   @PrimaryGeneratedColumn()
