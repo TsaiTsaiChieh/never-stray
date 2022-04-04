@@ -136,7 +136,7 @@ export class Pet {
   @Column({type: 'text', nullable: true})
   remark: string
 
-  @Column({type: 'varchar', length: 16, nullable: true})
+  @Column({type: 'varchar', length: 128, nullable: true})
   phone: string
 
   @Column({type: 'json', nullable: true})
