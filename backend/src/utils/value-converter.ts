@@ -7,7 +7,7 @@ import {InvalidValueError} from './app-error'
  * City converter
  *
  * @param  {number} key
- * @return {City}
+ * @return {CityID}
  */
 export function cityConverter(key: number): CityID {
   switch (key) {
@@ -245,4 +245,36 @@ export function petStatusConverter(key: string): Status {
     default:
       return Status.UNKNOWN
   }
+}
+
+/**
+ * City name converter
+ *
+ * @param  {number} key
+ * @return {CityID}
+ */
+export function cityNameConverter(key: string): CityID {
+  if (key.includes('台北市')) return CityID.TPE
+  else if (key.includes('新北市')) return CityID.TPH
+  else if (key.includes('基隆市')) return CityID.KLU
+  else if (key.includes('桃園')) return CityID.TYC
+  else if (key.includes('新竹市')) return CityID.HSC
+  else if (key.includes('新竹縣')) return CityID.HSH
+  else if (key.includes('苗栗縣')) return CityID.MAL
+  else if (key.includes('宜蘭縣')) return CityID.ILN
+  else if (key.includes('花蓮縣')) return CityID.HWA
+  else if (key.includes('台中市')) return CityID.TXG
+  else if (key.includes('彰化縣')) return CityID.CWH
+  else if (key.includes('南投縣')) return CityID.NTO
+  else if (key.includes('雲林縣')) return CityID.YLH
+  else if (key.includes('嘉義市')) return CityID.CYI
+  else if (key.includes('嘉義縣')) return CityID.CHY
+  else if (key.includes('台南市')) return CityID.TNN
+  else if (key.includes('高雄市')) return CityID.KHH
+  else if (key.includes('屏東縣')) return CityID.IUH
+  else if (key.includes('台東縣')) return CityID.TTT
+  else if (key.includes('澎湖縣')) return CityID.PEH
+  else if (key.includes('金門')) return CityID.KMN
+  else if (key.includes('馬祖')) return CityID.LNN
+  else throw new InvalidValueError(`Invalid shelter value: ${key}`)
 }
