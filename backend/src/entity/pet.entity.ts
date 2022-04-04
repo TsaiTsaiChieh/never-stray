@@ -80,7 +80,7 @@ export class Pet {
     nullable: true,
     comment: 'sub id from shelter',
   })
-  accept_num?: string
+  accept_num: string
 
   @Column({type: 'enum', enum: Ref, nullable: false})
   ref: Ref
