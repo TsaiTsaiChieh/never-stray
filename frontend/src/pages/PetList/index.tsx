@@ -21,13 +21,13 @@ export default function PetList(): ReactElement {
   return (
     <>
       <Menu />
-      <div className="pet-wrapper">
-        <div className="search-board-wrap">
+      <div className='pet-wrapper'>
+        <div className='search-board-wrap'>
           <SearchBoard />
         </div>
-        <div className="pet-list-wrap">
+        <div className='pet-list-wrap'>
           <Banner />
-          <div id="PetList">
+          <div id='PetList'>
             {petState.pets.length ? (
               petState.pets &&
               petState.pets.map((ele: IPet) => (
@@ -41,7 +41,7 @@ export default function PetList(): ReactElement {
             pageCount={petState.totalPage}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
-            className="pet-list-pagination"
+            className='pet-list-pagination'
             dispatch={dispatch}
             state={petState}
             scrollTop={true}
