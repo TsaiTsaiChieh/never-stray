@@ -1,3 +1,4 @@
+import {PetRef} from '../../constants/EnumType'
 import {
   Age,
   Container,
@@ -26,11 +27,12 @@ const Profile = ({pet}: Props) => {
       <ProfileWrap>
         <Container>
           <ImgWrap>
-            <PawImg src="/images/PetList/paw.svg" />
+            <PawImg src='/images/PetList/paw.svg' />
             <Avatar image={pet.image[0]} />
             <Title>
-              {pet.color}
-              {petKindConverter(pet.kind)}
+              {pet.ref === PetRef.MAP ?
+                pet.name.substring(0, 8) :
+                `${pet.color}${petKindConverter(pet.kind)}`}
             </Title>
             <SexAgeWrap>
               <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
