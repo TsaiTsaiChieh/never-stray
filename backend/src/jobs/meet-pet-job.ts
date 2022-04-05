@@ -209,7 +209,6 @@ class MeetPetJob {
         this.classNameMapping('pet-name'),
       ))!
         .replace('動物小名: ', '')
-        .split(/[` ~!@#$%^&*(（)）_|+\-=?;:：'",，。.、<>\{\}\[\]\\\/]/gi)[0]
         .trim()
       const ageText = (await getElementValue(
         this.page,
