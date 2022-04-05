@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import {scheduleJob} from 'node-schedule'
 
+import {getMeetPetData} from './jobs/meet-pet-job'
 import {getShelterData} from './jobs/shelter-job'
 
 const App = require('./app').App
@@ -17,6 +18,13 @@ const JOB_PORT: number = parseInt(process.env.JOB_PORT!);
       '0 */1 * * *',
       async (): Promise<void> => {
         await getShelterData()
+      },
+    )
+    scheduleJob(
+      'Get meet pet website data scheduler',
+      '0 */1 * * *',
+      async (): Promise<void> => {
+        await getMeetPetData()
       },
     )
   })
