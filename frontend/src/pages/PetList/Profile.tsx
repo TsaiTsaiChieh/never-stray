@@ -29,7 +29,7 @@ const Profile = ({pet}: Props) => {
         <Container>
           <ImgWrap>
             <PawImg />
-            <Avatar image={pet.image[0].replace('http:', '')} />
+            <Avatar image={pet.image[0]} />
             <Title>
               {pet.ref === PetRef.MAP ?
                 pet.name.substring(0, 8) :
