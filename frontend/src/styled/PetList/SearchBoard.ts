@@ -78,7 +78,7 @@ export const Closed = styled(CloseButton)`
   }
 `
 export const SearchBoardContainer = styled.div`
-  /* display: none; */
+  display: none;
   width: 80%;
   height: 73vh;
   position: fixed;
@@ -86,6 +86,7 @@ export const SearchBoardContainer = styled.div`
   grid-template-rows: repeat(auto-fill, 80px);
   background: white;
   z-index: 10;
+  overflow-y: auto;
   grid-auto-flow: column;
   margin: auto;
   top: 0;
@@ -101,6 +102,7 @@ export const SearchBoardContainer = styled.div`
     position: absolute;
     height: auto;
     min-height: 900px;
+    overflow-y: visible;
     bottom: auto;
     right: auto;
     border-radius: 0;
