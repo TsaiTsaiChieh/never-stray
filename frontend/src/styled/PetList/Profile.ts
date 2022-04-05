@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import {PetStatus} from '../../constants/EnumType'
 import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 import {StyledAvatar} from './Avatar'
@@ -121,6 +122,7 @@ export const ImgWrap = styled.div`
 export const PawImg = styled.img`
   width: 80%;
   position: relative;
+  content: url("/images/PetList/paw.svg");
   top: 1.8rem;
   right: 0.75rem;
   ${MEDIA_TABLET} {
@@ -129,6 +131,22 @@ export const PawImg = styled.img`
     width: 90%;
   }
 `
+export const AdoptedImg = styled.img<{status: PetStatusType}>`
+  display: ${(props) =>
+    props.status === PetStatus.ADOPTED ? 'block' : 'none'};
+  position: absolute;
+  z-index: 20;
+  content: url("images/PetList/adopted.png");
+  width: 90px;
+  height: 90px;
+  bottom: -30px;
+  right: -31px;
+  ${MEDIA_TABLET} {
+    bottom: -32px;
+    right: -20px;
+  }
+`
+
 export const Title = styled.h3`
   position: relative;
   top: 0.5rem;
