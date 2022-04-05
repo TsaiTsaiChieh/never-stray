@@ -1,5 +1,5 @@
-import httpStatus from 'http-status'
-import puppeteer, {Browser, HTTPResponse, Page} from 'puppeteer'
+import axios from 'axios'
+import cheerio from 'cheerio'
 
 import {
   Age,
@@ -13,7 +13,6 @@ import {
 import {ShelterID} from '../entity/shelter.entity'
 import {PetRepository} from '../repository/pet.repository'
 import {AppError, DBError} from '../utils/app-error'
-import {getElementValue, getLinks, getSources} from '../utils/helper'
 import {cityNameConverter} from '../utils/value-converter'
 
 /** @class MeetPetJob */
@@ -21,8 +20,6 @@ class MeetPetJob {
   public url: string = process.env.MEET_PET!
   public kind: Kind
   protected repository: PetRepository
-  protected browser: Browser
-  protected page: Page
 
   /**
    * @constructor
@@ -32,17 +29,6 @@ class MeetPetJob {
   constructor(kind: Kind) {
     this.kind = kind
     this.repository = new PetRepository()
-  }
-
-  /** Builder */
-  async builder(): Promise<void> {
-    this.browser = await puppeteer.launch()
-    this.page = await this.browser.newPage()
-  }
-
-  /** Destructor */
-  destructor(): void {
-    this.browser.close()
   }
 
   /**
@@ -55,23 +41,17 @@ class MeetPetJob {
       const result: Pet[] = await this.repository.find({
         status: Status.UNKNOWN,
         ref: Ref.MAP,
-        kind: this.kind,
       })
       let unknownCount = result ? result.length : 0
 
       for (const ele of result) {
-        const res: HTTPResponse = await this.page.goto(
-          `${this.url}/content/${ele.sub_id}`,
+        const petData = await this.getDataByPage(ele.sub_id)
+        const updateResult = await this.repository.update(
+          {sub_id: ele.sub_id},
+          {...petData},
         )
-        if (res.status() === httpStatus.OK) {
-          const petData = await this.getDataByPage(ele.sub_id)
-          const updateResult = await this.repository.update(
-            {sub_id: ele.sub_id},
-            {...petData},
-          )
-          if (updateResult.affected) unknownCount -= 1
-          console.info(`=== Update unknown status: [${ele.sub_id}] ===`)
-        }
+        if (updateResult.affected) unknownCount -= 1
+        console.info(`=== Update unknown status: [${ele.sub_id}] ===`)
       }
       console.info(`There are still ${unknownCount} unknown status`)
       return Promise.resolve()
@@ -79,29 +59,28 @@ class MeetPetJob {
       return Promise.reject(new AppError(error))
     }
   }
+
   /**
    * 蒐集所有寵物詳細資料的網址
    *
    * @return {Promise<number[]>}
    */
   async getPetLinks(): Promise<number[]> {
-    let linkIDs: number[] = []
+    const linkIDs: number[] = []
     const url = `${this.url}/pets/${this.kind}`
     try {
-      await this.page.goto(url)
-      const lastPage = await getElementValue(this.page, '.pager-last')
-
+      const $ = await this.getCheerioRoot(url)
+      const lastPage: string = $('.pager-last').first().text()
       // Switch page to get links
       for (let i = 0; i < Number(lastPage); i++) {
-        await this.page.goto(`${url}?page=${i}`)
-
-        const linkByPage = <string[]>(
-          await getLinks(this.page, '.view-data-node-title > a')
-        )
-        const IDs = linkByPage.map((ele) =>
-          parseInt(ele.replace('/content/', '')),
-        )
-        linkIDs = [...linkIDs, ...IDs]
+        const $ = await this.getCheerioRoot(`${url}?page=${i}`)
+        $('.view-data-node-title')
+          .find('a')
+          .each((_, ele) => {
+            linkIDs.push(
+              parseInt($(ele).attr('href')!.replace('/content/', '')),
+            )
+          })
       }
       return Promise.resolve(linkIDs)
     } catch (error) {
@@ -130,7 +109,7 @@ class MeetPetJob {
   /**
    * 更新寵物的資訊
    *
-   * 爬蟲來的資料去和資料庫中，是認養地圖且是該種類的寵物做對應，
+   * 爬蟲來的資料去和資料庫中，是認養地圖的資料做對應，
    * 若未在資料庫的，則不濾除掉，反之，更新資料，最後回傳需要新增的資料
    *
    * @param  {Pet[]} data
@@ -141,16 +120,15 @@ class MeetPetJob {
       // Record IDs which been updated
       const updatedIds: number[] = []
       // Get the pet data from shelter that are open from DB
-      const result: Pet[] = await this.repository.find({
-        ref: Ref.MAP,
-        kind: this.kind,
-      })
+      const result: Pet[] = await this.repository.find({ref: Ref.MAP})
 
       for (const ele of data) {
         const idxOfData = result.findIndex((x) => x.sub_id === ele.sub_id)
         if (idxOfData !== -1) {
           await this.repository.update(
-            {sub_id: ele.sub_id, ref: Ref.MAP}, {...ele})
+            {sub_id: ele.sub_id, ref: Ref.MAP},
+            {...ele},
+          )
           updatedIds.push(ele.sub_id)
         }
       }
@@ -181,6 +159,22 @@ class MeetPetJob {
   }
 
   /**
+   * Get crawler response from callback
+   *
+   * @param  {string} url
+   * @return {Promise<void>}
+   */
+  async getCheerioRoot(url: string): Promise<cheerio.Root> {
+    try {
+      const {data} = await axios.get(url)
+      const $ = cheerio.load(data)
+      return Promise.resolve($)
+    } catch (error) {
+      return Promise.reject(new AppError(error))
+    }
+  }
+
+  /**
    * Return class name by given field
    *
    * @param  {string} fieldName
@@ -199,39 +193,31 @@ class MeetPetJob {
   async getDataByPage(linkID: number): Promise<Pet> {
     try {
       const url = `${this.url}/content/${linkID}`
-      await this.page.goto(url)
+      const $ = await this.getCheerioRoot(url)
+      const images: string[] = []
 
-      const cityText = <string>(
-        await getElementValue(this.page, this.classNameMapping('county'))
-      )
-      const name = (await getElementValue(
-        this.page,
-        this.classNameMapping('pet-name'),
-      ))!
+      const cityText = $(this.classNameMapping('county')).text()
+      const name = $(this.classNameMapping('pet-name'))
+        .text()
         .replace('動物小名: ', '')
         .trim()
-      const ageText = (await getElementValue(
-        this.page,
-        this.classNameMapping('pet-age'),
-      ))!.replace('動物的出生日（年齡）:', '')
-      const ligationText = <string>(
-        await getElementValue(this.page, this.classNameMapping('pet-medical'))
-      )
-      const title = <string>(await getElementValue(this.page, 'h1.title'))
-      const look = (await getElementValue(
-        this.page,
-        this.classNameMapping('pet-look'),
-      ))!.replace('簡單描述: ', '')
-      const personality = <string>(
-        (await getElementValue(
-          this.page,
-          this.classNameMapping('pet-habitate'),
-        ))!.replace('動物個性略述: ', '')
-      )
+      const ageText = $(this.classNameMapping('pet-age'))
+        .text()
+        .replace('動物的出生日（年齡）:', '')
+      const title = $('h1.title').text()
+      const look = $(this.classNameMapping('pet-look'))
+        .text()
+        .replace('簡單描述: ', '')
+      const personality = $(this.classNameMapping('pet-habitate'))
+        .text()
+        .replace('動物個性略述: ', '')
+      const ligationText = $(this.classNameMapping('pet-medical')).text()
       let sex = this.sexDetection(title)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(look)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(personality)
-
+      $(`${this.classNameMapping('pets-image')}`)
+        .find('img')
+        .each((_, ele) => images.push($(ele).attr('src')!))
       const now = new Date()
       const petData: Pet = {
         sub_id: linkID,
@@ -256,21 +242,9 @@ class MeetPetJob {
         rabies: Ternary.UNKNOWN,
         title,
         status: this.statusDetection(title),
-        remark: <string>(
-          await getElementValue(
-            this.page,
-            this.classNameMapping('limitation-desc'),
-          )
-        ),
-        phone: <string>(
-          await getElementValue(this.page, this.classNameMapping('tel'))
-        ),
-        image: <string[]>(
-          await getSources(
-            this.page,
-            `${this.classNameMapping('pets-image')} > img`,
-          )
-        ),
+        remark: $(this.classNameMapping('limitation-desc')).text(),
+        phone: $(this.classNameMapping('tel')).text(),
+        image: images,
         created_at: now,
         updated_at: now,
       }
@@ -361,7 +335,6 @@ async function getMeetPetDataByKind(kind: Kind): Promise<void> {
   console.info(`=== Meet-Pet-Job [${kind}] start ===`)
 
   try {
-    await meetPetJob.builder()
     await meetPetJob.updateUnknownStatus()
     const linkIDs = await meetPetJob.getPetLinks()
     const data: Pet[] = await meetPetJob.collectData(linkIDs)
@@ -369,8 +342,6 @@ async function getMeetPetDataByKind(kind: Kind): Promise<void> {
     await meetPetJob.saveData(dataShouldBeSaved)
   } catch (error) {
     return Promise.reject(error)
-  } finally {
-    meetPetJob.destructor()
   }
 }
 
