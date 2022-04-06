@@ -9,7 +9,6 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-paginate": "^7.1.1",
     "@types/react-redux": "^7.1.23",
-    "@types/redux-thunk": "^2.1.0",
     "axios": "^0.25.0",
     "http-status": "^1.5.0",
     "lottie-react-web": "^2.2.2",
