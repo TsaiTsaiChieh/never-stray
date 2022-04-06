@@ -25,3 +25,20 @@ export async function putObject(
     .upload({...params, Bucket: S3_BUCKET_NAME!})
     .promise()
 }
+
+/**
+ *
+ * Check folder contents on S3
+ *
+ * @param  {S3ListObjectsType} params
+ * @return  {Promise<(string | undefined)[]>} Object array of files
+ */
+export async function checkFolderContents(
+  params: S3ListObjectsType,
+): Promise<(string | undefined)[]> {
+  const res = await s3
+    .listObjectsV2({...params, Bucket: S3_BUCKET_NAME!})
+    .promise()
+  const files = res.Contents ? res.Contents.map((ele) => ele.Key) : []
+  return files
+}
