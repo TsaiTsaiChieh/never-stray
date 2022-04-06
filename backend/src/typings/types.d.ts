@@ -11,3 +11,9 @@ type ErrorType = {
   code: number
   status: 'fail' | 'error'
 }
+
+type S3UpdateParamsType = {
+  Key: string
+  Body: string
+  ContentType: string
+}
