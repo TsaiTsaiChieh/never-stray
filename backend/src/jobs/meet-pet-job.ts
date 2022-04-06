@@ -13,13 +13,16 @@ import {
 import {ShelterID} from '../entity/shelter.entity'
 import {PetRepository} from '../repository/pet.repository'
 import {AppError, DBError} from '../utils/app-error'
+import {checkFolderContents, putObject} from '../utils/aws-s3-actions'
 import {cityNameConverter} from '../utils/value-converter'
 
 /** @class MeetPetJob */
 class MeetPetJob {
   public url: string = process.env.MEET_PET!
+  public imgPath: string = process.env.MEET_PET_IMG_PATH!
   public kind: Kind
   protected repository: PetRepository
+  public imgFolder: string = 'meetpets'
 
   /**
    * @constructor
@@ -191,10 +194,16 @@ class MeetPetJob {
    * @return {Promise<Pet>} petData
    */
   async getDataByPage(linkID: number): Promise<Pet> {
+    const url = `${this.url}/content/${linkID}`
+    const images: string[] = []
+    let imgsFromS3: string[] = []
+
     try {
-      const url = `${this.url}/content/${linkID}`
       const $ = await this.getCheerioRoot(url)
-      const images: string[] = []
+      const folderContents = await checkFolderContents({
+        MaxKeys: 3,
+        Prefix: `${this.imgFolder}/${linkID}`,
+      }) as unknown as string[]
 
       const cityText = $(this.classNameMapping('county')).text()
       const name = $(this.classNameMapping('pet-name'))
@@ -215,10 +224,23 @@ class MeetPetJob {
       let sex = this.sexDetection(title)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(look)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(personality)
-      $(`${this.classNameMapping('pets-image')}`)
-        .find('img')
-        .each((_, ele) => images.push($(ele).attr('src')!))
       const now = new Date()
+      // Check if images exist from linkID folder, get the file URL from S3
+      // otherwise, upload image to S3
+      if (!folderContents.length) {
+        $(`${this.classNameMapping('pets-image')}`)
+          .find('img')
+          .each((_, ele) => images.push($(ele).attr('src')!))
+        imgsFromS3 = await Promise.all(
+          images.map(
+            async (ele): Promise<string> =>
+              await this.uploadImgUrlToBucket(
+                ele, `${this.imgFolder}/${linkID}`,
+              ),
+          ),
+        )
+      } else imgsFromS3 = folderContents!
+
       const petData: Pet = {
         sub_id: linkID,
         accept_num: linkID.toString(),
@@ -244,7 +266,7 @@ class MeetPetJob {
         status: this.statusDetection(title),
         remark: $(this.classNameMapping('limitation-desc')).text(),
         phone: $(this.classNameMapping('tel')).text(),
-        image: images,
+        image: imgsFromS3,
         created_at: now,
         updated_at: now,
       }
@@ -321,6 +343,31 @@ class MeetPetJob {
     ) {
       return Status.OTHER
     } else return Status.OPEN
+  }
+
+  /**
+   * Upload stream image to S3 bucket
+   *
+   * @param  {string} imgUrl
+   * @param  {string} key
+   */
+  async uploadImgUrlToBucket(imgUrl: string, key: string) {
+    try {
+      const {data} = await axios.get(imgUrl, {
+        responseType: 'stream',
+      })
+      const imgName = imgUrl
+        .substring(0, imgUrl.lastIndexOf('.'))
+        .replace(this.imgPath, '')
+      const {Location} = await putObject({
+        Key: `${key}/${imgName}`,
+        Body: data,
+        ContentType: 'image/jpeg',
+      })
+      return Promise.resolve(Location)
+    } catch (error) {
+      return Promise.reject(new AppError(error))
+    }
   }
 }
 
