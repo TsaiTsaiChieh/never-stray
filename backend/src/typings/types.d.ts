@@ -17,3 +17,10 @@ type S3UpdateParamsType = {
   Body: string
   ContentType: string
 }
+
+type S3ListObjectsType = {
+  /* Sets the maximum number of keys returned in the response. */
+  MaxKeys: number
+  /*  Limits the response to keys that begin with the specified prefix. */
+  Prefix: string
+}
