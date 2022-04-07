@@ -226,7 +226,7 @@ class ShelterJob {
 export async function getShelterData(): Promise<void> {
   const shelterJob = new ShelterJob()
 
-  console.info(`=== Shelter-Job start ===`)
+  console.info(`=== Shelter-Job start at ${new Date()}===`)
   try {
     await shelterJob.updateUnknownStatus()
     const data: ShelterAPIDataType[] = await shelterJob.getData()

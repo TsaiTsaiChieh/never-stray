@@ -377,7 +377,7 @@ class MeetPetJob {
  */
 async function getMeetPetDataByKind(kind: Kind): Promise<void> {
   const meetPetJob = new MeetPetJob(kind)
-  console.info(`=== Meet-Pet-Job [${kind}] start ===`)
+  console.info(`=== Meet-Pet-Job [${kind}] start at ${new Date()}===`)
 
   try {
     await meetPetJob.updateUnknownStatus()
