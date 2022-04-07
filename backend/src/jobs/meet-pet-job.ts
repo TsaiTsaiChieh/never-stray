@@ -224,7 +224,6 @@ class MeetPetJob {
       let sex = this.sexDetection(title)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(look)
       if (sex === Sex.UNKNOWN) sex = this.sexDetection(personality)
-      const now = new Date()
       // Check if images exist from linkID folder, get the file URL from S3
       // otherwise, upload image to S3
       if (!folderContents.length) {
@@ -267,8 +266,7 @@ class MeetPetJob {
         remark: $(this.classNameMapping('limitation-desc')).text(),
         phone: $(this.classNameMapping('tel')).text(),
         image: imgsFromS3,
-        created_at: now,
-        updated_at: now,
+        updated_at: new Date(),
       }
       return Promise.resolve(petData)
     } catch (error) {
