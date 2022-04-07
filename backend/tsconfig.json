@@ -6,11 +6,8 @@
     "diagnostics": true,
     "noEmit": true,
     /* Basic Options */
-    "lib": [
-      "ESNext"
-    ],
-    "target": "ES2020",
-    "module": "ESNext",
+    "target": "es5",
+    "module": "commonjs",
     "rootDir": "src",
     "outDir": "build",
     /* Strict Type-Checking Options */
