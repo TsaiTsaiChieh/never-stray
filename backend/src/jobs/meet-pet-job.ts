@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import cheerio from 'cheerio'
 
@@ -75,8 +73,7 @@ class MeetPetJob {
     const url = `${this.url}/pets/${this.kind}`
     try {
       const $ = await this.getCheerioRoot(url)
-      // const lastPage: string = $('.pager-last').first().text()
-      const lastPage = 1
+      const lastPage: string = $('.pager-last').first().text()
       // Switch page to get links
       for (let i = 0; i < Number(lastPage); i++) {
         const $ = await this.getCheerioRoot(`${url}?page=${i}`)
@@ -101,7 +98,6 @@ class MeetPetJob {
    */
   async collectData(linkIDs: number[]) {
     const allData: Pet[] = []
-    linkIDs = [linkIDs[0]]
     try {
       for (const ele of linkIDs) {
         const petData: Pet = await this.getDataByPage(ele)
@@ -208,7 +204,6 @@ class MeetPetJob {
         MaxKeys: 3,
         Prefix: `${this.imgFolder}/${linkID}`,
       }) as unknown as string[]
-      console.log('folderContents:', folderContents, '---')
 
       const cityText = $(this.classNameMapping('county')).text()
       const name = $(this.classNameMapping('pet-name'))
@@ -273,7 +268,6 @@ class MeetPetJob {
         image: imgsFromS3,
         updated_at: new Date(),
       }
-      console.log('petData:', petData, '---')
       return Promise.resolve(petData)
     } catch (error) {
       return Promise.reject(new AppError(error))
@@ -386,7 +380,7 @@ async function getMeetPetDataByKind(kind: Kind): Promise<void> {
   console.info(`=== Meet-Pet-Job [${kind}] start at ${new Date()}===`)
 
   try {
-    // await meetPetJob.updateUnknownStatus()
+    await meetPetJob.updateUnknownStatus()
     const linkIDs = await meetPetJob.getPetLinks()
     const data: Pet[] = await meetPetJob.collectData(linkIDs)
     const dataShouldBeSaved: Pet[] = await meetPetJob.updatePetInfo(data)
@@ -404,7 +398,7 @@ async function getMeetPetDataByKind(kind: Kind): Promise<void> {
 export async function getMeetPetData(): Promise<void> {
   try {
     await getMeetPetDataByKind(Kind.CAT)
-    // await getMeetPetDataByKind(Kind.DOG)
+    await getMeetPetDataByKind(Kind.DOG)
   } catch (error) {
     throw error
   }
