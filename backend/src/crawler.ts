@@ -15,14 +15,14 @@ const JOB_PORT: number = parseInt(process.env.JOB_PORT!);
     console.info(`[${env}] Crawler listening on ${JOB_PORT}`)
     scheduleJob(
       'Get shelter data scheduler',
-      '0 */1 * * *',
+      '* */1 * * *',
       async (): Promise<void> => {
         await getShelterData()
       },
     )
     scheduleJob(
       'Get meet pet website data scheduler',
-      '57 */1 * * *',
+      '*/4 * * * *',
       async (): Promise<void> => {
         await getMeetPetData()
       },
