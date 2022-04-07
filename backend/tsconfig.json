@@ -3,9 +3,7 @@
     "files": true
   },
   "compilerOptions": {
-    "diagnostics": true,
-    "noEmit": true,
-    /* Basic Options */
+    "diagnostics": true, /* Basic Options */
     "target": "es5",
     "module": "commonjs",
     "rootDir": "src",
