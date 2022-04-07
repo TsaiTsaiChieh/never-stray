@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <LogoGroup>
-        <Logo src="images/logo-small.svg" />
+        <Logo src='images/logo-small.svg' />
         <Slogan>
           <SloganCh>讓愛不流浪</SloganCh>
           <SloganEn>Never Stray</SloganEn>

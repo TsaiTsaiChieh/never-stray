@@ -21,7 +21,7 @@ function App(): ReactElement {
   }, [loading])
 
   return (
-    <div className="App">
+    <div className='App'>
       {loading ? (
         <DogWalking />
       ) : (
