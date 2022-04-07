@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from 'axios'
 
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
-import {PetKind, PetRef, PetStatus} from '../../constants/EnumType'
+import {PetKind, PetStatus} from '../../constants/EnumType'
 
 const {REACT_APP_API_URL} = process.env
 
@@ -10,7 +10,7 @@ const initialState: PetListState = {
   loading: true,
   filters: {
     status: [PetStatus.OPEN],
-    ref: [PetRef.GOV],
+    ref: [],
     city_id: [],
     shelter_id: [],
     kind: PetKind.ALL,
