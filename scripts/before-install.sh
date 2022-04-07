@@ -1,8 +1,8 @@
 echo "Before install"
 cd /home/ubuntu/never-stray
 git checkout main
-git reset --hard HEAD
-git pull
+git fetch --all
+git reset --hard origin/main
 echo "Docker clean"
 docker container prune -f
 docker image prune -f
