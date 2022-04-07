@@ -39,6 +39,8 @@ export async function checkFolderContents(
   const res = await s3
     .listObjectsV2({...params, Bucket: S3_BUCKET_NAME!})
     .promise()
-  const files = res.Contents ? res.Contents.map((ele) => ele.Key) : []
+  const files = res.Contents ?
+    res.Contents.map((ele) =>
+      `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${ele.Key}`) : []
   return files
 }
