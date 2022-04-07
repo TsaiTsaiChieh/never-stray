@@ -3,9 +3,14 @@
     "files": true
   },
   "compilerOptions": {
+    "diagnostics": true,
+    "noEmit": true,
     /* Basic Options */
-    "target": "es5",
-    "module": "commonjs",
+    "lib": [
+      "ESNext"
+    ],
+    "target": "ES2020",
+    "module": "ESNext",
     "rootDir": "src",
     "outDir": "build",
     /* Strict Type-Checking Options */
