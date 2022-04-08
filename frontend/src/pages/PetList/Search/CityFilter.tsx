@@ -37,7 +37,7 @@ const CityFilter = () => {
         components={animatedComponents}
         options={options}
         onChange={onChange}
-        placeholder='請選擇顏色'
+        placeholder='請選擇縣市'
         noOptionsMessage={() => '無'}
       />
     </CityWrap>
