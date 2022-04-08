@@ -1,16 +1,19 @@
 import styled from 'styled-components'
-import {MEDIA_TABLET} from '../../constants/Mixin'
+
+import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, filters, sizes} from '../../constants/Variables'
+import {FilterContainer} from './FilterButton'
 
 export const Text = styled.span`
   font-size: ${sizes.s};
   margin: 0 10px 0 10px;
   padding: 10px 0 10px 0;
   ${MEDIA_TABLET} {
+    font-size: 15px;
     margin-left: 0px;
   }
   &::first-letter {
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
   &::after {
     text-align: center;
@@ -48,12 +51,11 @@ export const Wrap = styled.div`
     }
   }
 `
-export const StyledMenu = styled.div`
-  width: 100%;
-  background-color: ${colors.tiffany.i100};
+export const KindContainer = styled.div`
+  display: flex;
   padding: 7px 0 7px 0;
   display: grid;
-  grid-template-columns: repeat(3, 3.8rem);
+  grid-template-columns: repeat(3, 3.4rem);
   grid-column-gap: 0.3rem;
   justify-content: center;
   ${MEDIA_TABLET} {
@@ -83,6 +85,18 @@ export const StyledMenu = styled.div`
     }
     ${Img} {
       filter: ${filters.white.i100};
+    }
+  }
+`
+export const StyledMenu = styled.div`
+  background-color: ${colors.tiffany.i100};
+  justify-content: center;
+  display: flex;
+  position: relative;
+  ${MEDIA_DESKTOP} {
+    /* filter icon */
+    ${FilterContainer} {
+      display: none;
     }
   }
 `
