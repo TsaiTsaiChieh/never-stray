@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 import {CloseButton} from '../Base/CloseButton'
+import {FilterContainer} from './FilterButton'
 
 export const Button = styled.button`
   width: 80px;
@@ -97,6 +98,10 @@ export const SearchBoardContainer = styled.div`
   padding-top: 50px;
   padding-bottom: 20px;
   padding-left: 30px;
+  /* filter icon */
+  ${FilterContainer} {
+    display: none;
+  }
   ${MEDIA_TABLET} {
     display: none;
     position: absolute;
@@ -128,6 +133,11 @@ export const SearchBoardContainer = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
+    padding-top: 80px;
+    /* filter icon */
+    ${FilterContainer} {
+      display: flex;
+    }
   }
 `
 export const AgeWrap = styled(Wrap)``
