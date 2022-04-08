@@ -36,7 +36,6 @@ export const colors = {
 export const filters = {
   white: {
     i100: 'invert(100%) sepia(11%) saturate(7500%) hue-rotate(194deg) brightness(115%) contrast(109%)',
-    i200: 'invert(99%) sepia(79%) saturate(0%) hue-rotate(148deg) brightness(81%) contrast(80%)',
   },
   tiffany: {
     i300: 'brightness(0) saturate(100%) invert(83%) sepia(54%) saturate(409%) hue-rotate(112deg) brightness(90%) contrast(92%)',
@@ -44,5 +43,8 @@ export const filters = {
   },
   blue: {
     i100: 'invert(63%) sepia(86%) saturate(3306%) hue-rotate(173deg) brightness(94%) contrast(82%)',
+  },
+  gray: {
+    i100: 'invert(99%) sepia(79%) saturate(0%) hue-rotate(148deg) brightness(81%) contrast(80%)',
   },
 }
