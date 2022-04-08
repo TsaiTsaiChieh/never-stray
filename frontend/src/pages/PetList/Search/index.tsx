@@ -7,6 +7,7 @@ import {
   getShelters,
 } from '../../../store/reducers/enumSlice'
 import {Closed, SearchBoardContainer} from '../../../styled/PetList/SearchBoard'
+import {FilterButton} from '../FilterButton'
 import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
 import ColorFilter from './ColorFilter'
@@ -28,6 +29,7 @@ const SearchBoard = () => {
 
   return (
     <SearchBoardContainer>
+      <FilterButton />
       <Closed />
       <AgeFilter />
       <SexFilter />
