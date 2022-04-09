@@ -1,6 +1,8 @@
 import {ReactElement, useEffect} from 'react'
 
 import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import Mask from '../../components/Mask'
 import Pagination from '../../components/Pagination'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
 import {getPets} from '../../store/reducers/petListSlice'
@@ -20,6 +22,8 @@ export default function PetList(): ReactElement {
 
   return (
     <>
+      <Mask />
+      <Header />
       <Menu />
       <div className='pet-wrapper'>
         <div className='search-board-wrap'>
