@@ -27,6 +27,7 @@ const ColorFilter = () => {
       getPets({
         ...filters,
         color: newValue.map((ele: OptionType) => ele.value),
+        page: 1,
       }),
     )
   }
