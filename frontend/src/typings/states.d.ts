@@ -10,3 +10,7 @@ interface EnumState {
   cities: IDAndNameType[]
   shelters: IDAndNameType[]
 }
+
+interface UIState {
+  searchBoardIsShow: boolean
+}
