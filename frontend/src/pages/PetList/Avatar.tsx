@@ -7,7 +7,9 @@ interface Props {
   image: string
 }
 const Avatar = ({image}: Props) => {
-  const loaded = useProgressiveImage(image)
+  const loaded = !image ?
+    '/images/PetList/dog-no-pic.svg' :
+    useProgressiveImage(image)
 
   const style: CSSProperties = {
     backgroundImage: `url(${loaded || '/images/PetList/pet-mask.svg'})`,
