@@ -74,12 +74,17 @@ export const Selector = styled(Select)`
   }
 `
 export const Closed = styled(CloseButton)`
+  &:hover::after,
+  &:hover::before {
+    background: ${colors.tiffany.i600};
+    transition: all 0.5s ease;
+  }
   ${MEDIA_DESKTOP} {
     display: none;
   }
 `
 export const SearchBoardContainer = styled.div<{isShow: boolean}>`
-  display: ${(props) => props.isShow ? 'grid' : 'none'};
+  display: ${(props) => (props.isShow ? 'grid' : 'none')};
   width: 80%;
   height: 73vh;
   position: fixed;
