@@ -1,9 +1,10 @@
-import {isDesktop} from 'react-device-detect'
+import {isDesktop, isMobile} from 'react-device-detect'
 
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState: UIState = {
   searchBoardIsShow: isDesktop,
+  searchMaskIsShow: false,
 }
 
 export const uiSlice = createSlice({
@@ -12,9 +13,11 @@ export const uiSlice = createSlice({
   reducers: {
     filterBtnOnClick: (state) => {
       state.searchBoardIsShow = true
+      if (isMobile) state.searchMaskIsShow = true
     },
     closeSearchBoard: (state) => {
       state.searchBoardIsShow = false
+      if (isMobile) state.searchMaskIsShow = false
     },
   },
 })
