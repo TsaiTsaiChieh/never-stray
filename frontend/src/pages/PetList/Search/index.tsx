@@ -1,11 +1,12 @@
 import {useEffect} from 'react'
 
-import {useAppDispatch} from '../../../store/hooks'
+import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {
   getCities,
   getPetColors,
   getShelters,
 } from '../../../store/reducers/enumSlice'
+import {closeSearchBoard} from '../../../store/reducers/uiSlice'
 import {Closed, SearchBoardContainer} from '../../../styled/PetList/SearchBoard'
 import {FilterButton} from '../FilterButton'
 import AgeFilter from './AgeFilter'
@@ -18,6 +19,7 @@ import ShelterFilter from './ShelterFilter'
 import StatusFilter from './StatusFilter'
 
 const SearchBoard = () => {
+  const {searchBoardIsShow} = useAppSelector((state) => state.ui)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -28,9 +30,9 @@ const SearchBoard = () => {
 
 
   return (
-    <SearchBoardContainer>
+    <SearchBoardContainer isShow={searchBoardIsShow}>
       <FilterButton />
-      <Closed />
+      <Closed onClick={() => dispatch(closeSearchBoard())} />
       <AgeFilter />
       <SexFilter />
       <LigationFilter />
