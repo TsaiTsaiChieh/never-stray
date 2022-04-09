@@ -8,28 +8,29 @@ export const sizes = {
 }
 export const colors = {
   tiffany: {
-    i100: '#ebf8f7',
-    i200: '#ebfaf6',
-    i300: '#61ded7',
-    i301: '#2edfdf',
-    i400: '#00948b',
+    i100: '#EBF8F7',
+    i200: '#EBFAF6',
+    i300: '#61DED7',
+    i301: '#2EDFDF',
+    i400: '#00948B',
     i500: '#95EED9',
+    i600: '#3A6B68',
   },
   blue: {
     i100: '#2D9CDB',
   },
   gray: {
-    i100: '#bdbdbd',
-    i200: '#9fa0a0',
+    i100: '#BDBDBD',
+    i200: '#9FA0A0',
     i300: '#828282',
-    i400: '#4f4f4f',
+    i400: '#4F4F4F',
     i500: '#333333',
-    i600: '#e2f5f0',
+    i600: '#E2F5F0',
     t100: 'rgba(151, 151, 151, 0.3)',
   },
   white: {
-    i100: '#ffffff',
-    i200: '#f9f9f9',
+    i100: '#FFFFFF',
+    i200: '#F9F9F9',
   },
 }
 
