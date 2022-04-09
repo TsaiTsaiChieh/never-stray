@@ -87,7 +87,6 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
     ascend: {
       type: 'boolean',
       enum: [true, false],
-      default: true,
       nullable: true,
     },
     limit: {
