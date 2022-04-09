@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
-import {colors, filters, sizes} from '../../constants/Variables'
-
+import {colors, sizes} from '../../constants/Variables'
+import {FiFilter} from 'react-icons/fi'
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@ export const FilterContainer = styled.div`
   }
 `
 export const Name = styled.div`
-  margin-left: 7px;
+  margin-left: 2px;
   font-size: ${sizes.s};
   color: ${colors.tiffany.i300};
   letter-spacing: 1px;
@@ -34,12 +34,11 @@ export const Name = styled.div`
     color: ${colors.gray.i300};
   }
 `
-export const Icon = styled.img`
+export const Icon = styled(FiFilter)`
   width: 18px;
   height: 16px;
-  content: url("/images/filter.svg");
-  filter: ${filters.tiffany.i300};
+  color: ${colors.tiffany.i300};
   ${MEDIA_DESKTOP} {
-    filter: ${filters.gray.i100};
+    color: ${colors.gray.i100}
   }
 `
