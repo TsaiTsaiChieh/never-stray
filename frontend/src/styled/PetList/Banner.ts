@@ -5,11 +5,9 @@ export const StyledBanner = styled.img`
   display: block;
   margin: auto;
   content: url("/images/PetList/banner-mobile.png");
-  width: 90%;
+  width: 100%;
   ${MEDIA_TABLET} {
     content: url("/images/PetList/banner-tablet.png");
-    width: 720px;
-    height: 145.24px;
     padding-top: 15px;
   }
 `
