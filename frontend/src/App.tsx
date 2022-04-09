@@ -1,8 +1,8 @@
 import {ReactElement, useEffect, useState} from 'react'
+import {Route, Routes} from 'react-router-dom'
 
 import {pingDB} from './api/PingAPI'
 import DogWalking from './components/DogWalking'
-import Header from './components/Header'
 import PetList from './pages/PetList'
 
 function App(): ReactElement {
@@ -25,10 +25,9 @@ function App(): ReactElement {
       {loading ? (
         <DogWalking />
       ) : (
-        <>
-          <Header />
-          <PetList />
-        </>
+        <Routes>
+          <Route path='/' element={<PetList />} />
+        </Routes>
       )}
     </div>
   )
