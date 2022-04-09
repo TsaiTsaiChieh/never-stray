@@ -13,4 +13,5 @@ interface EnumState {
 
 interface UIState {
   searchBoardIsShow: boolean
+  searchMaskIsShow: boolean
 }
