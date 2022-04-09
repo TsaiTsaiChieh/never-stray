@@ -135,7 +135,7 @@ export const AdoptedImg = styled.img<{status: PetStatusType}>`
   display: ${(props) =>
     props.status === PetStatus.ADOPTED ? 'block' : 'none'};
   position: absolute;
-  z-index: 20;
+  z-index: 9;
   content: url("images/PetList/adopted.png");
   width: 90px;
   height: 90px;
