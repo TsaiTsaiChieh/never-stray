@@ -78,8 +78,8 @@ export const Closed = styled(CloseButton)`
     display: none;
   }
 `
-export const SearchBoardContainer = styled.div`
-  display: none;
+export const SearchBoardContainer = styled.div<{isShow: boolean}>`
+  display: ${(props) => props.isShow ? 'grid' : 'none'};
   width: 80%;
   height: 73vh;
   position: fixed;
@@ -103,7 +103,6 @@ export const SearchBoardContainer = styled.div`
     display: none;
   }
   ${MEDIA_TABLET} {
-    display: none;
     position: absolute;
     height: auto;
     min-height: 900px;
@@ -118,7 +117,6 @@ export const SearchBoardContainer = styled.div`
     box-shadow: 8px 0 12px ${colors.gray.t100};
   }
   ${MEDIA_DESKTOP} {
-    display: grid;
     position: relative;
     height: 100%;
     min-height: 800px;
