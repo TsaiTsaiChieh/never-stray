@@ -32,3 +32,8 @@ export enum PetKind {
   CAT = 'cat',
   DOG = 'dog',
 }
+
+export enum Order {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
