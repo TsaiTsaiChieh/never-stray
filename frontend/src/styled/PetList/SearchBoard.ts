@@ -28,7 +28,7 @@ export const Items = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 80px);
   grid-column-gap: 0.5rem;
-  justify-content: space-between;
+  justify-content: start;
   ${MEDIA_TABLET} {
     grid-column-gap: 0.6rem;
   }
@@ -39,6 +39,7 @@ export const Wrap = styled.div`
   position: relative;
   width: 90%;
   padding-bottom: 22px;
+  
 `
 export const Name = styled.h3`
   font-size: ${sizes.xs};
@@ -84,7 +85,7 @@ export const Closed = styled(CloseButton)`
   }
 `
 export const SearchBoardContainer = styled.div<{isShow: boolean}>`
-  display: ${(props) => (props.isShow ? 'grid' : 'none')};
+  display: ${(props) => (props.isShow) ? 'block' : 'none'};
   width: 80%;
   height: 73vh;
   position: fixed;
