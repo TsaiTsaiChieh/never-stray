@@ -7,11 +7,15 @@ import {Selector} from './SearchBoard'
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   width: 100%;
   height: 60px;
   box-shadow: 0px 0 8px ${colors.gray.t100};
   border-radius: 5px;
   margin-top: 30px;
+  ${MEDIA_TABLET} {
+    justify-content: flex-start
+  }
 `
 export const Title = styled.div`
   display: none;
@@ -26,17 +30,17 @@ export const Title = styled.div`
 `
 
 export const UpdateTimeOrderSelector = styled(Selector)`
-  margin-left: 20px;
   width: 135px;
   ${MEDIA_TABLET} {
     width: 180px;
+    margin-left: 20px;
   }
 `
 
 export const AgeOrderSelect = styled(Selector)`
-  margin-left: 20px;
   width: 135px;
   ${MEDIA_TABLET} {
     width: 180px;
+    margin-left: 20px;
   }
 `
