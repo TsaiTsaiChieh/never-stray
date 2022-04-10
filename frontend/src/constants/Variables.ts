@@ -26,6 +26,7 @@ export const colors = {
     i400: '#4F4F4F',
     i500: '#333333',
     i600: '#E2F5F0',
+    i700: '#BDBDBD',
     t100: 'rgba(151, 151, 151, 0.3)',
   },
   white: {
