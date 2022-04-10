@@ -44,6 +44,7 @@ const ColorFilter = () => {
         onChange={onChange}
         placeholder='請選擇顏色'
         noOptionsMessage={() => '無'}
+        isSearchable={false}
       />
     </ColorWrap>
   )

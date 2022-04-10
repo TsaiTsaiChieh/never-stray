@@ -39,7 +39,7 @@ const ShelterFilter = () => {
         onChange={onChange}
         placeholder='請選擇收容所'
         noOptionsMessage={() => '無'}
-
+        isSearchable={false}
       />
     </ShelterWrap>
   )

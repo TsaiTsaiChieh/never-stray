@@ -39,6 +39,7 @@ const CityFilter = () => {
         onChange={onChange}
         placeholder='請選擇縣市'
         noOptionsMessage={() => '無'}
+        isSearchable={false}
       />
     </CityWrap>
   )

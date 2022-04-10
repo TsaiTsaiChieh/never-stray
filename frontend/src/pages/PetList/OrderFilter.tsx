@@ -62,6 +62,7 @@ const OrderFilter = () => {
         }}
         value={updateTimeOrder}
         onChange={onChange}
+        isSearchable={false}
       />
       <AgeOrderSelect
         classNamePrefix='Select'
@@ -72,6 +73,7 @@ const OrderFilter = () => {
         }}
         value={ageOrder}
         onChange={onChange}
+        isSearchable={false}
       />
     </Wrap>
   )
