@@ -10,7 +10,7 @@ export const Button = styled.button`
   width: 80px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid ${colors.gray.i100};
+  border: 1px solid ${colors.gray.i700};
   font-size: ${sizes.xs};
   letter-spacing: 1px;
   background: ${colors.white.i100};
@@ -53,6 +53,9 @@ export const Name = styled.h3`
 export const Selector = styled(Select)`
   font-size: ${sizes.xs};
   letter-spacing: 1px;
+  .Select__control{
+    border-color: ${colors.gray.i700};
+  }
   .Select__control:hover {
     border-color: ${colors.tiffany.i301};
   }
