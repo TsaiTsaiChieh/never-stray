@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Column,
   CreateDateColumn,
@@ -83,7 +81,7 @@ export class Pet {
   })
   accept_num: string
 
-  @Column({type: 'varchar', length: 32, nullable: false})
+  @Column({type: 'varchar', length: 32, nullable: true})
   name?: string
 
   @Column({type: 'enum', enum: Ref, nullable: false})
@@ -92,14 +90,14 @@ export class Pet {
   @Column({type: 'tinyint', nullable: false})
   city_id: number
 
-  @ManyToOne((type) => Area)
+  @ManyToOne((_) => Area)
   @JoinColumn({name: 'city_id', referencedColumnName: 'id'})
   city?: number
 
   @Column({type: 'tinyint', nullable: false})
   shelter_id: number
 
-  @ManyToOne((type) => Shelter)
+  @ManyToOne((_) => Shelter)
   @JoinColumn({name: 'shelter_id', referencedColumnName: 'id'})
   shelter?: number
 
