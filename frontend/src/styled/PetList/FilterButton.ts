@@ -3,16 +3,17 @@ import styled from 'styled-components'
 import {MEDIA_DESKTOP, MEDIA_TABLET} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 import {FiFilter} from 'react-icons/fi'
-export const FilterContainer = styled.div`
-  display: flex;
+
+export const FilterContainer = styled.div<{isShow: boolean}>`
+  display: ${(props) => props.isShow ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 16px;
-  left: 16px;
+  left: 6%;
   cursor: pointer;
   ${MEDIA_TABLET} {
-    top: 26px;
+    top: 22px;
     left: 26px;
   }
   ${MEDIA_DESKTOP} {
