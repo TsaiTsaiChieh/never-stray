@@ -51,10 +51,9 @@ export const Wrap = styled.div`
     }
   }
 `
-export const KindContainer = styled.div`
-  display: flex;
+export const KindContainer = styled.div<{isShow: boolean}>`
+  display: ${(props) => (props.isShow ? 'grid' : 'none')};
   padding: 7px 0 7px 0;
-  display: grid;
   grid-template-columns: repeat(3, 3.4rem);
   grid-column-gap: 0.3rem;
   justify-content: center;
@@ -91,6 +90,7 @@ export const KindContainer = styled.div`
 export const StyledMenu = styled.div`
   background-color: ${colors.tiffany.i100};
   justify-content: center;
+  align-items: center;
   display: flex;
   position: relative;
   ${MEDIA_DESKTOP} {
@@ -99,4 +99,58 @@ export const StyledMenu = styled.div`
       display: none;
     }
   }
+`
+export const TextFieldGroup = styled.div<{isShow: boolean}>`
+  display: ${(props) => (props.isShow ? 'flex' : 'none')};
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 30px;
+  background: ${colors.white.i100};
+  border-radius: 25px;
+  justify-content: flex-end;
+  border: 1px solid ${colors.gray.i700};
+  z-index: 9;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  &:hover {
+    border: 1px solid ${colors.tiffany.i300};
+  }
+`
+export const TextField = styled.input`
+  color: ${colors.gray.i400};
+  position: absolute;
+  letter-spacing: 1px;
+  left: 30px;
+  font-size: ${sizes.xs};
+  border: none;
+  &::placeholder {
+    color: ${colors.gray.i100};
+  }
+`
+export const SearchIcon = styled.img`
+  position: absolute;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  content: url("/images/PetList/search.svg");
+`
+
+export const KeywordSearchButton = styled.img<{isShow: boolean}>`
+  width: 30px;
+  height: 30px;
+  display: ${(props) => (props.isShow ? 'block' : 'none')};
+  position: absolute;
+  right: 6%;
+  content: url("/images/PetList/search-in-circle.svg");
+`
+export const CloseKeywordSearchButton = styled.img<{isShow: boolean}>`
+  display: ${(props) => (props.isShow ? 'block' : 'none')};
+  width: 24px;
+  height: 24px;
+  content: url("/images/PetList/close-text-search.svg");
+  position: absolute;
+  right: 3%;
+  z-index: 10;
 `
