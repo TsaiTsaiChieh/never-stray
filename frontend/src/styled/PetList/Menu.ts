@@ -25,7 +25,8 @@ export const Img = styled.img`
   filter: ${filters.tiffany.i400};
   ${MEDIA_TABLET} {
     display: block;
-    width: 32%;
+    width: 29px;
+    height: 29px;
     padding: 4px 8px 4px 8px;
   }
 `
@@ -58,7 +59,7 @@ export const KindContainer = styled.div<{isShow: boolean}>`
   grid-column-gap: 0.3rem;
   justify-content: center;
   ${MEDIA_TABLET} {
-    padding: ${sizes.s} 0 ${sizes.s} 0;
+    padding: 11.5px 0 11.5px 0;
     grid-template-columns: repeat(3, 6rem);
     grid-column-gap: 1rem;
   }
@@ -117,6 +118,16 @@ export const TextFieldGroup = styled.div<{isShow: boolean}>`
   &:hover {
     border: 1px solid ${colors.tiffany.i300};
   }
+  ${MEDIA_TABLET} {
+    width: 650px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  ${MEDIA_DESKTOP} {
+    width: 280px;
+    position: absolute;
+    right: 40px;
+  }
 `
 export const TextField = styled.input`
   color: ${colors.gray.i400};
@@ -144,6 +155,11 @@ export const KeywordSearchButton = styled.img<{isShow: boolean}>`
   position: absolute;
   right: 6%;
   content: url("/images/PetList/search-in-circle.svg");
+  ${MEDIA_TABLET} {
+    width: 40px;
+    height: 40px;
+    right: 4%;
+  }
 `
 export const CloseKeywordSearchButton = styled.img<{isShow: boolean}>`
   display: ${(props) => (props.isShow ? 'block' : 'none')};
