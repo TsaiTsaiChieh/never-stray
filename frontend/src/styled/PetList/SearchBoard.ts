@@ -180,8 +180,8 @@ export const RefWrap = styled(Wrap)``
 export const RefName = styled(Name)``
 export const RefItems = styled(Items)`
   justify-content: start;
-  grid-column-gap: 1.8rem;
+  grid-column-gap: 2.4rem;
 `
 export const RefItem = styled(Button)`
-  width: 100px;
+  width: 110px;
 `
