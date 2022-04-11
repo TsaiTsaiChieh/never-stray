@@ -5,28 +5,28 @@ import {colors, filters, sizes} from '../constants/Variables'
 
 export const StyledHeader = styled.div`
   width: 100%;
-  height: 32%;
+  align-items: center;
   border-bottom: 4px solid ${colors.tiffany.i300};
   display: flex;
   justify-content: center;
   ${MEDIA_TABLET} {
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
     border-bottom: 5px solid ${colors.tiffany.i300};
   }
 `
 export const LogoGroup = styled.div`
   display: flex;
-  margin: 2px 0 2px 0;
+  margin: 3px 0 3px 0;
   justify-content: space-around;
   ${MEDIA_TABLET} {
     margin: 3px 0 3px 0;
   }
 `
 export const Logo = styled.img`
-  width: 25%;
+  width:40px ;
+  height: 40px;
   filter: ${filters.tiffany.i300};
-  ${MEDIA_TABLET} {
-    width: 25%;
-  }
 `
 export const Slogan = styled.div`
   margin-left: 3%;
