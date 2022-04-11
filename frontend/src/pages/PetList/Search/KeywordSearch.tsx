@@ -16,7 +16,7 @@ const KeywordSearch = () => {
 
   return (
     <TextFieldGroup id='TextFieldGroup' isShow={keywordSearchTextFieldIsShow}>
-      <TextField placeholder='關鍵字、顏色、性別' />
+      <TextField placeholder='搜尋介紹內容' />
       <SearchIcon id='SearchIcon' />
     </TextFieldGroup>
   )
