@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import {MEDIA_TABLET} from '../constants/Mixin'
+import {MEDIA_DESKTOP, MEDIA_TABLET} from '../constants/Mixin'
 import {colors, filters, sizes} from '../constants/Variables'
 
 export const StyledHeader = styled.div`
@@ -14,6 +14,9 @@ export const StyledHeader = styled.div`
     padding-bottom: 4.5px;
     border-bottom: 5px solid ${colors.tiffany.i300};
   }
+  ${MEDIA_DESKTOP} {
+    justify-content: flex-start;
+  }
 `
 export const LogoGroup = styled.div`
   display: flex;
@@ -22,11 +25,16 @@ export const LogoGroup = styled.div`
   ${MEDIA_TABLET} {
     margin: 3px 0 3px 0;
   }
+  ${MEDIA_DESKTOP} {
+    margin-left: 15%;
+  }
 `
 export const Logo = styled.img`
   width:40px ;
   height: 40px;
   filter: ${filters.tiffany.i300};
+  content: url('/images/logo-small.svg' );
+
 `
 export const Slogan = styled.div`
   margin-left: 3%;
