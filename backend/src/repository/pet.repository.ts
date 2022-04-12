@@ -116,12 +116,18 @@ export class PetRepository extends BasicRepository<Pet> {
             ligation: query.ligation,
           })
       }
+      if (query.keyword) {
+        queryBuilder.andWhere('pet.remark LIKE :keyword', {
+          keyword: `%${query.keyword}%`,
+        })
+      }
       if (query.order_key) {
         queryBuilder.orderBy(
           `pet.${query.order_key}`,
           `${query.ascend ? 'ASC' : 'DESC'}`,
         )
       }
+
       if (query.page) {
         queryBuilder = queryBuilder
           .offset((query.page - 1) * query.limit!)
