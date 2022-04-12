@@ -89,6 +89,10 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
       enum: [true, false],
       nullable: true,
     },
+    keyword: {
+      type: 'string',
+      nullable: true,
+    },
     limit: {
       type: 'integer',
       default: 10,
