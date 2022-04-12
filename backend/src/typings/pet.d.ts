@@ -87,6 +87,7 @@ type PetSearchQueryType = {
   ligation?: TernaryType[]
   order_key?: PetOrderKeyType
   ascend?: boolean
+  keyword?: string
   limit?: number
   page?: number
 }
