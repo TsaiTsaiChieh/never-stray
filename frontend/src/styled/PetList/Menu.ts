@@ -130,6 +130,7 @@ export const TextFieldGroup = styled.div<{isShow: boolean}>`
   }
 `
 export const TextField = styled.input`
+  width: 85%;
   color: ${colors.gray.i400};
   position: absolute;
   letter-spacing: 1px;
@@ -138,6 +139,12 @@ export const TextField = styled.input`
   border: none;
   &::placeholder {
     color: ${colors.gray.i100};
+  }
+  ${MEDIA_TABLET} {
+    width: 92%;
+  }
+  ${MEDIA_TABLET} {
+    width: 240px;
   }
 `
 export const SearchIcon = styled.img`
