@@ -1,4 +1,7 @@
+import {FormEvent} from 'react'
+
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
+import {getPets} from '../../../store/reducers/petListSlice'
 import {
   closeKeywordSearch,
   keywordSearchOnClick,
@@ -12,12 +15,18 @@ import {
 } from '../../../styled/PetList/Menu'
 
 const KeywordSearch = () => {
+  const {filters} = useAppSelector((state) => state.petList)
+  const dispatch = useAppDispatch()
   const {keywordSearchTextFieldIsShow} = useAppSelector((state) => state.ui)
 
+  const onChange = (e: FormEvent<HTMLInputElement>) => {
+    dispatch(getPets({...filters, keyword: e.currentTarget.value, page: 1}))
+  }
+
   return (
-    <TextFieldGroup id='TextFieldGroup' isShow={keywordSearchTextFieldIsShow}>
-      <TextField placeholder='搜尋介紹內容' />
-      <SearchIcon id='SearchIcon' />
+    <TextFieldGroup isShow={keywordSearchTextFieldIsShow}>
+      <TextField placeholder='搜尋介紹內容' onChange={(e) => onChange(e)} />
+      <SearchIcon />
     </TextFieldGroup>
   )
 }
