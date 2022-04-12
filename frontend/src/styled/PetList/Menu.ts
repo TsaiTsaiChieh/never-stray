@@ -126,7 +126,7 @@ export const TextFieldGroup = styled.div<{isShow: boolean}>`
   ${MEDIA_DESKTOP} {
     width: 280px;
     position: absolute;
-    right: 40px;
+    right: 3%;
   }
 `
 export const TextField = styled.input`
