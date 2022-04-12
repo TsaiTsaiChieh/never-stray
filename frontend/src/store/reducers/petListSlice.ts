@@ -64,6 +64,9 @@ export const getPets = createAsyncThunk(
     if (filters.ligation) {
       url += `${filters.ligation.map((ele) => `&ligation[]=${ele}`).join('')}`
     }
+    if (filters.keyword) {
+      url += `&keyword=${filters.keyword}&`
+    }
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
