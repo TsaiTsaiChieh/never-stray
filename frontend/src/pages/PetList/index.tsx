@@ -1,4 +1,4 @@
-import {ReactElement, useEffect} from 'react'
+import {useEffect} from 'react'
 
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
@@ -13,7 +13,7 @@ import OrderFilter from './OrderFilter'
 import Profile from './Profile'
 import SearchBoard from './Search'
 
-export default function PetList(): ReactElement {
+export const PetList = () => {
   const dispatch = useAppDispatch()
   const petState = useAppSelector((state) => state.petList)
 
@@ -58,3 +58,5 @@ export default function PetList(): ReactElement {
     </>
   )
 }
+
+export default PetList
