@@ -23,6 +23,10 @@ interface Props {
   pet: IPet;
 }
 const Profile = ({pet}: Props) => {
+  const toProfile = () => {
+    window.location.href = `/profile/${pet.id}`
+  }
+
   return (
     <OuterHoverWrap>
       <ProfileWrap>
@@ -36,7 +40,7 @@ const Profile = ({pet}: Props) => {
                 `${pet.color}${petKindConverter(pet.kind)}`}
               <AdoptedImg status={pet.status} />
             </Title>
-            <SexAgeWrap>
+            <SexAgeWrap onClick={toProfile}>
               <Sex sex={pet.sex}>{petSexConverter(pet.sex)}</Sex>
               <VerticalLine />
               <Age>{petAgeConverter(pet.age)}</Age>
