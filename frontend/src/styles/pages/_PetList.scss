@@ -49,6 +49,7 @@
       @include tablet {
         margin-top: 110px;
         grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(6, auto);
         grid-column-start: auto;
         grid-row-gap: 6.5rem;
       }
