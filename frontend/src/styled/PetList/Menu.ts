@@ -115,7 +115,7 @@ export const TextFieldGroup = styled.div<{isShow: boolean}>`
   z-index: 9;
   margin-top: 9px;
   margin-bottom: 9px;
-  &:hover {
+  &:focus-within {
     border: 1px solid ${colors.tiffany.i300};
   }
   ${MEDIA_TABLET} {
