@@ -72,7 +72,7 @@ export const getPets = createAsyncThunk(
     }
     const res: AxiosResponse = await axios({method: 'GET', url})
 
-    return {data: res.data, filters}
+    return res.data
   },
 )
 
@@ -92,8 +92,8 @@ export const petListSlice = createSlice({
       getPets.fulfilled,
       (state, action) => {
         state.loading = false
-        state.pets = action.payload.data.pets
-        state.totalPage = action.payload.data.page.total
+        state.pets = action.payload.pets
+        state.totalPage = action.payload.page.total
       },
     )
     builder.addCase(getPets.rejected, (state) => {
