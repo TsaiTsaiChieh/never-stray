@@ -2,10 +2,16 @@ import thunk from 'redux-thunk'
 
 import {configureStore} from '@reduxjs/toolkit'
 
-import rootReducer from './rootReducer'
+import enumReducer from './reducers/enumSlice'
+import petListReducer from './reducers/petListSlice'
+import uiReducer from './reducers/uiSlice'
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    petList: petListReducer,
+    enum: enumReducer,
+    ui: uiReducer,
+  },
   middleware: [thunk],
 })
 
