@@ -26,10 +26,10 @@ export const StyledAvatar = styled.div<{isLoading: boolean}>`
     background: linear-gradient(
       to right,
       transparent 0%,
-      ${colors.gray.i600} 50%,
+      ${colors.white.i100} 50%,
       transparent 100%
     );
-    animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: load 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   @keyframes load {
     from {
