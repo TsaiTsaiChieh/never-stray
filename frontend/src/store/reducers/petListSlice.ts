@@ -88,10 +88,10 @@ export const petListSlice = createSlice({
     builder.addCase(
       getPets.fulfilled,
       (state, action) => {
+        state.filters = action.payload.filters
         state.loading = false
         state.pets = action.payload.data.pets
         state.totalPage = action.payload.data.page.total
-        state.filters = action.payload.filters
       },
     )
     builder.addCase(getPets.rejected, (state) => {
