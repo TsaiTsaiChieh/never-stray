@@ -37,3 +37,8 @@ export enum Order {
   ASC = 'ASC',
   DESC = 'DESC',
 }
+
+export enum OrderKey {
+  UPDATE = 'updated_at',
+  AGE = 'age',
+}
