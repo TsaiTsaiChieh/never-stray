@@ -22,7 +22,7 @@ import {
 import Avatar from './Avatar'
 
 interface Props {
-  pet: IPet;
+  pet: IPet
 }
 const Profile = ({pet}: Props) => {
   const navigate = useNavigate()
