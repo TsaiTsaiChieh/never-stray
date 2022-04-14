@@ -1,6 +1,6 @@
 import {PetAge} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   AgeItem,
   AgeItems,
@@ -21,6 +21,13 @@ const AgeFilter = () => {
     filters.age.includes(age) ?
       filters.age.filter((ele) => ele !== age) :
       [...filters.age, age]
+
+  const onClick = (age: PetAge) => {
+    const expandFilters = {...filters, age: toggleAgeOpt(age), page: 1}
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
+
   return (
     <AgeWrap>
       <AgeName>年齡</AgeName>
@@ -29,9 +36,7 @@ const AgeFilter = () => {
           <AgeItem
             key={age}
             className={filters.age.includes(age) ? 'selected' : ''}
-            onClick={() =>
-              dispatch(getPets({...filters, age: toggleAgeOpt(age), page: 1}))
-            }
+            onClick={() => onClick(age)}
           >
             {PetAgeName[age]}
           </AgeItem>

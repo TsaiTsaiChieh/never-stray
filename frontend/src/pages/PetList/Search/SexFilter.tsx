@@ -1,6 +1,6 @@
 import {PetSex} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   SexItem,
   SexItems,
@@ -21,6 +21,12 @@ const SexFilter = () => {
     filters.sex.includes(sex) ?
       filters.sex.filter((ele) => ele !== sex) :
       [...filters.sex, sex]
+
+  const onClick = (sex: PetSex) => {
+    const expandFilters = {...filters, sex: toggleSexOpt(sex), page: 1}
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
   return (
     <SexWrap>
       <SexName>性別</SexName>
@@ -29,9 +35,7 @@ const SexFilter = () => {
           <SexItem
             key={sex}
             className={filters.sex?.includes(sex) ? 'selected' : ''}
-            onClick={() =>
-              dispatch(getPets({...filters, sex: toggleSexOpt(sex), page: 1}))
-            }
+            onClick={() => onClick(sex)}
           >
             {PetSexName[sex]}
           </SexItem>

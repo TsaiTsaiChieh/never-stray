@@ -1,8 +1,8 @@
 import {useState} from 'react'
 
-import {Order} from '../../constants/EnumType'
+import {Order, OrderKey} from '../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
-import {getPets} from '../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../store/reducers/petListSlice'
 import {
   AgeOrderSelect, Title, UpdateTimeOrderSelector, Wrap,
 } from '../../styled/PetList/OrderFilter'
@@ -30,8 +30,10 @@ const OrderFilter = () => {
   }))
 
   const onChange = (newValue: any) => {
-    const isUpdateTimeSelector = newValue.label === updateTimeOrderName.ASC ||
+    const isUpdateTimeSelector =
+      newValue.label === updateTimeOrderName.ASC ||
       newValue.label === updateTimeOrderName.DESC
+
     if (isUpdateTimeSelector) {
       setUpdateTimeOrder(newValue)
       setAgeOrder(null)
@@ -41,14 +43,14 @@ const OrderFilter = () => {
       setAgeOrder(newValue)
     }
 
-    dispatch(
-      getPets({
-        ...filters,
-        order_key: isUpdateTimeSelector ? 'updated_at' : 'age',
-        ascend: newValue.value === Order.ASC,
-        page: 1,
-      }),
-    )
+    const expandFilters = {
+      ...filters,
+      order_key: isUpdateTimeSelector ? OrderKey.UPDATE : OrderKey.AGE,
+      ascend: newValue.value === Order.ASC,
+      page: 1,
+    }
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
   }
   return (
     <Wrap>

@@ -1,7 +1,7 @@
 import makeAnimated from 'react-select/animated'
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   ShelterName,
   ShelterSelector,
@@ -19,14 +19,15 @@ const ShelterFilter = () => {
   }))
 
   const onChange = (newValue: any) => {
-    dispatch(
-      getPets({
-        ...filters,
-        shelter_id: newValue.map((ele: OptionType) => parseInt(ele.value)),
-        page: 1,
-      }),
-    )
+    const expandFilters = {
+      ...filters,
+      shelter_id: newValue.map((ele: OptionType) => parseInt(ele.value)),
+      page: 1,
+    }
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
   }
+
   return (
     <ShelterWrap>
       <ShelterName>收容所</ShelterName>

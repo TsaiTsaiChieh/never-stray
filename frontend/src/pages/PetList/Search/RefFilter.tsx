@@ -1,6 +1,6 @@
 import {PetRef} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   RefItem,
   RefItems,
@@ -21,6 +21,11 @@ const RefFilter = () => {
       filters.ref.filter((ele) => ele !== ref) :
       [...filters.ref, ref]
 
+  const onClick = (ref: PetRef) => {
+    const expandFilters = {...filters, ref: toggleRefOpt(ref), page: 1}
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
   return (
     <RefWrap>
       <RefName>資料來源</RefName>
@@ -29,9 +34,7 @@ const RefFilter = () => {
           <RefItem
             key={ref}
             className={filters.ref.includes(ref) ? 'selected' : ''}
-            onClick={() =>
-              dispatch(getPets({...filters, ref: toggleRefOpt(ref), page: 1}))
-            }
+            onClick={() => onClick(ref)}
           >
             {PetRefName[ref]}
           </RefItem>

@@ -1,7 +1,7 @@
 import makeAnimated from 'react-select/animated'
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   ColorName,
   ColorSelector,
@@ -23,13 +23,13 @@ const ColorFilter = () => {
   )
 
   const onChange = (newValue: any) => {
-    dispatch(
-      getPets({
-        ...filters,
-        color: newValue.map((ele: OptionType) => ele.value),
-        page: 1,
-      }),
-    )
+    const expandFilters = {
+      ...filters,
+      color: newValue.map((ele: OptionType) => ele.value),
+      page: 1,
+    }
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
   }
 
   return (

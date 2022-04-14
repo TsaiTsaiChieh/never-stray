@@ -1,7 +1,7 @@
 import {KeyboardEvent} from 'react'
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   closeKeywordSearch,
   keywordSearchOnClick,
@@ -22,7 +22,13 @@ const KeywordSearch = () => {
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return
     else {
-      dispatch(getPets({...filters, keyword: e.currentTarget.value, page: 1}))
+      const expandFilters = {
+        ...filters,
+        keyword: e.currentTarget.value,
+        page: 1,
+      }
+      dispatch(updateFilters(expandFilters))
+      dispatch(getPets(expandFilters))
     }
   }
 
@@ -38,6 +44,7 @@ const KeywordSearchBtn = () => {
   const {keywordSearchTextFieldIsShow, closeTextSearchIsShow} =
     useAppSelector((state) => state.ui)
   const dispatch = useAppDispatch()
+
   return (
     <>
       <KeywordSearchButton

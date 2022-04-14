@@ -2,7 +2,7 @@ import {isMobile} from 'react-device-detect'
 
 import {PetKind} from '../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
-import {getPets} from '../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../store/reducers/petListSlice'
 import {
   Img,
   KindContainer,
@@ -18,6 +18,12 @@ const Menu = () => {
   const {kindContainerIsShow} = useAppSelector((state) => state.ui)
   const dispatch = useAppDispatch()
 
+  const onClick = (kind: PetKind) => {
+    const expandFilters = {...filters, kind}
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
+
   return (
     <StyledMenu>
       <FilterButton />
@@ -27,9 +33,7 @@ const Menu = () => {
             key={kind}
             className={`${kind}-option
           ${filters.kind === kind ? 'option-selected' : ''}`}
-            onClick={() => {
-              dispatch(getPets({...filters, kind, page: 1}))
-            }}
+            onClick={() => onClick(kind)}
           >
             <Img
               className={`${kind}-svg`}

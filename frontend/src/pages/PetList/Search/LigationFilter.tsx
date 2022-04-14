@@ -1,6 +1,6 @@
 import {Ternary} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
   LigationItem,
   LigationItems,
@@ -21,6 +21,17 @@ const LigationFilter = () => {
     filters.ligation.includes(ligation) ?
       filters.ligation.filter((ele) => ele !== ligation) :
       [...filters.ligation, ligation]
+
+  const onClick = (ligation: TernaryType) => {
+    const expandFilters = {
+      ...filters,
+      ligation: toggleLigationOpt(ligation),
+      page: 1,
+    }
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
+
   return (
     <LigationWrap>
       <LigationName>結紮</LigationName>
@@ -29,15 +40,7 @@ const LigationFilter = () => {
           <LigationItem
             key={ele}
             className={filters.ligation.includes(ele) ? 'selected' : ''}
-            onClick={() =>
-              dispatch(
-                getPets({
-                  ...filters,
-                  ligation: toggleLigationOpt(ele),
-                  page: 1,
-                }),
-              )
-            }
+            onClick={() => onClick(ele)}
           >
             {ligationName[ele]}
           </LigationItem>

@@ -1,6 +1,6 @@
 import {PetStatus} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets} from '../../../store/reducers/petListSlice'
+import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {Button, Items, Name, Wrap} from '../../../styled/PetList/SearchBoard'
 
 const statusName = {
@@ -16,6 +16,13 @@ const StatusFilter = () => {
     filters.status.includes(status) ?
       filters.status.filter((ele) => ele !== status) :
       [...filters.status, status]
+
+  const onClick = (status: PetStatus) => {
+    const expandFilters = {...filters, status: toggleStatusOp(status), page: 1}
+    dispatch(updateFilters(expandFilters))
+    dispatch(getPets(expandFilters))
+  }
+
   return (
     <Wrap>
       <Name>狀態</Name>
@@ -24,11 +31,7 @@ const StatusFilter = () => {
           <Button
             key={status}
             className={filters.status?.includes(status) ? 'selected' : ''}
-            onClick={() =>
-              dispatch(
-                getPets({...filters, status: toggleStatusOp(status), page: 1}),
-              )
-            }
+            onClick={() => onClick(status)}
           >
             {statusName[status]}
           </Button>
