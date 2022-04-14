@@ -7,6 +7,10 @@ import {ShelterID} from '../entity/shelter.entity'
 export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
   type: 'object',
   properties: {
+    id: {
+      type: 'integer',
+      nullable: true,
+    },
     status: {
       type: 'array',
       items: {type: 'string', enum: Object.values(Status)},

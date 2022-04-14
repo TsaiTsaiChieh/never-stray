@@ -21,6 +21,7 @@ export class PetController {
     const shelter_id = req.query.shelter_id as string[]
     const query: PetSearchQueryType = {
       ...req.query,
+      id: req.query.id ? Number(req.query.id) : undefined,
       city_id: req.query.city_id ? city_id.map((x) => parseInt(x)) : undefined,
       shelter_id: req.query.shelter_id ?
         shelter_id.map((x) => parseInt(x)) :
