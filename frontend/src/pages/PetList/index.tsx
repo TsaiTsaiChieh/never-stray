@@ -18,7 +18,7 @@ export const PetList = () => {
   const petState = useAppSelector((state) => state.petList)
 
   useEffect(() => {
-    dispatch(getPets())
+    dispatch(getPets({...petState.filters}))
   }, [])
 
   return (

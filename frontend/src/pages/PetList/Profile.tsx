@@ -1,3 +1,5 @@
+import {useNavigate} from 'react-router-dom'
+
 import {PetRef} from '../../constants/EnumType'
 import {
   AdoptedImg,
@@ -23,8 +25,9 @@ interface Props {
   pet: IPet;
 }
 const Profile = ({pet}: Props) => {
+  const navigate = useNavigate()
   const toProfile = () => {
-    window.location.href = `/profile/${pet.id}`
+    navigate(`/profile/${pet.id}`)
   }
 
   return (
@@ -48,7 +51,7 @@ const Profile = ({pet}: Props) => {
           </ImgWrap>
         </Container>
       </ProfileWrap>
-    </OuterHoverWrap >
+    </OuterHoverWrap>
   )
 }
 
