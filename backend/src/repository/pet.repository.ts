@@ -35,6 +35,10 @@ export class PetRepository extends BasicRepository<Pet> {
         .createQueryBuilder('pet')
         .leftJoinAndSelect('pet.city', 'area')
         .leftJoinAndSelect('pet.shelter', 'shelter')
+      if (query.id) {
+        queryBuilder.where('pet.id = :id', {id: query.id})
+      }
+
       if (query.status && query.status.length !== Object.keys(Status).length) {
         query.status.length > 1 ?
           queryBuilder.andWhere('pet.status IN (:statuses)', {
