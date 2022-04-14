@@ -80,6 +80,9 @@ export const petListSlice = createSlice({
   name: 'petList',
   initialState,
   reducers: {
+    updateFilters: (state, action) => {
+      state.filters = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getPets.pending, (state) => {
@@ -88,7 +91,6 @@ export const petListSlice = createSlice({
     builder.addCase(
       getPets.fulfilled,
       (state, action) => {
-        state.filters = action.payload.filters
         state.loading = false
         state.pets = action.payload.data.pets
         state.totalPage = action.payload.data.page.total
@@ -100,4 +102,5 @@ export const petListSlice = createSlice({
   },
 })
 
+export const {updateFilters} = petListSlice.actions
 export default petListSlice.reducer
