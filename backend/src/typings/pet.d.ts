@@ -75,6 +75,7 @@ type ShelterAPIDataType = {
 }
 
 type PetSearchQueryType = {
+  id?: number
   status?: PetStatusType[]
   ref?: PetRefType[]
   city_id?: number[]
