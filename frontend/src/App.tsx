@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {Route, Routes} from 'react-router-dom'
 
 import {pingDB} from './api/PingAPI'
+import DogWalking from './components/DogWalking'
 import PetList from './pages/PetList'
 import PetProfile from './pages/PetProfile'
 
@@ -19,12 +20,16 @@ const App = () => {
       window.clearInterval(intervalID)
     }
   }, [loading])
-  return (
-    <Routes>
-      <Route path='/' element={<PetList />} />
-      <Route path='/profile/:id' element={<PetProfile />} />
-    </Routes>
 
+  return (
+    loading ? (
+      <DogWalking />
+    ) : (
+      <Routes>
+        <Route path='/' element={<PetList />} />
+        <Route path='/profile/:id' element={<PetProfile />} />
+      </Routes>
+    )
   )
 }
 
