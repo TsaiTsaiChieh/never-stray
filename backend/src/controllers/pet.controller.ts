@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
 import {Request, Response} from 'express'
 import httpStatus from 'http-status'
-import {Controller, Get, Req, Res} from 'routing-controllers'
+import {Controller, Get, Param, Req, Res} from 'routing-controllers'
 import safeAwait from 'safe-await'
 import {PetModel} from '../models/pet.model'
 
@@ -37,6 +37,15 @@ export class PetController {
 
     const [error, result]: [ErrorType, PetSearchReturningType] =
       await safeAwait(this.model.searchPetAndCount(query))
+    if (error) return res.status(error.code).json(error)
+    return res.json(result)
+  }
+
+  @Get('/:id')
+  async getPetById(@Param('id') id: number, @Res() res: Response) {
+    const [error, result]: [ErrorType, PetInfoType] = await safeAwait(
+      this.model.getById(id),
+    )
     if (error) return res.status(error.code).json(error)
     return res.json(result)
   }
