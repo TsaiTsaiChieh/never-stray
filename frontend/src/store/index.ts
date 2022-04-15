@@ -1,18 +1,19 @@
-import thunk from 'redux-thunk'
-
 import {configureStore} from '@reduxjs/toolkit'
 
+import {petsApi} from '../api/pets'
 import enumReducer from './reducers/enumSlice'
 import petListReducer from './reducers/petListSlice'
 import uiReducer from './reducers/uiSlice'
 
 const store = configureStore({
   reducer: {
+    [petsApi.reducerPath]: petsApi.reducer,
     petList: petListReducer,
     enum: enumReducer,
     ui: uiReducer,
   },
-  middleware: [thunk],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(petsApi.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>
