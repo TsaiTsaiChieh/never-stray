@@ -9,6 +9,7 @@ export const StyledHeader = styled.div`
   border-bottom: 4px solid ${colors.tiffany.i300};
   display: flex;
   justify-content: center;
+  cursor: pointer;
   ${MEDIA_TABLET} {
     padding-top: 4.5px;
     padding-bottom: 4.5px;
