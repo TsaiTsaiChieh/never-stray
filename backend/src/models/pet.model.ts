@@ -1,6 +1,6 @@
 import {Pet} from '../entity/pet.entity'
 import {PetRepository} from '../repository/pet.repository'
-import {RepackageError} from '../utils/app-error'
+import {NotFound, RepackageError} from '../utils/app-error'
 import {deepCopy} from '../utils/helper'
 
 /** @class PetModel */
@@ -26,6 +26,29 @@ export class PetModel {
         await this.repository.findByFiltersAndCount(query)
       const cleanData: PetSearchReturningType =
         await repackagePetData(result, query.page!, query.limit!)
+      return Promise.resolve(cleanData)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  /**
+   * Get pet by ID
+   *
+   * @param  {number} id
+   * @return {Promise<PetInfoType>}
+   */
+  async getById(id: number): Promise<PetInfoType> {
+    try {
+      const result: Pet | undefined = await this.repository.findOneById(id)
+      if (!result) return Promise.reject(new NotFound(`Pet id ${id} not found`))
+
+      const cleanData: PetInfoType = deepCopy(result)
+      cleanData.city_name = cleanData.city!.name
+      cleanData.shelter_name = cleanData.shelter!.name
+      delete cleanData.city
+      delete cleanData.shelter
+
       return Promise.resolve(cleanData)
     } catch (error) {
       return Promise.reject(error)
