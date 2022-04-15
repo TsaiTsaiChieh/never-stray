@@ -47,7 +47,8 @@
           "IsNull",
           "OneToMany",
           "ManyToOne",
-          "JoinColumn"
+          "JoinColumn",
+          "Param"
         ]
       }
     ],
