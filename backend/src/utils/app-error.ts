@@ -47,3 +47,12 @@ export class RepackageError extends AppError {
     super(message)
   }
 }
+
+export class NotFound extends AppError {
+  constructor(
+    message: any = '找無此資料',
+    code: number = httpStatus.NOT_FOUND,
+  ) {
+    super(message, code)
+  }
+}
