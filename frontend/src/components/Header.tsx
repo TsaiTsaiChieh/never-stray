@@ -1,3 +1,5 @@
+import {useNavigate} from 'react-router-dom'
+
 import {
   Logo,
   LogoGroup,
@@ -8,8 +10,14 @@ import {
 } from '../styled/Header'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  const toMainPage = () => {
+    navigate('/')
+  }
+
   return (
-    <StyledHeader>
+    <StyledHeader onClick={toMainPage}>
       <LogoGroup>
         <Logo />
         <Slogan>
