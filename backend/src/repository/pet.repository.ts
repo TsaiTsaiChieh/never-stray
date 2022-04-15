@@ -162,4 +162,22 @@ export class PetRepository extends BasicRepository<Pet> {
       return Promise.reject(new DBError(error.stack))
     }
   }
+
+  /**
+   * Find pet information by ID
+   * @param  {number} id
+   * @return {Promise<Pet>}
+   */
+  async findOneById(id: number): Promise<Pet | undefined> {
+    try {
+      const result: Pet | undefined = await this.repository
+        .createQueryBuilder('pet')
+        .leftJoinAndSelect('pet.city', 'area')
+        .leftJoinAndSelect('pet.shelter', 'shelter')
+        .where('pet.id = :id', {id}).getOne()
+      return Promise.resolve(result)
+    } catch (error) {
+      return Promise.reject(new DBError(error.stack))
+    }
+  }
 }
