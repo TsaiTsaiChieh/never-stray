@@ -1,0 +1,51 @@
+#PetProfile {
+  width: 95%;
+  display: flex;
+  margin: auto;
+}
+
+.image-gallery-slides {
+  width: 50vh;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.image-gallery {
+  width: 50vh;
+  height: 50vh;
+  object-fit: cover;
+  margin-top: 22px;
+  border-radius: 13px;
+  box-shadow: 0px 0px 8px $color-gray-t100;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.image-gallery-thumbnail-inner img {
+  width: 10vh;
+  height: 10vh;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.image-gallery-thumbnails-container {
+  display: flex;
+  margin-top: 8px;
+}
+
+.image-gallery-thumbnail {
+  border: none !important;
+  transition: none !important;
+}
+
+.image-gallery-thumbnail.active {
+  border-radius: 13px;
+  border: 2px solid $color-tiffany-300 !important;
+}
