@@ -3,6 +3,9 @@
   display: flex;
   margin: auto;
   justify-content: center;
+  @include tablet {
+    width: 90%;
+  }
 }
 
 .image-gallery {
@@ -41,6 +44,42 @@
         .image-gallery-thumbnail.active {
           border-radius: 13px;
           border: 2px solid $color-tiffany-300 !important;
+        }
+      }
+    }
+  }
+}
+
+// Gallery for tablet
+.image-gallery {
+  @include tablet {
+    width: 65vw;
+    height: 49vh;
+    margin-top: 40px;
+    .image-gallery-content {
+      display: flex;
+      .image-gallery-slide-wrapper {
+        .image-gallery-slides {
+          width: 65vw;
+          height: 49vh;
+        }
+      }
+      .image-gallery-thumbnails-wrapper {
+        margin-left: 25px;
+        .image-gallery-thumbnails-container {
+          display: flex;
+          flex-direction: column;
+          margin-top: -2px;
+          .image-gallery-thumbnail {
+            margin-right: 0;
+            margin-bottom: 15px;
+            .image-gallery-thumbnail-inner {
+              .image-gallery-thumbnail-image {
+                height: 8vh;
+                object-fit: cover;
+              }
+            }
+          }
         }
       }
     }
