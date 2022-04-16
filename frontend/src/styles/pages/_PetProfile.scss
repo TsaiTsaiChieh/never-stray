@@ -6,6 +6,9 @@
   @include tablet {
     width: 90%;
   }
+  @include desktop {
+    width: 80%;
+  }
 }
 
 .image-gallery {
@@ -76,6 +79,43 @@
             .image-gallery-thumbnail-inner {
               .image-gallery-thumbnail-image {
                 height: 8vh;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Gallery for desktop
+.image-gallery {
+  @include tablet {
+    width: 400px;
+    height: 400px;
+    margin-top: 70px;
+    .image-gallery-content {
+      display: block;
+      .image-gallery-slide-wrapper {
+        .image-gallery-slides {
+          width: 400px;
+          height: 400px;
+        }
+      }
+      .image-gallery-thumbnails-wrapper {
+        margin-left: 0px;
+        .image-gallery-thumbnails-container {
+          display: flex;
+          flex-direction: row;
+          margin-top: 10px;
+          .image-gallery-thumbnail {
+            // margin-right: 0;
+            // margin-bottom: 15px;
+            margin-right: 10px;
+            .image-gallery-thumbnail-inner {
+              .image-gallery-thumbnail-image {
+                height: 90px;
                 object-fit: cover;
               }
             }
