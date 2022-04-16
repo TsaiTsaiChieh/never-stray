@@ -13,3 +13,8 @@ type OptionType = {
   value: string
   label: string
 }
+
+type GalleryItemType = {
+  original: string
+  thumbnail: string
+}
