@@ -29,7 +29,7 @@ type PetOrderKeyType =
 interface IPet {
   id: number
   sub_id: number
-  accept_number: string
+  accept_num: string
   name: string
   ref: PetRefType
   region: AreaRegionType
@@ -41,15 +41,15 @@ interface IPet {
   sex: PetSexType
   color: string
   age: PetAgeType
-  ligation: string
-  rabies: string
+  ligation: TernaryType
+  rabies: TernaryType
   title: string
   status: PetStatusType
   remark: string
   phone: string
   image: string[]
   created_at: date
-  update_at: date
+  updated_at: date
 }
 
 type SearchPetFilters = {
