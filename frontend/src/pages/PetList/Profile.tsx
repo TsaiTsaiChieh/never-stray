@@ -18,7 +18,7 @@ import {
   petAgeConverter,
   petKindConverter,
   petSexConverter,
-} from '../../utils/value-convert'
+} from '../../utils/value-converter'
 import Avatar from './Avatar'
 
 interface Props {
