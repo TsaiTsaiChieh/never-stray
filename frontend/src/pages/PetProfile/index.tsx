@@ -12,9 +12,8 @@ const PetProfile = () => {
   const {data, isLoading, isSuccess} = useGetPetByIdQuery(id!)
 
   return (
-    <>
+    isLoading ? <DogWalking /> : <>
       <Header />
-      {isLoading && <DogWalking />}
       <div id='PetProfile'>
         {isSuccess &&
           data &&
