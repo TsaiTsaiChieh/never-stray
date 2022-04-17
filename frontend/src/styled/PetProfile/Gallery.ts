@@ -12,16 +12,28 @@ export const Container = styled.div`
   align-items: center;
   ${MEDIA_TABLET} {
     flex-direction: row;
+    justify-content: center;
+  }
+  ${MEDIA_DESKTOP} {
+    justify-content: start;
   }
 `
 export const Image = styled.img<{image: string}>`
-  width: 50vh;
+  width: 88vw;
   height: 50vh;
   content: ${(props) => `url(${props.image})`};
   object-fit: cover;
   border-radius: 13px;
   margin-top: 22px;
   box-shadow: 0px 0px 8px ${colors.gray.t100};
+  ${MEDIA_TABLET} {
+    margin-top: 42px;
+  }
+  ${MEDIA_DESKTOP} {
+    width: 400px;
+    height: 400px;
+    margin-top:70px;
+  }
 `
 export const AdoptedImgInProfile = styled(AdoptedImg)`
   width: 100px;
