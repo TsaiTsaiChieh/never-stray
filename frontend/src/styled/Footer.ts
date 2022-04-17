@@ -9,6 +9,7 @@ export const StyledFooter = styled.div`
   color: ${colors.white.i100};
   display: flex;
   background: ${colors.tiffany.i400};
+  letter-spacing: 1px;
 `
 export const Text = styled.p`
   margin: auto;
