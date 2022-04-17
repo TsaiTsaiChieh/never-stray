@@ -9,17 +9,18 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   ${MEDIA_TABLET} {
     flex-direction: row;
     justify-content: center;
   }
   ${MEDIA_DESKTOP} {
+    width: 400px;
     justify-content: start;
   }
 `
 export const Image = styled.img<{image: string}>`
-  width: 88vw;
+  width: 100%;
   height: 50vh;
   content: ${(props) => `url(${props.image})`};
   object-fit: cover;
