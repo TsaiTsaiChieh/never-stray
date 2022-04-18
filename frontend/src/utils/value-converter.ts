@@ -43,3 +43,14 @@ export const ligationConverter = (key: TernaryType): string => {
       return '未知'
   }
 }
+
+export const petStatusConverter = (key: PetStatusType): string => {
+  const statusName = {
+    unknown: '未知',
+    open: '待認養',
+    adopted: '已認養',
+    other: '其他',
+    dead: '死亡',
+  }
+  return statusName[key]
+}
