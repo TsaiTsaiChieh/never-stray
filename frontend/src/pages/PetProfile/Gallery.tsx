@@ -3,7 +3,6 @@ import ImageGallery from 'react-image-gallery'
 import {
   AdoptedImgInProfile,
   Container,
-  Image,
 } from '../../styled/PetProfile/Gallery'
 
 interface Props {
@@ -19,11 +18,11 @@ const Gallery = ({images, status}: Props) => {
   return (
     <Container>
       <AdoptedImgInProfile status={status} />
-      {images.length === 1 ? <Image image={images[0]} /> : <ImageGallery
+      <ImageGallery
         items={items}
         showPlayButton={false}
         showFullscreenButton={false}
-      />}
+      />
     </Container>
   )
 }
