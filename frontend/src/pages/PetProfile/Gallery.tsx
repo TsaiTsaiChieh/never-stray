@@ -11,8 +11,8 @@ interface Props {
 }
 const Gallery = ({images, status}: Props) => {
   const items: GalleryItemType[] = images.map((ele) => ({
-    original: ele,
-    thumbnail: ele,
+    original: ele ? ele : '/images/PetProfile/no-pic.svg',
+    thumbnail: ele ? ele : '/images/PetProfile/no-pic-thumbnail.svg',
   }))
 
   return (
