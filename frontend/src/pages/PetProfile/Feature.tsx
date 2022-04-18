@@ -8,15 +8,17 @@ import {
 import {
   ligationConverter,
   petAgeConverter,
+  petStatusConverter,
 } from '../../utils/value-converter'
 
 interface Props {
   sex: PetSexType;
   age: PetAgeType;
   city: string;
+  status: PetStatusType;
   ligation: TernaryType;
 }
-const Feature = ({sex, age, city, ligation}: Props) => {
+const Feature = ({sex, age, city, status, ligation}: Props) => {
   return (
     <Container>
       <Frame>
@@ -30,6 +32,10 @@ const Feature = ({sex, age, city, ligation}: Props) => {
       <Frame>
         <Title>地區</Title>
         <Value>{city}</Value>
+      </Frame>
+      <Frame>
+        <Title>狀態</Title>
+        <Value>{petStatusConverter(status)}</Value>
       </Frame>
       <Frame>
         <Title>結紮</Title>

@@ -27,6 +27,7 @@ const Details = ({pet}: Props) => {
         sex={pet.sex}
         age={pet.age}
         city={pet.city_name}
+        status={pet.status}
         ligation={pet.ligation}
       />
       <DescriptionContainer>
