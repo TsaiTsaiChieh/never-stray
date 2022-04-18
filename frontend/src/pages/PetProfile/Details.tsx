@@ -19,7 +19,7 @@ const Details = ({pet}: Props) => {
       `${pet.sub_id} ${pet.accept_num}`.toString() :
       pet.sub_id.toString()
   return (
-    <Container petRef={pet.ref}>
+    <Container>
       <Title>{pet.ref === PetRef.MAP ? pet.title : pet.shelter_name}</Title>
       <UpdateTime updatedAt={pet.updated_at.substring(0, 10)} />
       <AccessNumber accessNum={accessNum} />

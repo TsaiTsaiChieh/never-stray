@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import {PetRef} from '../../constants/EnumType'
 import {MEDIA_DESKTOP} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
 
@@ -13,12 +12,11 @@ const TextSetting = styled.div`
     margin-top: 20px;
   }
 `
-export const Container = styled.div<{petRef: PetRefType}>`
+export const Container = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: ${(props) =>
-    props.petRef === PetRef.MAP ? 'calc(65px + 35px)' : '20px'};
+  margin-top: calc(65px + 35px);
   ${MEDIA_DESKTOP} {
     margin-top: 70px;
     margin-left: 30px;
