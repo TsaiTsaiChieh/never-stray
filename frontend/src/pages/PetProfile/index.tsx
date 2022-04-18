@@ -1,3 +1,4 @@
+import {Fragment} from 'react'
 import {useParams} from 'react-router-dom'
 
 import {useGetPetByIdQuery} from '../../api/pets'
@@ -18,10 +19,10 @@ const PetProfile = () => {
         {isSuccess &&
           data &&
           [data].map((ele) => (
-            <>
+            <Fragment key={id}>
               <Gallery images={ele.image} status={ele.status} />
               <Details pet={ele} />
-            </>
+            </Fragment>
           ))}
       </div>
       <Footer />
