@@ -35,6 +35,7 @@ const CityFilter = () => {
         options={options}
         onChange={onChange}
         placeholder='請選擇縣市'
+        components={{IndicatorSeparator: () => null}}
         noOptionsMessage={() => '無'}
         isSearchable={false}
       />

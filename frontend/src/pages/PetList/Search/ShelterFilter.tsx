@@ -35,6 +35,7 @@ const ShelterFilter = () => {
         options={options}
         onChange={onChange}
         placeholder='請選擇收容所'
+        components={{IndicatorSeparator: () => null}}
         noOptionsMessage={() => '無'}
         isSearchable={false}
       />

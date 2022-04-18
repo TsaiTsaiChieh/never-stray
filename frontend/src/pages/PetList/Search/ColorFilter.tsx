@@ -39,6 +39,7 @@ const ColorFilter = () => {
         options={options}
         onChange={onChange}
         placeholder='請選擇顏色'
+        components={{IndicatorSeparator: () => null}}
         noOptionsMessage={() => '無'}
         isSearchable={false}
       />
