@@ -5,7 +5,7 @@ import {colors, sizes} from '../../constants/Variables'
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(4, auto);
   margin-top: 10px;
   justify-content: start;
   grid-column-gap: 7px;
