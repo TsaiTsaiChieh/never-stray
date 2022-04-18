@@ -70,9 +70,7 @@ const OrderFilter = () => {
         classNamePrefix='Select'
         placeholder='年紀'
         options={ageOptions}
-        components={{
-          IndicatorSeparator: () => null,
-        }}
+        components={{IndicatorSeparator: () => null}}
         value={ageOrder}
         onChange={onChange}
         isSearchable={false}
