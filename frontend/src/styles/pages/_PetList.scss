@@ -41,8 +41,9 @@
       min-height: 70vh;
       display: grid;
       grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(9, auto);
       grid-row-gap: 4em;
-      justify-content: space-around;
+      justify-content: center;
       justify-items: center;
       margin-top: 80px;
 
