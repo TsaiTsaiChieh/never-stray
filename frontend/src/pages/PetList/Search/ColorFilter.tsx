@@ -1,5 +1,3 @@
-import makeAnimated from 'react-select/animated'
-
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
@@ -12,7 +10,6 @@ const ColorFilter = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const {colors} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
-  const animatedComponents = makeAnimated()
   const options: OptionType[] = colors.map((ele) =>
     ele ?
       {
@@ -39,7 +36,6 @@ const ColorFilter = () => {
         isMulti
         classNamePrefix='Select'
         closeMenuOnSelect={false}
-        components={animatedComponents}
         options={options}
         onChange={onChange}
         placeholder='請選擇顏色'

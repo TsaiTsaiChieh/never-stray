@@ -1,5 +1,3 @@
-import makeAnimated from 'react-select/animated'
-
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {
@@ -12,7 +10,6 @@ const ShelterFilter = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const {shelters} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
-  const animatedComponents = makeAnimated()
   const options: OptionType[] = shelters.map((ele: IDAndNameType) => ({
     value: ele.id.toString(),
     label: ele.name,
@@ -35,7 +32,6 @@ const ShelterFilter = () => {
         isMulti
         classNamePrefix='Select'
         closeMenuOnSelect={false}
-        components={animatedComponents}
         options={options}
         onChange={onChange}
         placeholder='請選擇收容所'
