@@ -2,12 +2,8 @@ import {PetStatus} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
 import {Button, Items, Name, Wrap} from '../../../styled/PetList/SearchBoard'
+import {petSexConverter} from '../../../utils/value-converter'
 
-const statusName = {
-  open: '待認養',
-  unknown: '未知',
-  adopted: '已認養',
-}
 const StatusFilter = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const dispatch = useAppDispatch()
@@ -33,7 +29,7 @@ const StatusFilter = () => {
             className={filters.status?.includes(status) ? 'selected' : ''}
             onClick={() => onClick(status)}
           >
-            {statusName[status]}
+            {petSexConverter(status)}
           </Button>
         ))}
       </Items>
