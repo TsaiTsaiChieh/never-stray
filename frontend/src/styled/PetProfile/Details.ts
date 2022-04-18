@@ -2,12 +2,17 @@ import styled from 'styled-components'
 
 import {MEDIA_DESKTOP} from '../../constants/Mixin'
 import {colors, sizes} from '../../constants/Variables'
+import {petStatusConverter} from '../../utils/value-converter'
 
 const TextSetting = styled.div`
   font-size: ${sizes.s};
   color: ${colors.gray.i100};
   letter-spacing: 1px;
   margin-top: 12px;
+  &::after {
+    margin-left: 10px;
+    color: ${colors.gray.i400};
+  }
   ${MEDIA_DESKTOP} {
     margin-top: 20px;
   }
@@ -34,7 +39,7 @@ export const UpdateTime = styled(TextSetting) <{updatedAt: string}>`
     content: "更新時間";
   }
   &::after {
-    margin-left: 10px;
+    color: ${colors.gray.i100};
     content: ${(props) => `"${props.updatedAt}"`};
   }
 `
@@ -46,9 +51,16 @@ export const AccessNumber = styled(TextSetting) <{accessNum: string}>`
     content: "編號";
   }
   &::after {
-    margin-left: 10px;
     content: ${(props) => `"${props.accessNum}"`};
     color: ${colors.gray.i400};
+  }
+`
+export const Status = styled(TextSetting) <{status: PetStatusType}>`
+  &::before {
+    content: "狀態";
+  }
+  &::after {
+    content: ${(props) => `"${petStatusConverter(props.status)}"`};
   }
 `
 export const DescriptionContainer = styled.div`

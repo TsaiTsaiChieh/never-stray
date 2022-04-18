@@ -5,6 +5,7 @@ import {
   Description,
   DescriptionContainer,
   DescriptionTitle,
+  Status,
   Title,
   UpdateTime,
 } from '../../styled/PetProfile/Details'
@@ -23,6 +24,7 @@ const Details = ({pet}: Props) => {
       <Title>{pet.ref === PetRef.MAP ? pet.title : pet.shelter_name}</Title>
       <UpdateTime updatedAt={pet.updated_at.substring(0, 10)} />
       <AccessNumber accessNum={accessNum} />
+      <Status status={pet.status} />
       <Feature
         sex={pet.sex}
         age={pet.age}
