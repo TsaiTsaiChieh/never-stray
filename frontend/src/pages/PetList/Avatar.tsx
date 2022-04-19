@@ -9,7 +9,7 @@ interface Props {
 const Avatar = ({image}: Props) => {
   const [loading, setLoading] = useState<boolean>(true)
   const loaded = !image ?
-    '/images/PetList/dog-no-pic.svg' :
+    '/images/PetList/no-pic.svg' :
     useProgressiveImage(image)
   useEffect(() => {
     if (loaded) setLoading(false)
