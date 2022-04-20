@@ -5,6 +5,7 @@ import {pingDB} from './api/PingAPI'
 import DogWalking from './components/DogWalking'
 import PetList from './pages/PetList'
 import PetProfile from './pages/PetProfile'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const App = () => {
   /** Loading page */
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<PetList />} />
         <Route path='/profile/:id' element={<PetProfile />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
       </Routes>
     )
   )
