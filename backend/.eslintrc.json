@@ -48,7 +48,8 @@
           "OneToMany",
           "ManyToOne",
           "JoinColumn",
-          "Param"
+          "Param",
+          "UseBefore"
         ]
       }
     ],
