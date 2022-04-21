@@ -1,6 +1,7 @@
 import {Application, NextFunction, Request, Response} from 'express'
 import {useExpressServer} from 'routing-controllers'
 
+import {AuthController} from './controllers/auth.controller'
 import {EnumController} from './controllers/enum.controller'
 import {PetController} from './controllers/pet.controller'
 import {PingController} from './controllers/ping.controller'
@@ -22,7 +23,12 @@ export class Router {
     })
     useExpressServer(app, {
       routePrefix: 'api',
-      controllers: [EnumController, PetController, PingController],
+      controllers: [
+        EnumController,
+        PetController,
+        PingController,
+        AuthController,
+      ],
     })
   }
 }
