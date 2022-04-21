@@ -116,7 +116,11 @@
           "album_update",
           "shelter_address",
           "shelter_tel",
-          "redirect_url"
+          "redirect_url",
+          "client_id",
+          "client_secret",
+          "grant_type",
+          "redirect_uri"
         ]
       }
     ],
