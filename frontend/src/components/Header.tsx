@@ -8,6 +8,7 @@ import {
   SloganEn,
   StyledHeader,
 } from '../styled/Header'
+import Login from './Login'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ const Header = () => {
           <SloganEn>Never Stray</SloganEn>
         </Slogan>
       </LogoGroup>
+      <Login />
     </StyledHeader>
   )
 }
