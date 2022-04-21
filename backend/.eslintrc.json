@@ -115,7 +115,8 @@
           "album_file",
           "album_update",
           "shelter_address",
-          "shelter_tel"
+          "shelter_tel",
+          "redirect_url"
         ]
       }
     ],
