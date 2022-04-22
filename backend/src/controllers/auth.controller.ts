@@ -1,14 +1,32 @@
 /* eslint-disable require-jsdoc */
 import axios from 'axios'
 import {Request, Response} from 'express'
-import {Controller, Get, Req, Res} from 'routing-controllers'
+import {Controller, Get, Post, Req, Res} from 'routing-controllers'
 
-import {AxiosError} from '../utils/app-error'
+import {oAuth2Client} from '../config/google-oauth2'
+import {AxiosError, TokenExpired} from '../utils/app-error'
 
 @Controller('/auth')
 export class AuthController {
+  @Post('/google-login')
+  async googleLogin(@Req() req: Request, @Res() res: Response) {
+    const {token} = req.body
+    try {
+      const ticket = await oAuth2Client.verifyIdToken({idToken: token})
+      const payload = ticket.getPayload()
+      return res.json({
+        name: payload!.name,
+        email: payload!.email,
+        picture: payload!.email,
+      })
+    } catch (error) {
+      const err = new TokenExpired(error.stack)
+      return res.status(err.code).json(err)
+    }
+  }
+
   @Get('/google')
-  async googleLogin(@Res() res: Response) {
+  async google(@Res() res: Response) {
     const {GOOGLE_REDIRECT_URL, GOOGLE_CLIENT_ID} = process.env
     const googleOauthUrl =
       'https://accounts.google.com/o/oauth2/v2/auth?' +
