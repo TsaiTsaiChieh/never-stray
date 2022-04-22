@@ -1,10 +1,11 @@
 import 'reflect-metadata'
 
+import bodyParser from 'body-parser'
 import cors from 'cors'
 import express, {Application} from 'express'
 
-import {Router} from './router'
 import {connection} from './config/database'
+import {Router} from './router'
 
 /** @class App */
 export class App {
@@ -36,6 +37,8 @@ export class App {
       allowedHeaders: ['Content-Type'],
       credentials: true,
     }))
+    this.app.use(bodyParser.json())
+    this.app.use(bodyParser.urlencoded({extended: false}))
   }
   /** Add DB */
   private async db(): Promise<void> {
