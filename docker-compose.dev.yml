@@ -16,6 +16,7 @@ services:
     environment:
       - APP_PORT=8080
       - TYPEORM_HOST=db
+      - GOOGLE_REDIRECT_URL=http://localhost:8080/api/auth/google/callback
     ports:
       - "8080:8080"
     env_file:
