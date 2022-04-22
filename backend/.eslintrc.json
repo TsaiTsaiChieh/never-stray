@@ -49,7 +49,8 @@
           "ManyToOne",
           "JoinColumn",
           "Param",
-          "UseBefore"
+          "UseBefore",
+          "Post"
         ]
       }
     ],
