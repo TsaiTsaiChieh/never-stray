@@ -17,7 +17,7 @@ export class AuthController {
       return res.json({
         name: payload!.name,
         email: payload!.email,
-        picture: payload!.email,
+        picture: payload!.picture,
       })
     } catch (error) {
       const err = new TokenExpired(error.stack)
