@@ -27,7 +27,7 @@ export class AuthController {
         name, email: email!, picture,
       })
 
-      return res.json({name, email, picture})
+      return res.json({name, email, picture, token})
     } catch (error) {
       return res.status(error.code).json(error)
     }
