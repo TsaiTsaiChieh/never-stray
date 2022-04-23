@@ -50,7 +50,8 @@
           "JoinColumn",
           "Param",
           "UseBefore",
-          "Post"
+          "Post",
+          "HeaderParam"
         ]
       }
     ],
