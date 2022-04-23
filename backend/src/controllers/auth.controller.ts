@@ -3,25 +3,33 @@ import axios from 'axios'
 import {Request, Response} from 'express'
 import {Controller, Get, Post, Req, Res} from 'routing-controllers'
 
-import {oAuth2Client} from '../config/google-oauth2'
-import {AxiosError, TokenExpired} from '../utils/app-error'
+import {UserModel} from '../models/user.model'
+import {AxiosError} from '../utils/app-error'
+import {verifyGoogleToken} from '../utils/validation'
 
 @Controller('/auth')
 export class AuthController {
+  private userModel: UserModel
+
+  constructor() {
+    this.userModel = new UserModel()
+  }
+
   @Post('/google-login')
   async googleLogin(@Req() req: Request, @Res() res: Response) {
     const {token} = req.body
     try {
-      const ticket = await oAuth2Client.verifyIdToken({idToken: token})
-      const payload = ticket.getPayload()
-      return res.json({
-        name: payload!.name,
-        email: payload!.email,
-        picture: payload!.picture,
+      const payload = await verifyGoogleToken(token)
+      const {email} = payload!
+      const name = payload!.name ? payload!.name : undefined
+      const picture = payload!.picture ? payload!.picture : undefined
+      await this.userModel.upsertUser({
+        name, email: email!, picture,
       })
+
+      return res.json({name, email, picture})
     } catch (error) {
-      const err = new TokenExpired(error.stack)
-      return res.status(err.code).json(err)
+      return res.status(error.code).json(error)
     }
   }
 
