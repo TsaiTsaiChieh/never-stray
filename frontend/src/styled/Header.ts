@@ -10,7 +10,6 @@ export const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  cursor: pointer;
   ${MEDIA_TABLET} {
     padding-top: 4.5px;
     padding-bottom: 4.5px;
@@ -24,6 +23,7 @@ export const LogoGroup = styled.div`
   display: flex;
   margin: 3px 0 3px 0;
   justify-content: space-around;
+  cursor: pointer;
   ${MEDIA_TABLET} {
     margin: 3px 0 3px 0;
   }
