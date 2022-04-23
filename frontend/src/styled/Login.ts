@@ -5,7 +5,6 @@ import {colors, sizes} from '../constants/Variables'
 
 export const Container = styled.div`
   display: flex;
-  cursor: pointer;
   position: absolute;
   right: 25px;
   top: auto;
@@ -16,11 +15,12 @@ export const Container = styled.div`
     right: 220px;
   }
 `
-export const UserName = styled.p`
+export const LoginBtn = styled.p`
   color: ${colors.gray.i400};
   font-size: ${sizes.xs};
   margin-top: auto;
   margin-bottom: auto;
+  cursor: pointer;
   margin-left: 8px;
   ${MEDIA_TABLET} {
     font-size: ${sizes.s};
