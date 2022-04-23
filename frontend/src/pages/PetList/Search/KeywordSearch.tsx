@@ -34,7 +34,11 @@ const KeywordSearch = () => {
 
   return (
     <TextFieldGroup isShow={keywordSearchTextFieldIsShow}>
-      <TextField placeholder='搜尋介紹內容' onKeyDown={(e) => onKeyDown(e)} />
+      <TextField
+        placeholder='搜尋介紹內容'
+        defaultValue={filters.keyword ? filters.keyword : ''}
+        onKeyDown={(e) => onKeyDown(e)}
+      />
       <SearchIcon />
     </TextFieldGroup>
   )
