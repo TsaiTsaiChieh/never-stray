@@ -34,7 +34,7 @@ export class App {
     this.app.use(cors({
       origin: JSON.parse(process.env.ORIGINS!),
       methods: ['GET', 'OPTIONS', 'PUT', 'PATCH', 'POST', 'DELETE'],
-      allowedHeaders: ['Content-Type'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
     }))
     this.app.use(bodyParser.json())
