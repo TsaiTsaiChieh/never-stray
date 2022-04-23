@@ -57,7 +57,7 @@ export class NotFound extends AppError {
   }
 }
 
-export class TokenExpired extends AppError {
+export class InvalidToken extends AppError {
   constructor(message: any = 'Token 過期') {
     super(message)
   }
