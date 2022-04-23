@@ -4,6 +4,7 @@ import {Connection, createConnection} from 'typeorm'
 import {Area} from '../entity/area.entity'
 import {Pet} from '../entity/pet.entity'
 import {Shelter} from '../entity/shelter.entity'
+import {User} from '../entity/user.entity'
 import {DBError} from '../utils/app-error'
 
 export const connection = async (
@@ -18,7 +19,7 @@ export const connection = async (
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_ROOT_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [Area, Pet, Shelter],
+      entities: [Area, Pet, Shelter, User],
       synchronize: false,
       logging: false,
     })
