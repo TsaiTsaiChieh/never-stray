@@ -29,12 +29,17 @@ export const LoginBtn = styled.p`
     font-size: ${sizes.m};
   }
 `
-export const UserAvatar = styled.div`
+export const UserAvatar = styled.div<{picture: string | undefined}>`
   display: flex;
   content: null;
   width: 28px;
   height: 28px;
   border: 2px solid ${colors.tiffany.i300};
+  background-image: ${(props) =>
+    props.picture ? `url(${props.picture})` : `none`};
+  background-position: center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
   border-radius: 50%;
   ${MEDIA_TABLET} {
     width: 30px;
