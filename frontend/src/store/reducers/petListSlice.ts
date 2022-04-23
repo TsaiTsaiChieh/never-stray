@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios'
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
 
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
@@ -70,7 +70,14 @@ export const getPets = createAsyncThunk(
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
-    const res: AxiosResponse = await axios({method: 'GET', url})
+    const token = localStorage.getItem('loginData') ?
+      JSON.parse(localStorage.getItem('loginData') || '{}').token :
+      undefined
+    let reqConfig: AxiosRequestConfig = {method: 'GET', url}
+    reqConfig = token ?
+      {...reqConfig, headers: {Authorization: `Bearer ${token}`}} :
+      reqConfig
+    const res: AxiosResponse = await axios(reqConfig)
 
     return res.data
   },
