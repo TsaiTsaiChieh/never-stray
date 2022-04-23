@@ -1,23 +1,55 @@
-import GoogleLogin from 'react-google-login'
+import {useEffect, useState} from 'react'
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from 'react-google-login'
 
-import {Container, UserAvatar, UserName} from '../styled/Login'
+import {useGoogleLoginMutation} from '../api/auth'
+import {Container, LoginBtn, UserAvatar} from '../styled/Login'
 
-const responseGoogle = (response: any) => {
-  console.log(response)
-}
 const Login = () => {
+  const [googleLogin, {data, isSuccess}] = useGoogleLoginMutation()
+  const [loginData, setLoginData] = useState<UserInfoType | undefined>(
+    localStorage.getItem('loginData') ?
+      JSON.parse(localStorage.getItem('loginData')!) :
+      undefined,
+  )
+  useEffect(() => {
+    if (isSuccess) {
+      setLoginData(data!)
+      localStorage.setItem('loginData', JSON.stringify(data))
+    }
+  }, [isSuccess])
+
+  const handleLogin = (
+    response: GoogleLoginResponse | GoogleLoginResponseOffline,
+  ) => {
+    if ('tokenId' in response) {
+      const tokenId = response.tokenId
+      googleLogin({token: tokenId})
+    }
+  }
+  const handleLogout = () => {
+    localStorage.removeItem('loginData')
+    setLoginData(undefined)
+  }
+
   return (
     <Container>
-      <UserAvatar />
-      <GoogleLogin
-        render={(renderProps) => (
-          <UserName onClick={renderProps.onClick}>登入</UserName>
-        )}
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-      />
-    </Container >
+      <UserAvatar picture={loginData ? loginData.picture : undefined} />
+      {loginData ? (
+        <LoginBtn onClick={handleLogout}>登出</LoginBtn>
+      ) : (
+        <GoogleLogin
+          render={(renderProps) => (
+            <LoginBtn onClick={renderProps.onClick}>登入</LoginBtn>
+          )}
+          onSuccess={handleLogin}
+          // TODO Should add handleFailure function
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
+        />
+      )}
+    </Container>
   )
 }
 
