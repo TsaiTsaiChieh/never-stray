@@ -22,7 +22,7 @@ const initialState: PetListState = {
     ascend: true,
   },
   pets: [],
-  totalPage: 0,
+  totalPage: 1,
 }
 
 export const getPets = createAsyncThunk(
