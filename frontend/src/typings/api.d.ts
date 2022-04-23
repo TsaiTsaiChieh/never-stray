@@ -11,3 +11,9 @@ type IDAndNameType = {
 type CityAPIType = IDAndNameType & {
   region: RegionType
 }
+
+type UserInfoType = {
+  email: string
+  name: string
+  picture: string
+}
