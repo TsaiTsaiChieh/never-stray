@@ -4,8 +4,6 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
 import {PetKind, PetStatus} from '../../constants/EnumType'
 
-const {REACT_APP_API_URL} = process.env
-
 const initialState: PetListState = {
   loading: true,
   filters: {
@@ -30,7 +28,9 @@ const initialState: PetListState = {
 export const getPets = createAsyncThunk(
   'petList',
   async (filters: SearchPetFilters = initialState.filters) => {
-    let url = `${REACT_APP_API_URL}/pets?page=${filters.page}` +
+    let url =
+      `${process.env.REACT_APP_API_URL}` +
+      `/pets?page=${filters.page}` +
       `&limit=${filters.limit}`
     if (filters.status) {
       url += `${filters.status.map((ele) => `&status[]=${ele}`).join('')}`
@@ -88,14 +88,11 @@ export const petListSlice = createSlice({
     builder.addCase(getPets.pending, (state) => {
       state.loading = true
     })
-    builder.addCase(
-      getPets.fulfilled,
-      (state, action) => {
-        state.loading = false
-        state.pets = action.payload.pets
-        state.totalPage = action.payload.page.total
-      },
-    )
+    builder.addCase(getPets.fulfilled, (state, action) => {
+      state.loading = false
+      state.pets = action.payload.pets
+      state.totalPage = action.payload.page.total
+    })
     builder.addCase(getPets.rejected, (state) => {
       state.loading = false
     })
