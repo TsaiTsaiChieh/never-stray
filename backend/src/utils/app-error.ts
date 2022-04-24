@@ -58,7 +58,10 @@ export class NotFound extends AppError {
 }
 
 export class InvalidToken extends AppError {
-  constructor(message: any = 'Token 過期') {
-    super(message)
+  constructor(
+    message: any = 'Token 無效',
+    code: number = httpStatus.UNAUTHORIZED,
+  ) {
+    super(message, code)
   }
 }
