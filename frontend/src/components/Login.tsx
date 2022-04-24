@@ -22,10 +22,10 @@ const Login = () => {
   }, [isSuccess])
 
   const handleLogin = (
-    response: GoogleLoginResponse | GoogleLoginResponseOffline,
+    res: GoogleLoginResponse | GoogleLoginResponseOffline,
   ) => {
-    if ('tokenId' in response) {
-      const tokenId = response.tokenId
+    if ('tokenId' in res) {
+      const tokenId = res.tokenId
       googleLogin({token: tokenId})
     }
   }
