@@ -24,3 +24,9 @@ type S3ListObjectsType = {
   /*  Limits the response to keys that begin with the specified prefix. */
   Prefix: string
 }
+
+type TokenType = {
+  email: string
+  picture: string
+  name: string
+}
