@@ -1,12 +1,20 @@
 /* eslint-disable require-jsdoc */
 import {Request, Response} from 'express'
 import httpStatus from 'http-status'
-import {Controller, Get, Param, Req, Res} from 'routing-controllers'
+import {
+  Controller,
+  Get,
+  Param,
+  Req,
+  Res,
+  UseBefore,
+} from 'routing-controllers'
 import safeAwait from 'safe-await'
-import {PetModel} from '../models/pet.model'
 
+import {PetModel} from '../models/pet.model'
 import {petSearchSchema} from '../schemas/pet-search.schema'
 import {ajv} from '../utils/ajv-util'
+import {LoginOrNot} from '../utils/middlewares'
 
 @Controller('/pets')
 export class PetController {
@@ -16,6 +24,7 @@ export class PetController {
     this.model = new PetModel()
   }
   @Get('/')
+  @UseBefore(LoginOrNot)
   async searchPet(@Req() req: Request, @Res() res: Response) {
     const city_id = req.query.city_id as string[]
     const shelter_id = req.query.shelter_id as string[]
