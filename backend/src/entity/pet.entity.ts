@@ -89,14 +89,12 @@ export class Pet {
 
   @Column({type: 'tinyint', nullable: false})
   city_id: number
-
   @ManyToOne((_) => Area)
   @JoinColumn({name: 'city_id', referencedColumnName: 'id'})
   city?: number
 
   @Column({type: 'tinyint', nullable: false})
   shelter_id: number
-
   @ManyToOne((_) => Shelter)
   @JoinColumn({name: 'shelter_id', referencedColumnName: 'id'})
   shelter?: number
@@ -142,7 +140,7 @@ export class Pet {
   phone: string
 
   @Column({type: 'json', nullable: true})
-  image: string[] | null
+  image: string[]
 
   @CreateDateColumn()
   created_at?: Date
