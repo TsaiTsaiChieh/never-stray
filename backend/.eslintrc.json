@@ -122,7 +122,9 @@
           "client_id",
           "client_secret",
           "grant_type",
-          "redirect_uri"
+          "redirect_uri",
+          "user_id",
+          "pet_id"
         ]
       }
     ],
