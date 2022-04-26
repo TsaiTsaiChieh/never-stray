@@ -1,43 +1,37 @@
-import {useEffect, useState} from 'react'
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from 'react-google-login'
 
 import {useGoogleLoginMutation} from '../api/auth'
+import {useAppDispatch, useAppSelector} from '../store/hooks'
+import {logout} from '../store/reducers/authSlice'
 import {Container, LoginBtn, UserAvatar} from '../styled/Login'
 
 const Login = () => {
-  const [googleLogin, {data, isSuccess}] = useGoogleLoginMutation()
-  const [loginData, setLoginData] = useState<UserInfoType | undefined>(
-    localStorage.getItem('loginData') ?
-      JSON.parse(localStorage.getItem('loginData')!) :
-      undefined,
-  )
-  useEffect(() => {
-    if (isSuccess) {
-      setLoginData(data!)
-      localStorage.setItem('loginData', JSON.stringify(data))
-    }
-  }, [isSuccess])
+  const {isLogin, userData} = useAppSelector((state) => state.auth)
+  const dispatch = useAppDispatch()
+  const [googleLogin] = useGoogleLoginMutation()
 
   const handleLogin = (
     res: GoogleLoginResponse | GoogleLoginResponseOffline,
   ) => {
+    // Callback will return the GoogleAuth object
     if ('tokenId' in res) {
       const tokenId = res.tokenId
+      // Carry token to backend
       googleLogin({token: tokenId})
     }
   }
+
   const handleLogout = () => {
-    localStorage.removeItem('loginData')
-    setLoginData(undefined)
+    dispatch(logout())
   }
 
   return (
     <Container>
-      <UserAvatar picture={loginData ? loginData.picture : undefined} />
-      {loginData ? (
+      <UserAvatar picture={userData ? userData.picture : undefined} />
+      {isLogin ? (
         <LoginBtn onClick={handleLogout}>登出</LoginBtn>
       ) : (
         <GoogleLogin
