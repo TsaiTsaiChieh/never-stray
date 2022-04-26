@@ -18,7 +18,7 @@ import rootReducer from './rootReducer'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [authApi.reducerPath, 'enum'],
+  whitelist: [authApi.reducerPath, 'auth', 'enum'],
   blacklist: [petsApi.reducerPath, 'petList', 'ui'],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
