@@ -19,3 +19,11 @@ interface UIState {
   filterBtnIsShow: boolean
   closeTextSearchIsShow: boolean
 }
+
+interface AuthState {
+  isLogin: boolean
+  name?: string
+  email: string
+  picture?: string
+  token: string
+}
