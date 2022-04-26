@@ -4,26 +4,27 @@ import {authApi} from '../../api/auth'
 
 const initialState: AuthState = {
   isLogin: false,
-  email: '',
-  token: '',
 }
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.isLogin = false
+      delete state.userData
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(
       authApi.endpoints.googleLogin.matchFulfilled,
       (state, {payload}) => {
         state.isLogin = true
-        state.name = payload.name
-        state.email = payload.email
-        state.picture = payload.picture
-        state.token = payload.token
+        state.userData = payload
       },
     )
   },
 })
 
+export const {logout} = authSlice.actions
 export default authSlice.reducer
