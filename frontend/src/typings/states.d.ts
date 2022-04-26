@@ -22,8 +22,5 @@ interface UIState {
 
 interface AuthState {
   isLogin: boolean
-  name?: string
-  email: string
-  picture?: string
-  token: string
+  userData?: UserInfoType
 }
