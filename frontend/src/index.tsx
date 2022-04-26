@@ -15,7 +15,7 @@ const persistor = persistStore(store)
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>
