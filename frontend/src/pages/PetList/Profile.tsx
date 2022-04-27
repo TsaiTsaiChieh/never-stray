@@ -12,6 +12,7 @@ import {
   Sex,
   SexAgeWrap,
   Title,
+  TrackingOrNot,
   VerticalLine,
 } from '../../styled/PetList/Profile'
 import {
@@ -35,6 +36,7 @@ const Profile = ({pet}: Props) => {
       <ProfileWrap>
         <Container>
           <ImgWrap>
+            <TrackingOrNot tracking={pet.tracking} />
             <PawImg />
             <Avatar image={pet.image[0]} />
             <Title>
