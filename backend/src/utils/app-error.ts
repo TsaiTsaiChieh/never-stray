@@ -65,3 +65,12 @@ export class InvalidToken extends AppError {
     super(message, code)
   }
 }
+
+export class UserNotFound extends AppError {
+  constructor(
+    message: any = '查無此使用者',
+    code: number = 404,
+  ) {
+    super(message, code)
+  }
+}
