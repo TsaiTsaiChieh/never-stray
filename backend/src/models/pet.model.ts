@@ -1,31 +1,48 @@
 import {Pet} from '../entity/pet.entity'
+import {Tracking} from '../entity/tracking.entity'
 import {PetRepository} from '../repository/pet.repository'
+import {TrackingRepository} from '../repository/tracking.repository'
 import {NotFound, RepackageError} from '../utils/app-error'
 import {deepCopy} from '../utils/helper'
 
 /** @class PetModel */
 export class PetModel {
   private repository: PetRepository
+  private trackingRepository: TrackingRepository
 
   /** @constructor */
   constructor() {
     this.repository = new PetRepository()
+    this.trackingRepository = new TrackingRepository()
   }
 
   /**
    * Search pet by query
    *
    * @param  {PetSearchQueryType} query
+   * @param  {number | undefined} userId
    * @return {Promise<PetSearchReturningType>}
    */
-  async searchPetAndCount(
+  async searchPetWithTrackingAndCount(
     query: PetSearchQueryType,
+    userId: number | undefined,
   ): Promise<PetSearchReturningType> {
     try {
-      const result: [Pet[], number] =
+      let trackingPetId: number[] = []
+      const petResult: [Pet[], number] =
         await this.repository.findByFiltersAndCount(query)
-      const cleanData: PetSearchReturningType =
-        await repackagePetData(result, query.page!, query.limit!)
+      if (userId) {
+        const trackingResult: Tracking[] = await this.trackingRepository.find({
+          user_id: userId,
+        })
+        trackingPetId = trackingResult ?
+          trackingResult.map((ele) => ele.pet_id) : []
+      }
+      const cleanData: PetSearchReturningType = await repackagePetData(
+        petResult,
+        query,
+        trackingPetId,
+      )
       return Promise.resolve(cleanData)
     } catch (error) {
       return Promise.reject(error)
@@ -41,7 +58,9 @@ export class PetModel {
   async getById(id: number): Promise<PetInfoType> {
     try {
       const result: Pet | undefined = await this.repository.findOneById(id)
-      if (!result) return Promise.reject(new NotFound(`Pet id ${id} not found`))
+      if (!result) {
+        return Promise.reject(new NotFound(`Pet id ${id} not found`))
+      }
 
       const cleanData: PetInfoType = deepCopy(result)
       cleanData.city_name = cleanData.city!.name
@@ -60,32 +79,32 @@ export class PetModel {
  * Repackage pet data
  *
  * @param  {[Pet[], number]} result Pet information and count
- * @param  {number} page Current page
- * @param  {number} limit Number of row
+ * @param  {PetSearchQueryType} query
+ * @param  {number[]} trackingPetId Pet id from user tracking
  * @return {Promise<[PetSearchReturningType[], number]>}
  */
 function repackagePetData(
   result: [Pet[], number],
-  page: number,
-  limit: number,
+  query: PetSearchQueryType,
+  trackingPetId: number[],
 ): Promise<PetSearchReturningType> {
   try {
     const copyResult = deepCopy(result)
     const cleanData: PetSearchReturningType = {
       page: {
-        current: page,
-        size: limit,
+        current: query.page,
+        size: query.limit,
         count: copyResult[1],
-        total: Math.ceil(copyResult[1] / limit),
+        total: Math.ceil(copyResult[1] / query.limit!),
       },
     } as PetSearchReturningType
-
 
     const petData: PetInfoType[] = copyResult[0]
     petData.map((ele) => {
       ele.region = ele.city!.region
       ele.city_name = ele.city!.name
       ele.shelter_name = ele.shelter!.name
+      ele.tracking = trackingPetId.includes(ele.id)
       delete ele.city
       delete ele.shelter
     })
