@@ -4,7 +4,6 @@ import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors} from '../../constants/Variables'
 
 export const StyledAvatar = styled.div<{isLoading: boolean}>`
-  cursor: pointer;
   position: relative;
   object-fit: cover;
   width: auto;
