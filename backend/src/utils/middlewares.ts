@@ -1,7 +1,10 @@
 /* eslint-disable require-jsdoc */
 import {NextFunction, Request, Response} from 'express'
-import jwtDecode from 'jwt-decode'
 import {ExpressMiddlewareInterface, Req, Res} from 'routing-controllers'
+
+import {UserRepository} from '../repository/user.repository'
+import {UserNotFound} from './app-error'
+import {jwtDecoder} from './helper'
 
 export class LoginOrNot implements ExpressMiddlewareInterface {
   async use(
@@ -13,8 +16,13 @@ export class LoginOrNot implements ExpressMiddlewareInterface {
       const token = req.headers.authorization
       let payload
       if (token) {
-        payload = jwtDecode<TokenType>(token.replace('Bearer ', ''))
+        payload = jwtDecoder(token)
         req.email = payload.email
+        // Get user ID
+        const userRepository = new UserRepository()
+        const result = await userRepository.findOne({email: payload.email})
+        if (result) req.userId = result.id
+        else throw new UserNotFound()
       }
       next()
     } catch (error) {
