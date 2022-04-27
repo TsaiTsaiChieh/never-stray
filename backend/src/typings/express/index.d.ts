@@ -1,5 +1,6 @@
 declare namespace Express {
   interface Request {
-    email: Record<string>;
+    userId: Record<number>
+    email: Record<string>
   }
 }
