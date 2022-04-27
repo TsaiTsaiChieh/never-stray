@@ -72,6 +72,25 @@ export const ProfileWrap = styled.div`
   background: ${colors.white.i100};
   border-radius: 5px;
 `
+export const TrackingOrNot = styled.img<{tracking: boolean}>`
+  display: none;
+  position: absolute;
+  margin: auto;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 22px;
+  cursor: pointer;
+  content: ${(props) =>
+    props.tracking ?
+      'url(/images/PetList/tracking.svg)' :
+      'url(/images/PetList/untracking.svg)'};
+  ${MEDIA_TABLET} {
+    width: 30px;
+  }
+`
 export const OuterHoverWrap = styled.div`
   padding: 9px;
   border: 1px solid white;
@@ -99,6 +118,10 @@ export const OuterHoverWrap = styled.div`
       -webkit-filter: brightness(75%);
       transition: all 0.8s ease;
     }
+
+    ${TrackingOrNot} {
+      display: block;
+    }
   }
 `
 export const Container = styled.div`
@@ -119,6 +142,7 @@ export const ImgWrap = styled.div`
     bottom: 10.8rem;
   }
 `
+
 export const PawImg = styled.img`
   width: 80%;
   position: relative;
