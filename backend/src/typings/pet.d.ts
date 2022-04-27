@@ -97,6 +97,7 @@ type PetInfoType = PetType & {
   region: AreaRegionType
   city_name: string
   shelter_name: string
+  tracking: boolean
 }
 
 type PetSearchReturningType = {
