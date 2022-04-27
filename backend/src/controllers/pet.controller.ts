@@ -45,7 +45,9 @@ export class PetController {
     if (!valid) return res.status(httpStatus.BAD_REQUEST).json(ajv.errors)
 
     const [error, result]: [ErrorType, PetSearchReturningType] =
-      await safeAwait(this.model.searchPetAndCount(query))
+      await safeAwait(
+        this.model.searchPetWithTrackingAndCount(query, req.userId),
+      )
     if (error) return res.status(error.code).json(error)
     return res.json(result)
   }
