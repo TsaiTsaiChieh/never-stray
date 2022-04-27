@@ -7,7 +7,7 @@ export const StyledAvatar = styled.div<{isLoading: boolean}>`
   cursor: pointer;
   position: relative;
   object-fit: cover;
-  width: 7rem;
+  width: auto;
   height: 6.5rem;
   border-radius: 10px;
   background-repeat: no-repeat;
@@ -42,5 +42,6 @@ export const StyledAvatar = styled.div<{isLoading: boolean}>`
   ${MEDIA_TABLET} {
     width: 10rem;
     height: 9.5rem;
+  }
   }
 `
