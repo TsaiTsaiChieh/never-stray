@@ -48,6 +48,7 @@ interface IPet {
   remark: string
   phone: string
   image: string[]
+  tracking: boolean
   created_at: date
   updated_at: date
 }
