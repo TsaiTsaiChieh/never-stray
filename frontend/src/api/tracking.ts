@@ -20,7 +20,15 @@ export const trackingApi = createApi({
         body: pet_id,
       }),
     }),
+    removeTrackingApi: builder.mutation<string, {pet_id: number}>({
+      query: (pet_id) => ({
+        url: '',
+        method: 'DELETE',
+        body: pet_id,
+      }),
+    }),
   }),
 })
 
-export const {useAddTrackingApiMutation} = trackingApi
+export const {useAddTrackingApiMutation, useRemoveTrackingApiMutation} =
+  trackingApi
