@@ -86,4 +86,18 @@ export class BasicRepository<T> {
   ): Promise<UpdateResult> {
     return this.repository.update(conditions, partialEntity)
   }
+
+  /**
+   * Upsert single data
+   *
+   * @param  {T} data
+   * @param  {FindOneOptions<T>} [options]
+   */
+  async upsertOne(data: T, options?: FindOneOptions<T>) {
+    const result = await this.repository.findOne(data, options)
+
+    return result ?
+      this.repository.update(data, data) :
+      this.repository.save(data)
+  }
 }
