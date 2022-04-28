@@ -12,7 +12,6 @@ import {
   Sex,
   SexAgeWrap,
   Title,
-  TrackingOrNot,
   VerticalLine,
 } from '../../styled/PetList/Profile'
 import {
@@ -21,11 +20,13 @@ import {
   petSexConverter,
 } from '../../utils/value-converter'
 import Avatar from './Avatar'
+import Tracking from './Tracking'
 
 interface Props {
   pet: IPet
+  idx: number
 }
-const Profile = ({pet}: Props) => {
+const Profile = ({pet, idx}: Props) => {
   const navigate = useNavigate()
   const toProfile = () => {
     navigate(`/profile/${pet.id}`)
@@ -36,7 +37,7 @@ const Profile = ({pet}: Props) => {
       <ProfileWrap>
         <Container>
           <ImgWrap>
-            <TrackingOrNot tracking={pet.tracking} />
+            <Tracking id={pet.id} tracking={pet.tracking} idx={idx} />
             <PawImg />
             <Avatar image={pet.image[0]} />
             <Title>
