@@ -36,8 +36,8 @@ export const PetList = () => {
           <div id='PetList'>
             {petState.pets.length ? (
               petState.pets &&
-              petState.pets.map((ele: IPet) => (
-                <Profile key={ele.id} pet={ele} />
+              petState.pets.map((ele: IPet, idx: number) => (
+                <Profile key={ele.id} pet={ele} idx={idx} />
               ))
             ) : (
               <NotFound />
