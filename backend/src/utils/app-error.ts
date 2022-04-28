@@ -69,7 +69,16 @@ export class InvalidToken extends AppError {
 export class UserNotFound extends AppError {
   constructor(
     message: any = '查無此使用者',
-    code: number = 404,
+    code: number = httpStatus.NOT_FOUND,
+  ) {
+    super(message, code)
+  }
+}
+
+export class ShouldLogin extends AppError {
+  constructor(
+    message: any = '需要登入',
+    code: number = httpStatus.UNAUTHORIZED,
   ) {
     super(message, code)
   }
