@@ -27,7 +27,9 @@ export class EnumController {
       this.areaModel.getAll(),
     )
     if (error) return res.status(error.code).json(error)
-    return res.json(result)
+    return res
+      .set('Cache-Control', `public, max-age=${process.env.HALF_HOUR_SECS}`)
+      .json(result)
   }
 
   @Get('/shelter')
@@ -36,13 +38,17 @@ export class EnumController {
       this.shelterModel.getAll(),
     )
     if (error) return res.status(error.code).json(error)
-    return res.json(result)
+    return res
+      .set('Cache-Control', `public, max-age=${process.env.HALF_HOUR_SECS}`)
+      .json(result)
   }
 
   @Get('/color')
   async getPetColors(@Req() req: Request, @Res() res: Response) {
     const [error, result] = await safeAwait(this.petColorMode.getPetAllColors())
     if (error) return res.status(error.code).json(error)
-    return res.json(result)
+    return res
+      .set('Cache-Control', `public, max-age=${process.env.HALF_HOUR_SECS}`)
+      .json(result)
   }
 }
