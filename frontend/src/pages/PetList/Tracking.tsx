@@ -7,9 +7,9 @@ import {togglePetTracking} from '../../store/reducers/petListSlice'
 import {TrackingOrNot} from '../../styled/PetList/Tracking'
 
 interface Props {
-  id: number;
-  tracking: boolean;
-  idx: number;
+  id: number
+  tracking: boolean
+  idx: number
 }
 const Tracking = ({id, tracking, idx}: Props) => {
   const {isLogin} = useAppSelector((state) => state.auth)

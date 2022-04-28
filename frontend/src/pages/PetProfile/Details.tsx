@@ -12,7 +12,7 @@ import {
 import Feature from './Feature'
 
 interface Props {
-  pet: IPet;
+  pet: IPet
 }
 const Details = ({pet}: Props) => {
   const accessNum: string =

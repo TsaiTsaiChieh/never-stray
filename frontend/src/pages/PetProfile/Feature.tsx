@@ -11,10 +11,10 @@ import {
 } from '../../utils/value-converter'
 
 interface Props {
-  sex: PetSexType;
-  age: PetAgeType;
-  city: string;
-  ligation: TernaryType;
+  sex: PetSexType
+  age: PetAgeType
+  city: string
+  ligation: TernaryType
 }
 const Feature = ({sex, age, city, ligation}: Props) => {
   return (
