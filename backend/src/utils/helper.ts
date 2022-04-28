@@ -1,5 +1,7 @@
 import jwtDecode from 'jwt-decode'
-import {InvalidToken} from './app-error'
+
+import {UserRepository} from '../repository/user.repository'
+import {InvalidToken, UserNotFound} from './app-error'
 
 /**
  * Deep copy
@@ -13,14 +15,24 @@ export function deepCopy(data: any): any {
 
 /**
  *
- * JWT decoder
+ * Get user email and id from token decoder
  *
  * @param  {string} token
- * @return {TokenType}
+ * @return {Promise<Object>} email & user id
  */
-export function jwtDecoder(token: string): TokenType {
+export async function getUserFromToken(token: string): Promise<{
+  email: string,
+  userId: number
+}> {
   try {
-    return jwtDecode<TokenType>(token.replace('Bearer ', ''))
+    const payload = jwtDecode<TokenType>(token.replace('Bearer ', ''))
+    const {email} = payload
+    // Get user ID
+    const userRepository = new UserRepository()
+    const result = await userRepository.findOne({email})
+    if (!result) throw new UserNotFound()
+
+    return {email, userId: result.id!}
   } catch (error) {
     throw new InvalidToken(error.stack)
   }
