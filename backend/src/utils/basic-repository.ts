@@ -1,4 +1,5 @@
 import {
+  DeleteResult,
   FindConditions,
   FindOneOptions,
   getRepository,
@@ -99,5 +100,26 @@ export class BasicRepository<T> {
     return result ?
       this.repository.update(data, data) :
       this.repository.save(data)
+  }
+
+  /**
+   * Deletes entities by a given criteria.
+   * Does not check if entity exist in the database.
+   *
+   * @param  {string|string[]|number|number[]|
+   *          Date|Date[]|FindConditions<T>} criteria
+   * @return {Promise<DeleteResult>}
+   */
+  async delete(
+    criteria:
+      | string
+      | string[]
+      | number
+      | number[]
+      | Date
+      | Date[]
+      | FindConditions<T>,
+  ): Promise<DeleteResult> {
+    return this.repository.delete(criteria)
   }
 }
