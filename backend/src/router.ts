@@ -1,4 +1,4 @@
-import {Application, NextFunction, Request, Response} from 'express'
+import {Application} from 'express'
 import {useExpressServer} from 'routing-controllers'
 
 import {AuthController} from './controllers/auth.controller'
@@ -15,13 +15,6 @@ export class Router {
    * @param  {Application} app
    */
   static router(app: Application): void {
-    app.use((_: Request, res: Response, next: NextFunction) => {
-      res.setHeader(
-        'Cache-Control',
-        `public, max-age=${process.env.HALF_HOUR_SECS}`,
-      )
-      next()
-    })
     useExpressServer(app, {
       routePrefix: 'api',
       controllers: [
