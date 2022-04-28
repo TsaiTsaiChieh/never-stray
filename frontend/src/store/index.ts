@@ -1,4 +1,12 @@
-import {FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE} from 'redux-persist'
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import {configureStore} from '@reduxjs/toolkit'
