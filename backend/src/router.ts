@@ -5,6 +5,7 @@ import {AuthController} from './controllers/auth.controller'
 import {EnumController} from './controllers/enum.controller'
 import {PetController} from './controllers/pet.controller'
 import {PingController} from './controllers/ping.controller'
+import {TrackingController} from './controllers/tracking.controller'
 
 /** @class Router */
 export class Router {
@@ -28,6 +29,7 @@ export class Router {
         PetController,
         PingController,
         AuthController,
+        TrackingController,
       ],
     })
   }
