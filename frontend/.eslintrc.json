@@ -65,6 +65,17 @@
     "jsx-quotes": [
       "error",
       "prefer-single"
+    ],
+    "camelcase": [
+      "error",
+      {
+        "allow": [
+          "pet_id",
+          "shelter_id",
+          "city_id",
+          "order_key"
+        ]
+      }
     ]
   }
 }
