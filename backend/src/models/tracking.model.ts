@@ -31,4 +31,21 @@ export class TrackingModel {
       return Promise.reject(error)
     }
   }
+
+  /**
+   * Delete tracking
+   *
+   * @param  {number} petId
+   * @param  {number} userId
+   * @return {Promise<void>}
+   */
+  async removeTracking(petId: number, userId: number): Promise<void> {
+    try {
+      await this.repository.delete({pet_id: petId, user_id: userId})
+
+      return Promise.resolve()
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
 }
