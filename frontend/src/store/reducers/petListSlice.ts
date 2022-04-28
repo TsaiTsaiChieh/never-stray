@@ -2,6 +2,7 @@ import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
 
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
+import {RootState} from '../'
 import {PetKind, PetStatus} from '../../constants/EnumType'
 
 const initialState: PetListState = {
@@ -27,7 +28,7 @@ const initialState: PetListState = {
 
 export const getPets = createAsyncThunk(
   'petList',
-  async (filters: SearchPetFilters = initialState.filters) => {
+  async (filters: SearchPetFilters = initialState.filters, {getState}) => {
     let url =
       `${process.env.REACT_APP_API_URL}` +
       `/pets?page=${filters.page}` +
@@ -70,15 +71,17 @@ export const getPets = createAsyncThunk(
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
-    const token = localStorage.getItem('loginData') ?
-      JSON.parse(localStorage.getItem('loginData') || '{}').token :
-      undefined
-    let reqConfig: AxiosRequestConfig = {method: 'GET', url}
-    reqConfig = token ?
-      {...reqConfig, headers: {Authorization: `Bearer ${token}`}} :
-      reqConfig
-    const res: AxiosResponse = await axios(reqConfig)
 
+    // append token
+    const {auth} = getState() as RootState
+    let reqConfig: AxiosRequestConfig = {method: 'GET', url}
+    reqConfig =
+      auth.isLogin && auth.userData ? {
+        ...reqConfig,
+        headers: {Authorization: `Bearer ${auth.userData.token}`},
+      } : reqConfig
+
+    const res: AxiosResponse = await axios(reqConfig)
     return res.data
   },
 )
@@ -89,6 +92,10 @@ export const petListSlice = createSlice({
   reducers: {
     updateFilters: (state, action) => {
       state.filters = action.payload
+    },
+    togglePetTracking: (state, action) => {
+      const {idx} = action.payload
+      state.pets[idx].tracking = !state.pets[idx].tracking
     },
   },
   extraReducers: (builder) => {
@@ -106,5 +113,5 @@ export const petListSlice = createSlice({
   },
 })
 
-export const {updateFilters} = petListSlice.actions
+export const {updateFilters, togglePetTracking} = petListSlice.actions
 export default petListSlice.reducer
