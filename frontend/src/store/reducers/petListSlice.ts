@@ -48,7 +48,6 @@ export const petListSlice = createSlice({
       petsApi.endpoints.getPetsByFilters.matchFulfilled,
       (state, {payload}) => {
         state.loading = false
-        state.pets = payload.pets
         state.totalPage = payload.page.total
       },
     )
