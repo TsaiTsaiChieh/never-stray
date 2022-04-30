@@ -52,7 +52,26 @@ export const petsApi = createApi({
         return url
       },
     }),
+    addTracking: builder.mutation<string, {pet_id: number}>({
+      query: (pet_id) => ({
+        url: '/tracking',
+        method: 'POST',
+        body: pet_id,
+      }),
+    }),
+    removeTracking: builder.mutation<string, {pet_id: number}>({
+      query: (pet_id) => ({
+        url: '/tracking',
+        method: 'DELETE',
+        body: pet_id,
+      }),
+    }),
   }),
 })
 
-export const {useGetPetByIdQuery, useGetPetsByFiltersQuery} = petsApi
+export const {
+  useGetPetByIdQuery,
+  useGetPetsByFiltersQuery,
+  useAddTrackingMutation,
+  useRemoveTrackingMutation,
+} = petsApi
