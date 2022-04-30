@@ -5,6 +5,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {RootState} from '../'
 import {PetKind, PetStatus} from '../../constants/EnumType'
 import {concatUrl} from '../../utils/helper'
+import {petsApi} from '../../api/pets'
 
 const initialState: PetListState = {
   loading: true,
@@ -86,6 +87,20 @@ export const petListSlice = createSlice({
     builder.addCase(getPets.rejected, (state) => {
       state.loading = false
     })
+    builder.addMatcher(
+      petsApi.endpoints.getPetsByFilters.matchPending,
+      (state) => {
+        state.loading = true
+      },
+    )
+    builder.addMatcher(
+      petsApi.endpoints.getPetsByFilters.matchFulfilled,
+      (state, {payload}) => {
+        state.loading = false
+        state.pets = payload.pets
+        state.totalPage = payload.page.total
+      },
+    )
   },
 })
 
