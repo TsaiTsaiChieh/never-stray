@@ -7,12 +7,8 @@ import {
   AgeName,
   AgeWrap,
 } from '../../../styled/PetList/SearchBoard'
+import {petAgeConverter} from '../../../utils/value-converter'
 
-const PetAgeName = {
-  A: '成年',
-  C: '幼年',
-  U: '未知',
-}
 const AgeFilter = () => {
   const dispatch = useAppDispatch()
   const {filters} = useAppSelector((state) => state.petList)
@@ -37,7 +33,7 @@ const AgeFilter = () => {
             className={filters.age.includes(age) ? 'selected' : ''}
             onClick={() => onClick(age)}
           >
-            {PetAgeName[age]}
+            {petAgeConverter(age)}
           </AgeItem>
         ))}
       </AgeItems>
