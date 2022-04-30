@@ -24,9 +24,8 @@ import Tracking from './Tracking'
 
 interface Props {
   pet: IPet
-  idx: number
 }
-const Profile = ({pet, idx}: Props) => {
+const Profile = ({pet}: Props) => {
   const navigate = useNavigate()
   const toProfile = () => {
     navigate(`/profile/${pet.id}`)
@@ -37,7 +36,7 @@ const Profile = ({pet, idx}: Props) => {
       <ProfileWrap>
         <Container>
           <ImgWrap>
-            <Tracking id={pet.id} tracking={pet.tracking} idx={idx} />
+            <Tracking id={pet.id} tracking={pet.tracking} />
             <PawImg />
             <Avatar image={pet.image[0]} />
             <Title>
