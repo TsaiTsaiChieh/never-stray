@@ -1,5 +1,3 @@
-import {Ternary} from '../constants/EnumType'
-
 export function petKindConverter(key: string): string {
   switch (key) {
     case 'cat':
@@ -11,37 +9,31 @@ export function petKindConverter(key: string): string {
   }
 }
 
-export function petSexConverter(key: string): string {
-  switch (key) {
-    case 'F':
-      return '妹妹'
-    case 'M':
-      return '弟弟'
-    default:
-      return '未知'
+export function petSexConverter(key: PetSexType): string {
+  const petSexName = {
+    F: '妹妹',
+    M: '弟弟',
+    U: '未知',
   }
+  return petSexName[key]
 }
 
-export function petAgeConverter(key: string): string {
-  switch (key) {
-    case 'A':
-      return '成年'
-    case 'C':
-      return '幼年'
-    default:
-      return '未知'
+export const petAgeConverter = (key: PetAgeType): string => {
+  const petAgeName = {
+    A: '成年',
+    C: '幼年',
+    U: '未知',
   }
+  return petAgeName[key]
 }
 
 export const ligationConverter = (key: TernaryType): string => {
-  switch (key) {
-    case Ternary.FALSE:
-      return '未結紮'
-    case Ternary.TRUE:
-      return '已結紮'
-    default:
-      return '未知'
+  const ligationName = {
+    T: '已結紮',
+    F: '未結紮',
+    U: '未知',
   }
+  return ligationName[key]
 }
 
 export const petStatusConverter = (key: PetStatusType): string => {
