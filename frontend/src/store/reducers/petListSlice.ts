@@ -20,7 +20,6 @@ const initialState: PetListState = {
     page: 1,
     ascend: true,
   },
-  pets: [],
   totalPage: 1,
 }
 
@@ -31,10 +30,6 @@ export const petListSlice = createSlice({
   reducers: {
     updateFilters: (state, action) => {
       state.filters = action.payload
-    },
-    togglePetTracking: (state, action) => {
-      const {idx} = action.payload
-      state.pets[idx].tracking = !state.pets[idx].tracking
     },
   },
   extraReducers: (builder) => {
@@ -54,6 +49,5 @@ export const petListSlice = createSlice({
   },
 })
 
-export const {updateFilters, togglePetTracking} =
-  petListSlice.actions
+export const {updateFilters} = petListSlice.actions
 export default petListSlice.reducer
