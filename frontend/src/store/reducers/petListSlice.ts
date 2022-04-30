@@ -4,6 +4,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
 import {RootState} from '../'
 import {PetKind, PetStatus} from '../../constants/EnumType'
+import {concatUrl} from '../../utils/helper'
 
 const initialState: PetListState = {
   loading: true,
@@ -29,57 +30,32 @@ const initialState: PetListState = {
 export const getPets = createAsyncThunk(
   'petList',
   async (filters: SearchPetFilters = initialState.filters, {getState}) => {
-    let url =
-      `${process.env.REACT_APP_API_URL}` +
-      `/pets?page=${filters.page}` +
-      `&limit=${filters.limit}`
-    if (filters.status) {
-      url += `${filters.status.map((ele) => `&status[]=${ele}`).join('')}`
-    }
-    if (filters.ref) {
-      url += `${filters.ref.map((ele) => `&ref[]=${ele}`).join('')}`
-    }
-    if (filters.city_id) {
-      url += `${filters.city_id.map((ele) => `&city_id[]=${ele}`).join('')}`
-    }
-    if (filters.shelter_id) {
-      url += `${filters.shelter_id
-        .map((ele) => `&shelter_id[]=${ele}`)
-        .join('')}`
-    }
-    if (filters.kind && filters.kind !== PetKind.ALL) {
-      url += `&kind[]=${filters.kind}`
-    }
-    if (filters.sex) {
-      url += `${filters.sex.map((ele) => `&sex[]=${ele}`).join('')}`
-    }
-    if (filters.color) {
-      url += `${filters.color.map((ele) => `&color[]=${ele}`).join('')}`
-    }
-    if (filters.age) {
-      url += `${filters.age.map((ele) => `&age[]=${ele}`).join('')}`
-    }
-    if (filters.region) {
-      url += `${filters.region.map((ele) => `&region[]=${ele}`).join('')}`
-    }
-    if (filters.ligation) {
-      url += `${filters.ligation.map((ele) => `&ligation[]=${ele}`).join('')}`
-    }
-    if (filters.keyword) {
-      url += `&keyword=${filters.keyword}&`
-    }
+    let url = `${process.env.REACT_APP_API_URL}` +
+      `/pets?page=${filters.page}&limit=${filters.limit}`
+    url += concatUrl(filters.status, 'status')
+    url += concatUrl(filters.ref, 'ref')
+    url += concatUrl(filters.city_id, 'city_id')
+    url += concatUrl(filters.shelter_id, 'shelter_id')
+    if (filters.kind !== PetKind.ALL) url += `$kind[]=${filters.kind}`
+    url += concatUrl(filters.sex, 'sex')
+    url += concatUrl(filters.color, 'color')
+    url += concatUrl(filters.age, 'age')
+    url += concatUrl(filters.region, 'region')
+    url += concatUrl(filters.ligation, 'ligation')
+    if (filters.keyword) url += `&keyword=${filters.keyword}`
     if (filters.order_key) {
       url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
     }
-
     // append token
     const {auth} = getState() as RootState
     let reqConfig: AxiosRequestConfig = {method: 'GET', url}
     reqConfig =
-      auth.isLogin && auth.userData ? {
-        ...reqConfig,
-        headers: {Authorization: `Bearer ${auth.userData.token}`},
-      } : reqConfig
+      auth.isLogin && auth.userData ?
+        {
+          ...reqConfig,
+          headers: {Authorization: `Bearer ${auth.userData.token}`},
+        } :
+        reqConfig
 
     const res: AxiosResponse = await axios(reqConfig)
     return res.data
@@ -113,5 +89,6 @@ export const petListSlice = createSlice({
   },
 })
 
-export const {updateFilters, togglePetTracking} = petListSlice.actions
+export const {updateFilters, togglePetTracking} =
+  petListSlice.actions
 export default petListSlice.reducer
