@@ -13,6 +13,10 @@ const Avatar = ({image}: Props) => {
     useProgressiveImage(image)
   useEffect(() => {
     if (loaded) setLoading(false)
+    // cleanup function
+    return () => {
+      setLoading(true)
+    }
   }, [loaded])
 
   const style: CSSProperties = {
