@@ -7,12 +7,8 @@ import {
   SexName,
   SexWrap,
 } from '../../../styled/PetList/SearchBoard'
+import {petSexConverter} from '../../../utils/value-converter'
 
-const PetSexName = {
-  F: '妹妹',
-  M: '弟弟',
-  U: '未知',
-}
 const SexFilter = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const dispatch = useAppDispatch()
@@ -36,7 +32,7 @@ const SexFilter = () => {
             className={filters.sex?.includes(sex) ? 'selected' : ''}
             onClick={() => onClick(sex)}
           >
-            {PetSexName[sex]}
+            {petSexConverter(sex)}
           </SexItem>
         ))}
       </SexItems>
