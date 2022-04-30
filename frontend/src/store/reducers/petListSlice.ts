@@ -1,11 +1,7 @@
-import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
+import {createSlice} from '@reduxjs/toolkit'
 
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-
-import {RootState} from '../'
-import {PetKind, PetStatus} from '../../constants/EnumType'
-import {concatUrl} from '../../utils/helper'
 import {petsApi} from '../../api/pets'
+import {PetKind, PetStatus} from '../../constants/EnumType'
 
 const initialState: PetListState = {
   loading: true,
@@ -28,40 +24,6 @@ const initialState: PetListState = {
   totalPage: 1,
 }
 
-export const getPets = createAsyncThunk(
-  'petList',
-  async (filters: SearchPetFilters = initialState.filters, {getState}) => {
-    let url = `${process.env.REACT_APP_API_URL}` +
-      `/pets?page=${filters.page}&limit=${filters.limit}`
-    url += concatUrl(filters.status, 'status')
-    url += concatUrl(filters.ref, 'ref')
-    url += concatUrl(filters.city_id, 'city_id')
-    url += concatUrl(filters.shelter_id, 'shelter_id')
-    if (filters.kind !== PetKind.ALL) url += `$kind[]=${filters.kind}`
-    url += concatUrl(filters.sex, 'sex')
-    url += concatUrl(filters.color, 'color')
-    url += concatUrl(filters.age, 'age')
-    url += concatUrl(filters.region, 'region')
-    url += concatUrl(filters.ligation, 'ligation')
-    if (filters.keyword) url += `&keyword=${filters.keyword}`
-    if (filters.order_key) {
-      url += `&order_key=${filters.order_key}&ascend=${filters.ascend}`
-    }
-    // append token
-    const {auth} = getState() as RootState
-    let reqConfig: AxiosRequestConfig = {method: 'GET', url}
-    reqConfig =
-      auth.isLogin && auth.userData ?
-        {
-          ...reqConfig,
-          headers: {Authorization: `Bearer ${auth.userData.token}`},
-        } :
-        reqConfig
-
-    const res: AxiosResponse = await axios(reqConfig)
-    return res.data
-  },
-)
 
 export const petListSlice = createSlice({
   name: 'petList',
@@ -76,17 +38,6 @@ export const petListSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getPets.pending, (state) => {
-      state.loading = true
-    })
-    builder.addCase(getPets.fulfilled, (state, action) => {
-      state.loading = false
-      state.pets = action.payload.pets
-      state.totalPage = action.payload.page.total
-    })
-    builder.addCase(getPets.rejected, (state) => {
-      state.loading = false
-    })
     builder.addMatcher(
       petsApi.endpoints.getPetsByFilters.matchPending,
       (state) => {
