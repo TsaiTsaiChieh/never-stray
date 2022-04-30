@@ -1,6 +1,6 @@
 import {PetStatus} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {Button, Items, Name, Wrap} from '../../../styled/PetList/SearchBoard'
 import {petStatusConverter} from '../../../utils/value-converter'
 
@@ -16,7 +16,6 @@ const StatusFilter = () => {
   const onClick = (status: PetStatus) => {
     const expandFilters = {...filters, status: toggleStatusOp(status), page: 1}
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
 
   return (

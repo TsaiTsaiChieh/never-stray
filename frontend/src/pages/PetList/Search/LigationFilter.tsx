@@ -1,6 +1,6 @@
 import {Ternary} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   LigationItem,
   LigationItems,
@@ -29,7 +29,6 @@ const LigationFilter = () => {
       page: 1,
     }
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
 
   return (

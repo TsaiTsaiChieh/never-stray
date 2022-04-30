@@ -2,7 +2,7 @@ import {isMobile} from 'react-device-detect'
 
 import {PetKind} from '../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
-import {getPets, updateFilters} from '../../store/reducers/petListSlice'
+import {updateFilters} from '../../store/reducers/petListSlice'
 import {
   Img,
   KindContainer,
@@ -21,7 +21,6 @@ const Menu = () => {
   const onClick = (kind: PetKind) => {
     const expandFilters = {...filters, kind}
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
 
   return (

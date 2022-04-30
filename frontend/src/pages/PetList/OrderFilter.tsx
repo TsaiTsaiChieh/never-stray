@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 import {Order, OrderKey} from '../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
-import {getPets, updateFilters} from '../../store/reducers/petListSlice'
+import {updateFilters} from '../../store/reducers/petListSlice'
 import {
   AgeOrderSelect, Title, UpdateTimeOrderSelector, Wrap,
 } from '../../styled/PetList/OrderFilter'
@@ -50,7 +50,6 @@ const OrderFilter = () => {
       page: 1,
     }
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
   return (
     <Wrap>

@@ -1,6 +1,6 @@
 import {PetSex} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   SexItem,
   SexItems,
@@ -25,7 +25,6 @@ const SexFilter = () => {
   const onClick = (sex: PetSex) => {
     const expandFilters = {...filters, sex: toggleSexOpt(sex), page: 1}
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
   return (
     <SexWrap>

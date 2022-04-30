@@ -1,6 +1,6 @@
 import {PetRef} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   RefItem,
   RefItems,
@@ -24,7 +24,6 @@ const RefFilter = () => {
   const onClick = (ref: PetRef) => {
     const expandFilters = {...filters, ref: toggleRefOpt(ref), page: 1}
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
   return (
     <RefWrap>

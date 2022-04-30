@@ -1,6 +1,6 @@
 import {PetAge} from '../../../constants/EnumType'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   AgeItem,
   AgeItems,
@@ -25,7 +25,6 @@ const AgeFilter = () => {
   const onClick = (age: PetAge) => {
     const expandFilters = {...filters, age: toggleAgeOpt(age), page: 1}
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
 
   return (

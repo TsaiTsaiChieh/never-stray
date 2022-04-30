@@ -1,5 +1,5 @@
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   CityName,
   CitySelector,
@@ -22,7 +22,6 @@ const CityFilter = () => {
       page: 1,
     }
     dispatch(updateFilters(expandFilters))
-    dispatch(getPets(expandFilters))
   }
 
   return (

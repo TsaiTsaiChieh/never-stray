@@ -1,7 +1,7 @@
 import {KeyboardEvent} from 'react'
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {getPets, updateFilters} from '../../../store/reducers/petListSlice'
+import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
   closeKeywordSearch,
   keywordSearchOnClick,
@@ -28,7 +28,6 @@ const KeywordSearch = () => {
         page: 1,
       }
       dispatch(updateFilters(expandFilters))
-      dispatch(getPets(expandFilters))
     }
   }
 
