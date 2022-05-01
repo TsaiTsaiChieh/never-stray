@@ -1,8 +1,6 @@
-import axios, {AxiosResponse} from 'axios'
+import {createSlice} from '@reduxjs/toolkit'
+import {api} from '../../services/api'
 
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-
-const {REACT_APP_API_URL} = process.env
 
 const initialState: EnumState = {
   colors: [],
@@ -10,58 +8,35 @@ const initialState: EnumState = {
   shelters: [],
 }
 
-export const getPetColors = createAsyncThunk(
-  'petColorEnum',
-  async () => {
-    const url = `${REACT_APP_API_URL}/enum/color`
-    const res: AxiosResponse = await axios({method: 'GET', url})
-    return res.data
-  },
-)
-
-export const getCities = createAsyncThunk(
-  'cityEnum',
-  async () => {
-    const url = `${REACT_APP_API_URL}/enum/city`
-    const res: AxiosResponse = await axios({method: 'GET', url})
-    const data: CityAPIType[] = res.data
-    return data
-  },
-)
-
-export const getShelters = createAsyncThunk(
-  'shelterEnum',
-  async () => {
-    const url = `${REACT_APP_API_URL}/enum/shelter`
-    const res: AxiosResponse = await axios({method: 'GET', url})
-    const data: IDAndNameType[] = res.data
-    return data
-  },
-)
-
 export const enumSlice = createSlice({
   name: 'enum',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getPetColors.fulfilled, (state, action) => {
-      state.colors = action.payload
-    })
-    builder.addCase(
-      getCities.fulfilled,
-      (state, action: PayloadAction<CityAPIType[]>) => {
-        state.cities = action.payload.map((ele: CityAPIType) => ({
+    builder.addMatcher(
+      api.endpoints.getPetColors.matchFulfilled,
+      (state, {payload}) => {
+        state.colors = payload
+      },
+    )
+    builder.addMatcher(
+      api.endpoints.getPetCities.matchFulfilled,
+      (state, {payload}) => {
+        state.cities = payload.map((ele: CityAPIType) => ({
           id: ele.id,
           name: ele.name,
         }))
       },
     )
-    builder.addCase(getShelters.fulfilled, (state, action) => {
-      state.shelters = action.payload.map((ele: IDAndNameType) => ({
-        id: ele.id,
-        name: ele.name,
-      }))
-    })
+    builder.addMatcher(
+      api.endpoints.getPetShelters.matchFulfilled,
+      (state, {payload}) => {
+        state.shelters = payload.map((ele: IDAndNameType) => ({
+          id: ele.id,
+          name: ele.name,
+        }))
+      },
+    )
   },
 })
 
