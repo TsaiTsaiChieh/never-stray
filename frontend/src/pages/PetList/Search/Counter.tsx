@@ -9,7 +9,7 @@ interface Props {
 const Counter = ({count}: Props) => {
   return (
     <CounterOuter>
-      有<CounterValue>{count}</CounterValue>項結果
+      <CounterValue>{count}</CounterValue>項結果
     </CounterOuter>
   )
 }

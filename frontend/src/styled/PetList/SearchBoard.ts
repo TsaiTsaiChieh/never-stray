@@ -192,10 +192,10 @@ export const CounterOuter = styled.p`
     letter-spacing: 1px;
     position: absolute;
     top: 30px;
-    left: 150px;
+    right: 30px;
   }
 `
 export const CounterValue = styled.p`
   color: ${colors.tiffany.i300};
-  margin: 0 1.5px;
+  margin: 0 1px;
 `
