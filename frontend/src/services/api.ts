@@ -18,7 +18,7 @@ export const api = createApi({
     googleLogin: builder.mutation<UserInfoType, {token: string}>({
       query: (token) => (
         {
-          url: `/auth/google-login`,
+          url: '/auth/google-login',
           method: 'POST',
           body: token,
         }),
@@ -81,19 +81,19 @@ export const api = createApi({
     /** Enum */
     getPetColors: builder.query<string[], void>({
       query: () => ({
-        url: `/enum/color`,
+        url: '/enum/color',
         method: 'GET',
       }),
     }),
     getPetCities: builder.query<CityAPIType[], void>({
       query: () => ({
-        url: `/enum/city`,
+        url: '/enum/city',
         method: 'GET',
       }),
     }),
     getPetShelters: builder.query<IDAndNameType[], void>({
       query: () => ({
-        url: `/enum/shelter`,
+        url: '/enum/shelter',
         method: 'GET',
       }),
     }),
