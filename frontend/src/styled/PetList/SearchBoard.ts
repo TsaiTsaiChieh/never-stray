@@ -195,7 +195,7 @@ export const CounterOuter = styled.p`
     right: 30px;
   }
 `
-export const CounterValue = styled.p`
+export const CounterValue = styled.span`
   color: ${colors.tiffany.i300};
   margin: 0 1px;
 `
