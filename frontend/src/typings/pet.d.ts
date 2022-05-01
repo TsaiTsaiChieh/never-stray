@@ -65,6 +65,7 @@ type SearchPetFilters = {
   region: AreaRegionType[]
   ligation: TernaryType[]
   keyword?: string
+  tracking: boolean
   order_key?: PetOrderKeyType
   ascend?: boolean
   limit: number
