@@ -1,10 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 import {PetKind, PetStatus} from '../../constants/EnumType'
-import {api} from '../../services/api'
 
 const initialState: PetListState = {
-  loading: true,
   filters: {
     status: [PetStatus.OPEN],
     ref: [],
@@ -21,7 +19,6 @@ const initialState: PetListState = {
     page: 1,
     ascend: true,
   },
-  totalPage: 1,
 }
 
 
@@ -32,21 +29,6 @@ export const petListSlice = createSlice({
     updateFilters: (state, action) => {
       state.filters = action.payload
     },
-  },
-  extraReducers: (builder) => {
-    builder.addMatcher(
-      api.endpoints.getPetsByFilters.matchPending,
-      (state) => {
-        state.loading = true
-      },
-    )
-    builder.addMatcher(
-      api.endpoints.getPetsByFilters.matchFulfilled,
-      (state, {payload}) => {
-        state.loading = false
-        state.totalPage = payload.page.total
-      },
-    )
   },
 })
 
