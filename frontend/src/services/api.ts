@@ -5,6 +5,7 @@ import {concatUrl} from '../utils/helper'
 
 export const api = createApi({
   reducerPath: 'api',
+  tagTypes: ['auth', 'pets', 'enum'],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, {getState}) => {
@@ -16,16 +17,17 @@ export const api = createApi({
   endpoints: (builder) => ({
     /** Auth */
     googleLogin: builder.mutation<UserInfoType, {token: string}>({
-      query: (token) => (
-        {
-          url: '/auth/google-login',
-          method: 'POST',
-          body: token,
-        }),
+      query: (token) => ({
+        url: '/auth/google-login',
+        method: 'POST',
+        body: token,
+      }),
+      invalidatesTags: ['auth'],
     }),
     /** Pets */
     getPetById: builder.query<IPet, string>({
       query: (id) => `/pets/${id}`,
+      providesTags: ['pets'],
     }),
     getPetsByFilters: builder.query<PetsAPIType, SearchPetFilters>({
       query: ({
@@ -65,6 +67,7 @@ export const api = createApi({
           method: 'GET',
         }
       },
+      providesTags: ['pets'],
     }),
     addTracking: builder.mutation<string, {pet_id: number}>({
       query: (pet_id) => ({
@@ -72,6 +75,7 @@ export const api = createApi({
         method: 'POST',
         body: pet_id,
       }),
+      invalidatesTags: ['pets'],
     }),
     removeTracking: builder.mutation<string, {pet_id: number}>({
       query: (pet_id) => ({
@@ -79,6 +83,7 @@ export const api = createApi({
         method: 'DELETE',
         body: pet_id,
       }),
+      invalidatesTags: ['pets'],
     }),
     /** Enum */
     getPetColors: builder.query<string[], void>({
@@ -86,18 +91,21 @@ export const api = createApi({
         url: '/enum/color',
         method: 'GET',
       }),
+      providesTags: ['enum'],
     }),
     getPetCities: builder.query<CityAPIType[], void>({
       query: () => ({
         url: '/enum/city',
         method: 'GET',
       }),
+      providesTags: ['enum'],
     }),
     getPetShelters: builder.query<IDAndNameType[], void>({
       query: () => ({
         url: '/enum/shelter',
         method: 'GET',
       }),
+      providesTags: ['enum'],
     }),
   }),
 })
