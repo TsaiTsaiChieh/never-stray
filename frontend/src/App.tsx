@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Route, Routes} from 'react-router-dom'
 
-import {pingDB} from './api/PingAPI'
 import DogWalking from './components/DogWalking'
 import PetList from './pages/PetList'
 import PetProfile from './pages/PetProfile'
@@ -14,7 +13,7 @@ const App = () => {
   useEffect(() => {
     let intervalID: number
     if (loading) {
-      intervalID = window.setInterval(() => pingDB(setLoading), 1000)
+      intervalID = window.setInterval(() => setLoading(false), 500)
     }
     return () => {
       // reset timer
