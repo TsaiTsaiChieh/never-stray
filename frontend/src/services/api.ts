@@ -53,7 +53,7 @@ export const api = createApi({
         url += concatUrl(ref, 'ref')
         url += concatUrl(city_id, 'city_id')
         url += concatUrl(shelter_id, 'shelter_id')
-        if (kind !== PetKind.ALL) url += `$kind[]=${kind}`
+        if (kind !== PetKind.ALL) url += `&kind[]=${kind}`
         url += concatUrl(sex, 'sex')
         url += concatUrl(color, 'color')
         url += concatUrl(age, 'age')
