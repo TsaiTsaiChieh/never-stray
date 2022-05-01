@@ -16,6 +16,7 @@ const initialState: PetListState = {
     region: [],
     ligation: [],
     color: [],
+    tracking: false,
     limit: 18,
     page: 1,
     ascend: true,

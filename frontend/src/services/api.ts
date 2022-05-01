@@ -42,6 +42,7 @@ export const api = createApi({
         region,
         ligation,
         keyword,
+        tracking,
         order_key,
         ascend,
       }) => {
@@ -56,6 +57,7 @@ export const api = createApi({
         url += concatUrl(age, 'age')
         url += concatUrl(region, 'region')
         url += concatUrl(ligation, 'ligation')
+        if (tracking) url += `&tracking=${tracking}`
         if (keyword) url += `&keyword=${keyword}`
         if (order_key) url += `&order_key=${order_key}&ascend=${ascend}`
         return {
