@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import {MEDIA_TABLET} from '../../constants/Mixin'
 import {colors} from '../../constants/Variables'
-import {Selector} from './SearchBoard'
+import {Button, Selector} from './SearchBoard'
 
 export const Wrap = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const Wrap = styled.div`
   border-radius: 5px;
   margin-top: 30px;
   ${MEDIA_TABLET} {
-    justify-content: flex-start
+    justify-content: flex-start;
   }
 `
 export const Title = styled.div`
@@ -42,5 +42,17 @@ export const AgeOrderSelect = styled(Selector)`
   ${MEDIA_TABLET} {
     width: 180px;
     margin-left: 20px;
+  }
+`
+export const TrackingFilterBtn = styled(Button)`
+  width: 135px;
+  height: 38px;
+  letter-spacing: 1.5px;
+  ${MEDIA_TABLET} {
+    width: 180px;
+    margin-left: 20px;
+  }
+  &.selected:hover {
+    background: ${colors.tiffany.i500};
   }
 `
