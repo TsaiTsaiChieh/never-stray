@@ -17,6 +17,7 @@ import {ajv} from '../utils/ajv-util'
 import {ShouldLogin} from '../utils/app-error'
 import {LoginOrNot} from '../utils/middlewares'
 
+@UseBefore(LoginOrNot)
 @Controller('/pets')
 export class PetController {
   private model: PetModel
@@ -25,7 +26,6 @@ export class PetController {
     this.model = new PetModel()
   }
   @Get('/')
-  @UseBefore(LoginOrNot)
   async searchPet(@Req() req: Request, @Res() res: Response) {
     const city_id = req.query.city_id as string[]
     const shelter_id = req.query.shelter_id as string[]
@@ -61,10 +61,13 @@ export class PetController {
   }
 
   @Get('/:id')
-  async getPetById(@Param('id') id: number, @Res() res: Response) {
+  async getPetById(
+    @Req() req: Request,
+    @Param('id') id: number,
+    @Res() res: Response,
+  ) {
     const [error, result]: [ErrorType, PetInfoType] = await safeAwait(
-      this.model.getById(id),
-    )
+      this.model.getById(id, req.userId))
     if (error) return res.status(error.code).json(error)
     return res.json(result)
   }
