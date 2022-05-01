@@ -58,7 +58,10 @@ export const api = createApi({
         url += concatUrl(ligation, 'ligation')
         if (keyword) url += `&keyword=${keyword}`
         if (order_key) url += `&order_key=${order_key}&ascend=${ascend}`
-        return url
+        return {
+          url,
+          method: 'GET',
+        }
       },
     }),
     addTracking: builder.mutation<string, {pet_id: number}>({
