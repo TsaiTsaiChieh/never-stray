@@ -30,7 +30,7 @@ export class PetModel {
     try {
       let trackingPetId: number[] = []
       const petResult: [Pet[], number] =
-        await this.repository.findByFiltersAndCount(query)
+        await this.repository.findByFiltersAndCount(query, userId)
       if (userId) {
         const trackingResult: Tracking[] = await this.trackingRepository.find({
           user_id: userId,
@@ -52,19 +52,33 @@ export class PetModel {
   /**
    * Get pet by ID
    *
-   * @param  {number} id
+   * @param  {number} petId
+   * @param  {number | undefined} userId
    * @return {Promise<PetInfoType>}
    */
-  async getById(id: number): Promise<PetInfoType> {
+  async getById(
+    petId: number,
+    userId: number | undefined,
+  ): Promise<PetInfoType> {
     try {
-      const result: Pet | undefined = await this.repository.findOneById(id)
-      if (!result) {
-        return Promise.reject(new NotFound(`Pet id ${id} not found`))
+      let trackingResult: undefined | Tracking = undefined
+      const petResult: Pet | undefined = await this.repository.findOneById(
+        petId,
+      )
+      if (!petResult) {
+        return Promise.reject(new NotFound(`Pet id ${petId} not found`))
+      }
+      if (userId) {
+        trackingResult = await this.trackingRepository.findOne({
+          pet_id: petId,
+          user_id: userId,
+        })
       }
 
-      const cleanData: PetInfoType = deepCopy(result)
+      const cleanData: PetInfoType = deepCopy(petResult)
       cleanData.city_name = cleanData.city!.name
       cleanData.shelter_name = cleanData.shelter!.name
+      cleanData.tracking = trackingResult ? true : false
       delete cleanData.city
       delete cleanData.shelter
 
