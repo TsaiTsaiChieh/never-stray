@@ -1,7 +1,5 @@
 interface PetListState {
-  loading: boolean
   filters: SearchPetFilters
-  totalPage: number
 }
 
 interface EnumState {
