@@ -39,7 +39,7 @@ export const PetList = () => {
             )}
           </div>
           <Pagination
-            pageCount={petState.totalPage}
+            pageCount={data?.page.total}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
             className='pet-list-pagination'
