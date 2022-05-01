@@ -71,6 +71,10 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
       uniqueItems: true,
       nullable: true,
     },
+    tracking: {
+      type: 'boolean',
+      nullable: true,
+    },
     // eslint-disable-next-line camelcase
     order_key: {
       type: 'string',
@@ -90,7 +94,6 @@ export const petSearchSchema: JSONSchemaType<PetSearchQueryType> = {
     },
     ascend: {
       type: 'boolean',
-      enum: [true, false],
       nullable: true,
     },
     keyword: {

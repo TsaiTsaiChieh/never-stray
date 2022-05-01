@@ -86,6 +86,7 @@ type PetSearchQueryType = {
   age?: PetAgeType[]
   region?: AreaRegionType[]
   ligation?: TernaryType[]
+  tracking?: boolean
   order_key?: PetOrderKeyType
   ascend?: boolean
   keyword?: string
