@@ -11,6 +11,7 @@ import {
   Ternary,
 } from '../entity/pet.entity'
 import {ShelterID} from '../entity/shelter.entity'
+import {Tracking} from '../entity/tracking.entity'
 import {DBError} from '../utils/app-error'
 import {BasicRepository} from '../utils/basic-repository'
 
@@ -25,10 +26,11 @@ export class PetRepository extends BasicRepository<Pet> {
    * Find pet by filters
    *
    * @param  {PetSearchQueryType} query
+   * @param  {number|undefined} userId
    * @return {Promise<[Pet[], number]>} Pet information and count
    */
   async findByFiltersAndCount(
-    query: PetSearchQueryType,
+    query: PetSearchQueryType, userId: number | undefined,
   ): Promise<[Pet[], number]> {
     try {
       let queryBuilder: SelectQueryBuilder<Pet> = this.repository
@@ -124,6 +126,10 @@ export class PetRepository extends BasicRepository<Pet> {
         queryBuilder.andWhere('pet.remark LIKE :keyword', {
           keyword: `%${query.keyword}%`,
         })
+      }
+      if (query.tracking) {
+        queryBuilder.leftJoin(Tracking, 'tracking', 'tracking.pet_id = pet.id')
+          .andWhere('tracking.user_id = :user_id', {user_id: userId})
       }
       if (query.order_key) {
         queryBuilder.orderBy(
