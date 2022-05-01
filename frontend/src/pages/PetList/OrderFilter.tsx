@@ -6,6 +6,7 @@ import {updateFilters} from '../../store/reducers/petListSlice'
 import {
   AgeOrderSelect, Title, UpdateTimeOrderSelector, Wrap,
 } from '../../styled/PetList/OrderFilter'
+import TrackingFilter from './Search/TrackingFilter'
 
 const updateTimeOrderName = {
   ASC: '舊到新',
@@ -19,6 +20,7 @@ const OrderFilter = () => {
   const [updateTimeOrder, setUpdateTimeOrder] = useState<OptionType | null>()
   const [ageOrder, setAgeOrder] = useState<OptionType | null>()
   const {filters} = useAppSelector((state) => state.petList)
+  const {isLogin} = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch()
   const updateTimeOptions: OptionType[] = Object.values(Order).map((ele) => ({
     value: ele,
@@ -65,15 +67,17 @@ const OrderFilter = () => {
         onChange={onChange}
         isSearchable={false}
       />
-      <AgeOrderSelect
-        classNamePrefix='Select'
-        placeholder='年紀'
-        options={ageOptions}
-        components={{IndicatorSeparator: () => null}}
-        value={ageOrder}
-        onChange={onChange}
-        isSearchable={false}
-      />
+      {isLogin ? <TrackingFilter /> :
+        <AgeOrderSelect
+          classNamePrefix='Select'
+          placeholder='年紀'
+          options={ageOptions}
+          components={{IndicatorSeparator: () => null}}
+          value={ageOrder}
+          onChange={onChange}
+          isSearchable={false}
+        />
+      }
     </Wrap>
   )
 }
