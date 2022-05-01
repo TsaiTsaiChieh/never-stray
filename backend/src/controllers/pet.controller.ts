@@ -14,6 +14,7 @@ import safeAwait from 'safe-await'
 import {PetModel} from '../models/pet.model'
 import {petSearchSchema} from '../schemas/pet-search.schema'
 import {ajv} from '../utils/ajv-util'
+import {ShouldLogin} from '../utils/app-error'
 import {LoginOrNot} from '../utils/middlewares'
 
 @Controller('/pets')
@@ -35,11 +36,18 @@ export class PetController {
       shelter_id: req.query.shelter_id ?
         shelter_id.map((x) => parseInt(x)) :
         undefined,
+      tracking: req.query.tracking ?
+        req.query.tracking.toLocaleString() === 'true' :
+        undefined,
       limit: req.query.limit ? Number(req.query.limit) : undefined,
       page: req.query.page ? Number(req.query.page) : undefined,
       ascend: req.query.ascend ?
         req.query.ascend.toLocaleString() === 'true' :
         undefined,
+    }
+    if (query.tracking && !req.userId) {
+      const error = new ShouldLogin()
+      return res.status(error.code).json(error)
     }
     const valid: boolean = ajv.validate(petSearchSchema, query)
     if (!valid) return res.status(httpStatus.BAD_REQUEST).json(ajv.errors)
