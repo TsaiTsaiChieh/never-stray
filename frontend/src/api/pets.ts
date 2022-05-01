@@ -5,7 +5,7 @@ import {RootState} from '../store'
 import {concatUrl} from '../utils/helper'
 
 export const petsApi = createApi({
-  reducerPath: 'pets',
+  reducerPath: 'petsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, {getState}) => {
