@@ -25,7 +25,11 @@ const Tracking = ({id, tracking}: Props) => {
   }
 
   return (
-    <TrackingOrNot onClick={() => toggleTracking()} tracking={trackingState} />
+    <TrackingOrNot
+      title={trackingState ? '從我的小窩移除' : '加入我的小窩'}
+      onClick={() => toggleTracking()}
+      tracking={trackingState}
+    />
   )
 }
 
