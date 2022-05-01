@@ -1,11 +1,7 @@
 import {useEffect} from 'react'
 
+import {api} from '../../../services/api'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
-import {
-  getCities,
-  getPetColors,
-  getShelters,
-} from '../../../store/reducers/enumSlice'
 import {closeSearchBoard} from '../../../store/reducers/uiSlice'
 import {Closed, SearchBoardContainer} from '../../../styled/PetList/SearchBoard'
 import {FilterButton} from '../FilterButton'
@@ -23,9 +19,9 @@ const SearchBoard = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getPetColors())
-    dispatch(getCities())
-    dispatch(getShelters())
+    dispatch(api.endpoints.getPetColors.initiate())
+    dispatch(api.endpoints.getPetCities.initiate())
+    dispatch(api.endpoints.getPetShelters.initiate())
   }, [])
 
 
