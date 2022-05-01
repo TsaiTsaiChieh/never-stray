@@ -20,12 +20,12 @@ export class PetModel {
    * Search pet by query
    *
    * @param  {PetSearchQueryType} query
-   * @param  {number | undefined} userId
+   * @param  {number} [userId]
    * @return {Promise<PetSearchReturningType>}
    */
   async searchPetWithTrackingAndCount(
     query: PetSearchQueryType,
-    userId: number | undefined,
+    userId?: number,
   ): Promise<PetSearchReturningType> {
     try {
       let trackingPetId: number[] = []
@@ -53,12 +53,12 @@ export class PetModel {
    * Get pet by ID
    *
    * @param  {number} petId
-   * @param  {number | undefined} userId
+   * @param  {number} [userId]
    * @return {Promise<PetInfoType>}
    */
   async getById(
     petId: number,
-    userId: number | undefined,
+    userId?: number,
   ): Promise<PetInfoType> {
     try {
       let trackingResult: undefined | Tracking = undefined
