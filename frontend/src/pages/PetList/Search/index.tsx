@@ -8,13 +8,17 @@ import {FilterButton} from '../FilterButton'
 import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
 import ColorFilter from './ColorFilter'
+import Counter from './Counter'
 import LigationFilter from './LigationFilter'
 import RefFilter from './RefFilter'
 import SexFilter from './SexFilter'
 import ShelterFilter from './ShelterFilter'
 import StatusFilter from './StatusFilter'
 
-const SearchBoard = () => {
+interface Props {
+  count?: number
+}
+const SearchBoard = ({count}: Props) => {
   const {searchBoardIsShow} = useAppSelector((state) => state.ui)
   const dispatch = useAppDispatch()
 
@@ -28,6 +32,7 @@ const SearchBoard = () => {
   return (
     <SearchBoardContainer isShow={searchBoardIsShow}>
       <FilterButton />
+      <Counter count={count} />
       <Closed onClick={() => dispatch(closeSearchBoard())} />
       <AgeFilter />
       <SexFilter />

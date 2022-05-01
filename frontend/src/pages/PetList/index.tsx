@@ -23,7 +23,7 @@ export const PetList = () => {
       <Menu />
       <div className='pet-wrapper'>
         <div className='search-board-wrap'>
-          <SearchBoard />
+          <SearchBoard count={data?.page.count} />
         </div>
         <div className='pet-list-wrap'>
           <Banner />
