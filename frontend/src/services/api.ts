@@ -75,6 +75,25 @@ export const api = createApi({
         body: pet_id,
       }),
     }),
+    /** Enum */
+    getPetColors: builder.query<string[], void>({
+      query: () => ({
+        url: `/enum/color`,
+        method: 'GET',
+      }),
+    }),
+    getPetCities: builder.query<CityAPIType[], void>({
+      query: () => ({
+        url: `/enum/city`,
+        method: 'GET',
+      }),
+    }),
+    getPetShelters: builder.query<IDAndNameType[], void>({
+      query: () => ({
+        url: `/enum/shelter`,
+        method: 'GET',
+      }),
+    }),
   }),
 })
 
