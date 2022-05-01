@@ -39,7 +39,6 @@ export const Wrap = styled.div`
   position: relative;
   width: 90%;
   padding-bottom: 22px;
-  
 `
 export const Name = styled.h3`
   font-size: ${sizes.xs};
@@ -53,7 +52,7 @@ export const Name = styled.h3`
 export const Selector = styled(Select)`
   font-size: ${sizes.xs};
   letter-spacing: 1px;
-  .Select__control{
+  .Select__control {
     border-color: ${colors.gray.i700};
   }
   .Select__control:hover {
@@ -88,7 +87,7 @@ export const Closed = styled(CloseButton)`
   }
 `
 export const SearchBoardContainer = styled.div<{isShow: boolean}>`
-  display: ${(props) => (props.isShow) ? 'block' : 'none'};
+  display: ${(props) => (props.isShow ? 'block' : 'none')};
   width: 80%;
   height: 73vh;
   position: fixed;
@@ -183,4 +182,20 @@ export const RefItems = styled(Items)`
 `
 export const RefItem = styled(Button)`
   width: 110px;
+`
+export const CounterOuter = styled.p`
+  display: none;
+  ${MEDIA_TABLET} {
+    display: flex;
+    flex-direction: row;
+    color: ${colors.gray.i300};
+    letter-spacing: 1px;
+    position: absolute;
+    top: 30px;
+    left: 150px;
+  }
+`
+export const CounterValue = styled.p`
+  color: ${colors.tiffany.i300};
+  margin: 0 1.5px;
 `
