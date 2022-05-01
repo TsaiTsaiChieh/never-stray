@@ -1,4 +1,4 @@
-import {useGetPetsByFiltersQuery} from '../../api/pets'
+import {useGetPetsByFiltersQuery} from '../../services/api'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Mask from '../../components/Mask'

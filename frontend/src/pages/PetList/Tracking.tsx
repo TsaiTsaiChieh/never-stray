@@ -1,6 +1,9 @@
 import {useState} from 'react'
 
-import {useAddTrackingMutation, useRemoveTrackingMutation} from '../../api/pets'
+import {
+  useAddTrackingMutation,
+  useRemoveTrackingMutation,
+} from '../../services/api'
 import {useAppSelector} from '../../store/hooks'
 import {TrackingOrNot} from '../../styled/PetList/Tracking'
 

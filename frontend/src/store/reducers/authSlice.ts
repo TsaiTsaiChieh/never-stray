@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-import {authApi} from '../../api/auth'
+import {api} from '../../services/api'
 
 const initialState: AuthState = {
   isLogin: false,
@@ -17,7 +17,7 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      authApi.endpoints.googleLogin.matchFulfilled,
+      api.endpoints.googleLogin.matchFulfilled,
       (state, {payload}) => {
         state.isLogin = true
         state.userData = payload

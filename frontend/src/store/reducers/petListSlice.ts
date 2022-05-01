@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-import {petsApi} from '../../api/pets'
 import {PetKind, PetStatus} from '../../constants/EnumType'
+import {api} from '../../services/api'
 
 const initialState: PetListState = {
   loading: true,
@@ -34,13 +34,13 @@ export const petListSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      petsApi.endpoints.getPetsByFilters.matchPending,
+      api.endpoints.getPetsByFilters.matchPending,
       (state) => {
         state.loading = true
       },
     )
     builder.addMatcher(
-      petsApi.endpoints.getPetsByFilters.matchFulfilled,
+      api.endpoints.getPetsByFilters.matchFulfilled,
       (state, {payload}) => {
         state.loading = false
         state.totalPage = payload.page.total

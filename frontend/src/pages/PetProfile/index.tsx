@@ -1,7 +1,7 @@
 import {Fragment} from 'react'
 import {useParams} from 'react-router-dom'
 
-import {useGetPetByIdQuery} from '../../api/pets'
+import {useGetPetByIdQuery} from '../../services/api'
 import DogWalking from '../../components/DogWalking'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'

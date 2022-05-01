@@ -1,11 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-
 import {PetKind} from '../constants/EnumType'
 import {RootState} from '../store'
 import {concatUrl} from '../utils/helper'
 
-export const petsApi = createApi({
-  reducerPath: 'petsApi',
+export const api = createApi({
+  reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, {getState}) => {
@@ -15,6 +14,16 @@ export const petsApi = createApi({
     },
   }),
   endpoints: (builder) => ({
+    /** Auth */
+    googleLogin: builder.mutation<UserInfoType, {token: string}>({
+      query: (token) => (
+        {
+          url: `/auth/google-login`,
+          method: 'POST',
+          body: token,
+        }),
+    }),
+    /** Pets */
     getPetById: builder.query<IPet, string>({
       query: (id) => `/pets/${id}`,
     }),
@@ -70,8 +79,9 @@ export const petsApi = createApi({
 })
 
 export const {
+  useGoogleLoginMutation,
   useGetPetByIdQuery,
   useGetPetsByFiltersQuery,
   useAddTrackingMutation,
   useRemoveTrackingMutation,
-} = petsApi
+} = api

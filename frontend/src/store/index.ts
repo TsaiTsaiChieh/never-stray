@@ -11,15 +11,14 @@ import storage from 'redux-persist/lib/storage'
 
 import {configureStore} from '@reduxjs/toolkit'
 
-import {authApi} from '../api/auth'
-import {petsApi} from '../api/pets'
+import {api} from '../services/api'
 import rootReducer from './rootReducer'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [authApi.reducerPath, 'auth', 'enum'],
-  blacklist: [petsApi.reducerPath, 'petList', 'ui'],
+  whitelist: ['auth', 'enum'],
+  blacklist: ['petList', 'ui'],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -30,7 +29,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(petsApi.middleware, authApi.middleware),
+    }).concat(api.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>

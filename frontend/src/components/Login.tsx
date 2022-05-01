@@ -3,7 +3,7 @@ import GoogleLogin, {
   GoogleLoginResponseOffline,
 } from 'react-google-login'
 
-import {useGoogleLoginMutation} from '../api/auth'
+import {useGoogleLoginMutation} from '../services/api'
 import {useAppDispatch, useAppSelector} from '../store/hooks'
 import {logout} from '../store/reducers/authSlice'
 import {Container, LoginBtn, UserAvatar} from '../styled/Login'
