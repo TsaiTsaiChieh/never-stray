@@ -127,9 +127,8 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   }
   ${MEDIA_DESKTOP} {
     position: relative;
-    height: 100%;
-    min-height: 800px;
-    max-height: 800px;
+    min-height: 720px;
+    max-height: 720px;
     align-content: space-between;
     width: 100%;
     min-width: 290px;
