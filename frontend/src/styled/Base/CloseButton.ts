@@ -4,11 +4,11 @@ import {colors} from '../../constants/Variables'
 
 export const CloseButton = styled.div`
   position: fixed;
-  width: 30px;
-  height: 30px;
-  top: 70px;
-  right: 35px;
-  z-index: 30;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  right: 7%;
+  z-index: 41;
   cursor: pointer;
   &::after,
   &::before {

@@ -83,10 +83,11 @@ export const Selector = styled(Select)`
   }
 `
 export const Closed = styled(CloseButton)`
-  &:hover::after,
-  &:hover::before {
-    background: ${colors.tiffany.i600};
-    transition: all 0.5s ease;
+  ${MEDIA_TABLET} {
+    width: 30px;
+    height: 30px;
+    top: 138px;
+    left: 330px;
   }
   ${MEDIA_DESKTOP} {
     display: none;
@@ -211,13 +212,12 @@ export const CounterOuter = styled.div`
     box-shadow: none;
     height: 0;
     left: 110px;
-
     align-items: normal;
     position: absolute;
     flex-direction: row;
     color: ${colors.gray.i300};
     top: 30px;
-    ${MEDIA_TABLET} {
+    ${MEDIA_DESKTOP} {
       font-size: ${sizes.s};
       left: auto;
       right: 30px;
