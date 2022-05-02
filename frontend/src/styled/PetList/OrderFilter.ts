@@ -53,6 +53,7 @@ export const TrackingFilterBtn = styled(Button)`
     margin-left: 20px;
   }
   &.selected:hover {
+    border: none;
     background: ${colors.tiffany.i500};
   }
 `
