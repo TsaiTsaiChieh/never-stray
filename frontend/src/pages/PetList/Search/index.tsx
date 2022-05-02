@@ -9,6 +9,7 @@ import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
 import ColorFilter from './ColorFilter'
 import Counter from './Counter'
+import ExpandFilters from './ExpandFilters'
 import LigationFilter from './LigationFilter'
 import RefFilter from './RefFilter'
 import SexFilter from './SexFilter'
@@ -32,6 +33,7 @@ const SearchBoard = ({count}: Props) => {
   return (
     <SearchBoardContainer isShow={searchBoardIsShow}>
       <FilterButton />
+      <ExpandFilters />
       <Counter count={count} />
       <Closed onClick={() => dispatch(closeSearchBoard())} />
       <AgeFilter />
