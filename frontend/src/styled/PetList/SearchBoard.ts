@@ -108,7 +108,7 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   grid-auto-flow: column;
   margin: auto;
   top: 0;
-  bottom: 10px;
+  bottom: 20px;
   left: 0;
   right: 0;
   /* filter icon */
