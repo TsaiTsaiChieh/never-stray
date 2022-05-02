@@ -234,7 +234,7 @@ export const CounterBtn = styled(Button)`
   width: 200px;
   border: none;
 `
-export const StyledExpandFilters = styled.p`
+export const ExpandFilters = styled.p`
   width: 100vw;
   height: 40px;
   display: flex;

@@ -3,14 +3,17 @@ import {useEffect} from 'react'
 import {api} from '../../../services/api'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {closeSearchBoard} from '../../../store/reducers/uiSlice'
-import {Closed, SearchBoardContainer} from '../../../styled/PetList/SearchBoard'
+import {
+  Closed,
+  ExpandFilters,
+  SearchBoardContainer,
+} from '../../../styled/PetList/SearchBoard'
 import {FilterButton} from '../FilterButton'
 import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
 import CleanupFilters from './CleanupFilters'
 import ColorFilter from './ColorFilter'
 import Counter from './Counter'
-import ExpandFilters from './ExpandFilters'
 import LigationFilter from './LigationFilter'
 import RefFilter from './RefFilter'
 import SexFilter from './SexFilter'
@@ -18,7 +21,7 @@ import ShelterFilter from './ShelterFilter'
 import StatusFilter from './StatusFilter'
 
 interface Props {
-  count?: number
+  count?: number;
 }
 const SearchBoard = ({count}: Props) => {
   const {searchBoardIsShow} = useAppSelector((state) => state.ui)
@@ -30,11 +33,10 @@ const SearchBoard = ({count}: Props) => {
     dispatch(api.endpoints.getPetShelters.initiate())
   }, [])
 
-
   return (
     <SearchBoardContainer isShow={searchBoardIsShow}>
       <FilterButton />
-      <ExpandFilters />
+      <ExpandFilters>篩選器</ExpandFilters>
       <Counter count={count} />
       <Closed onClick={() => dispatch(closeSearchBoard())} />
       <AgeFilter />
