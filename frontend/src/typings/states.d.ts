@@ -10,7 +10,6 @@ interface EnumState {
 
 interface UIState {
   searchBoardIsShow: boolean
-  searchMaskIsShow: boolean
   keywordSearchTextFieldIsShow: boolean
   kindContainerIsShow: boolean
   filterBtnIsShow: boolean

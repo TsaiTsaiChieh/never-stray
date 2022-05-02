@@ -1,7 +1,6 @@
 import {useGetPetsByFiltersQuery} from '../../services/api'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import Mask from '../../components/Mask'
 import Pagination from '../../components/Pagination'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
 import Banner from './Banner'
@@ -18,7 +17,6 @@ export const PetList = () => {
 
   return (
     <>
-      <Mask />
       <Header />
       <Menu />
       <div className='pet-wrapper'>
