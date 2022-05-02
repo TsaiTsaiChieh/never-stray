@@ -26,7 +26,7 @@ export const Button = styled.button`
 `
 export const Items = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-columns: repeat(3, 80px);
   grid-column-gap: 0.5rem;
   justify-content: start;
   ${MEDIA_TABLET} {
@@ -37,8 +37,10 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 90%;
   padding-bottom: 22px;
+  ${MEDIA_TABLET} {
+    margin-left: 25px;
+  }
 `
 export const Name = styled.h3`
   font-size: ${sizes.xs};
@@ -50,8 +52,12 @@ export const Name = styled.h3`
   }
 `
 export const Selector = styled(Select)`
+  width: 255px;
   font-size: ${sizes.xs};
   letter-spacing: 1px;
+  ${MEDIA_TABLET} {
+    width: 260px;
+  }
   .Select__control {
     border-color: ${colors.gray.i700};
   }
@@ -87,9 +93,11 @@ export const Closed = styled(CloseButton)`
   }
 `
 export const SearchBoardContainer = styled.div<{isShow: boolean}>`
-  display: ${(props) => (props.isShow ? 'block' : 'none')};
-  width: 80%;
-  height: 73vh;
+  display: ${(props) => (props.isShow ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 100px);
   position: fixed;
   align-content: center;
   grid-template-rows: repeat(auto-fill, 80px);
@@ -99,13 +107,9 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   grid-auto-flow: column;
   margin: auto;
   top: 0;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   right: 0;
-  border-radius: 10px;
-  padding-top: 50px;
-  padding-bottom: 20px;
-  padding-left: 30px;
   /* filter icon */
   ${FilterContainer} {
     display: none;
@@ -113,14 +117,14 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   ${MEDIA_TABLET} {
     position: absolute;
     height: auto;
+    align-items: normal;
     min-height: 900px;
     overflow-y: visible;
     bottom: auto;
     right: auto;
-    border-radius: 0;
     width: 100%;
     min-width: 367px;
-    padding-left: ${sizes.xl};
+    padding-top: 60px;
     grid-template-rows: repeat(auto-fill, minmax(90px, auto));
     box-shadow: 8px 0 12px ${colors.gray.t100};
   }
@@ -129,9 +133,9 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
     min-height: 720px;
     max-height: 720px;
     align-content: space-between;
-    width: 100%;
-    min-width: 290px;
-    max-width: 290px;
+    width: 310px;
+    min-width: 310px;
+    border-radius: 10px;
     box-shadow: 0 0 8px ${colors.gray.t100};
     border-radius: 5px;
     top: 40px;
@@ -145,7 +149,12 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
     }
   }
 `
-export const AgeWrap = styled(Wrap)``
+export const AgeWrap = styled(Wrap)`
+  margin-top: 35px;
+  ${MEDIA_TABLET} {
+    margin-top: 0;
+  }
+`
 export const AgeName = styled(Name)``
 export const AgeItems = styled(Items)``
 export const AgeItem = styled(Button)``
@@ -176,26 +185,52 @@ export const ShelterSelector = styled(Selector)``
 
 export const RefWrap = styled(Wrap)``
 export const RefName = styled(Name)``
-export const RefItems = styled(Items)`
-  justify-content: start;
-  grid-column-gap: 2.4rem;
-`
+export const RefItems = styled(Items)``
 export const RefItem = styled(Button)`
   width: 110px;
+  &:last-child {
+    margin-left: 30px;
+  }
 `
-export const CounterOuter = styled.p`
-  display: none;
+export const CounterOuter = styled.div`
+  height: 60px;
+  position: fixed;
+  background: ${colors.white.i100};
+  display: flex;
+  bottom: 0px;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  font-size: ${sizes.xs};
+  letter-spacing: 1px;
+  text-align: center;
+  box-shadow: 0px 0px 8px ${colors.gray.t100};
+  z-index: 40;
   ${MEDIA_TABLET} {
-    display: flex;
+    box-shadow: none;
+    height: 0;
+    left: 110px;
+
+    align-items: normal;
+    position: absolute;
     flex-direction: row;
     color: ${colors.gray.i300};
-    letter-spacing: 1px;
-    position: absolute;
     top: 30px;
-    right: 30px;
+    ${MEDIA_TABLET} {
+      font-size: ${sizes.s};
+      left: auto;
+      right: 30px;
+    }
   }
 `
 export const CounterValue = styled.span`
   color: ${colors.tiffany.i300};
-  margin: 0 1px;
+  margin-right: 2px;
+`
+export const CounterBtn = styled(Button)`
+  background: ${colors.tiffany.i300};
+  color: ${colors.white.i100};
+  width: 200px;
+  border: none;
 `
