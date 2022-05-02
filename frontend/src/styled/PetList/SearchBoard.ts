@@ -130,8 +130,8 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   }
   ${MEDIA_DESKTOP} {
     position: relative;
-    min-height: 720px;
-    max-height: 720px;
+    min-height: 770px;
+    max-height: 770px;
     align-content: space-between;
     width: 310px;
     min-width: 310px;
@@ -251,5 +251,26 @@ export const StyledExpandFilters = styled.p`
   letter-spacing: 2px;
   ${MEDIA_TABLET} {
     display: none;
+  }
+`
+export const CleanupFiltersBtn = styled(Button)`
+  border: none;
+  color: ${colors.tiffany.i300};
+  position: fixed;
+  top: 0;
+  left: 7%;
+  z-index: 41;
+  &:hover {
+    border: none;
+  }
+  ${MEDIA_TABLET} {
+    color: ${colors.gray.i300};
+    position: relative;
+    margin-left: 25px;
+    left: 0;
+    border: 1px solid ${colors.gray.i700};
+    &:hover {
+      border: 1px solid ${colors.red.i100};
+    }
   }
 `
