@@ -1,15 +1,25 @@
+import {isMobile, isTablet} from 'react-device-detect'
+
 import {
+  CounterBtn,
   CounterOuter,
   CounterValue,
 } from '../../../styled/PetList/SearchBoard'
 
 interface Props {
-  count?: number;
+  count?: number
 }
 const Counter = ({count}: Props) => {
+  const isMobileAndIsNotTablet = isMobile && !isTablet
+
   return (
     <CounterOuter>
-      <CounterValue>{count}</CounterValue>項結果
+      {isMobileAndIsNotTablet ? (
+        <CounterBtn>顯示 {count ? count : '??'} 項結果</CounterBtn>
+      ) : (
+        <CounterValue>{count ? count : '??'}</CounterValue>
+      )}
+      {isMobileAndIsNotTablet ? '' : '項結果'}
     </CounterOuter>
   )
 }
