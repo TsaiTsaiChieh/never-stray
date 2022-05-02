@@ -7,6 +7,7 @@ import {Closed, SearchBoardContainer} from '../../../styled/PetList/SearchBoard'
 import {FilterButton} from '../FilterButton'
 import AgeFilter from './AgeFilter'
 import CityFilter from './CityFilter'
+import CleanupFilters from './CleanupFilters'
 import ColorFilter from './ColorFilter'
 import Counter from './Counter'
 import ExpandFilters from './ExpandFilters'
@@ -44,6 +45,7 @@ const SearchBoard = ({count}: Props) => {
       <ShelterFilter />
       <StatusFilter />
       <RefFilter />
+      <CleanupFilters />
     </SearchBoardContainer>
   )
 }
