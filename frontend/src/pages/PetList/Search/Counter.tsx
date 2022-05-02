@@ -19,10 +19,10 @@ const Counter = ({count}: Props) => {
     <CounterOuter>
       {isMobileAndIsNotTablet ? (
         <CounterBtn onClick={() => dispatch(closeSearchBoard())}>
-          顯示 {count ? count : '??'} 項結果
+          顯示 {count === undefined ? '???' : count} 項結果
         </CounterBtn>
       ) : (
-        <CounterValue>{count ? count : '??'}</CounterValue>
+        <CounterValue>{count === undefined ? '???' : count}</CounterValue>
       )}
       {isMobileAndIsNotTablet ? '' : '項結果'}
     </CounterOuter>
