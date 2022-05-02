@@ -19,6 +19,9 @@ export const colors = {
   blue: {
     i100: '#2D9CDB',
   },
+  red: {
+    i100: '#FFA8A8',
+  },
   gray: {
     i100: '#BDBDBD',
     i200: '#9FA0A0',
