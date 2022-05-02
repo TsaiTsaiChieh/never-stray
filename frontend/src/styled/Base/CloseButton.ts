@@ -7,7 +7,7 @@ export const CloseButton = styled.div`
   width: 15px;
   height: 15px;
   top: 10px;
-  right: 7%;
+  right: 1.5rem;
   z-index: 41;
   cursor: pointer;
   &::after,
@@ -15,8 +15,8 @@ export const CloseButton = styled.div`
     display: inline-block;
     content: "";
     position: absolute;
-    width: 100%;
-    top: 50%;
+    width: 15px;
+    top: 10px;
     height: 2px;
     border-radius: 2px;
     background: ${colors.tiffany.i300};

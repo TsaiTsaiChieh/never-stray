@@ -198,11 +198,11 @@ export const CounterOuter = styled.div`
   position: fixed;
   background: ${colors.white.i100};
   display: flex;
-  bottom: 0px;
   justify-content: center;
   align-items: center;
   left: 0;
   right: 0;
+  bottom: 0;
   font-size: ${sizes.xs};
   letter-spacing: 1px;
   text-align: center;
@@ -254,11 +254,12 @@ export const ExpandFilters = styled.p`
   }
 `
 export const CleanupFiltersBtn = styled(Button)`
+  width: 100px;
   border: none;
   color: ${colors.tiffany.i300};
   position: fixed;
-  top: 0;
-  left: 7%;
+  top: 0; 
+  left: 1rem;
   z-index: 41;
   &:hover {
     border: none;
