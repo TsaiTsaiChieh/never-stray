@@ -1,4 +1,6 @@
 import {isMobile, isTablet} from 'react-device-detect'
+import {useAppDispatch} from '../../../store/hooks'
+import {closeSearchBoard} from '../../../store/reducers/uiSlice'
 
 import {
   CounterBtn,
@@ -7,15 +9,18 @@ import {
 } from '../../../styled/PetList/SearchBoard'
 
 interface Props {
-  count?: number
+  count?: number;
 }
 const Counter = ({count}: Props) => {
+  const dispatch = useAppDispatch()
   const isMobileAndIsNotTablet = isMobile && !isTablet
 
   return (
     <CounterOuter>
       {isMobileAndIsNotTablet ? (
-        <CounterBtn>顯示 {count ? count : '??'} 項結果</CounterBtn>
+        <CounterBtn onClick={() => dispatch(closeSearchBoard())}>
+          顯示 {count ? count : '??'} 項結果
+        </CounterBtn>
       ) : (
         <CounterValue>{count ? count : '??'}</CounterValue>
       )}
