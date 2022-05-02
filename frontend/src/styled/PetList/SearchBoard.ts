@@ -234,3 +234,22 @@ export const CounterBtn = styled(Button)`
   width: 200px;
   border: none;
 `
+export const StyledExpandFilters = styled.p`
+  width: 100vw;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 40;
+  box-shadow: 0px 0px 8px ${colors.gray.t100};
+  background: ${colors.white.i100};
+  color: ${colors.gray.i500};
+  font-size: ${sizes.s};
+  letter-spacing: 2px;
+  ${MEDIA_TABLET} {
+    display: none;
+  }
+`
