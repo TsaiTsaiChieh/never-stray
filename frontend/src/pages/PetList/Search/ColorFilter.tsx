@@ -8,7 +8,6 @@ import {
 } from '../../../styled/PetList/SearchBoard'
 
 const ColorFilter = () => {
-  const [selected, setSelected] = useState([])
   const {filters} = useAppSelector((state) => state.petList)
   const {colors} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
@@ -20,6 +19,8 @@ const ColorFilter = () => {
       } :
       {value: '', label: '未填'},
   )
+  const [selected, setSelected] = useState(
+    options.filter((ele) => filters.color.includes(ele.value)))
 
   useEffect(() => {
     if (!filters.color.length) {
@@ -36,7 +37,7 @@ const ColorFilter = () => {
     dispatch(updateFilters(expandFilters))
     setSelected(newValue)
   }
-
+  console.log(filters.color)
   return (
     <ColorWrap>
       <ColorName>顏色</ColorName>
