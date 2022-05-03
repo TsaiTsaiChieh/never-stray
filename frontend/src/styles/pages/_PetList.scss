@@ -70,6 +70,7 @@
       align-items: center;
       font-size: 16px;
       margin: 20px auto 20px auto;
+      overflow: hidden;
 
       @include tablet {
         margin: 30px auto 30px auto;
