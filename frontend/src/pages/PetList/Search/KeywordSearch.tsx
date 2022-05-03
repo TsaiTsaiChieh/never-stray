@@ -1,4 +1,4 @@
-import {KeyboardEvent} from 'react'
+import {KeyboardEvent, useEffect, useRef} from 'react'
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {updateFilters} from '../../../store/reducers/petListSlice'
@@ -18,6 +18,13 @@ const KeywordSearch = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const dispatch = useAppDispatch()
   const {keywordSearchTextFieldIsShow} = useAppSelector((state) => state.ui)
+  const ref = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (ref.current !== null) {
+      ref.current.value = filters.keyword ? filters.keyword : ''
+    }
+  }, [filters.keyword])
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return
@@ -35,7 +42,7 @@ const KeywordSearch = () => {
     <TextFieldGroup isShow={keywordSearchTextFieldIsShow}>
       <TextField
         placeholder='搜尋介紹內容'
-        defaultValue={filters.keyword ? filters.keyword : ''}
+        ref={ref}
         onKeyDown={(e) => onKeyDown(e)}
       />
       <SearchIcon />
