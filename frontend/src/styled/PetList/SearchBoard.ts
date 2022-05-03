@@ -104,7 +104,7 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   grid-template-rows: repeat(auto-fill, 80px);
   background: white;
   z-index: 10;
-  overflow-y: auto;
+  overflow-y: scroll;
   grid-auto-flow: column;
   margin: auto;
   top: 0;
@@ -132,7 +132,7 @@ export const SearchBoardContainer = styled.div<{isShow: boolean}>`
   ${MEDIA_DESKTOP} {
     position: relative;
     min-height: 770px;
-    max-height: 770px;
+    max-height: auto;
     align-content: space-between;
     width: 310px;
     min-width: 310px;
@@ -265,6 +265,7 @@ export const CleanupFiltersBtn = styled(Button)`
     border: none;
   }
   ${MEDIA_TABLET} {
+    z-index: 0;
     color: ${colors.gray.i300};
     position: relative;
     margin-left: 25px;
@@ -273,5 +274,6 @@ export const CleanupFiltersBtn = styled(Button)`
     &:hover {
       border: 1px solid ${colors.red.i100};
     }
+    margin-bottom: 22px;
   }
 `
