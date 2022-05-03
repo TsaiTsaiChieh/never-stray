@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
@@ -7,6 +8,7 @@ import {
 } from '../../../styled/PetList/SearchBoard'
 
 const ColorFilter = () => {
+  const [selected, setSelected] = useState([])
   const {filters} = useAppSelector((state) => state.petList)
   const {colors} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
@@ -19,6 +21,12 @@ const ColorFilter = () => {
       {value: '', label: '未填'},
   )
 
+  useEffect(() => {
+    if (!filters.color.length) {
+      setSelected([])
+    }
+  }, [filters.color])
+
   const onChange = (newValue: any) => {
     const expandFilters = {
       ...filters,
@@ -26,6 +34,7 @@ const ColorFilter = () => {
       page: 1,
     }
     dispatch(updateFilters(expandFilters))
+    setSelected(newValue)
   }
 
   return (
@@ -33,6 +42,7 @@ const ColorFilter = () => {
       <ColorName>顏色</ColorName>
       <ColorSelector
         isMulti
+        value={selected}
         classNamePrefix='Select'
         closeMenuOnSelect={false}
         options={options}
