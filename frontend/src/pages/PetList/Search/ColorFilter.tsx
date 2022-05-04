@@ -34,8 +34,8 @@ const ColorFilter = () => {
       color: newValue.map((ele: OptionType) => ele.value),
       page: 1,
     }
-    dispatch(updateFilters(expandFilters))
     setSelected(newValue)
+    dispatch(updateFilters(expandFilters))
   }
   console.log(filters.color)
   return (
