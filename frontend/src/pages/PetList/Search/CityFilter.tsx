@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
@@ -14,6 +15,14 @@ const CityFilter = () => {
     value: ele.id.toString(),
     label: ele.name,
   }))
+  const [selected, setSelected] = useState(
+    options.filter((ele) => filters.city_id.includes(parseInt(ele.value))))
+
+  useEffect(() => {
+    if (!filters.city_id.length) {
+      setSelected([])
+    }
+  }, [filters.city_id])
 
   const onChange = (newValue: any) => {
     const expandFilters = {
@@ -21,6 +30,7 @@ const CityFilter = () => {
       city_id: newValue.map((ele: OptionType) => parseInt(ele.value)),
       page: 1,
     }
+    setSelected(newValue)
     dispatch(updateFilters(expandFilters))
   }
 
@@ -29,6 +39,7 @@ const CityFilter = () => {
       <CityName>縣市</CityName>
       <CitySelector
         isMulti
+        value={selected}
         classNamePrefix='Select'
         closeMenuOnSelect={false}
         options={options}
