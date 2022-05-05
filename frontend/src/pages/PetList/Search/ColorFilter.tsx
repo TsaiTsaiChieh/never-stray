@@ -37,7 +37,7 @@ const ColorFilter = () => {
     setSelected(newValue)
     dispatch(updateFilters(expandFilters))
   }
-  console.log(filters.color)
+
   return (
     <ColorWrap>
       <ColorName>顏色</ColorName>
