@@ -266,13 +266,14 @@ export const CleanupFiltersBtn = styled(Button)`
   }
   ${MEDIA_TABLET} {
     z-index: 0;
-    color: ${colors.gray.i300};
+    color: ${colors.white.i100};
+    background: ${colors.tiffany.i300};
     position: relative;
     margin-left: 25px;
     left: 0;
-    border: 1px solid ${colors.gray.i700};
     &:hover {
-      border: 1px solid ${colors.red.i100};
+      background: ${colors.red.i100};
+      transition: 0.3s;
     }
     margin-bottom: 22px;
   }
