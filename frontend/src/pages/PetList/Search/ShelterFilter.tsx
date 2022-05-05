@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react'
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
@@ -14,6 +15,15 @@ const ShelterFilter = () => {
     value: ele.id.toString(),
     label: ele.name,
   }))
+  const [selected, setSelected] = useState(
+    options.filter((ele) => filters.shelter_id.includes(parseInt(ele.value))),
+  )
+
+  useEffect(() => {
+    if (!filters.shelter_id.length) {
+      setSelected([])
+    }
+  }, [filters.shelter_id])
 
   const onChange = (newValue: any) => {
     const expandFilters = {
@@ -21,6 +31,7 @@ const ShelterFilter = () => {
       shelter_id: newValue.map((ele: OptionType) => parseInt(ele.value)),
       page: 1,
     }
+    setSelected(newValue)
     dispatch(updateFilters(expandFilters))
   }
 
@@ -29,6 +40,7 @@ const ShelterFilter = () => {
       <ShelterName>收容所</ShelterName>
       <ShelterSelector
         isMulti
+        value={selected}
         classNamePrefix='Select'
         closeMenuOnSelect={false}
         options={options}
