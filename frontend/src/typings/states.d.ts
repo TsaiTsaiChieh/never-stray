@@ -14,6 +14,7 @@ interface UIState {
   kindContainerIsShow: boolean
   filterBtnIsShow: boolean
   closeTextSearchIsShow: boolean
+  shouldLoginWarningIsShow: boolean
 }
 
 interface AuthState {
