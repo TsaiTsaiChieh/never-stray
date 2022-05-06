@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import {colors} from '../../constants/Variables'
+import {colors, filters} from '../../constants/Variables'
 
 export const CloseButton = styled.div`
   position: fixed;
@@ -24,5 +24,12 @@ export const CloseButton = styled.div`
   }
   &::before {
     transform: rotate(-45deg);
+  }
+`
+export const X = styled.img`
+  content: url("/images/x.svg");
+  filter: ${filters.gray.i300};
+  &:hover {
+    filter: ${filters.tiffany.i400};
   }
 `
