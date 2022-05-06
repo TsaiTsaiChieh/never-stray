@@ -9,6 +9,7 @@ import NotFound from './NotFound'
 import OrderFilter from './OrderFilter'
 import Profile from './Profile'
 import SearchBoard from './Search'
+import ShouldLoginWarning from '../../components/ShouldLoginWarning'
 
 export const PetList = () => {
   const dispatch = useAppDispatch()
@@ -19,6 +20,7 @@ export const PetList = () => {
     <>
       <Header />
       <Menu />
+      <ShouldLoginWarning featureName='加入我的小窩' />
       <div className='pet-wrapper'>
         <div className='search-board-wrap'>
           <SearchBoard count={data?.page.count} />
