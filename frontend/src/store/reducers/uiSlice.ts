@@ -1,6 +1,6 @@
 import {isDesktop} from 'react-device-detect'
 
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 const initialState: UIState = {
   searchBoardIsShow: isDesktop, // 搜尋選單
@@ -8,6 +8,7 @@ const initialState: UIState = {
   kindContainerIsShow: true, // 菜單上的寵物種類
   filterBtnIsShow: !isDesktop, // 菜單上的開啟搜尋選單按鈕
   closeTextSearchIsShow: false, // 關閉文字搜尋輸入框
+  shouldLoginWarningIsShow: false, // 應該登入的警告視窗
 }
 
 export const uiSlice = createSlice({
@@ -36,6 +37,10 @@ export const uiSlice = createSlice({
       state.filterBtnIsShow = true
       state.closeTextSearchIsShow = false
     },
+    // 開關應該登入的警告視窗
+    updateShouldLoginWarningIsShow: (state, action: PayloadAction<boolean>) => {
+      state.shouldLoginWarningIsShow = action.payload
+    },
   },
 })
 
@@ -44,5 +49,6 @@ export const {
   closeSearchBoard,
   keywordSearchOnClick,
   closeKeywordSearch,
+  updateShouldLoginWarningIsShow,
 } = uiSlice.actions
 export default uiSlice.reducer
