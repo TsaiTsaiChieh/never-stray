@@ -4,7 +4,8 @@ import {
   useAddTrackingMutation,
   useRemoveTrackingMutation,
 } from '../../services/api'
-import {useAppSelector} from '../../store/hooks'
+import {useAppDispatch, useAppSelector} from '../../store/hooks'
+import {updateShouldLoginWarningIsShow} from '../../store/reducers/uiSlice'
 import {TrackingOrNot} from '../../styled/PetList/Tracking'
 
 interface Props {
@@ -16,9 +17,10 @@ const Tracking = ({id, tracking}: Props) => {
   const {isLogin} = useAppSelector((state) => state.auth)
   const [addTracking] = useAddTrackingMutation()
   const [removeTracking] = useRemoveTrackingMutation()
+  const dispatch = useAppDispatch()
 
   const toggleTracking = () => {
-    if (!isLogin) return
+    if (!isLogin) return dispatch(updateShouldLoginWarningIsShow(true))
     setTrackingState(!trackingState)
     if (trackingState) removeTracking({pet_id: id})
     else addTracking({pet_id: id})
