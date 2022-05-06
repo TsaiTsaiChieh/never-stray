@@ -51,5 +51,6 @@ export const filters = {
   },
   gray: {
     i100: 'invert(99%) sepia(79%) saturate(0%) hue-rotate(148deg) brightness(81%) contrast(80%)',
+    i300: 'invert(55%) sepia(14%) saturate(16%) hue-rotate(336deg) brightness(91%) contrast(80%)',
   },
 }
