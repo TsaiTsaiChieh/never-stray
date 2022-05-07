@@ -114,7 +114,7 @@ export const ContactUs = styled.button<{status: PetStatusType}>`
     max-width: 300px;
   }
 `
-export const AddTracking = styled(Button)`
+export const TrackingBtn = styled(Button)`
   width: 10vw;
   margin-left: 10px;
   float: right;
