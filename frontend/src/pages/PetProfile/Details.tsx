@@ -1,6 +1,8 @@
 import {PetRef} from '../../constants/EnumType'
 import {
   AccessNumber,
+  ButtonContainer,
+  ContactUs,
   Container,
   Description,
   DescriptionContainer,
@@ -10,6 +12,7 @@ import {
   UpdateTime,
 } from '../../styled/PetProfile/Details'
 import Feature from './Feature'
+import Tracking from './Tracking'
 
 interface Props {
   pet: IPet
@@ -35,6 +38,10 @@ const Details = ({pet}: Props) => {
         <DescriptionTitle>介紹描述</DescriptionTitle>
         <Description>{pet.remark}</Description>
       </DescriptionContainer>
+      <ButtonContainer>
+        <ContactUs status={pet.status}>聯絡我們</ContactUs>
+        <Tracking tracking={pet.tracking} />
+      </ButtonContainer>
     </Container>
   )
 }
