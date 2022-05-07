@@ -5,13 +5,17 @@ import GoogleLogin, {
 import {StyledComponent} from 'styled-components'
 
 import {useGoogleLoginMutation} from '../services/api'
+import {useAppDispatch} from '../store/hooks'
+import {updateShouldLoginWarningIsShow} from '../store/reducers/uiSlice'
 
 interface Props {
-  Component: StyledComponent<'div', any, {}, never>
+  Component: StyledComponent<'div' | 'button', any, {}, never>
   buttonName: string
 }
 const GoogleLoginBtn = ({Component, buttonName}: Props) => {
+  const dispatch = useAppDispatch()
   const [googleLogin] = useGoogleLoginMutation()
+
   const handleLogin = (
     res: GoogleLoginResponse | GoogleLoginResponseOffline,
   ) => {
@@ -20,6 +24,7 @@ const GoogleLoginBtn = ({Component, buttonName}: Props) => {
       const tokenId = res.tokenId
       // Carry token to backend
       googleLogin({token: tokenId})
+      dispatch(updateShouldLoginWarningIsShow(false))
     }
   }
   return (
