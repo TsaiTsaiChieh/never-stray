@@ -41,6 +41,7 @@ export const uiSlice = createSlice({
     // 開關應該登入的警告視窗
     updateShouldLoginWarningIsShow: (state, action: PayloadAction<boolean>) => {
       state.shouldLoginWarningIsShow = action.payload
+      state.maskIsShow = action.payload
     },
     // 開關遮罩
     updateMashIsShow: (state, action: PayloadAction<boolean>) => {
