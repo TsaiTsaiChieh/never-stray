@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import {
   useAddTrackingMutation,
@@ -18,6 +18,10 @@ const Tracking = ({id, tracking}: Props) => {
   const [addTracking] = useAddTrackingMutation()
   const [removeTracking] = useRemoveTrackingMutation()
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    setTrackingState(tracking)
+  }, [tracking])
 
   const toggleTracking = () => {
     if (!isLogin) return dispatch(updateShouldLoginWarningIsShow(true))
