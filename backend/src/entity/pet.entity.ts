@@ -79,7 +79,7 @@ export class Pet {
     nullable: true,
     comment: 'sub id from shelter',
   })
-  accept_num: string
+  accept_num?: string
 
   @Column({type: 'varchar', length: 32, nullable: true})
   name?: string
@@ -106,7 +106,7 @@ export class Pet {
   sex: Sex
 
   @Column({type: 'varchar', length: 32, nullable: true})
-  color: string
+  color?: string
 
   @Column({type: 'enum', enum: Age, default: Age.UNKNOWN})
   age: Age
@@ -134,16 +134,16 @@ export class Pet {
   status: Status
 
   @Column({type: 'text', nullable: true})
-  remark: string
+  remark?: string
 
   @Column({type: 'varchar', length: 128, nullable: true})
-  phone: string
+  phone?: string
 
   @Column({type: 'varchar', length: 128, nullable: true})
-  contact_method: string
+  contact_method?: string
 
   @Column({type: 'json', nullable: true})
-  image: string[]
+  image?: string[]
 
   @CreateDateColumn()
   created_at?: Date
