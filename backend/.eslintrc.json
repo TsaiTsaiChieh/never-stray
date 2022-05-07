@@ -125,7 +125,8 @@
           "grant_type",
           "redirect_uri",
           "user_id",
-          "pet_id"
+          "pet_id",
+          "contact_method"
         ]
       }
     ],
