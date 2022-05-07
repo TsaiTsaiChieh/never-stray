@@ -18,8 +18,8 @@ const Header = () => {
   }
 
   return (
-    <StyledHeader onClick={toMainPage}>
-      <LogoGroup>
+    <StyledHeader>
+      <LogoGroup onClick={toMainPage}>
         <Logo />
         <Slogan>
           <SloganCh>讓愛不流浪</SloganCh>
