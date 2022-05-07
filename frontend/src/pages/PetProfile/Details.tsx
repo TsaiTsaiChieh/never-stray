@@ -40,7 +40,7 @@ const Details = ({pet}: Props) => {
       </DescriptionContainer>
       <ButtonContainer>
         <ContactUs status={pet.status}>聯絡我們</ContactUs>
-        <Tracking tracking={pet.tracking} />
+        <Tracking id={pet.id} tracking={pet.tracking} />
       </ButtonContainer>
     </Container>
   )
