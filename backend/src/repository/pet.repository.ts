@@ -30,7 +30,8 @@ export class PetRepository extends BasicRepository<Pet> {
    * @return {Promise<[Pet[], number]>} Pet information and count
    */
   async findByFiltersAndCount(
-    query: PetSearchQueryType, userId: number | undefined,
+    query: PetSearchQueryType,
+    userId: number | undefined,
   ): Promise<[Pet[], number]> {
     try {
       let queryBuilder: SelectQueryBuilder<Pet> = this.repository
@@ -123,12 +124,18 @@ export class PetRepository extends BasicRepository<Pet> {
           })
       }
       if (query.keyword) {
-        queryBuilder.andWhere('pet.remark LIKE :keyword', {
-          keyword: `%${query.keyword}%`,
-        })
+        queryBuilder.andWhere(
+          'pet.remark LIKE :keyword' +
+          'OR pet.color LIKE :keyword' +
+          'OR pet.title LIKE :keyword',
+          {
+            keyword: `%${query.keyword}%`,
+          },
+        )
       }
       if (query.tracking) {
-        queryBuilder.leftJoin(Tracking, 'tracking', 'tracking.pet_id = pet.id')
+        queryBuilder
+          .leftJoin(Tracking, 'tracking', 'tracking.pet_id = pet.id')
           .andWhere('tracking.user_id = :user_id', {user_id: userId})
       }
       if (query.order_key) {
@@ -180,7 +187,8 @@ export class PetRepository extends BasicRepository<Pet> {
         .createQueryBuilder('pet')
         .leftJoinAndSelect('pet.city', 'area')
         .leftJoinAndSelect('pet.shelter', 'shelter')
-        .where('pet.id = :id', {id}).getOne()
+        .where('pet.id = :id', {id})
+        .getOne()
       return Promise.resolve(result)
     } catch (error) {
       return Promise.reject(new DBError(error.stack))
