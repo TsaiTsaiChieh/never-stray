@@ -22,7 +22,7 @@ export const api = createApi({
         method: 'POST',
         body: token,
       }),
-      invalidatesTags: ['auth'],
+      invalidatesTags: ['auth', 'pets'],
     }),
     /** Pets */
     getPetById: builder.query<IPet, string>({
