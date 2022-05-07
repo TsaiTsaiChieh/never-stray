@@ -24,7 +24,7 @@ export const Container = styled.div`
   margin-top: calc(65px + 35px);
   ${MEDIA_DESKTOP} {
     margin-top: 70px;
-    margin-left: 30px;
+    margin-left: 40px;
   }
 `
 export const Title = styled.h1`
