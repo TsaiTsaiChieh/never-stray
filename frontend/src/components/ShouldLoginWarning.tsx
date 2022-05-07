@@ -1,21 +1,9 @@
-import GoogleLogin, {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from 'react-google-login'
-
-import {useGoogleLoginMutation} from '../services/api'
 import {useAppDispatch, useAppSelector} from '../store/hooks'
 import {updateShouldLoginWarningIsShow} from '../store/reducers/uiSlice'
 import {
-  ButtonWrap,
-  Closed,
-  Details,
-  GoToLogin,
-  Img,
-  Title,
-  Understood,
-  Windows,
+  ButtonWrap, Closed, Details, GoToLogin, Img, Title, Understood, Windows,
 } from '../styled/Warning'
+import GoogleLoginBtn from './GoogleLoginBtn'
 
 interface Props {
   featureName?: string
@@ -23,17 +11,6 @@ interface Props {
 const ShouldLoginWarning = ({featureName}: Props) => {
   const dispatch = useAppDispatch()
   const {shouldLoginWarningIsShow} = useAppSelector((state) => state.ui)
-  const [googleLogin] = useGoogleLoginMutation()
-
-  const handleLogin = (
-    res: GoogleLoginResponse | GoogleLoginResponseOffline,
-  ) => {
-    if ('tokenId' in res) {
-      const tokenId = res.tokenId
-      googleLogin({token: tokenId})
-      dispatch(updateShouldLoginWarningIsShow(false))
-    }
-  }
 
   return (
     <Windows isShow={shouldLoginWarningIsShow}>
@@ -48,13 +25,9 @@ const ShouldLoginWarning = ({featureName}: Props) => {
         登入才能使用，建議您前往登入
       </Details>
       <ButtonWrap>
-        {/* <GoToLogin onClick=>我要登入</GoToLogin> */}
-        <GoogleLogin
-          render={(renderProps) => (
-            <GoToLogin onClick={renderProps.onClick}>我要登入</GoToLogin>
-          )}
-          onSuccess={handleLogin}
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
+        <GoogleLoginBtn
+          Component={GoToLogin}
+          buttonName='我要登入'
         />
         <Understood
           onClick={() => dispatch(updateShouldLoginWarningIsShow(false))}
