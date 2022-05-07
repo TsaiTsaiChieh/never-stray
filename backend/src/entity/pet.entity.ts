@@ -140,7 +140,7 @@ export class Pet {
   phone?: string
 
   @Column({type: 'varchar', length: 128, nullable: true})
-  contact_method?: string
+  contact?: string
 
   @Column({type: 'json', nullable: true})
   image?: string[]
