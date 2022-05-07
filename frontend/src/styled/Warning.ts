@@ -32,7 +32,7 @@ export const Windows = styled.div<{isShow: boolean}>`
   border-radius: 5px;
   border: 5px solid ${colors.tiffany.i300};
   background: ${colors.white.i100};
-  position: absolute;
+  position: fixed;
   z-index: 50;
   margin: auto;
   left: 0;
