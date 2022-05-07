@@ -2,7 +2,7 @@ import {PetRef} from '../../constants/EnumType'
 import {
   AccessNumber,
   ButtonContainer,
-  ContactUs,
+  ContactUsBtn,
   Container,
   Description,
   DescriptionContainer,
@@ -39,7 +39,7 @@ const Details = ({pet}: Props) => {
         <Description>{pet.remark}</Description>
       </DescriptionContainer>
       <ButtonContainer>
-        <ContactUs status={pet.status}>聯絡我們</ContactUs>
+        <ContactUsBtn status={pet.status}>聯絡我們</ContactUsBtn>
         <Tracking id={pet.id} tracking={pet.tracking} />
       </ButtonContainer>
     </Container>

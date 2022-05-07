@@ -88,7 +88,7 @@ export const ButtonContainer = styled.div`
     justify-content: flex-start;
   }
 `
-export const ContactUs = styled.button<{status: PetStatusType}>`
+export const ContactUsBtn = styled.button<{status: PetStatusType}>`
   width: auto;
   height: 40px;
   flex-grow: 1;
