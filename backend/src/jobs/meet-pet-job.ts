@@ -264,6 +264,7 @@ class MeetPetJob {
         title,
         status: this.statusDetection(title),
         remark: $(this.classNameMapping('limitation-desc')).text(),
+        contact: $(this.classNameMapping('contact')).text(),
         phone: $(this.classNameMapping('tel')).text(),
         image: imgsFromS3,
         updated_at: new Date(),
