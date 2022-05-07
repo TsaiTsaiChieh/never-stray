@@ -1,15 +1,15 @@
-import {isDesktop, isMobile} from 'react-device-detect'
+import {isDesktop} from 'react-device-detect'
 
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 const initialState: UIState = {
   searchBoardIsShow: isDesktop, // 搜尋選單
-  searchMaskIsShow: false, // 搜尋選單開啟時的遮罩
   keywordSearchTextFieldIsShow: isDesktop, // 文字搜尋輸入框
   kindContainerIsShow: true, // 菜單上的寵物種類
   filterBtnIsShow: !isDesktop, // 菜單上的開啟搜尋選單按鈕
   closeTextSearchIsShow: false, // 關閉文字搜尋輸入框
   shouldLoginWarningIsShow: false, // 應該登入的警告視窗
+  maskIsShow: false, // 遮罩
 }
 
 export const uiSlice = createSlice({
@@ -19,12 +19,10 @@ export const uiSlice = createSlice({
     // 菜單篩選按鈕的點擊事件（手機/平板）
     filterBtnOnClick: (state) => {
       state.searchBoardIsShow = true
-      if (isMobile) state.searchMaskIsShow = true
     },
     // 搜尋關閉按鈕的點擊事件（手機/平板）
     closeSearchBoard: (state) => {
       state.searchBoardIsShow = false
-      if (isMobile) state.searchMaskIsShow = false
     },
     // 關鍵字搜尋的按鈕點擊事件 （手機）
     keywordSearchOnClick: (state) => {
@@ -44,6 +42,10 @@ export const uiSlice = createSlice({
     updateShouldLoginWarningIsShow: (state, action: PayloadAction<boolean>) => {
       state.shouldLoginWarningIsShow = action.payload
     },
+    // 開關遮罩
+    updateMashIsShow: (state, action: PayloadAction<boolean>) => {
+      state.maskIsShow = action.payload
+    },
   },
 })
 
@@ -53,5 +55,6 @@ export const {
   keywordSearchOnClick,
   closeKeywordSearch,
   updateShouldLoginWarningIsShow,
+  updateMashIsShow,
 } = uiSlice.actions
 export default uiSlice.reducer
