@@ -139,6 +139,9 @@ export class Pet {
   @Column({type: 'varchar', length: 128, nullable: true})
   phone: string
 
+  @Column({type: 'varchar', length: 128, nullable: true})
+  contact_method: string
+
   @Column({type: 'json', nullable: true})
   image: string[]
 
