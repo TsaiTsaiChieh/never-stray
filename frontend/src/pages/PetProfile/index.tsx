@@ -7,6 +7,8 @@ import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Details from './Details'
 import Gallery from './Gallery'
+import ShouldLoginWarning from '../../components/ShouldLoginWarning'
+import Mask from '../../components/Mask'
 
 const PetProfile = () => {
   const {id} = useParams()
@@ -14,7 +16,9 @@ const PetProfile = () => {
 
   return (
     isLoading ? <DogWalking /> : <>
+      <Mask />
       <Header />
+      <ShouldLoginWarning featureName='加入我的小窩' />
       <div id='PetProfile'>
         {isSuccess &&
           data &&
