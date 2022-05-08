@@ -47,6 +47,7 @@ interface IPet {
   status: PetStatusType
   remark: string
   phone: string
+  contact: string
   image: string[]
   tracking: boolean
   created_at: date
