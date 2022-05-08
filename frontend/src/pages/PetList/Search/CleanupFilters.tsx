@@ -1,4 +1,4 @@
-import {PetKind, PetStatus} from '../../../constants/EnumType'
+import {PetKind} from '../../../constants/EnumType'
 import {useAppDispatch} from '../../../store/hooks/index'
 import {updateFilters} from '../../../store/reducers/petListSlice'
 import {CleanupFiltersBtn} from '../../../styled/PetList/SearchBoard'
@@ -8,7 +8,7 @@ const CleanupFilters = () => {
 
   const onClick = () => {
     dispatch(updateFilters({
-      status: [PetStatus.OPEN],
+      status: [],
       ref: [],
       city_id: [],
       shelter_id: [],
