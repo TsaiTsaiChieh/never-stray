@@ -4,9 +4,9 @@
   flex-direction: column;
   margin: auto;
   justify-content: center;
+  overflow: hidden;
   @include tablet {
     min-height: 70vh;
-    width: 90%;
   }
   @include desktop {
     min-height: 89vh;
