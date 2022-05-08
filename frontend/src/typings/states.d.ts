@@ -16,6 +16,7 @@ interface UIState {
   filterBtnIsShow: boolean
   closeTextSearchIsShow: boolean
   shouldLoginWarningIsShow: boolean
+  contactUsIsShow: boolean
 }
 
 interface AuthState {
