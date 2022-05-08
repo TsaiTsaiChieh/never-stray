@@ -86,7 +86,6 @@ export const Understood = styled.button`
   position: absolute;
   left: 0;
   right: 0;
-  /* top: 70px; */
   bottom: 0;
   margin: auto;
   letter-spacing: 1px;
@@ -94,6 +93,9 @@ export const Understood = styled.button`
   color: ${colors.white.i100};
   border-radius: 5px;
   font-size: ${sizes.s};
+  &:hover {
+    background: ${colors.tiffany.i500};
+  }
   ${MEDIA_TABLET} {
     width: 300px;
   }
