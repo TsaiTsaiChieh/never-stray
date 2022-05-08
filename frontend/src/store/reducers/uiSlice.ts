@@ -10,6 +10,7 @@ const initialState: UIState = {
   closeTextSearchIsShow: false, // 關閉文字搜尋輸入框
   shouldLoginWarningIsShow: false, // 應該登入的警告視窗
   maskIsShow: false, // 遮罩
+  contactUsIsShow: false, // 聯絡我們視窗
 }
 
 export const uiSlice = createSlice({
@@ -47,6 +48,10 @@ export const uiSlice = createSlice({
     updateMashIsShow: (state, action: PayloadAction<boolean>) => {
       state.maskIsShow = action.payload
     },
+    updateContactUsIsShow: (state, action: PayloadAction<boolean>) => {
+      state.maskIsShow = action.payload
+      state.contactUsIsShow = action.payload
+    },
   },
 })
 
@@ -57,5 +62,6 @@ export const {
   closeKeywordSearch,
   updateShouldLoginWarningIsShow,
   updateMashIsShow,
+  updateContactUsIsShow,
 } = uiSlice.actions
 export default uiSlice.reducer
