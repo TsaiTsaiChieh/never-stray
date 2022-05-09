@@ -125,8 +125,8 @@ export class PetRepository extends BasicRepository<Pet> {
       }
       if (query.keyword) {
         queryBuilder.andWhere(
-          'pet.remark LIKE :keyword' +
-          'OR pet.color LIKE :keyword' +
+          'pet.remark LIKE :keyword ' +
+          'OR pet.color LIKE :keyword ' +
           'OR pet.title LIKE :keyword',
           {
             keyword: `%${query.keyword}%`,
