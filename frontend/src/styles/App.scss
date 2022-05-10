@@ -1,15 +1,13 @@
 // utils
 @import "utils/Variables";
 @import "utils/Mixin";
-
 // base
 @import "base/Reset";
 @import "base/Base";
-
+@import "base/Loader";
 // pages
 @import "pages/PetList";
 @import "pages/PetProfile";
 @import "pages/PrivacyPolicy";
-
 // component
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
