@@ -11,11 +11,12 @@ import OrderFilter from './OrderFilter'
 import Profile from './Profile'
 import SearchBoard from './Search'
 import ShouldLoginWarning from '../../components/ShouldLoginWarning'
+import RingLoader from '../../components/RingLoader'
 
 export const PetList = () => {
   const dispatch = useAppDispatch()
   const petState = useAppSelector((state) => state.petList)
-  const {data} = useGetPetsByFiltersQuery({...petState.filters})
+  const {data, isLoading} = useGetPetsByFiltersQuery({...petState.filters})
 
   return (
     <>
@@ -31,7 +32,7 @@ export const PetList = () => {
           <Banner />
           <OrderFilter />
           <div id='PetList'>
-            {data && data.pets.length ? (
+            {isLoading ? <RingLoader /> : data && data.pets.length ? (
               data.pets &&
               data.pets.map((ele: IPet) => (
                 <Profile key={ele.id} pet={ele} />
