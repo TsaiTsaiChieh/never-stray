@@ -19,6 +19,13 @@
   </p>
 </div>
 
+<!-- GETTING STARTED -->
+## Features
+
+1. Integrated the pet information from shelters and meet map in Taiwan for multiple condition search. Search conditions include kind, age, sex, ligation, color, city, shelter, status, data reference, and keyword search in color, remark, and title from the detail of the pet.
+2. Users could track the pets they are interested in if user login by Google, and it could filter out easily when clicking the 'My little nest' and pet information also could be sorted by update time.
+3. Dynamic show the count number and result of the pet when the condition is changing at once, and the details of the pet include a link which the user could go to the original data source to adopt the pet.
+
 ### Built With
 
 #### Programming Language
