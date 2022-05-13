@@ -16,7 +16,9 @@ import RingLoader from '../../components/RingLoader'
 export const PetList = () => {
   const dispatch = useAppDispatch()
   const petState = useAppSelector((state) => state.petList)
-  const {data, isLoading} = useGetPetsByFiltersQuery({...petState.filters})
+  const {data, isLoading, isFetching} = useGetPetsByFiltersQuery({
+    ...petState.filters,
+  })
 
   return (
     <>
@@ -32,11 +34,11 @@ export const PetList = () => {
           <Banner />
           <OrderFilter />
           <div id='PetList'>
-            {isLoading ? <RingLoader /> : data && data.pets.length ? (
+            {isLoading || isFetching ? (
+              <RingLoader />
+            ) : data && data.pets.length ? (
               data.pets &&
-              data.pets.map((ele: IPet) => (
-                <Profile key={ele.id} pet={ele} />
-              ))
+              data.pets.map((ele: IPet) => <Profile key={ele.id} pet={ele} />)
             ) : (
               <NotFound />
             )}
