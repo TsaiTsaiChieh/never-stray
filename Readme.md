@@ -56,3 +56,6 @@
 * [AWS CodeDeploy](https://aws.amazon.com/tw/codedeploy/)
 * [TypeORM Migrations](https://typeorm.io/migrations)
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+### Database schema
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0b8cced1-def8-4bb1-96ec-7f57903b9bb4/ERD.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220513%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220513T123030Z&X-Amz-Expires=86400&X-Amz-Signature=c87c3ca234755fce12143aaae8fba402cc9747245d745ad273278065ce99850f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ERD.png%22&x-id=GetObject)
