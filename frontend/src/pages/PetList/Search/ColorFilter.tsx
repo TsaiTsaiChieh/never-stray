@@ -1,16 +1,16 @@
-import {useState, useEffect} from 'react'
+import {useEffect, useState} from 'react'
+
 import {useAppDispatch, useAppSelector} from '../../../store/hooks'
 import {updateFilters} from '../../../store/reducers/petListSlice'
 import {
-  ColorName,
-  ColorSelector,
-  ColorWrap,
+  ColorHit, ColorName, ColorSelector, ColorWrap, QuestionIcon,
 } from '../../../styled/PetList/SearchBoard'
 
 const ColorFilter = () => {
   const {filters} = useAppSelector((state) => state.petList)
   const {colors} = useAppSelector((state) => state.enum)
   const dispatch = useAppDispatch()
+  const [isHovering, setIsHovering] = useState<boolean>(false)
   const options: OptionType[] = colors.map((ele) =>
     ele ?
       {
@@ -20,7 +20,8 @@ const ColorFilter = () => {
       {value: '', label: '未填'},
   )
   const [selected, setSelected] = useState(
-    options.filter((ele) => filters.color.includes(ele.value)))
+    options.filter((ele) => filters.color.includes(ele.value)),
+  )
 
   useEffect(() => {
     if (!filters.color.length) {
@@ -40,7 +41,14 @@ const ColorFilter = () => {
 
   return (
     <ColorWrap>
-      <ColorName>顏色</ColorName>
+      <ColorName>
+        顏色
+        <QuestionIcon
+          onMouseOver={() => setIsHovering(true)}
+          onMouseOut={() => setIsHovering(false)}
+        />
+        <ColorHit isShow={isHovering}>{'僅收容所提供顏色資訊'}</ColorHit>
+      </ColorName>
       <ColorSelector
         isMulti
         value={selected}
