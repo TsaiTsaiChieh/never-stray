@@ -15,7 +15,7 @@
     <br />
     <a href="https://github.com/TsaiTsaiChieh/never-stray/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TsaiTsaiChieh/never-stray/graphs/contributors">Contributor</a>
+    <a href="https://skyline.github.com/TsaiTsaiChieh/2022?annotation0=2022-02-06,2022-05-14,never-stray%20project">Contributor</a>
   </p>
 </div>
 
