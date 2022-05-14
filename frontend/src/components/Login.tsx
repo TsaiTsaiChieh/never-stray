@@ -1,6 +1,7 @@
 import {api} from '../services/api'
 import {useAppDispatch, useAppSelector} from '../store/hooks'
 import {logout} from '../store/reducers/authSlice'
+import {updateFilters} from '../store/reducers/petListSlice'
 import {Container, LoginBtn, UserAvatar} from '../styled/Login'
 import GoogleLoginBtn from './GoogleLoginBtn'
 
@@ -11,10 +12,12 @@ const Login = () => {
 
   const handleLogout = () => {
     dispatch(logout())
+    // set tracking to false when logout
+    dispatch(updateFilters({...filters, tracking: false}))
     // force re-fetches the pet data for tracking state
     dispatch(
       api.endpoints.getPetsByFilters.initiate(
-        {...filters},
+        {...filters, tracking: false},
         {forceRefetch: true},
       ),
     )
