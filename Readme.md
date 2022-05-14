@@ -20,11 +20,15 @@
 </div>
 
 <!-- GETTING STARTED -->
+<!-- FEATURES -->
 ## Features
 
 1. Integrated the pet information from shelters and meet map in Taiwan for multiple condition search. Search conditions include kind, age, sex, ligation, color, city, shelter, status, data reference, and keyword search in color, remark, and title from the detail of the pet.
 2. Users could track the pets they are interested in if user login by Google, and it could filter out easily when clicking the 'My little nest' and pet information also could be sorted by update time.
 3. Dynamic show the count number and result of the pet when the condition is changing at once, and the details of the pet include a link which the user could go to the original data source to adopt the pet.
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- TECHNOLOGIES -->
 
 ### Technologies
 1. Use **Docker** that makes any deployment consistent, portable, and scalable.
@@ -35,6 +39,9 @@
 6. Eliminating the need to hand-write data fetching and caching logic yourself by using **RTK Query**.
 6. Create a responsive design with **SCSS** and **styled-components**.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- BUILT WITH -->
 ### Built With
 
 #### Programming Language
@@ -58,13 +65,28 @@
 * [Simple Storage Service (S3)](https://aws.amazon.com/tw/s3/)
 * [Relational Database Service (MySQL db.t2.micro)](https://aws.amazon.com/tw/rds/)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 #### DevOps
 * [Nginx](https://www.nginx.com/)
 * [Docker](https://www.docker.com/)
 * [AWS CodeDeploy](https://aws.amazon.com/tw/codedeploy/)
 * [TypeORM Migrations](https://typeorm.io/migrations)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- DATABASE SCHEMA -->
 ### Database schema
 ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0b8cced1-def8-4bb1-96ec-7f57903b9bb4/ERD.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220513%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220513T123030Z&X-Amz-Expires=86400&X-Amz-Signature=c87c3ca234755fce12143aaae8fba402cc9747245d745ad273278065ce99850f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ERD.png%22&x-id=GetObject)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+### Contact
+Tsai, Tsai Chieh - jecica196@gmail.com
+
+<!-- ACKNOWLEDGMENTS -->
+### Acknowledgments
+Thanks [Giambi](https://www.linkedin.com/in/giambi-huang/) for React related or CSS discussion
+Thanks [Loki](https://www.linkedin.com/in/%E9%81%93%E6%B9%A7-%E9%BB%83-484b6415a/) for Redux Toolkit discussion
+Thanks [Julia](https://www.linkedin.com/in/%E5%86%A0%E7%91%A9-%E6%9D%8E-a96653193/) for UI/UX design and discussion
