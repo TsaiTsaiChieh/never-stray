@@ -56,7 +56,7 @@ const OrderFilter = () => {
 
   const onChange = (newValue: any) => {
     const isUpdateTimeSelector =
-      newValue.label === updateTimeOrderName.ASC || updateTimeOrderName.DESC
+      Object.values(updateTimeOrderName).indexOf(newValue.label) >= 0
 
     if (isUpdateTimeSelector) {
       setUpdateTimeOrder(newValue)
