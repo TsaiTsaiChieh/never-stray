@@ -1,3 +1,4 @@
+import {BsQuestionCircle} from 'react-icons/bs'
 import Select from 'react-select'
 import styled from 'styled-components'
 
@@ -170,7 +171,22 @@ export const LigationName = styled(Name)``
 export const LigationItems = styled(Items)``
 export const LigationItem = styled(Button)``
 export const ColorWrap = styled(Wrap)``
-export const ColorName = styled(Name)``
+export const ColorName = styled(Name)`
+  display: flex;
+  align-items: center;
+`
+export const QuestionIcon = styled(BsQuestionCircle)`
+  color: ${colors.tiffany.i300};
+  margin: 0 3px;
+  cursor: pointer;
+  position: relative;
+`
+export const ColorHit = styled.p<{isShow: boolean}>`
+  /* display: flex; */
+  display: ${(props) => (props.isShow ? 'flex' : 'none')};
+  font-size: ${sizes.xs};
+  color: ${colors.gray.i300};
+`
 export const ColorSelector = styled(Selector)``
 
 export const CityWrap = styled(Wrap)``
@@ -258,7 +274,7 @@ export const CleanupFiltersBtn = styled(Button)`
   border: none;
   color: ${colors.tiffany.i300};
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 1rem;
   z-index: 41;
   &:hover {
