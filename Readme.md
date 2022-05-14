@@ -13,21 +13,28 @@
     <a href="https://never-stray.com/"><strong>Explore the website »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TsaiTsaiChieh/never-stray/issues">Report Bug</a>
+    <a href="https://github.com/TsaiTsaiChieh/never-stray/issues" target="_blank">Report Bug</a>
     ·
-    <a href="https://skyline.github.com/TsaiTsaiChieh/2022?annotation0=2022-02-06,2022-05-14,never-stray%20project">Contributor</a>
+    <a href="https://skyline.github.com/TsaiTsaiChieh/2022?annotation0=2022-02-06,2022-05-14,never-stray%20project" target="_blank">Contributor</a>
   </p>
 </div>
 
 <!-- GETTING STARTED -->
+<!-- SCREENSHOT -->
+
+## Screenshot
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/dad73973-c26d-4ca3-af30-3ff4b635f8b6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171452Z&X-Amz-Expires=86400&X-Amz-Signature=afa762c4a958325da189b186e39a899a711b3ca4e09a5107daca24e9b5aa1c54&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
 <!-- FEATURES -->
 ## Features
 
 1. Integrated the pet information from shelters and meet map in Taiwan for multiple condition search. Search conditions include kind, age, sex, ligation, color, city, shelter, status, data reference, and keyword search in color, remark, and title from the detail of the pet.
-2. Users could track the pets they are interested in if user login by Google, and it could filter out easily when clicking the 'My little nest' and pet information also could be sorted by update time.
-3. Dynamic show the count number and result of the pet when the condition is changing at once, and the details of the pet include a link which the user could go to the original data source to adopt the pet.
-<p align="right">(<a href="#top">back to top</a>)</p>
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d451f9fe-9c04-44cb-9a7c-863842244f9a/feature1.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171019Z&X-Amz-Expires=86400&X-Amz-Signature=e564e8ff09ba3e50859482de60440ca6ea6fa808e8154750f0314200104d5c27&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature1.gif%22&x-id=GetObject)
 
+2. Users could track the pets they are interested in if user login by Google, and it could filter out easily when clicking the 'My little nest' and pet information also could be sorted by update time.
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/121c4e48-d1ba-43af-8e8c-2c4715b65ae5/feature2.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171033Z&X-Amz-Expires=86400&X-Amz-Signature=04a2466b483fb5fbf02acb18419ee44c581293136b5ab85b418df006940ae992&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature2.gif%22&x-id=GetObject)
+3. Dynamic show the count number and result of the pet when the condition is changing at once, and the details of the pet include a link which the user could go to the original data source to adopt the pet.
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9cb9a060-a73e-444e-9b54-c73812399f28/feature3.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171155Z&X-Amz-Expires=86400&X-Amz-Signature=1ddca4ad2070b6e4ff76ccb5ecc733bd3c07340a6b0f01c1078fa3150473545a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature3.gif%22&x-id=GetObject)
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- TECHNOLOGIES -->
 
 ### Technologies
@@ -77,7 +84,7 @@
 
 <!-- DATABASE SCHEMA -->
 ### Database schema
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0b8cced1-def8-4bb1-96ec-7f57903b9bb4/ERD.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220513%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220513T123030Z&X-Amz-Expires=86400&X-Amz-Signature=c87c3ca234755fce12143aaae8fba402cc9747245d745ad273278065ce99850f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ERD.png%22&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0b8cced1-def8-4bb1-96ec-7f57903b9bb4/ERD.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T155634Z&X-Amz-Expires=86400&X-Amz-Signature=b40ec96bd78393fcd68ac673d9a54fb1b08dd51ee573ae5d8dc2ba28cae48eec&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ERD.png%22&x-id=GetObject)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
