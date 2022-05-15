@@ -23,17 +23,17 @@
 <!-- SCREENSHOT -->
 
 ## Screenshot
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/800d56cb-e1a5-41da-bc11-c7131a7e7bb2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220515%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220515T022837Z&X-Amz-Expires=86400&X-Amz-Signature=4ebb9b1e131f604362839a0ea134d4188f78c9dc749ff283d87a2e04df1b1738&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![](https://i.imgur.com/i2ENhAA.jpg)
 <!-- FEATURES -->
 ## Features
 
 1. Integrated the pet information from shelters and meet map in Taiwan for multiple condition search. Search conditions include kind, age, sex, ligation, color, city, shelter, status, data reference, and keyword search in color, remark, and title from the detail of the pet.
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d451f9fe-9c04-44cb-9a7c-863842244f9a/feature1.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171019Z&X-Amz-Expires=86400&X-Amz-Signature=e564e8ff09ba3e50859482de60440ca6ea6fa808e8154750f0314200104d5c27&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature1.gif%22&x-id=GetObject)
+![](https://i.imgur.com/6PBEroq.gif)
 
 2. Users could track the pets they are interested in if user login by Google, and it could filter out easily when clicking the 'My little nest' and pet information also could be sorted by update time.
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/121c4e48-d1ba-43af-8e8c-2c4715b65ae5/feature2.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171033Z&X-Amz-Expires=86400&X-Amz-Signature=04a2466b483fb5fbf02acb18419ee44c581293136b5ab85b418df006940ae992&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature2.gif%22&x-id=GetObject)
+![](https://i.imgur.com/V56WnMl.gif)
 3. Dynamic show the count number and result of the pet when the condition is changing at once, and the details of the pet include a link which the user could go to the original data source to adopt the pet.
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9cb9a060-a73e-444e-9b54-c73812399f28/feature3.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220514%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220514T171155Z&X-Amz-Expires=86400&X-Amz-Signature=1ddca4ad2070b6e4ff76ccb5ecc733bd3c07340a6b0f01c1078fa3150473545a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22feature3.gif%22&x-id=GetObject)
+![](https://i.imgur.com/hjhV2iF.gif)
 <p align="right">(<a href="#top">back to top</a>)</p>
 <!-- TECHNOLOGIES -->
 
@@ -92,6 +92,7 @@
 ## Contact
 Tsai, Tsai Chieh - jecica196@gmail.com - [Linkedin](https://www.linkedin.com/in/%E9%87%87%E6%BD%94-%E8%94%A1-211aa6151/)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 Thanks [Giambi](https://www.linkedin.com/in/giambi-huang/) for React related or CSS discussion
@@ -99,3 +100,4 @@ Thanks [Giambi](https://www.linkedin.com/in/giambi-huang/) for React related or 
 Thanks [Loki](https://www.linkedin.com/in/%E9%81%93%E6%B9%A7-%E9%BB%83-484b6415a/) for Redux Toolkit discussion
 <br>
 Thanks [Julia](https://www.linkedin.com/in/%E5%86%A0%E7%91%A9-%E6%9D%8E-a96653193/) for UI/UX design and discussion
+<p align="right">(<a href="#top">back to top</a>)</p>
