@@ -93,11 +93,10 @@
 Tsai, Tsai Chieh - jecica196@gmail.com - [Linkedin](https://www.linkedin.com/in/%E9%87%87%E6%BD%94-%E8%94%A1-211aa6151/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-Thanks [Giambi](https://www.linkedin.com/in/giambi-huang/) for React related or CSS discussion
-<br>
-Thanks [Loki](https://www.linkedin.com/in/%E9%81%93%E6%B9%A7-%E9%BB%83-484b6415a/) for Redux Toolkit discussion
-<br>
-Thanks [Julia](https://www.linkedin.com/in/%E5%86%A0%E7%91%A9-%E6%9D%8E-a96653193/) for UI/UX design and discussion
+* Thanks [Giambi](https://www.linkedin.com/in/giambi-huang/)for React related or CSS discussion
+* Thanks [Loki](https://www.linkedin.com/in/%E9%81%93%E6%B9%A7-%E9%BB%83-484b6415a/) for Redux Toolkit discussion
+* Thanks [Julia](https://www.linkedin.com/in/%E5%86%A0%E7%91%A9-%E6%9D%8E-a96653193/) for UI/UX design and discussion
 <p align="right">(<a href="#top">back to top</a>)</p>
