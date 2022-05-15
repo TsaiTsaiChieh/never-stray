@@ -23,7 +23,7 @@
 <!-- SCREENSHOT -->
 
 ## Screenshot
-![](https://i.imgur.com/i2ENhAA.jpg)
+![](https://i.imgur.com/XNQ4ox3.png)
 <!-- FEATURES -->
 ## Features
 
