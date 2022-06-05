@@ -22,7 +22,7 @@ const JOB_PORT: number = parseInt(process.env.JOB_PORT!);
     )
     scheduleJob(
       'Get meet pet website data scheduler',
-      '30 18 * * *', // At 2:30 (UTC+8)
+      '30 18 */7 * *', // At 2:30 (UTC+8) on every 7th day-of-month
       async (): Promise<void> => {
         await getMeetPetData()
       },
